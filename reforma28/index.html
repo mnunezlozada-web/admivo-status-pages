@@ -6,7 +6,7 @@
 <title>Reforma 28 — Estatus del proyecto</title>
 <meta property="og:title" content="Reforma 28 — Estatus del proyecto">
 <meta property="og:description" content="Triple Espacio / Sutton · Av. Paseo de la Reforma 28, CDMX · Trámites DEIU, MIAG y ACP">
-<meta property="og:url" content="https://mnunezlozada-web.github.io/admivo-status-pages/reforma28/">
+<meta property="og:url" content="https://reforma28-estatus.netlify.app">
 <meta property="og:type" content="website">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -88,7 +88,7 @@
     </div>
     <div class="card">
       <div class="label">DEIU</div>
-      <div class="value" id="deiu-counter">4 / 6</div>
+      <div class="value" id="deiu-counter">5 / 6</div>
       <div class="sub">instancias resueltas</div>
     </div>
     <div class="card">
@@ -147,8 +147,8 @@
         <tr>
           <td><strong>DEIU</strong></td>
           <td style="color:#666">Protección Civil</td>
-          <td><span class="badge amber">⚠ Por enviar</span></td>
-          <td style="color:#666">RL subsanó 26-may-2026 — envío esta semana</td>
+          <td><span class="badge green">✓ Opinión positiva</span></td>
+          <td style="color:#666">Opinión emitida jun-2026</td>
         </tr>
         <tr>
           <td>
@@ -188,7 +188,7 @@
         </tr>
         <tr>
           <td><strong>ISC</strong></td>
-          <td style="color:#666">Finanzas CDMX</td>
+          <td style="color:#666">Instituto de las Construcciones</td>
           <td><span class="badge red">🔴 Urgente</span></td>
           <td style="color:#666">Verificar cumplimiento normatividad vigente con el cliente</td>
         </tr>
@@ -204,7 +204,7 @@
 
   <section>
     <h2>Pendientes activos</h2>
-    <div class="counter no-print">Completados: <span id="done-count">0</span> de <span id="total-count">20</span> &nbsp;·&nbsp; <a href="https://mnunezlozada-web.github.io/admivo-status-pages/reforma28/" target="_blank" style="font-size:11px;color:#888;text-decoration:none;">🔗 Liga pública</a></div>
+    <div class="counter no-print">Completados: <span id="done-count">0</span> de <span id="total-count">20</span> &nbsp;·&nbsp; <a href="https://reforma28-estatus.netlify.app" target="_blank" style="font-size:11px;color:#888;text-decoration:none;">🔗 Liga pública</a></div>
     <table>
       <thead>
         <tr>
@@ -266,38 +266,44 @@
 
 <script>
 const items = [
-  { n:1, desc:"Contactar a Alan — árbol en acceso vehicular", who:"Mauricio", due:"Inmediato", urgent:true, done:true },
-  { n:2, desc:"Coordinar con Fer — justificación acceso en estudio de movilidad", who:"Mauricio", due:"Inmediato", urgent:true, done:true },
-  { n:3, desc:"Pago de derechos vía SPEI (HSBC) y obtener comprobante", who:"Mauricio", due:"TBD", urgent:false, done:true },
-  { n:4, desc:"Validar set Fer/Colores como base; confirmar biciestacionamientos = 107", who:"Nayeli", due:"TBD", urgent:false },
-  { n:5, desc:"Enviar plano trayectoria vehicular a Sedema (observación árbol)", who:"Nayeli / Alan", due:"TBD", urgent:false, done:true },
-  { n:6, desc:"Redactar justificación de arbolado y factibilidad", who:"Nayeli", due:"TBD", urgent:false },
-  { n:7, desc:"[MIAG] Cotización ortofoto dron (0.10 m/píxel, UTM) — verificar si la existente cumple", who:"Eric / Luis", due:"02-jun", urgent:true },
-  { n:8, desc:"Enviar 2 candidatos adicionales para RAMIR", who:"Eric / Luis", due:"02-jun", urgent:true, done:true },
-  { n:9, desc:"Propuesta reconfiguración acceso vehicular (bahía / trazo S)", who:"Luis", due:"TBD", urgent:false, done:true },
-  { n:10, desc:"Crear Drive centralizado con versión final unificada", who:"Alan + Nayeli", due:"TBD", urgent:false },
+  // ── Hechos ────────────────────────────────────────────────────
+  { n:1,  desc:"Contactar a Alan — árbol en acceso vehicular", who:"Mauricio", due:"Inmediato", urgent:true, done:true },
+  { n:2,  desc:"Coordinar con Fer — justificación acceso en estudio de movilidad", who:"Mauricio", due:"Inmediato", urgent:true, done:true },
+  { n:3,  desc:"Pago de derechos vía SPEI (HSBC) y obtener comprobante", who:"Mauricio", due:"TBD", urgent:false, done:true },
+  { n:5,  desc:"Enviar plano trayectoria vehicular a Sedema (observación árbol)", who:"Nayeli / Alan", due:"TBD", urgent:false, done:true },
+  { n:8,  desc:"Enviar 2 candidatos adicionales para RAMIR", who:"Eric / Luis", due:"02-jun", urgent:true, done:true },
+  { n:9,  desc:"Propuesta reconfiguración acceso vehicular (bahía / trazo S)", who:"Luis", due:"TBD", urgent:false, done:true },
   { n:11, desc:"Crear grupo WhatsApp: Nayeli, Alan, Brian", who:"Alan", due:"TBD", urgent:false, done:true },
   { n:12, desc:"Revisar carpeta Drive \"INF. GESTOR REFORMA #28\" (Brayan/Triple Espacio)", who:"Mauricio", due:"—", urgent:false, done:true },
   { n:13, desc:"[ECOLEGIS] Pago complementario derechos MIA: $1,771.00", who:"Mauricio", due:"Urgente", urgent:true, done:true },
+  { n:27, desc:"[DEMOLICIÓN] Designar DRO para la demolición", who:"Mauricio", due:"TBD", urgent:false, done:true },
+  // ── General / Coordinación ────────────────────────────────────
+  { n:4,  desc:"Validar set Fer/Colores como base; confirmar biciestacionamientos = 107", who:"Nayeli", due:"TBD", urgent:false },
+  { n:6,  desc:"Redactar justificación de arbolado y factibilidad", who:"Nayeli", due:"TBD", urgent:false },
+  { n:7,  desc:"[MIAG] Verificar ortofoto dron (0.10 m/píxel, UTM)", who:"Eric / Luis", due:"TBD", urgent:true },
+  { n:10, desc:"Crear Drive centralizado con versión final unificada", who:"Alan + Nayeli", due:"TBD", urgent:false },
+  { n:31, desc:"Generar estimado de derechos de Reforma 28 para el cliente", who:"Mauricio", due:"TBD", urgent:true },
+  { n:20, desc:"Cuadrar superficie sobre nivel banqueta: memoria (26,294.20 m²) vs SPOTMET (26,216.36 m²) — diferencia 77.84 m²", who:"Nayeli / Alan", due:"TBD", urgent:false },
+  { n:33, desc:"[CONTROL VERSIONES] Establecer protocolo de versiones único para el proyecto: definir qué set de planos es la fuente de verdad y comunicarlo al equipo. Problema recurrente: cambios de versión generan discrepancias en áreas, biciestacionamientos y memorias.", who:"Mauricio / Alan", due:"Urgente", urgent:true },
+  // ── ECOLEGIS ─────────────────────────────────────────────────
   { n:14, desc:"[ECOLEGIS] Obtener Dictamen de Factibilidad Hidráulica", who:"Nayeli / Equipo", due:"TBD", urgent:false },
   { n:15, desc:"[ECOLEGIS] Carnet RAMIR del transportista elegido (Guillermo Blancas u otro)", who:"Nayeli", due:"TBD", urgent:false },
-  { n:16, desc:"[ECOLEGIS] Árbol exterior: layer en plano DWG georreferenciado (si hubo afectación) o justificación de no afectación", who:"Nayeli / Luis", due:"TBD", urgent:false },
-  { n:17, desc:"[ECOLEGIS] Ortofoto del predio — verificar si la del 01-Jun cumple especificaciones Sedema", who:"Nayeli / Eric", due:"TBD", urgent:false },
+  { n:16, desc:"[ECOLEGIS] Árbol exterior: layer en plano DWG georreferenciado o justificación de no afectación", who:"Nayeli / Luis", due:"TBD", urgent:false },
+  { n:17, desc:"[ECOLEGIS] Ortofoto del predio — verificar si cumple especificaciones Sedema", who:"Nayeli / Eric", due:"TBD", urgent:false },
   { n:18, desc:"[ECOLEGIS] Corregir discrepancia hatches: cuadrar áreas de planos vs memoria (Excel por nivel)", who:"Nayeli / Alan", due:"TBD", urgent:false },
-  { n:19, desc:"[ECOLEGIS] Biciestacionamientos: corregir plano para mostrar 107 unidades con numeración correcta (sin falta #61)", who:"Nayeli / Alan", due:"TBD", urgent:false },
-  { n:20, desc:"[ECOLEGIS] Cuadrar superficie sobre nivel banqueta: memoria (26,294.20 m²) vs SPOTMET (26,216.36 m²) — diferencia 77.84 m²", who:"Nayeli / Alan", due:"TBD", urgent:false },
-  { n:21, desc:"[ISC] Verificar con cliente que esté observando normatividad ISC vigente para el proyecto", who:"Mauricio", due:"Urgente", urgent:true },
+  { n:19, desc:"[ECOLEGIS] Biciestacionamientos: corregir plano para mostrar 107 unidades con numeración correcta", who:"Nayeli / Alan", due:"TBD", urgent:false },
+  // ── ISC ──────────────────────────────────────────────────────
+  { n:21, desc:"[ISC] Verificar con cliente normatividad ISC vigente para el proyecto", who:"Mauricio", due:"Urgente", urgent:true },
+  { n:32, desc:"[ISC] Cliente entrega memoria estructural corregida — 6 obs. corresponsable: (1) coords/Ts, (2) estructuras duales, (3) separación colindancias, (4) limitación daño Dir X (0.004), (5) desplazamientos todos niveles, (6) distorsiones SV×1.1 no cumple Dir X", who:"Cliente / Alan", due:"Urgente", urgent:true },
+  // ── DEMOLICIÓN ───────────────────────────────────────────────
   { n:22, desc:"[DEMOLICIÓN] Reporte fotográfico del estado actual del inmueble", who:"Nayeli / Alan", due:"TBD", urgent:false },
   { n:23, desc:"[DEMOLICIÓN] Revisión en ventanilla económica (prevención)", who:"Mauricio", due:"TBD", urgent:false },
   { n:24, desc:"[DEMOLICIÓN] Dictamen de estabilidad de colindancias (predios vecinos)", who:"Luis", due:"TBD", urgent:false },
   { n:25, desc:"[DEMOLICIÓN] Constancia de no adeudo predial (Finanzas CDMX)", who:"Mauricio", due:"TBD", urgent:false },
   { n:26, desc:"[DEMOLICIÓN] Constancia de no adeudo de agua (SACMEX)", who:"Mauricio", due:"TBD", urgent:false },
-  { n:27, desc:"[DEMOLICIÓN] Designar DRO para la demolición", who:"Mauricio", due:"TBD", urgent:false, done:true },
   { n:28, desc:"[DEMOLICIÓN] Memoria/programa del proceso de demolición", who:"Luis / Alan", due:"TBD", urgent:false },
   { n:29, desc:"[DEMOLICIÓN] INBAL — autorización (ya en gestión)", who:"Mauricio", due:"TBD", urgent:false },
-  { n:30, desc:"[DEMOLICIÓN] RAMIR para residuos de demolición (carnet transportista) — relacionado con Ecolegis", who:"Nayeli", due:"TBD", urgent:false },
-  { n:31, desc:"Generar estimado de derechos de Reforma 28 para el cliente", who:"Mauricio", due:"TBD", urgent:true },
-  { n:32, desc:"[ESTRUCTURAS] Cliente entrega memoria estructural corregida — 6 obs. corresponsable: (1) coords/Ts, (2) estructuras duales, (3) separación colindancias, (4) limitación daño Dir X (0.004), (5) desplazamientos todos niveles, (6) distorsiones SV×1.1 no cumple Dir X", who:"Cliente / Alan", due:"Urgente", urgent:true },
+  { n:30, desc:"[DEMOLICIÓN] RAMIR para residuos de demolición (carnet transportista)", who:"Nayeli", due:"TBD", urgent:false },
 ];
 
 // ── JSONBin config ──────────────────────────────────────────────
