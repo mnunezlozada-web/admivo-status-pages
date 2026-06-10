@@ -18,6 +18,9 @@
   .card .value { font-size: 22px; font-weight: 600; }
   .card .sub { font-size: 11px; color: #aaa; margin-top: 2px; }
   .card .value.sm { font-size: 14px; margin-top: 2px; }
+  .card.alert { border-left: 3px solid #e53935; }
+  .card.warn  { border-left: 3px solid #fb8c00; }
+  .card.ok    { border-left: 3px solid #43a047; }
   section { margin-bottom: 2rem; }
   section h2 { font-size: 11px; font-weight: 600; color: #999; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
   table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; border: 0.5px solid #e0ddd4; }
@@ -41,6 +44,7 @@
   .btn-print:hover { background: #f5f4f0; }
   .counter { font-size: 12px; color: #888; margin-bottom: 8px; }
   .counter span { font-weight: 600; color: #1a1a1a; }
+  .alert-row td { background: #fff8f8; }
   @media print {
     body { background: #fff; padding: 1rem; }
     .no-print { display: none !important; }
@@ -65,21 +69,58 @@
     </div>
   </header>
 
-  <div class="cards"><div class="card"><div class="label">Proyecto</div><div class="value sm">Fusión 4 predios — hospital</div></div>
-<div class="card"><div class="label">Alcaldía</div><div class="value sm">Miguel Hidalgo</div></div>
-<div class="card"><div class="label">Fase</div><div class="value sm">En trámite — prevención activa</div></div>
-<div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">—</div><div class="sub">por cerrar</div></div></div>
+  <div class="cards">
+    <div class="card ok"><div class="label">CAyNO</div><div class="value sm">4 / 4 ✅</div><div class="sub">Válidas dic-2027</div></div>
+    <div class="card warn"><div class="label">Fusión</div><div class="value sm">En proceso 🔄</div><div class="sub">Publicitación enviada</div></div>
+    <div class="card alert"><div class="label">CUZUS</div><div class="value sm">Prevención ⛔</div><div class="sub">Esperando corrección</div></div>
+    <div class="card alert"><div class="label">Prediales</div><div class="value">4</div><div class="sub">bimestres vencidos</div></div>
+    <div class="card warn"><div class="label">EMS</div><div class="value sm">No contratado</div><div class="sub">$386,420 + IVA</div></div>
+    <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">—</div><div class="sub">por cerrar</div></div>
+  </div>
 
   <section>
-    <h2>Estado de trámites</h2>
+    <h2>⚠ Alertas Críticas</h2>
+    <table>
+      <thead><tr><th>Prioridad</th><th>Alerta</th><th>Detalle</th></tr></thead>
+      <tbody>
+        <tr class="alert-row"><td><span class="badge red">🔴 Urgente</span></td><td>Prediales vencidos — 4 predios</td><td>4 bimestres sin pagar (2024/06, 2025/01–03). ~$78,416 + recargos. Requisito para trámites SEDUVI/Alcaldía</td></tr>
+        <tr class="alert-row"><td><span class="badge red">🔴 Urgente</span></td><td>Discrepancia 50 m² en C-605</td><td>Escritura: 359 m² · Planos fusión: 309 m². ¿Afectación vial Av. Constituyentes? Confirmar con arquitecto antes de escriturar fusión</td></tr>
+        <tr><td><span class="badge amber">🟡 Importante</span></td><td>EMS sin contratar</td><td>Cotización $386,420+IVA (5-ene-2026). Pendiente autorización Octavio Peñaloza + 50% anticipo + acceso al predio</td></tr>
+        <tr><td><span class="badge amber">🟡 Importante</span></td><td>Memoria de fusión inconsistente</td><td>Declara C-605=359 m² individualmente pero total=1,854.32 m² (requiere C-605=309 m²). Error a corregir antes de ingreso</td></tr>
+        <tr><td><span class="badge amber">🟡 Importante</span></td><td>CUZUS en prevención</td><td>Trámite bloqueado. Aguardando versión de obra nueva corregida por el equipo</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Estado de trámites — base</h2>
     <table>
       <thead><tr><th>Trámite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
-      <tbody><tr><td>Ingreso cuzus Constituyentes</td><td>SEDUVI</td><td><span class="badge amber">⚠ Esperando versión</span></td><td>Aguardando obra nueva corregida antes de recoger</td></tr>
-<tr><td>Fusión de 4 predios</td><td>SEDUVI / Alcaldía</td><td><span class="badge amber">⚠ Prevención activa</span></td><td>Bajo prevención por errores en versión de obra nueva</td></tr>
-<tr><td>Archivo Central Cuauhtémoc</td><td>Registro Público / Cuauhtémoc</td><td><span class="badge blue">⏳ Pendiente</span></td><td>John/Héctor: obtener antecedente del expediente y documentar folio</td></tr>
-<tr><td>Firma "Cano" — claves obra nueva</td><td>Alcaldía Miguel Hidalgo</td><td><span class="badge red">🔴 Trabado</span></td><td>Insistir en oficina de firma para bajar documento y liberar claves</td></tr>
-<tr><td>Escrito "árbol"</td><td>Alcaldía Miguel Hidalgo</td><td><span class="badge blue">⏳ Sin respuesta</span></td><td>Escrito ingresado; visita presencial de Héctor para acuse</td></tr>
-<tr><td>Opción 2</td><td>Por definir</td><td><span class="badge blue">⏳ Por activar</span></td><td>Activar para aliviar presión de terceros; listar asuntos que aplican</td></tr></tbody>
+      <tbody>
+        <tr><td>CAyNO — 4 predios</td><td>Alcaldía Miguel Hidalgo</td><td><span class="badge green">✅ Completado</span></td><td>Dic-2025. Válidas dic-2027. Zona Minada confirmada en todos</td></tr>
+        <tr><td>Fusión de predios (Art. 49 LDU)</td><td>SEDUVI / Alcaldía</td><td><span class="badge amber">🔄 En proceso</span></td><td>Publicitación vecinal ingresada 15-ene-2026. Pendiente constancia → Licencia de Fusión</td></tr>
+        <tr><td>CUZUS</td><td>SEDUVI</td><td><span class="badge red">⛔ Prevención</span></td><td>Aguardando versión corregida de obra nueva</td></tr>
+        <tr><td>EMS (Mecánica de Suelo)</td><td>Proveedor externo</td><td><span class="badge red">⛔ No contratado</span></td><td>Presupuesto $448,247 c/IVA. Sin autorizar. Zona Minada requiere también Estudio Geofísico</td></tr>
+        <tr><td>EIU (Impacto Urbano y Ambiental)</td><td>SEDUVI</td><td><span class="badge gray">⛔ Pendiente inicio</span></td><td>—</td></tr>
+        <tr><td>Licencia de Fusión</td><td>Alcaldía</td><td><span class="badge gray">⛔ Pendiente</span></td><td>Bloqueado hasta constancia de publicitación vecinal</td></tr>
+        <tr><td>DCA (demolición)</td><td>SEDEMA</td><td><span class="badge gray">⛔ Pendiente</span></td><td>—</td></tr>
+        <tr><td>Manifestación tipo C</td><td>SEDUVI</td><td><span class="badge gray">⛔ Objetivo final</span></td><td>Requiere todos los trámites anteriores</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Estado de trámites — operativo</h2>
+    <table>
+      <thead><tr><th>Trámite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
+      <tbody>
+        <tr><td>Ingreso cuzus Constituyentes</td><td>SEDUVI</td><td><span class="badge amber">⚠ Esperando versión</span></td><td>Aguardando obra nueva corregida antes de recoger</td></tr>
+        <tr><td>Fusión de 4 predios</td><td>SEDUVI / Alcaldía</td><td><span class="badge amber">⚠ Prevención activa</span></td><td>Bajo prevención por errores en versión de obra nueva</td></tr>
+        <tr><td>Archivo Central Cuauhtémoc</td><td>Registro Público / Cuauhtémoc</td><td><span class="badge blue">⏳ Pendiente</span></td><td>John/Héctor: obtener antecedente del expediente y documentar folio</td></tr>
+        <tr><td>Firma "Cano" — claves obra nueva</td><td>Alcaldía Miguel Hidalgo</td><td><span class="badge red">🔴 Trabado</span></td><td>Insistir en oficina de firma para bajar documento y liberar claves</td></tr>
+        <tr><td>Escrito "árbol"</td><td>Alcaldía Miguel Hidalgo</td><td><span class="badge blue">⏳ Sin respuesta</span></td><td>Escrito ingresado; visita presencial de Héctor para acuse</td></tr>
+        <tr><td>Opción 2</td><td>Por definir</td><td><span class="badge blue">⏳ Por activar</span></td><td>Activar para aliviar presión de terceros; listar asuntos que aplican</td></tr>
+      </tbody>
     </table>
   </section>
 
@@ -102,14 +143,29 @@
   </section>
 
   <section>
+    <h2>Los 4 predios</h2>
+    <table>
+      <thead><tr><th>Predio</th><th>Escritura</th><th>Folio RPP</th><th>Superficie</th><th>Cuenta predial</th></tr></thead>
+      <tbody>
+        <tr><td>Constituyentes 605</td><td>53,414 (Not. 23)</td><td>87314</td><td>359 m² escritura / <strong>309 m²</strong> planos ⚠️</td><td>32828138000-1</td></tr>
+        <tr><td>Constituyentes 735</td><td>53,406 (Not. 23)</td><td>9221613</td><td>1,099.82 m²</td><td>32828137000-2</td></tr>
+        <tr><td>Constituyentes 741</td><td>53,440 (Not. 23)</td><td>9042718</td><td>245.50 m²</td><td>32828136000-3</td></tr>
+        <tr><td>Henequén 4</td><td>8,994 (Not. 162)</td><td>9319129</td><td>200 m²</td><td>32828135000-4</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
     <h2>Acuerdos clave</h2>
     <table>
       <thead><tr><th style="width:110px">Fecha</th><th>Acuerdo</th><th style="width:130px">Quién acordó</th></tr></thead>
-      <tbody><tr><td>2026-05-11</td><td>Avanzar con ingreso de cuzus en cuanto lleguen los papeles</td><td>— / Héctor</td></tr>
-<tr><td>2026-06-03</td><td>No recoger "constituyentes" hasta recibir versión corregida (obra nueva sin errores)</td><td>Mauricio / John</td></tr>
-<tr><td>2026-06-03</td><td>Se descarta la figura de "regularización" — la única vía es a través del Archivo Central</td><td>Mauricio / John</td></tr>
-<tr><td>2026-06-03</td><td>"Opción 2" ya está puesta; activarla para aliviar presión de terceros y avanzar</td><td>Mauricio / John</td></tr>
-<tr><td>2026-06-03</td><td>Costo de inacción doble: pérdida política (clientes/terceros) y riesgo procedimental (requisitos mal integrados)</td><td>—</td></tr></tbody>
+      <tbody>
+        <tr><td>2026-05-11</td><td>Avanzar con ingreso de cuzus en cuanto lleguen los papeles</td><td>— / Héctor</td></tr>
+        <tr><td>2026-06-03</td><td>No recoger "constituyentes" hasta recibir versión corregida (obra nueva sin errores)</td><td>Mauricio / John</td></tr>
+        <tr><td>2026-06-03</td><td>Se descarta la figura de "regularización" — la única vía es a través del Archivo Central</td><td>Mauricio / John</td></tr>
+        <tr><td>2026-06-03</td><td>"Opción 2" ya está puesta; activarla para aliviar presión de terceros y avanzar</td><td>Mauricio / John</td></tr>
+        <tr><td>2026-06-03</td><td>Costo de inacción doble: pérdida política (clientes/terceros) y riesgo procedimental (requisitos mal integrados)</td><td>—</td></tr>
+      </tbody>
     </table>
   </section>
 
@@ -129,7 +185,10 @@ const items = [
   { n:9,  desc:"[John] Enviar a Mauricio la versión corregida de \"constituyentes\" (obra nueva y requisitos validados) antes de la recolección", who:"John", due:"TBD", urgent:false, done:false },
   { n:10, desc:"[John] Activar \"opción 2\" para asuntos ya puestos; listar cuáles pasan a esa vía y sus pasos", who:"John", due:"TBD", urgent:false, done:false },
   { n:11, desc:"Confirmar disponibilidad y agendar reunión martes o miércoles (no jueves — viaje al mundial)", who:"Mauricio / John", due:"Esta semana", urgent:true,  done:false },
-  { n:12, desc:"Verificar con el área si hubo respuesta al escrito del árbol; compartir estatus", who:"Mauricio", due:"Inmediato", urgent:true,  done:false }
+  { n:12, desc:"Verificar con el área si hubo respuesta al escrito del árbol; compartir estatus", who:"Mauricio", due:"Inmediato", urgent:true,  done:false },
+  { n:13, desc:"🔴 Pagar prediales vencidos (4 bimestres x 4 predios, ~$78k + recargos)", who:"Octavio Peñaloza", due:"Urgente", urgent:true,  done:false },
+  { n:14, desc:"🔴 Autorizar y contratar EMS ($386,420 + IVA). Coordinar acceso al predio + plano topográfico", who:"Octavio Peñaloza", due:"Urgente", urgent:true,  done:false },
+  { n:15, desc:"Aclarar discrepancia 50 m² C-605 con arquitecto (359 m² escritura vs 309 m² planos fusión)", who:"CRN / Arquitecto", due:"Antes fusión", urgent:false, done:false }
 ];
 
 const BIN_ID  = "6a29e7c3f5f4af5e29db6333";
