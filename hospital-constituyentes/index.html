@@ -1,1 +1,258 @@
-<html><body><p>hospital-constituyentes — status coming soon</p></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Constituyentes — Estatus del proyecto</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 14px; color: #1a1a1a; background: #f5f4f0; padding: 2rem; }
+  .container { max-width: 960px; margin: 0 auto; }
+  header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; }
+  header h1 { font-size: 20px; font-weight: 600; }
+  header p { font-size: 12px; color: #888; margin-top: 2px; }
+  .stamp { font-size: 11px; color: #aaa; text-align: right; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 2rem; }
+  .card { background: #fff; border-radius: 10px; border: 0.5px solid #e0ddd4; padding: 0.75rem 1rem; }
+  .card .label { font-size: 11px; color: #999; margin-bottom: 4px; }
+  .card .value { font-size: 22px; font-weight: 600; }
+  .card .sub { font-size: 11px; color: #aaa; margin-top: 2px; }
+  .card .value.sm { font-size: 14px; margin-top: 2px; }
+  section { margin-bottom: 2rem; }
+  section h2 { font-size: 11px; font-weight: 600; color: #999; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; border: 0.5px solid #e0ddd4; }
+  th { font-size: 11px; font-weight: 600; color: #999; text-align: left; padding: 9px 14px; background: #faf9f6; border-bottom: 0.5px solid #e0ddd4; }
+  td { padding: 9px 14px; border-bottom: 0.5px solid #f0ede6; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  .badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 6px; white-space: nowrap; }
+  .badge.green  { background: #e8f5e0; color: #3a6e10; }
+  .badge.blue   { background: #e3effa; color: #1a5fa6; }
+  .badge.amber  { background: #fef3dc; color: #8a5010; }
+  .badge.red    { background: #fde8e8; color: #a33030; }
+  .badge.gray   { background: #f0ede6; color: #666; }
+  .check-col { width: 36px; text-align: center; }
+  input[type=checkbox] { width: 16px; height: 16px; cursor: pointer; accent-color: #3a6e10; }
+  .obs-input { width: 100%; min-width: 140px; border: none; background: transparent; resize: none; font-size: 12px; color: #555; font-family: inherit; padding: 0; line-height: 1.4; overflow: hidden; }
+  .obs-input:focus { outline: none; background: #faf9f6; border-radius: 4px; padding: 2px 6px; box-shadow: 0 0 0 1px #e0ddd4; }
+  .obs-input::placeholder { color: #d0cdc6; }
+  .btn-share { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 6px 14px; border-radius: 8px; border: 0.5px solid #ccc; background: #fff; cursor: pointer; color: #444; }
+  .btn-share:hover { background: #f5f4f0; }
+  .btn-print { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 6px 14px; border-radius: 8px; border: 0.5px solid #ccc; background: #fff; cursor: pointer; color: #444; margin-left: 8px; }
+  .btn-print:hover { background: #f5f4f0; }
+  .counter { font-size: 12px; color: #888; margin-bottom: 8px; }
+  .counter span { font-weight: 600; color: #1a1a1a; }
+  @media print {
+    body { background: #fff; padding: 1rem; }
+    .no-print { display: none !important; }
+    table { border: 1px solid #ddd; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div>
+      <h1>Hospital Constituyentes</h1>
+      <p>Octavio Peñaloza &nbsp;·&nbsp; Av. Constituyentes, Alcaldía Miguel Hidalgo, CDMX</p>
+    </div>
+    <div class="stamp">
+      <div id="last-update">Actualizado: 10-Jun-2026</div>
+      <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando…</div>
+      <div style="margin-top:6px;" class="no-print">
+        <button class="btn-share" onclick="copyLink()">⎘ Copiar enlace</button>
+        <button class="btn-print" onclick="window.print()">🖨 Imprimir</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="cards"><div class="card"><div class="label">Proyecto</div><div class="value sm">Fusión 4 predios — hospital</div></div>
+<div class="card"><div class="label">Alcaldía</div><div class="value sm">Miguel Hidalgo</div></div>
+<div class="card"><div class="label">Fase</div><div class="value sm">En trámite — prevención activa</div></div>
+<div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">—</div><div class="sub">por cerrar</div></div></div>
+
+  <section>
+    <h2>Estado de trámites</h2>
+    <table>
+      <thead><tr><th>Trámite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
+      <tbody><tr><td>Ingreso cuzus Constituyentes</td><td>SEDUVI</td><td><span class="badge amber">⚠ Esperando versión</span></td><td>Aguardando obra nueva corregida antes de recoger</td></tr>
+<tr><td>Fusión de 4 predios</td><td>SEDUVI / Alcaldía</td><td><span class="badge amber">⚠ Prevención activa</span></td><td>Bajo prevención por errores en versión de obra nueva</td></tr>
+<tr><td>Archivo Central Cuauhtémoc</td><td>Registro Público / Cuauhtémoc</td><td><span class="badge blue">⏳ Pendiente</span></td><td>John/Héctor: obtener antecedente del expediente y documentar folio</td></tr>
+<tr><td>Firma "Cano" — claves obra nueva</td><td>Alcaldía Miguel Hidalgo</td><td><span class="badge red">🔴 Trabado</span></td><td>Insistir en oficina de firma para bajar documento y liberar claves</td></tr>
+<tr><td>Escrito "árbol"</td><td>Alcaldía Miguel Hidalgo</td><td><span class="badge blue">⏳ Sin respuesta</span></td><td>Escrito ingresado; visita presencial de Héctor para acuse</td></tr>
+<tr><td>Opción 2</td><td>Por definir</td><td><span class="badge blue">⏳ Por activar</span></td><td>Activar para aliviar presión de terceros; listar asuntos que aplican</td></tr></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Pendientes activos</h2>
+    <div class="counter no-print">Completados: <span id="done-count">0</span> de <span id="total-count">0</span></div>
+    <table>
+      <thead>
+        <tr>
+          <th class="check-col no-print"></th>
+          <th>#</th>
+          <th>Pendiente</th>
+          <th>Responsable</th>
+          <th>Fecha límite</th>
+          <th>Observaciones</th>
+        </tr>
+      </thead>
+      <tbody id="pending-tbody"></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Acuerdos clave</h2>
+    <table>
+      <thead><tr><th style="width:110px">Fecha</th><th>Acuerdo</th><th style="width:130px">Quién acordó</th></tr></thead>
+      <tbody><tr><td>2026-05-11</td><td>Avanzar con ingreso de cuzus en cuanto lleguen los papeles</td><td>— / Héctor</td></tr>
+<tr><td>2026-06-03</td><td>No recoger "constituyentes" hasta recibir versión corregida (obra nueva sin errores)</td><td>Mauricio / John</td></tr>
+<tr><td>2026-06-03</td><td>Se descarta la figura de "regularización" — la única vía es a través del Archivo Central</td><td>Mauricio / John</td></tr>
+<tr><td>2026-06-03</td><td>"Opción 2" ya está puesta; activarla para aliviar presión de terceros y avanzar</td><td>Mauricio / John</td></tr>
+<tr><td>2026-06-03</td><td>Costo de inacción doble: pérdida política (clientes/terceros) y riesgo procedimental (requisitos mal integrados)</td><td>—</td></tr></tbody>
+    </table>
+  </section>
+
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Hospital Constituyentes · Actualizado 10-Jun-2026</p>
+</div>
+
+<script>
+const items = [
+  { n:1,  desc:"Ingresar \"cuzus\" de Constituyentes una vez recibidos los papeles", who:"—", due:"13-May (Vencido)", urgent:true,  done:false },
+  { n:2,  desc:"Recoger la prevención de la fusión y continuar el trámite", who:"—", due:"13-May (Vencido)", urgent:true,  done:false },
+  { n:3,  desc:"Confirmar recepción de papeles y anticipo para cuzus Constituyentes", who:"—", due:"13-May (Vencido)", urgent:true,  done:false },
+  { n:4,  desc:"⛔ NO recoger \"constituyentes\" hasta recibir versión corregida de obra nueva del equipo", who:"Mauricio", due:"Inmediato", urgent:true,  done:false },
+  { n:5,  desc:"Una vez recibida la versión corregida: coordinar recolección y notificación inmediata", who:"Mauricio", due:"TBD", urgent:false, done:false },
+  { n:6,  desc:"[John] Ir al Archivo Central — gestionar extracción de antecedente del expediente de Cuauhtémoc; documentar folio y responsable", who:"John / Héctor", due:"TBD", urgent:false, done:false },
+  { n:7,  desc:"[John] Destrabar \"Cano\": insistir con oficina de firma para bajar el documento y liberar claves de obra nueva", who:"John", due:"TBD", urgent:false, done:false },
+  { n:8,  desc:"[John/Héctor] Visita presencial para presionar por respuesta del escrito del árbol; registrar acuse o minuta", who:"Héctor", due:"TBD", urgent:false, done:false },
+  { n:9,  desc:"[John] Enviar a Mauricio la versión corregida de \"constituyentes\" (obra nueva y requisitos validados) antes de la recolección", who:"John", due:"TBD", urgent:false, done:false },
+  { n:10, desc:"[John] Activar \"opción 2\" para asuntos ya puestos; listar cuáles pasan a esa vía y sus pasos", who:"John", due:"TBD", urgent:false, done:false },
+  { n:11, desc:"Confirmar disponibilidad y agendar reunión martes o miércoles (no jueves — viaje al mundial)", who:"Mauricio / John", due:"Esta semana", urgent:true,  done:false },
+  { n:12, desc:"Verificar con el área si hubo respuesta al escrito del árbol; compartir estatus", who:"Mauricio", due:"Inmediato", urgent:true,  done:false }
+];
+
+const BIN_ID  = "6a29e7c3f5f4af5e29db6333";
+const API_KEY = "$2a$10$isHY4rRb1frKVc6unwENDe3dFB.YuWbJcwxZYdzQ5eTLCpO11t28a";
+const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+const HEADERS = { "Content-Type": "application/json", "X-Master-Key": API_KEY };
+
+const DEFAULT_STATE = {};
+items.forEach(i => { DEFAULT_STATE[i.n] = i.done || false; });
+
+let state = { ...DEFAULT_STATE };
+let obs = {};
+let saving = false;
+let saveTimer = null;
+
+function scheduleSave() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveState, 1200);
+}
+
+function showStatus(msg, color) {
+  const el = document.getElementById("sync-status");
+  el.textContent = msg;
+  el.style.color = color || "#aaa";
+}
+
+async function loadState() {
+  try {
+    const res = await fetch(BIN_URL + "/latest", { headers: HEADERS });
+    if (!res.ok) throw new Error(res.status);
+    const data = await res.json();
+    const rec = data.record;
+    obs = rec._obs || {};
+    state = Object.fromEntries(Object.entries(rec).filter(([k]) => k !== "_obs"));
+    showStatus("● Sincronizado", "#3a6e10");
+  } catch(e) {
+    showStatus("⚠ Sin conexión", "#a33030");
+  }
+}
+
+async function saveState() {
+  if (saving) return;
+  saving = true;
+  showStatus("Guardando…", "#8a5010");
+  try {
+    await fetch(BIN_URL, {
+      method: "PUT",
+      headers: HEADERS,
+      body: JSON.stringify({ ...state, _obs: obs })
+    });
+    showStatus("● Guardado", "#3a6e10");
+  } catch(e) {
+    showStatus("⚠ Error al guardar", "#a33030");
+  }
+  saving = false;
+}
+
+setInterval(async () => { await loadState(); render(); }, 30000);
+
+function updateCounters() {
+  const done = Object.values(state).filter(Boolean).length;
+  const total = items.length;
+  document.getElementById("done-count").textContent = done;
+  document.getElementById("total-count").textContent = total;
+  const p = document.getElementById("pending-counter");
+  if (p) p.textContent = (total - done);
+}
+
+function autoResize(ta) {
+  ta.style.height = "auto";
+  ta.style.height = ta.scrollHeight + "px";
+}
+
+function render() {
+  const tbody = document.getElementById("pending-tbody");
+  tbody.innerHTML = "";
+  const visible = items.filter(item => !state[item.n]);
+  visible.forEach((item, idx) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td class="check-col no-print"><input type="checkbox" data-n="${item.n}" title="Marcar como hecho"></td>
+      <td style="color:#999;font-size:12px">${idx + 1}</td>
+      <td><span class="desc">${item.desc}</span></td>
+      <td style="color:#666">${item.who}</td>
+      <td><span class="badge ${item.urgent ? 'red' : 'gray'}">${item.due}</span></td>
+      <td><textarea class="obs-input" data-obs="${item.n}" rows="1" placeholder="—">${obs[item.n] || ""}</textarea></td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  tbody.querySelectorAll("input[type=checkbox]").forEach(cb => {
+    cb.addEventListener("change", async () => {
+      const n = parseInt(cb.dataset.n);
+      state[n] = true;
+      render();
+      updateCounters();
+      await saveState();
+    });
+  });
+
+  tbody.querySelectorAll("textarea.obs-input").forEach(ta => {
+    autoResize(ta);
+    ta.addEventListener("input", () => {
+      autoResize(ta);
+      obs[parseInt(ta.dataset.obs)] = ta.value;
+      showStatus("Por guardar…", "#8a5010");
+      scheduleSave();
+    });
+  });
+
+  updateCounters();
+}
+
+async function init() { await loadState(); render(); }
+init();
+
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    alert("Liga copiada.");
+  }).catch(() => {
+    prompt("Copia esta liga:", window.location.href);
+  });
+}
+</script>
+</body>
+</html>
