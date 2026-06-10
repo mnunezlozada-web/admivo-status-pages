@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reforma 28 — Estatus del proyecto</title>
+<meta property="og:title" content="Reforma 28 — Estatus del proyecto">
+<meta property="og:description" content="Triple Espacio / Sutton · Av. Paseo de la Reforma 28, CDMX · Trámites DEIU, MIAG y ACP">
+<meta property="og:url" content="https://mnunezlozada-web.github.io/admivo-status-pages/reforma28/">
+<meta property="og:type" content="website">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 14px; color: #1a1a1a; background: #f5f4f0; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; }
+  header h1 { font-size: 20px; font-weight: 600; }
+  header p { font-size: 12px; color: #888; margin-top: 2px; }
+  .stamp { font-size: 11px; color: #aaa; text-align: right; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 2rem; }
+  .card { background: #fff; border-radius: 10px; border: 0.5px solid #e0ddd4; padding: 0.75rem 1rem; }
+  .card .label { font-size: 11px; color: #999; margin-bottom: 4px; }
+  .card .value { font-size: 22px; font-weight: 600; }
+  .card .sub { font-size: 11px; color: #aaa; margin-top: 2px; }
+  .card .value.sm { font-size: 14px; margin-top: 2px; }
+
+  section { margin-bottom: 2rem; }
+  section h2 { font-size: 11px; font-weight: 600; color: #999; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; border: 0.5px solid #e0ddd4; }
+  th { font-size: 11px; font-weight: 600; color: #999; text-align: left; padding: 9px 14px; background: #faf9f6; border-bottom: 0.5px solid #e0ddd4; }
+  td { padding: 9px 14px; border-bottom: 0.5px solid #f0ede6; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tr.done td { opacity: 0.45; }
+  tr.done td .desc { text-decoration: line-through; }
+
+  .badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 6px; white-space: nowrap; }
+  .badge.green  { background: #e8f5e0; color: #3a6e10; }
+  .badge.blue   { background: #e3effa; color: #1a5fa6; }
+  .badge.amber  { background: #fef3dc; color: #8a5010; }
+  .badge.red    { background: #fde8e8; color: #a33030; }
+  .badge.gray   { background: #f0ede6; color: #666; }
+
+  .check-col { width: 36px; text-align: center; }
+  input[type=checkbox] { width: 16px; height: 16px; cursor: pointer; accent-color: #3a6e10; }
+
+  .obs-input { width: 100%; min-width: 140px; border: none; background: transparent; resize: none; font-size: 12px; color: #555; font-family: inherit; padding: 0; line-height: 1.4; overflow: hidden; }
+  .obs-input:focus { outline: none; background: #faf9f6; border-radius: 4px; padding: 2px 6px; box-shadow: 0 0 0 1px #e0ddd4; }
+  .obs-input::placeholder { color: #d0cdc6; }
+
+  .btn-share { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 6px 14px; border-radius: 8px; border: 0.5px solid #ccc; background: #fff; cursor: pointer; color: #444; }
+  .btn-share:hover { background: #f5f4f0; }
+  .btn-print { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 6px 14px; border-radius: 8px; border: 0.5px solid #ccc; background: #fff; cursor: pointer; color: #444; margin-left: 8px; }
+  .btn-print:hover { background: #f5f4f0; }
+
+  .counter { font-size: 12px; color: #888; margin-bottom: 8px; }
+  .counter span { font-weight: 600; color: #1a1a1a; }
+
+  @media print {
+    body { background: #fff; padding: 1rem; }
+    .no-print { display: none !important; }
+    table { border: 1px solid #ddd; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div>
+      <h1>Reforma 28</h1>
+      <p>Triple Espacio / Sutton &nbsp;·&nbsp; Av. Paseo de la Reforma 28, Cuauhtémoc</p>
+    </div>
+    <div class="stamp">
+      <div id="last-update">Actualizado: 06-jun-2026</div>
+      <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando…</div>
+      <div style="margin-top:6px;" class="no-print">
+        <button class="btn-share" onclick="copyLink()">⎘ Copiar enlace</button>
+        <button class="btn-print" onclick="window.print()">🖨 Imprimir</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="cards">
+    <div class="card">
+      <div class="label">Fase</div>
+      <div class="value sm">DEIU — camino crítico</div>
+    </div>
+    <div class="card">
+      <div class="label">DEIU</div>
+      <div class="value" id="deiu-counter">4 / 6</div>
+      <div class="sub">instancias resueltas</div>
+    </div>
+    <div class="card">
+      <div class="label">Pendientes</div>
+      <div class="value" id="pending-counter">—</div>
+      <div class="sub">por cerrar</div>
+    </div>
+    <div class="card">
+      <div class="label">Ingreso DEIU</div>
+      <div class="value sm">17-oct-2025</div>
+    </div>
+  </div>
+
+  <section>
+    <h2>Estado de trámites</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Trámite</th>
+          <th>Instancia</th>
+          <th>Estado</th>
+          <th>Detalle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>CAyNO</strong></td>
+          <td style="color:#666">Alcaldía Cuauhtémoc</td>
+          <td><span class="badge green">✓ Completado</span></td>
+          <td style="color:#666">Expedida 18-jun-2024</td>
+        </tr>
+        <tr>
+          <td><strong>DEIU</strong></td>
+          <td style="color:#666">Metrópolis</td>
+          <td><span class="badge green">✓ Subsanado</span></td>
+          <td style="color:#666">Observaciones atendidas</td>
+        </tr>
+        <tr>
+          <td><strong>DEIU</strong></td>
+          <td style="color:#666">Alcaldía Cuauhtémoc</td>
+          <td><span class="badge green">✓ Opinión positiva</span></td>
+          <td style="color:#666">Desde 26-nov-2025</td>
+        </tr>
+        <tr>
+          <td><strong>DEIU</strong></td>
+          <td style="color:#666">SEGIAGUA</td>
+          <td><span class="badge green">✓ Opinión positiva</span></td>
+          <td style="color:#666">Pendiente notificación formal a Metrópolis</td>
+        </tr>
+        <tr>
+          <td><strong>DEIU</strong></td>
+          <td style="color:#666">SEMOVI</td>
+          <td><span class="badge green">✓ Opinión positiva</span></td>
+          <td style="color:#666">Oficio SM-SPPR-DGPP-DGPM-737-2026 del 12-may-2026</td>
+        </tr>
+        <tr>
+          <td><strong>DEIU</strong></td>
+          <td style="color:#666">Protección Civil</td>
+          <td><span class="badge amber">⚠ Por enviar</span></td>
+          <td style="color:#666">RL subsanó 26-may-2026 — envío esta semana</td>
+        </tr>
+        <tr>
+          <td>
+            <strong>DEIU</strong>
+            <div style="font-size:11px;color:#aaa;margin-top:2px">Opinión Sedema</div>
+          </td>
+          <td style="color:#666">Sedema</td>
+          <td><span class="badge red">🔴 Lista Chequeo 2</span></td>
+          <td style="color:#666">
+            En ventanilla — pendiente notificación al promovente.<br>
+            <span style="font-size:11px;color:#aaa">Sedema actúa como opinante dentro del DEIU. Su opinión positiva probablemente depende de que la MIAG esté resuelta.</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>MIAG</strong>
+            <div style="font-size:11px;color:#aaa;margin-top:2px">Trámite ambiental independiente</div>
+          </td>
+          <td style="color:#666">Sedema</td>
+          <td><span class="badge red">🔴 3ª revisión</span></td>
+          <td style="color:#666">
+            Obs. Ecolegis 01-Jun: 5 faltantes + 3 correcciones técnicas.<br>
+            <span style="font-size:11px;color:#aaa">Manifestación de Impacto Ambiental Generalizada — corre en paralelo al DEIU por ventanilla ambiental de Sedema. Resultado: DCA.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>ACP / SPOTMET</strong></td>
+          <td style="color:#666">SEDUVI / SPOTMET</td>
+          <td><span class="badge green">✓ Dictamen favorable</span></td>
+          <td style="color:#666">Oficio SPOTMET/DGOU/DPCUEP/3991/2025</td>
+        </tr>
+        <tr>
+          <td><strong>INBAL</strong></td>
+          <td style="color:#666">INBAL</td>
+          <td><span class="badge blue">⏳ En gestión</span></td>
+          <td style="color:#666">Autorización en proceso</td>
+        </tr>
+        <tr>
+          <td><strong>ISC</strong></td>
+          <td style="color:#666">Finanzas CDMX</td>
+          <td><span class="badge red">🔴 Urgente</span></td>
+          <td style="color:#666">Verificar cumplimiento normatividad vigente con el cliente</td>
+        </tr>
+        <tr>
+          <td><strong>Licencia de Demolición</strong></td>
+          <td style="color:#666">Alcaldía Cuauhtémoc</td>
+          <td><span class="badge amber">⚠ En preparación</span></td>
+          <td style="color:#666">Checklist en pendientes — ACP ✓ · Publicación ✓ · Faltan: reporte fotográfico, prevención económica, colindancias y más</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Pendientes activos</h2>
+    <div class="counter no-print">Completados: <span id="done-count">0</span> de <span id="total-count">20</span> &nbsp;·&nbsp; <a href="https://mnunezlozada-web.github.io/admivo-status-pages/reforma28/" target="_blank" style="font-size:11px;color:#888;text-decoration:none;">🔗 Liga pública</a></div>
+    <table>
+      <thead>
+        <tr>
+          <th class="check-col no-print"></th>
+          <th>#</th>
+          <th>Pendiente</th>
+          <th>Responsable</th>
+          <th>Fecha límite</th>
+          <th>Observaciones</th>
+        </tr>
+      </thead>
+      <tbody id="pending-tbody"></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Acuerdos clave</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:110px">Fecha</th>
+          <th>Acuerdo</th>
+          <th style="width:130px">Quién acordó</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:#666;white-space:nowrap">02-jun-2026</td>
+          <td>Paquete "Fer/Colores" = única fuente de verdad. Spotnet descartado.</td>
+          <td style="color:#666">Equipo</td>
+        </tr>
+        <tr>
+          <td style="color:#666;white-space:nowrap">02-jun-2026</td>
+          <td>No se derriba el árbol colindante en Reforma — políticamente inviable.</td>
+          <td style="color:#666">Equipo</td>
+        </tr>
+        <tr>
+          <td style="color:#666;white-space:nowrap">02-jun-2026</td>
+          <td>Opción elegida: reconfigurar acceso vehicular (bahía / trazo en S).</td>
+          <td style="color:#666">Equipo</td>
+        </tr>
+        <tr>
+          <td style="color:#666;white-space:nowrap">02-jun-2026</td>
+          <td>Nueva ortofoto con dron: 0.10 m/píxel, georreferenciación UTM.</td>
+          <td style="color:#666">Equipo</td>
+        </tr>
+        <tr>
+          <td style="color:#666;white-space:nowrap">02-jun-2026</td>
+          <td>La solución del árbol ya estaba ejecutada en la versión actual — Sedema trabaja con versión desactualizada.</td>
+          <td style="color:#666">Alan / Nayeli</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Reforma 28 · Núñez & Esqueda Abogados · Actualizado 06-jun-2026</p>
+
+</div>
+
+<script>
+const items = [
+  { n:1, desc:"Contactar a Alan — árbol en acceso vehicular", who:"Mauricio", due:"Inmediato", urgent:true, done:true },
+  { n:2, desc:"Coordinar con Fer — justificación acceso en estudio de movilidad", who:"Mauricio", due:"Inmediato", urgent:true, done:true },
+  { n:3, desc:"Pago de derechos vía SPEI (HSBC) y obtener comprobante", who:"Mauricio", due:"TBD", urgent:false, done:true },
+  { n:4, desc:"Validar set Fer/Colores como base; confirmar biciestacionamientos = 107", who:"Nayeli", due:"TBD", urgent:false },
+  { n:5, desc:"Enviar plano trayectoria vehicular a Sedema (observación árbol)", who:"Nayeli / Alan", due:"TBD", urgent:false, done:true },
+  { n:6, desc:"Redactar justificación de arbolado y factibilidad", who:"Nayeli", due:"TBD", urgent:false },
+  { n:7, desc:"[MIAG] Cotización ortofoto dron (0.10 m/píxel, UTM) — verificar si la existente cumple", who:"Eric / Luis", due:"02-jun", urgent:true },
+  { n:8, desc:"Enviar 2 candidatos adicionales para RAMIR", who:"Eric / Luis", due:"02-jun", urgent:true, done:true },
+  { n:9, desc:"Propuesta reconfiguración acceso vehicular (bahía / trazo S)", who:"Luis", due:"TBD", urgent:false, done:true },
+  { n:10, desc:"Crear Drive centralizado con versión final unificada", who:"Alan + Nayeli", due:"TBD", urgent:false },
+  { n:11, desc:"Crear grupo WhatsApp: Nayeli, Alan, Brian", who:"Alan", due:"TBD", urgent:false, done:true },
+  { n:12, desc:"Revisar carpeta Drive \"INF. GESTOR REFORMA #28\" (Brayan/Triple Espacio)", who:"Mauricio", due:"—", urgent:false, done:true },
+  { n:13, desc:"[ECOLEGIS] Pago complementario derechos MIA: $1,771.00", who:"Mauricio", due:"Urgente", urgent:true, done:true },
+  { n:14, desc:"[ECOLEGIS] Obtener Dictamen de Factibilidad Hidráulica", who:"Nayeli / Equipo", due:"TBD", urgent:false },
+  { n:15, desc:"[ECOLEGIS] Carnet RAMIR del transportista elegido (Guillermo Blancas u otro)", who:"Nayeli", due:"TBD", urgent:false },
+  { n:16, desc:"[ECOLEGIS] Árbol exterior: layer en plano DWG georreferenciado (si hubo afectación) o justificación de no afectación", who:"Nayeli / Luis", due:"TBD", urgent:false },
+  { n:17, desc:"[ECOLEGIS] Ortofoto del predio — verificar si la del 01-Jun cumple especificaciones Sedema", who:"Nayeli / Eric", due:"TBD", urgent:false },
+  { n:18, desc:"[ECOLEGIS] Corregir discrepancia hatches: cuadrar áreas de planos vs memoria (Excel por nivel)", who:"Nayeli / Alan", due:"TBD", urgent:false },
+  { n:19, desc:"[ECOLEGIS] Biciestacionamientos: corregir plano para mostrar 107 unidades con numeración correcta (sin falta #61)", who:"Nayeli / Alan", due:"TBD", urgent:false },
+  { n:20, desc:"[ECOLEGIS] Cuadrar superficie sobre nivel banqueta: memoria (26,294.20 m²) vs SPOTMET (26,216.36 m²) — diferencia 77.84 m²", who:"Nayeli / Alan", due:"TBD", urgent:false },
+  { n:21, desc:"[ISC] Verificar con cliente que esté observando normatividad ISC vigente para el proyecto", who:"Mauricio", due:"Urgente", urgent:true },
+  { n:22, desc:"[DEMOLICIÓN] Reporte fotográfico del estado actual del inmueble", who:"Nayeli / Alan", due:"TBD", urgent:false },
+  { n:23, desc:"[DEMOLICIÓN] Revisión en ventanilla económica (prevención)", who:"Mauricio", due:"TBD", urgent:false },
+  { n:24, desc:"[DEMOLICIÓN] Dictamen de estabilidad de colindancias (predios vecinos)", who:"Luis", due:"TBD", urgent:false },
+  { n:25, desc:"[DEMOLICIÓN] Constancia de no adeudo predial (Finanzas CDMX)", who:"Mauricio", due:"TBD", urgent:false },
+  { n:26, desc:"[DEMOLICIÓN] Constancia de no adeudo de agua (SACMEX)", who:"Mauricio", due:"TBD", urgent:false },
+  { n:27, desc:"[DEMOLICIÓN] Designar DRO para la demolición", who:"Mauricio", due:"TBD", urgent:false, done:true },
+  { n:28, desc:"[DEMOLICIÓN] Memoria/programa del proceso de demolición", who:"Luis / Alan", due:"TBD", urgent:false },
+  { n:29, desc:"[DEMOLICIÓN] INBAL — autorización (ya en gestión)", who:"Mauricio", due:"TBD", urgent:false },
+  { n:30, desc:"[DEMOLICIÓN] RAMIR para residuos de demolición (carnet transportista) — relacionado con Ecolegis", who:"Nayeli", due:"TBD", urgent:false },
+  { n:31, desc:"Generar estimado de derechos de Reforma 28 para el cliente", who:"Mauricio", due:"TBD", urgent:true },
+  { n:32, desc:"[ESTRUCTURAS] Cliente entrega memoria estructural corregida — 6 obs. corresponsable: (1) coords/Ts, (2) estructuras duales, (3) separación colindancias, (4) limitación daño Dir X (0.004), (5) desplazamientos todos niveles, (6) distorsiones SV×1.1 no cumple Dir X", who:"Cliente / Alan", due:"Urgente", urgent:true },
+];
+
+// ── JSONBin config ──────────────────────────────────────────────
+const BIN_ID  = "6a21d79ff5f4af5e29ba0834";
+const API_KEY = "$2a$10$isHY4rRb1frKVc6unwENDe3dFB.YuWbJcwxZYdzQ5eTLCpO11t28a";
+const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+const HEADERS = { "Content-Type": "application/json", "X-Master-Key": API_KEY };
+// ────────────────────────────────────────────────────────────────
+
+const DEFAULT_STATE = {};
+items.forEach(i => { DEFAULT_STATE[i.n] = i.done || false; });
+
+let state = { ...DEFAULT_STATE };
+let obs = {};   // observaciones por item: { itemN: "texto" }
+let saving = false;
+
+// Debounce para guardar observaciones sin saturar JSONBin
+let saveTimer = null;
+function scheduleSave() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveState, 1200);
+}
+
+function showStatus(msg, color) {
+  const el = document.getElementById("sync-status");
+  el.textContent = msg;
+  el.style.color = color || "#aaa";
+}
+
+async function loadState() {
+  try {
+    const res = await fetch(BIN_URL + "/latest", { headers: HEADERS });
+    if (!res.ok) throw new Error(res.status);
+    const data = await res.json();
+    const rec = data.record;
+    obs = rec._obs || {};
+    state = Object.fromEntries(Object.entries(rec).filter(([k]) => k !== "_obs"));
+    showStatus("● Sincronizado", "#3a6e10");
+  } catch(e) {
+    showStatus("⚠ Sin conexión", "#a33030");
+  }
+}
+
+async function saveState() {
+  if (saving) return;
+  saving = true;
+  showStatus("Guardando…", "#8a5010");
+  try {
+    await fetch(BIN_URL, {
+      method: "PUT",
+      headers: HEADERS,
+      body: JSON.stringify({ ...state, _obs: obs })
+    });
+    showStatus("● Guardado", "#3a6e10");
+  } catch(e) {
+    showStatus("⚠ Error al guardar", "#a33030");
+  }
+  saving = false;
+}
+
+// Polling cada 30 s para ver cambios de otros
+setInterval(async () => {
+  await loadState();
+  render();
+}, 30000);
+
+function updateCounters() {
+  const done = Object.values(state).filter(Boolean).length;
+  const total = items.length;
+  document.getElementById("done-count").textContent = done;
+  document.getElementById("total-count").textContent = total;
+  document.getElementById("pending-counter").textContent = (total - done);
+}
+
+function autoResize(ta) {
+  ta.style.height = "auto";
+  ta.style.height = ta.scrollHeight + "px";
+}
+
+function render() {
+  const tbody = document.getElementById("pending-tbody");
+  tbody.innerHTML = "";
+  const visible = items.filter(item => !state[item.n]);
+  visible.forEach((item, idx) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td class="check-col no-print">
+        <input type="checkbox" data-n="${item.n}" title="Marcar como hecho">
+      </td>
+      <td style="color:#999;font-size:12px">${idx + 1}</td>
+      <td><span class="desc">${item.desc}</span></td>
+      <td style="color:#666">${item.who}</td>
+      <td>
+        <span class="badge ${item.urgent ? 'red' : 'gray'}">
+          ${item.due}
+        </span>
+      </td>
+      <td>
+        <textarea class="obs-input" data-obs="${item.n}" rows="1" placeholder="—">${obs[item.n] || ""}</textarea>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  // Checkboxes
+  tbody.querySelectorAll("input[type=checkbox]").forEach(cb => {
+    cb.addEventListener("change", async () => {
+      const n = parseInt(cb.dataset.n);
+      state[n] = true;
+      render();
+      updateCounters();
+      await saveState();
+    });
+  });
+
+  // Observaciones — auto-resize + guardar con debounce
+  tbody.querySelectorAll("textarea.obs-input").forEach(ta => {
+    autoResize(ta);
+    ta.addEventListener("input", () => {
+      autoResize(ta);
+      const n = parseInt(ta.dataset.obs);
+      obs[n] = ta.value;
+      showStatus("Por guardar…", "#8a5010");
+      scheduleSave();
+    });
+  });
+
+  updateCounters();
+}
+
+async function init() {
+  await loadState();
+  render();
+}
+
+init();
+
+function copyLink() {
+  const path = window.location.href;
+  navigator.clipboard.writeText(path).then(() => {
+    alert("Ruta copiada al portapapeles.");
+  }).catch(() => {
+    prompt("Copia esta ruta para compartir:", path);
+  });
+}
+
+render();
+</script>
+</body>
+</html>
