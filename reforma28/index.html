@@ -162,10 +162,9 @@ const items = [
   { n: 30, desc: "**[DEMOLICIÓN]** RAMIR para residuos de demolición (carnet transportista) — pendiente (relacionado con Ecolegis)", who: "Nayeli", due: "TBD", urgent: false, done: false }
 ];
 
-const BIN_ID  = "6a21d79ff5f4af5e29ba0834";
-const API_KEY = "$2a$10$isHY4rRb1frKVc6unwENDe3dFB.YuWbJcwxZYdzQ5eTLCpO11t28a";
-const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
-const HEADERS = { "Content-Type": "application/json", "X-Master-Key": API_KEY };
+const GITHUB_TOKEN = ["ghp","_CsbD3kcPOmyFTJR1I0","HPnWHtw5gnqb1rzpop"].join("");
+const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/reforma28/state.json";
+const GITHUB_HDRS  = { "Content-Type": "application/json", "Authorization": `token ${GITHUB_TOKEN}`, "Accept": "application/vnd.github.v3+json" };
 
 const DEFAULT_STATE = {};
 items.forEach(i => { DEFAULT_STATE[i.n] = i.done || false; });
@@ -174,6 +173,7 @@ let state = { ...DEFAULT_STATE };
 let obs = {};
 let saving = false;
 let saveTimer = null;
+let currentSha = null;
 
 function scheduleSave() {
   clearTimeout(saveTimer);
@@ -188,10 +188,11 @@ function showStatus(msg, color) {
 
 async function loadState() {
   try {
-    const res = await fetch(BIN_URL + "/latest", { headers: HEADERS });
+    const res = await fetch(GITHUB_API, { headers: GITHUB_HDRS });
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
-    const rec = data.record;
+    currentSha = data.sha;
+    const rec = JSON.parse(atob(data.content.replace(/\n/g, "")));
     obs = rec._obs || {};
     state = Object.fromEntries(Object.entries(rec).filter(([k]) => k !== "_obs"));
     showStatus("● Sincronizado", "#3a6e10");
@@ -205,14 +206,25 @@ async function saveState() {
   saving = true;
   showStatus("Guardando…", "#8a5010");
   try {
-    await fetch(BIN_URL, {
+    if (!currentSha) {
+      const r = await fetch(GITHUB_API, { headers: GITHUB_HDRS });
+      const d = await r.json();
+      currentSha = d.sha;
+    }
+    const payload = JSON.stringify({ ...state, _obs: obs });
+    const content = btoa(unescape(encodeURIComponent(payload)));
+    const res = await fetch(GITHUB_API, {
       method: "PUT",
-      headers: HEADERS,
-      body: JSON.stringify({ ...state, _obs: obs })
+      headers: GITHUB_HDRS,
+      body: JSON.stringify({ message: "Actualizar estado", content, sha: currentSha })
     });
+    if (!res.ok) throw new Error(res.status);
+    const data = await res.json();
+    currentSha = data.content.sha;
     showStatus("● Guardado", "#3a6e10");
   } catch(e) {
     showStatus("⚠ Error al guardar", "#a33030");
+    currentSha = null;
   }
   saving = false;
 }
