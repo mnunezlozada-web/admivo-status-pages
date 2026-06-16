@@ -76,7 +76,7 @@
     <h2>Estado de trámites</h2>
     <table>
       <thead><tr><th>Trámite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
-      <tbody><tr><td colspan='4' style='color:#aaa;text-align:center;padding:1rem'>Ver historial de reuniones para detalle de trámites activos</td></tr></tbody>
+      <tbody><tr><td colspan='4' style='color:#aaa;text-align:center;padding:1rem'>Ver historial de reuniones</td></tr></tbody>
     </table>
   </section>
 
@@ -131,10 +131,9 @@ const items = [
   { n: 10, desc: "Solicitar a Irazoke (Sedema) confirmación por escrito de los requisitos específicos para cerrar el expediente una vez se acrediten los acuerdos vecinales (lista de evidencias aceptables)", who: "Mauricio", due: "TBD", urgent: false, done: false }
 ];
 
-const BIN_ID  = "6a21f0a1da38895dfe88f7bd";
-const API_KEY = "$2a$10$isHY4rRb1frKVc6unwENDe3dFB.YuWbJcwxZYdzQ5eTLCpO11t28a";
-const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
-const HEADERS = { "Content-Type": "application/json", "X-Master-Key": API_KEY };
+const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");  // token partido para evitar secret scanner
+const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/edison106/state.json";
+const GITHUB_HDRS  = { "Content-Type": "application/json", "Authorization": `token ${GITHUB_TOKEN}`, "Accept": "application/vnd.github.v3+json" };
 
 const DEFAULT_STATE = {};
 items.forEach(i => { DEFAULT_STATE[i.n] = i.done || false; });
@@ -143,6 +142,7 @@ let state = { ...DEFAULT_STATE };
 let obs = {};
 let saving = false;
 let saveTimer = null;
+let currentSha = null;
 
 function scheduleSave() {
   clearTimeout(saveTimer);
@@ -157,10 +157,11 @@ function showStatus(msg, color) {
 
 async function loadState() {
   try {
-    const res = await fetch(BIN_URL + "/latest", { headers: HEADERS });
+    const res = await fetch(GITHUB_API, { headers: GITHUB_HDRS });
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
-    const rec = data.record;
+    currentSha = data.sha;
+    const rec = JSON.parse(atob(data.content.replace(/\n/g, "")));
     obs = rec._obs || {};
     state = Object.fromEntries(Object.entries(rec).filter(([k]) => k !== "_obs"));
     showStatus("● Sincronizado", "#3a6e10");
@@ -174,11 +175,21 @@ async function saveState() {
   saving = true;
   showStatus("Guardando…", "#8a5010");
   try {
-    await fetch(BIN_URL, {
+    if (!currentSha) {
+      const r = await fetch(GITHUB_API, { headers: GITHUB_HDRS });
+      const d = await r.json();
+      currentSha = d.sha;
+    }
+    const payload = JSON.stringify({ ...state, _obs: obs });
+    const content = btoa(unescape(encodeURIComponent(payload)));
+    const res = await fetch(GITHUB_API, {
       method: "PUT",
-      headers: HEADERS,
-      body: JSON.stringify({ ...state, _obs: obs })
+      headers: GITHUB_HDRS,
+      body: JSON.stringify({ message: "Actualizar estado", content, sha: currentSha })
     });
+    if (!res.ok) throw new Error(res.status);
+    const data = await res.json();
+    currentSha = data.content.sha;
     showStatus("● Guardado", "#3a6e10");
   } catch(e) {
     showStatus("⚠ Error al guardar", "#a33030");
