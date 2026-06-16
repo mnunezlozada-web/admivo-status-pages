@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Edison106 Status",
+  "schemaVersion": 1,
+  "description": "Estatus en vivo de Edison 106 — trámites, pendientes, acuerdos e historial"
+}
+</script>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -12,6 +19,9 @@
   header h1 { font-size: 20px; font-weight: 600; }
   header p { font-size: 12px; color: #888; margin-top: 2px; }
   .stamp { font-size: 11px; color: #aaa; text-align: right; }
+  .alert { background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 10px 14px; margin-bottom: 1.5rem; }
+  .alert-title { font-size: 11px; font-weight: 700; color: #92400e; margin-bottom: 3px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .alert-body { font-size: 12px; color: #78350f; line-height: 1.5; }
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 2rem; }
   .card { background: #fff; border-radius: 10px; border: 0.5px solid #e0ddd4; padding: 0.75rem 1rem; }
   .card .label { font-size: 11px; color: #999; margin-bottom: 4px; }
@@ -41,6 +51,7 @@
   .btn-print:hover { background: #f5f4f0; }
   .counter { font-size: 12px; color: #888; margin-bottom: 8px; }
   .counter span { font-weight: 600; color: #1a1a1a; }
+  .group-hdr td { background: #f5f4f0 !important; padding: 5px 14px !important; font-size: 10px !important; font-weight: 700 !important; letter-spacing: 0.08em !important; color: #999 !important; text-transform: uppercase; border-bottom: 0.5px solid #e0ddd4 !important; }
   @media print {
     body { background: #fff; padding: 1rem; }
     .no-print { display: none !important; }
@@ -52,7 +63,7 @@
 <div class="container">
   <header>
     <div>
-      <h1>Edison 106 — Edison Park</h1>
+      <h1>Edison 106 (Edison Park)</h1>
       <p>Triple Espacio / Sutton &nbsp;·&nbsp; Tomas Alva Edison 106, CDMX</p>
     </div>
     <div class="stamp">
@@ -65,10 +76,16 @@
     </div>
   </header>
 
+  <div class="alert">
+    <div class="alert-title">⚠️ Alerta crítica — ISC</div>
+    <div class="alert-body">Nayeli envió subsane completo a Erick Sanz el 12-jun-2026 (Drive: 1y7n8XHfDBXNKgECBygYJtjoElSozkgnp). Rubén envió memoria estructural r06 el 15-jun. <strong>Confirmar con Erick:</strong> (1) ingreso formal al ISC completado, (2) si r06 reemplaza r05 en el paquete enviado.</div>
+  </div>
+
   <div class="cards">
-    <div class="card"><div class="label">Fase</div><div class="value sm">Permisos — expediente bloqueado por oposición vecinal</div></div>
+    <div class="card"><div class="label">Bloqueo principal</div><div class="value sm">Irasoque (Metrópoli) — oposición vecinal activa</div></div>
     <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">11</div><div class="sub">por cerrar</div></div>
-    <div class="card"><div class="label">Urgentes</div><div class="value" style="color:#a33030">3</div><div class="sub">requieren atención</div></div>
+    <div class="card"><div class="label">Urgentes</div><div class="value" style="color:#a33030">4</div><div class="sub">requieren atención</div></div>
+    <div class="card"><div class="label">ISC — subsane</div><div class="value sm" style="color:#8a5010">Enviado 12-jun</div></div>
   </div>
 
   <section>
@@ -76,12 +93,13 @@
     <table>
       <thead><tr><th>Trámite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
       <tbody>
-        <tr><td>Impacto Urbano</td><td>Sedema / Irazoke</td><td><span class="badge amber">Firmado — bloqueado</span></td><td style='font-size:12px;color:#555'>Secretario firmó. Irazoke no firmará con oposición vecinal activa; parálisis prevista durante Mundial/vacaciones jul</td></tr>
-        <tr><td>ISC — Prevención</td><td>Instituto de Construcciones</td><td><span class="badge amber">Subsane enviado</span></td><td style='font-size:12px;color:#555'>Nayeli envió paquete completo a Erick Sanz el 12-Jun (punto 38). Pendiente: confirmar ingreso formal</td></tr>
-        <tr><td>ISC — Dictamen</td><td>Instituto de Construcciones</td><td><span class="badge blue">En espera</span></td><td style='font-size:12px;color:#555'>Estimado 3 semanas desde documentación completa confirmada</td></tr>
-        <tr><td>Vigencia Uso de Suelo</td><td>SEDUVI</td><td><span class="badge red">Riesgo vencimiento</span></td><td style='font-size:12px;color:#555'>Verificar vigencia CAyNO y Alineamiento — riesgo activo</td></tr>
-        <tr><td>Publicitación vecinal</td><td>Sedema</td><td><span class="badge blue">Pendiente</span></td><td style='font-size:12px;color:#555'>Plazo: 15 días hábiles desde autorización de firma</td></tr>
-        <tr><td>Pago de derechos</td><td>Sedema</td><td><span class="badge gray">Posterior a publicitación</span></td><td style='font-size:12px;color:#555'>Paso siguiente después de publicitación</td></tr>
+        <tr><td><strong>Impacto Urbano</strong></td><td>Metrópoli</td><td><span class="badge amber">Todos los VoBos obtenidos — pendiente emisión</span></td><td style="font-size:12px;color:#555">Irasoque (secretario de Metrópoli) no emitirá mientras haya oposición vecinal activa. Pausa durante Mundial / vacaciones julio. Una vez emitido: publicar en diario de circulación.</td></tr>
+        <tr><td><strong>ISC — Dictamen</strong></td><td>ISC</td><td><span class="badge amber">Subsane enviado</span></td><td style="font-size:12px;color:#555">Paquete enviado a Erick 12-jun. Confirmar ingreso formal y cobertura punto 38. r06 reemplaza a r05 — confirmar con Erick si debe reenviar.</td></tr>
+        <tr><td><strong>MACO</strong></td><td>Alcaldía Cuauhtémoc</td><td><span class="badge blue">Pendiente</span></td><td style="font-size:12px;color:#555">Pendiente de gestión.</td></tr>
+        <tr><td><strong>Publicación diario</strong></td><td>Diario de circulación</td><td><span class="badge blue">Pendiente — post Impacto Urbano</span></td><td style="font-size:12px;color:#555">Se publica en diario de circulación una vez que Metrópoli emita el Impacto Urbano.</td></tr>
+        <tr><td><strong>Uso de suelo / CAyNO</strong></td><td>Alcaldía / SEDUVI</td><td><span class="badge amber">Riesgo vencimiento</span></td><td style="font-size:12px;color:#555">Verificar vigencia de Alineamiento y Número Oficial. (Nayeli)</td></tr>
+        <tr><td><strong>Pago derechos + manifestación</strong></td><td>SEDUVI</td><td><span class="badge blue">Pendiente</span></td><td style="font-size:12px;color:#555">Después de publicitación. Requiere Impacto Urbano firmado.</td></tr>
+        <tr><td><strong>Acceso Drive Nayeli</strong></td><td>Svett</td><td><span class="badge green">Completado</span></td><td style="font-size:12px;color:#555">Acceso dado al Drive administrado por Svett.</td></tr>
       </tbody>
     </table>
   </section>
@@ -109,33 +127,33 @@
     <table>
       <thead><tr><th style="width:110px">Fecha</th><th>Acuerdo</th><th style="width:130px">Quién acordó</th></tr></thead>
       <tbody>
-        <tr><td style='color:#666;white-space:nowrap'>2026-05-20</td><td>Todas las autorizaciones técnicas obtenidas. Bloqueado por impacto urbano (político-vecinal). Estrategia: no escalar conflicto, no publicitar ubicación.</td><td style='color:#666'>Erick / Mauricio</td></tr>
-        <tr><td style='color:#666;white-space:nowrap'>2026-05-20</td><td>Sistema alternativo ya autorizado. Timeline estimado: 1–1.5 meses con diligencia; 2–2.5 meses sin ella.</td><td style='color:#666'>Erick</td></tr>
-        <tr><td style='color:#666;white-space:nowrap'>2026-06-08</td><td>Irazoke (Sedema/Spotnet) confirmó expediente "listo" pero NO firmará mientras haya oposición vecinal activa. Condición: acuerdos documentados con los 3 vecinos opositores. Institución paralizada durante Mundial/vacaciones julio.</td><td style='color:#666'>Mauricio / John</td></tr>
-        <tr><td style='color:#666;white-space:nowrap'>2026-06-11</td><td>Rubén Castro (Triple Espacio) entregó paquete estructural completo con respuesta al punto 38 del ISC (pág. 41, memoria de cálculo). Archivo 342 MB en Drive. Subsane enviado a Erick Sanz el 12-Jun.</td><td style='color:#666'>Triple Espacio / Rubén Castro</td></tr>
-        <tr><td style='color:#666;white-space:nowrap'>2026-06-15</td><td>Arq. Rubén entregó versión r06 de memoria de cálculo (corrección de textos vs r05) y estudio Lermo actualizado jun-2026. Confirmar con Erick si el paquete ISC enviado necesita actualizarse.</td><td style='color:#666'>Triple Espacio / Rubén Castro</td></tr>
+        <tr><td style="color:#666;white-space:nowrap">08-jun-2026</td><td>Irasoque (secretario de Metrópoli) confirmó que el expediente está listo y que todos los VoBos están obtenidos, pero NO emitirá el Impacto Urbano mientras haya oposición vecinal activa. Institución paralizada durante Mundial / vacaciones julio.</td><td style="color:#666">Mauricio</td></tr>
+        <tr><td style="color:#666;white-space:nowrap">11-jun-2026</td><td>Rubén Castro (Triple Espacio) entregó paquete estructural completo con respuesta al punto 38 del ISC (interacción suelo-estructura, pág. 41 de memoria de cálculo). ENTREGA-TOMAS ALVA 11.06.2026.zip (342 MB) en Drive.</td><td style="color:#666">Triple Espacio / Rubén</td></tr>
+        <tr><td style="color:#666;white-space:nowrap">15-jun-2026</td><td>r06 reemplaza a r05. Arq. Rubén entregó versión r06 de la memoria estructural. Confirmar con Erick si el paquete ISC debe actualizarse con r06 antes de proceder.</td><td style="color:#666">Rubén Castro</td></tr>
+        <tr><td style="color:#666;white-space:nowrap">05-jun-2026</td><td>Secretario firmó el impacto urbano. Liberación estimada 2–3 semanas después del Mundial. Se contrata Rubén (ex-Urbania) para supervisar a Carlos. Alta sensibilidad política — bajo perfil.</td><td style="color:#666">Equipo</td></tr>
+        <tr><td style="color:#666;white-space:nowrap">20-may-2026</td><td>Estrategia: bajo perfil, no escalar conflicto vecinal. Coordinar con Jorge cuando se resuelva tema vecinal. Timeline: 1–1.5 meses eficiente / 2–2.5 meses sin diligencia.</td><td style="color:#666">Mauricio / Erick</td></tr>
       </tbody>
     </table>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Edison 106 · Actualizado 16-jun-2026</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Edison 106 · Núñez &amp; Esqueda Abogados · Actualizado 16-jun-2026</p>
 </div>
 
 <script>
 const items = [
-  { n: 6,  desc: "Dar acceso a Nayeli al Drive administrado por Svett para que pueda editar y actualizar.", who: "Svett", due: "—", urgent: false, done: true },
-  { n: 11, desc: "[ISC] Paquete estructural completo entregado por Rubén Castro (Triple Espacio) el 11-Jun-2026 con respuesta al punto 38 del ISC (interacción suelo-estructura, pág. 41 de memoria de cálculo).", who: "Rubén Castro / Isaac", due: "2026-06-11", urgent: false, done: true },
-  { n: 5,  desc: "Verificar vigencia de uso de suelo y Alineamiento y Número Oficial — riesgo de vencimiento activo.", who: "Nayeli", due: "Inmediato", urgent: true, done: false },
-  { n: 9,  desc: "Agendar reuniones con los 3 vecinos opositores y documentar acuerdos de no oposición (minutas firmadas) para desbloquear el expediente ante Irazoke.", who: "John", due: "Urgente", urgent: true, done: false },
-  { n: 12, desc: "[ISC — SIGUIENTE PASO] Nayeli envió subsane Edison 106 ISC a Erick Sanz el 12-Jun-2026 (Drive: 1y7n8XHfDBXNKgECBygYJtjoElSozkgnp). Confirmar con Erick que el ingreso formal al ISC fue completado y que la prevención del punto 38 queda cubierta.", who: "Nayeli / Erick", due: "Inmediato", urgent: true, done: false },
-  { n: 13, desc: "[ISC — Memoria Estructural r06] Arq. Rubén envió el 15-Jun-2026 versión r06 con corrección de textos vs r05 (enviado al ISC el 11-Jun). Confirmar con Erick si el paquete ISC necesita actualizarse con esta versión.", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
-  { n: 8,  desc: "[ISC — Estudio de suelos] Arq. Rubén envió el 15-Jun-2026 el Reporte Técnico Final actualizado (LermoProySismica-TAdison106-jun26.pdf). Confirmar con Erick si reemplaza o complementa el paquete enviado al ISC el 11-Jun.", who: "Arq. Rubén / Erick", due: "TBD", urgent: false, done: false },
-  { n: 10, desc: "Solicitar a Irazoke (Sedema) confirmación por escrito de los requisitos para cerrar el expediente una vez se acrediten los acuerdos vecinales.", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 1,  desc: "Publicitar Impacto Urbano (colgar lona) — plazo: 15 días hábiles a partir de la autorización de firma.", who: "Equipo", due: "TBD", urgent: false, done: false },
-  { n: 2,  desc: "Desahogar prevención de publicitación vecinal (técnicamente ya complementada; verificar punto 26 para ISC).", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
-  { n: 7,  desc: "Confirmar si hay que repetir publicitación (nueva lona) o si la del reingreso ya cubre.", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
-  { n: 3,  desc: "Pago de derechos y manifestación (después de publicitación).", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
-  { n: 4,  desc: "Obtener dictamen ISC — estimado 3 semanas desde documentación completa confirmada.", who: "Erick", due: "TBD", urgent: false, done: false }
+  { n: 9,  desc: "Resolver oposición de vecinos ante Metrópoli para desbloquear emisión del Impacto Urbano por Irasoque", who: "Mauricio", due: "Urgente", urgent: true, done: false },
+  { n: 12, desc: "[ISC] Confirmar con Erick que el ingreso formal al ISC fue completado y que la prevención del punto 38 queda cubierta (subsane enviado 12-jun vía Drive: 1y7n8XHfDBXNKgECBygYJtjoElSozkgnp)", who: "Nayeli / Erick", due: "Inmediato", urgent: true, done: false },
+  { n: 5,  desc: "Verificar vigencia de uso de suelo y Alineamiento y Número Oficial — riesgo de vencimiento", who: "Nayeli", due: "Inmediato", urgent: true, done: false },
+  { n: 13, desc: "[ISC — r06] r06 reemplaza a r05. Confirmar con Erick si el paquete enviado al ISC debe actualizarse con la versión r06 (15-jun) antes de que proceda la prevención del punto 38", who: "Nayeli / Erick", due: "Inmediato", urgent: true, done: false },
+  { n: 8,  desc: "Confirmar si estudio Lermo actualizado (LermoProySismica-TAdison106-jun26.pdf, 15-jun, Drive: 11gPxcJsBm8Rr6C3r5AkOX8vcb5EWFHrv) es el requerido para ISC o complementa el del 11-jun", who: "Arq. Rubén / Erick", due: "TBD", urgent: false, done: false },
+  { n: 10, desc: "Solicitar a Irasoque (Sedema) confirmación por escrito de los requisitos para cerrar expediente una vez acreditados los acuerdos vecinales", who: "Mauricio", due: "TBD", urgent: false, done: false },
+  { n: 1,  desc: "Publicar Impacto Urbano en diario de circulación — una vez que Metrópoli emita el documento", who: "Equipo", due: "Post emisión IU", urgent: false, done: false },
+  { n: 7,  desc: "[MACO] Gestionar Manifestación de Construcción (MACO) — siguiente paso formal tras el Impacto Urbano", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
+  { n: 2,  desc: "Desahogar prevención de publicitación vecinal (técnicamente complementada — verificar punto 26 para ISC)", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
+  { n: 3,  desc: "Pago de derechos y manifestación (después de publicitación)", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
+  { n: 4,  desc: "Obtener dictamen ISC — estimado 3 semanas desde entrega de documentación completa", who: "Erick", due: "TBD", urgent: false, done: false },
+  { n: 6,  desc: "Dar acceso a Nayeli al Drive administrado por Svett para editar y actualizar", who: "Svett", due: "—", urgent: false, done: true },
+  { n: 11, desc: "[ISC] Paquete estructural completo (punto 38) entregado por Rubén Castro el 11-jun-2026. ENTREGA-TOMAS ALVA 11.06.2026.zip (342 MB) en Drive.", who: "Rubén Castro / Isaac", due: "—", urgent: false, done: true },
 ];
 
 const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
@@ -146,8 +164,6 @@ const DEFAULT_STATE = {};
 items.forEach(i => { DEFAULT_STATE[i.n] = i.done || false; });
 
 let state = { ...DEFAULT_STATE };
-// Estado horneado — se sobreescribe con GitHub al cargar
-Object.assign(state, {6:true, 11:true});
 let obs = {};
 let newItems = [];
 let saving = false;
@@ -196,7 +212,7 @@ async function saveState() {
     const res = await fetch(GITHUB_API, {
       method: "PUT",
       headers: GITHUB_HDRS,
-      body: JSON.stringify({ message: "Actualizar estado", content, sha: currentSha })
+      body: JSON.stringify({ message: "Actualizar estado Edison 106", content, sha: currentSha })
     });
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
@@ -231,8 +247,16 @@ function render() {
   tbody.innerHTML = "";
   const visible = items.filter(item => !state[item.n]);
   let idx = 0;
+  let lastGroup = null;
 
   visible.forEach(item => {
+    if (item.group && item.group !== lastGroup && item.group !== "COMPLETADOS") {
+      lastGroup = item.group;
+      const gtr = document.createElement("tr");
+      gtr.className = "group-hdr";
+      gtr.innerHTML = `<td colspan="6">${item.group}</td>`;
+      tbody.appendChild(gtr);
+    }
     idx++;
     const tr = document.createElement("tr");
     tr.innerHTML = `
@@ -357,10 +381,11 @@ async function init() { await loadState(); render(); }
 init();
 
 function copyLink() {
-  navigator.clipboard.writeText(window.location.href).then(() => {
+  const url = "https://mnunezlozada-web.github.io/admivo-status-pages/edison106/";
+  navigator.clipboard.writeText(url).then(() => {
     alert("Liga copiada.");
   }).catch(() => {
-    prompt("Copia esta liga:", window.location.href);
+    prompt("Copia esta liga:", url);
   });
 }
 </script>
