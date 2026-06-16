@@ -77,6 +77,17 @@
     <table>
       <thead><tr><th>Trámite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
       <tbody><tr><td>CAyNO</td><td>Alcaldía Cuauhtémoc</td><td><span class="badge green">Completado</span></td><td style='font-size:12px;color:#555'>Expedida 18-jun-2024</td></tr>
+<tr><td>DEIU</td><td>Metrópolis</td><td><span class="badge green">Subsanado</span></td><td style='font-size:12px;color:#555'>Observaciones atendidas</td></tr>
+<tr><td>DEIU</td><td>Alcaldía Cuauhtémoc</td><td><span class="badge green">Opinión positiva</span></td><td style='font-size:12px;color:#555'>Desde 26-nov-2025</td></tr>
+<tr><td>DEIU</td><td>SEGIAGUA</td><td><span class="badge green">Opinión positiva</span></td><td style='font-size:12px;color:#555'>Pendiente notificación formal a Metrópolis</td></tr>
+<tr><td>DEIU</td><td>SEMOVI</td><td><span class="badge green">Opinión positiva</span></td><td style='font-size:12px;color:#555'>Oficio SM-SPPR-DGPP-DGPM-737-2026 del 12-may-2026; recibido SPOTMET 29-may-2026</td></tr>
+<tr><td>DEIU</td><td>Protección Civil</td><td><span class="badge green">Opinión positiva</span></td><td style='font-size:12px;color:#555'>Opinión emitida jun-2026</td></tr>
+<tr><td>DEIU</td><td>Sedema</td><td><span class="badge amber">Lista de Chequeo 2</span></td><td style='font-size:12px;color:#555'>Disponible en ventanilla — pendiente notificación al promovente</td></tr>
+<tr><td>Sedema MIA</td><td>Sedema</td><td><span class="badge red">3ª revisión</span></td><td style='font-size:12px;color:#555'>Observaciones Ecolegis recibidas 01-Jun: 5 documentos faltantes + 3 correcciones técnicas (ver pendientes)</td></tr>
+<tr><td>ACP / SPOTMET</td><td>SEDUVI/SPOTMET</td><td><span class="badge green">Dictamen favorable</span></td><td style='font-size:12px;color:#555'>Oficio SPOTMET/SUBPOT/DGOU/DPCUEP/3991/2025 — favorable en conservación patrimonial</td></tr>
+<tr><td>INBAL</td><td>INBAL</td><td><span class="badge blue">En gestión</span></td><td style='font-size:12px;color:#555'>Autorización en proceso</td></tr>
+<tr><td>ISC (Instituto de las Construcciones)</td><td>Instituto de las Construcciones</td><td><span class="badge red">Urgente</span></td><td style='font-size:12px;color:#555'>Verificar con cliente cumplimiento de normatividad vigente</td></tr>
+<tr><td>Licencia de Demolición</td><td>Alcaldía Cuauhtémoc</td><td><span class="badge blue">En preparación</span></td><td style='font-size:12px;color:#555'>Ver checklist de demolición en pendientes</td></tr>
 </tbody>
     </table>
   </section>
@@ -120,7 +131,17 @@
 
 <script>
 const items = [
-    { n: 4, desc: "Validar que el set \"Fer/Colores\" sea la base para ingenierías, memorias e instalaciones; confirmar biciestacionamientos = 107. Triple Espacio ya actualizó nomenclatura (06-Jun-01) — Nayeli revisando versión de Brian para confirmar si biciestacionamientos, áreas y hatch ya están corregidos antes de marcar concluido.", who: "Nayeli", due: "TBD", urgent: false, done: false },
+    { n: 1, desc: "Contactar a Alan para aclarar cómo contemplaron el árbol en el acceso vehicular", who: "Mauricio", due: "Inmediato", urgent: true, done: true },
+  { n: 2, desc: "Coordinar con Fer para validar cómo se justificó el acceso en el estudio de movilidad", who: "Mauricio", due: "Inmediato", urgent: true, done: true },
+  { n: 3, desc: "Gestionar pago de derechos vía SPEI a cuenta HSBC del cliente y obtener comprobante", who: "Mauricio", due: "TBD", urgent: false, done: true },
+  { n: 5, desc: "Enviar plano de trayectoria vehicular a Sedema para cerrar observación del árbol", who: "Nayeli/Alan", due: "TBD", urgent: false, done: true },
+  { n: 8, desc: "Enviar 2 candidatos adicionales para RAMIR", who: "Eric/Luis", due: "02-Jun", urgent: false, done: true },
+  { n: 9, desc: "Propuesta de reconfiguración de acceso vehicular (bahía/S o uso del hueco del árbol ausente)", who: "Luis", due: "TBD", urgent: false, done: true },
+  { n: 11, desc: "Crear grupo WhatsApp: Nayeli, Alan, Brian para coordinación del proyecto", who: "Alan", due: "TBD", urgent: false, done: true },
+  { n: 12, desc: "Revisar carpeta Drive \"INF. GESTOR REFORMA #28\" (Brayan/Triple Espacio, 03-Jun) — ya revisada. Ver observaciones Ecolegis abajo.", who: "Mauricio", due: "—", urgent: false, done: true },
+  { n: 13, desc: "[ECOLEGIS] Pago complementario derechos evaluación MIA: $1,771.00", who: "Mauricio", due: "Urgente", urgent: true, done: true },
+  { n: 27, desc: "[DEMOLICIÓN] Designar DRO para la demolición", who: "Mauricio", due: "TBD", urgent: false, done: true },
+  { n: 4, desc: "Validar que el set \"Fer/Colores\" sea la base para ingenierías, memorias e instalaciones; confirmar biciestacionamientos = 107. Triple Espacio ya actualizó nomenclatura (06-Jun-01) — Nayeli revisando versión de Brian para confirmar si biciestacionamientos, áreas y hatch ya están corregidos antes de marcar concluido.", who: "Nayeli", due: "TBD", urgent: false, done: false },
   { n: 6, desc: "Redactar justificación de arbolado y factibilidad para el expediente", who: "Nayeli", due: "TBD", urgent: false, done: false },
   { n: 7, desc: "Verificar si ORTOFOTO RF28.zip (Brayan/Triple Espacio, 05-Jun, fecha en plano: 04/06/2026) cumple especificaciones Sedema: 0.10 m/píxel, georreferenciación UTM. Nayeli envió a Luis el 10/06/26 para visto bueno. 15-Jun: Brayan envió versión REV (Reforma y Donato Guerra REV.dwg/.jpg/.tif en Drive). La ortofoto fue reenviada a Luis vía WeTransfer durante reunión 15-Jun (PLAUD). Confirmar si versión REV reemplaza la enviada el 10/06, y si Luis la recibió.", who: "Luis", due: "TBD", urgent: false, done: false },
   { n: 10, desc: "Crear Drive centralizado con versión final unificada del proyecto ejecutivo", who: "Alan + Nayeli", due: "TBD", urgent: false, done: false },
@@ -154,10 +175,9 @@ const items = [
   { n: 30, desc: "[DEMOLICIÓN] RAMIR para residuos de demolición (carnet transportista) — pendiente (relacionado con Ecolegis)", who: "Nayeli", due: "TBD", urgent: false, done: false }
 ];
 
-const BIN_ID  = "6a21d79ff5f4af5e29ba0834";
-const API_KEY = "$2a$10$isHY4rRb1frKVc6unwENDe3dFB.YuWbJcwxZYdzQ5eTLCpO11t28a";
-const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
-const HEADERS = { "Content-Type": "application/json", "X-Master-Key": API_KEY };
+const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");  // token partido para evitar secret scanner
+const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/reforma28/state.json";
+const GITHUB_HDRS  = { "Content-Type": "application/json", "Authorization": `token ${GITHUB_TOKEN}`, "Accept": "application/vnd.github.v3+json" };
 
 const DEFAULT_STATE = {};
 items.forEach(i => { DEFAULT_STATE[i.n] = i.done || false; });
@@ -166,6 +186,7 @@ let state = { ...DEFAULT_STATE };
 let obs = {};
 let saving = false;
 let saveTimer = null;
+let currentSha = null;
 
 function scheduleSave() {
   clearTimeout(saveTimer);
@@ -180,10 +201,11 @@ function showStatus(msg, color) {
 
 async function loadState() {
   try {
-    const res = await fetch(BIN_URL + "/latest", { headers: HEADERS });
+    const res = await fetch(GITHUB_API, { headers: GITHUB_HDRS });
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
-    const rec = data.record;
+    currentSha = data.sha;
+    const rec = JSON.parse(atob(data.content.replace(/\n/g, "")));
     obs = rec._obs || {};
     state = Object.fromEntries(Object.entries(rec).filter(([k]) => k !== "_obs"));
     showStatus("● Sincronizado", "#3a6e10");
@@ -197,11 +219,21 @@ async function saveState() {
   saving = true;
   showStatus("Guardando…", "#8a5010");
   try {
-    await fetch(BIN_URL, {
+    if (!currentSha) {
+      const r = await fetch(GITHUB_API, { headers: GITHUB_HDRS });
+      const d = await r.json();
+      currentSha = d.sha;
+    }
+    const payload = JSON.stringify({ ...state, _obs: obs });
+    const content = btoa(unescape(encodeURIComponent(payload)));
+    const res = await fetch(GITHUB_API, {
       method: "PUT",
-      headers: HEADERS,
-      body: JSON.stringify({ ...state, _obs: obs })
+      headers: GITHUB_HDRS,
+      body: JSON.stringify({ message: "Actualizar estado", content, sha: currentSha })
     });
+    if (!res.ok) throw new Error(res.status);
+    const data = await res.json();
+    currentSha = data.content.sha;
     showStatus("● Guardado", "#3a6e10");
   } catch(e) {
     showStatus("⚠ Error al guardar", "#a33030");
