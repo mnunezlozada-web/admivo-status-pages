@@ -3,44 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edison 106 — Edison Park — Estatus del proyecto</title>
+<title>Edison 106 — Estatus del proyecto</title>
+<meta property="og:title" content="Edison 106 — Estatus del proyecto">
+<meta property="og:description" content="Triple Espacio / Sutton · Tomas Alva Edison 106, CDMX">
+<meta property="og:url" content="https://mnunezlozada-web.github.io/admivo-status-pages/edison106/">
+<meta property="og:type" content="website">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 14px; color: #1a1a1a; background: #f5f4f0; padding: 2rem; }
-  .container { max-width: 960px; margin: 0 auto; }
-  header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
   header h1 { font-size: 20px; font-weight: 600; }
   header p { font-size: 12px; color: #888; margin-top: 2px; }
   .stamp { font-size: 11px; color: #aaa; text-align: right; }
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 2rem; }
+
+  .alert { background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 12px 16px; margin-bottom: 1.5rem; }
+  .alert .alert-title { font-size: 12px; font-weight: 600; color: #92400e; margin-bottom: 4px; }
+  .alert .alert-body { font-size: 13px; color: #78350f; line-height: 1.5; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
   .card { background: #fff; border-radius: 10px; border: 0.5px solid #e0ddd4; padding: 0.75rem 1rem; }
   .card .label { font-size: 11px; color: #999; margin-bottom: 4px; }
   .card .value { font-size: 22px; font-weight: 600; }
   .card .sub { font-size: 11px; color: #aaa; margin-top: 2px; }
-  .card .value.sm { font-size: 14px; margin-top: 2px; }
+  .card .value.sm { font-size: 13px; margin-top: 2px; line-height: 1.4; }
+
   section { margin-bottom: 2rem; }
   section h2 { font-size: 11px; font-weight: 600; color: #999; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+
   table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; border: 0.5px solid #e0ddd4; }
   th { font-size: 11px; font-weight: 600; color: #999; text-align: left; padding: 9px 14px; background: #faf9f6; border-bottom: 0.5px solid #e0ddd4; }
-  td { padding: 9px 14px; border-bottom: 0.5px solid #f0ede6; vertical-align: middle; }
+  td { padding: 9px 14px; border-bottom: 0.5px solid #f0ede6; vertical-align: top; line-height: 1.45; }
   tr:last-child td { border-bottom: none; }
+
   .badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 6px; white-space: nowrap; }
   .badge.green  { background: #e8f5e0; color: #3a6e10; }
   .badge.blue   { background: #e3effa; color: #1a5fa6; }
   .badge.amber  { background: #fef3dc; color: #8a5010; }
   .badge.red    { background: #fde8e8; color: #a33030; }
   .badge.gray   { background: #f0ede6; color: #666; }
+
   .check-col { width: 36px; text-align: center; }
   input[type=checkbox] { width: 16px; height: 16px; cursor: pointer; accent-color: #3a6e10; }
-  .obs-input { width: 100%; min-width: 140px; border: none; background: transparent; resize: none; font-size: 12px; color: #555; font-family: inherit; padding: 0; line-height: 1.4; overflow: hidden; }
-  .obs-input:focus { outline: none; background: #faf9f6; border-radius: 4px; padding: 2px 6px; box-shadow: 0 0 0 1px #e0ddd4; }
-  .obs-input::placeholder { color: #d0cdc6; }
+
   .btn-share { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 6px 14px; border-radius: 8px; border: 0.5px solid #ccc; background: #fff; cursor: pointer; color: #444; }
   .btn-share:hover { background: #f5f4f0; }
   .btn-print { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 6px 14px; border-radius: 8px; border: 0.5px solid #ccc; background: #fff; cursor: pointer; color: #444; margin-left: 8px; }
   .btn-print:hover { background: #f5f4f0; }
+
   .counter { font-size: 12px; color: #888; margin-bottom: 8px; }
   .counter span { font-weight: 600; color: #1a1a1a; }
+
+  @media (max-width: 600px) {
+    body { padding: 1rem; }
+    .cards { grid-template-columns: repeat(2, 1fr); }
+  }
   @media print {
     body { background: #fff; padding: 1rem; }
     .no-print { display: none !important; }
@@ -50,13 +67,14 @@
 </head>
 <body>
 <div class="container">
+
   <header>
     <div>
-      <h1>Edison 106 — Edison Park</h1>
-      <p>Triple Espacio / Sutton &nbsp;·&nbsp; Tomas Alva Edison 106, Col. Tabacalera, CDMX</p>
+      <h1>Edison 106 (Edison Park)</h1>
+      <p>Triple Espacio / Sutton &nbsp;·&nbsp; Tomas Alva Edison 106, CDMX</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 16-jun-2026</div>
+      <div>Actualizado: 16-jun-2026</div>
       <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando…</div>
       <div style="margin-top:6px;" class="no-print">
         <button class="btn-share" onclick="copyLink()">⎘ Copiar enlace</button>
@@ -65,33 +83,101 @@
     </div>
   </header>
 
+  <div class="alert">
+    <div class="alert-title">⚠️ Alerta crítica — ISC</div>
+    <div class="alert-body">Paquete estructural completo enviado por Rubén Castro (11-jun). Nayeli envió subsane a Erick Sanz el 12-jun vía Drive. <strong>Siguiente paso crítico:</strong> confirmar con Erick que el ingreso formal al ISC fue completado y que la prevención quedó cubierta. Pendiente también: confirmar si memoria estructural r06 (15-jun) requiere reenviar paquete.</div>
+  </div>
+
   <div class="cards">
-<div class="card"><div class="label">Fase</div><div class="value sm">IU bloqueado por vecinos — ISC en proceso</div></div>
-<div class="card"><div class="label">ISC</div><div class="value sm">Subsane enviado a Erick</div><div class="sub">pendiente confirmación ingreso</div></div>
-<div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">11</div><div class="sub">por cerrar</div></div>
-<div class="card"><div class="label">Urgentes</div><div class="value" style="color:#a33030">3</div><div class="sub">requieren atención</div></div>
-</div>
+    <div class="card">
+      <div class="label">Bloqueo principal</div>
+      <div class="value sm">Oposición 3 vecinos (Sedema)</div>
+    </div>
+    <div class="card">
+      <div class="label">Pendientes</div>
+      <div class="value" id="pending-counter">—</div>
+      <div class="sub">por cerrar</div>
+    </div>
+    <div class="card">
+      <div class="label">Completados</div>
+      <div class="value" id="done-counter">—</div>
+      <div class="sub">de 13 totales</div>
+    </div>
+    <div class="card">
+      <div class="label">Mundial / vacaciones</div>
+      <div class="value sm">Sedema en pausa hasta agosto</div>
+    </div>
+  </div>
 
   <section>
     <h2>Estado de trámites</h2>
     <table>
-      <thead><tr><th>Trámite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
-      <tbody><tr><td colspan='4' style='color:#aaa;text-align:center;padding:1rem'>Ver historial de reuniones</td></tr></tbody>
+      <thead>
+        <tr>
+          <th>Trámite</th>
+          <th>Instancia</th>
+          <th>Estado</th>
+          <th>Detalle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Impacto Urbano</strong></td>
+          <td style="color:#666">Metrópoli / Sedema</td>
+          <td><span class="badge amber">⚠ Firmado, bloqueado</span></td>
+          <td style="color:#666">Secretario firmó. Irazoke no emitirá con oposición vecinal activa. Condición: acuerdos documentados con 3 vecinos. Pausa durante Mundial/vacaciones julio.</td>
+        </tr>
+        <tr>
+          <td><strong>ISC — Dictamen</strong></td>
+          <td style="color:#666">ISC</td>
+          <td><span class="badge amber">⚠ Subsane enviado</span></td>
+          <td style="color:#666">Paquete enviado a Erick 12-jun. Pendiente: confirmar ingreso formal y cobertura punto 38. También confirmar si r06 reemplaza r05 en paquete.</td>
+        </tr>
+        <tr>
+          <td><strong>Acuerdos vecinales</strong></td>
+          <td style="color:#666">3 vecinos opositores</td>
+          <td><span class="badge red">🔴 Urgente</span></td>
+          <td style="color:#666">John debe agendar reuniones y obtener minutas firmadas de no oposición. Sin esto Irazoke no firma.</td>
+        </tr>
+        <tr>
+          <td><strong>Publicitación (lona)</strong></td>
+          <td style="color:#666">Alcaldía Cuauhtémoc</td>
+          <td><span class="badge blue">⏳ Pendiente</span></td>
+          <td style="color:#666">15 días hábiles a partir de autorización de firma. Pendiente confirmar si nueva lona o si reingreso ya cubre.</td>
+        </tr>
+        <tr>
+          <td><strong>Uso de suelo / CAyNO</strong></td>
+          <td style="color:#666">Alcaldía / SEDUVI</td>
+          <td><span class="badge amber">⚠ Riesgo vencimiento</span></td>
+          <td style="color:#666">Verificar vigencia de Alineamiento y Número Oficial — en riesgo. (Nayeli)</td>
+        </tr>
+        <tr>
+          <td><strong>Pago derechos + manifestación</strong></td>
+          <td style="color:#666">SEDUVI</td>
+          <td><span class="badge blue">⏳ Pendiente</span></td>
+          <td style="color:#666">Después de publicitación. Requiere Impacto Urbano firmado.</td>
+        </tr>
+        <tr>
+          <td><strong>Acceso Drive Nayeli</strong></td>
+          <td style="color:#666">Svett</td>
+          <td><span class="badge green">✓ Completado</span></td>
+          <td style="color:#666">Acceso dado al Drive administrado por Svett.</td>
+        </tr>
+      </tbody>
     </table>
   </section>
 
   <section>
     <h2>Pendientes activos</h2>
-    <div class="counter no-print">Completados: <span id="done-count">0</span> de <span id="total-count">0</span></div>
+    <div class="counter no-print">Completados: <span id="done-count">0</span> de <span id="total-count">13</span></div>
     <table>
       <thead>
         <tr>
           <th class="check-col no-print"></th>
-          <th>#</th>
+          <th style="width:28px">#</th>
           <th>Pendiente</th>
-          <th>Responsable</th>
-          <th>Fecha límite</th>
-          <th>Observaciones</th>
+          <th style="width:130px">Responsable</th>
+          <th style="width:100px">Fecha límite</th>
         </tr>
       </thead>
       <tbody id="pending-tbody"></tbody>
@@ -101,69 +187,89 @@
   <section>
     <h2>Acuerdos clave</h2>
     <table>
-      <thead><tr><th style="width:110px">Fecha</th><th>Acuerdo</th><th style="width:130px">Quién acordó</th></tr></thead>
-      <tbody><tr><td style='color:#666;white-space:nowrap'>2026-05-20</td><td>Ya se tienen todas las autorizaciones técnicas. Impacto urbano pendiente por temas políticos y vecinales. El expediente está integrado y en espera de firma.</td><td style='color:#666'>Erick / Mauricio</td></tr>
-<tr><td style='color:#666;white-space:nowrap'>2026-05-20</td><td>Sistema alternativo ya autorizado</td><td style='color:#666'>Equipo</td></tr>
-<tr><td style='color:#666;white-space:nowrap'>2026-05-20</td><td>Estrategia: evitar escalar conflicto vecinal, no profundizar públicamente sobre la ubicación. Coordinar con Jorge cuando se resuelva tema vecinal para que emita el dictamen.</td><td style='color:#666'>Mauricio / Erick</td></tr>
-<tr><td style='color:#666;white-space:nowrap'>2026-05-20</td><td>Timeline estimado: 1-1.5 meses con eficiencia; 2-2.5 meses sin diligencia</td><td style='color:#666'>Erick</td></tr>
-<tr><td style='color:#666;white-space:nowrap'>2026-06-08</td><td>Irazoke (Sedema) dice expediente &quot;está listo&quot; pero NO firmará mientras haya oposición vecinal activa. Condición para firma: acuerdos documentados con los 3 vecinos opositores. La institución no moverá nada durante el Mundial/vacaciones julio para evitar accidentes políticos.</td><td style='color:#666'>Mauricio / John (Speaker 1)</td></tr>
-<tr><td style='color:#666;white-space:nowrap'>2026-06-11</td><td>Rubén Castro (Triple Espacio) entregó paquete estructural completo con respuesta al punto 38 del ISC (verificación de interacción suelo-estructura, pág. 41 de memoria de cálculo). Archivo ENTREGA-TOMAS ALVA 11.06.2026.zip (342 MB) en Drive. Pendiente: confirmar ingreso formal al ISC con Erick/Nayeli para cerrar la prevención.</td><td style='color:#666'>Triple Espacio / Rubén Castro</td></tr>
-<tr><td style='color:#666;white-space:nowrap'>2026-06-15</td><td>Arq. Rubén entregó versión r06 de la memoria de cálculo — corrección de textos; confirmar si afecta el paquete enviado al ISC.</td><td style='color:#666'>Triple Espacio / Rubén Castro</td></tr>
-</tbody>
+      <thead>
+        <tr>
+          <th style="width:110px">Fecha</th>
+          <th>Acuerdo</th>
+          <th style="width:130px">Quién acordó</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:#666;white-space:nowrap">08-jun-2026</td>
+          <td>Irazoke (Sedema) confirmó expediente listo pero NO firmará mientras haya oposición vecinal activa. Condición: acuerdos documentados con 3 vecinos. Institución en pausa durante Mundial/vacaciones julio.</td>
+          <td style="color:#666">Mauricio / John</td>
+        </tr>
+        <tr>
+          <td style="color:#666;white-space:nowrap">11-jun-2026</td>
+          <td>Rubén Castro (Triple Espacio) entregó paquete estructural completo con respuesta al punto 38 del ISC (interacción suelo-estructura, pág. 41 de memoria de cálculo). Archivo: ENTREGA-TOMAS ALVA 11.06.2026.zip (342 MB) en Drive.</td>
+          <td style="color:#666">Triple Espacio / Rubén</td>
+        </tr>
+        <tr>
+          <td style="color:#666;white-space:nowrap">15-jun-2026</td>
+          <td>Arq. Rubén entregó versión r06 de memoria de cálculo estructural (corrección de textos respecto a r05). Confirmar con Erick si el paquete ISC necesita actualizarse con r06.</td>
+          <td style="color:#666">Rubén Castro</td>
+        </tr>
+        <tr>
+          <td style="color:#666;white-space:nowrap">20-may-2026</td>
+          <td>Estrategia: bajo perfil. No escalar conflicto vecinal. Coordinar con Jorge cuando se resuelva tema vecinal para emitir dictamen. Timeline: 1–1.5 meses eficiente / 2–2.5 meses sin diligencia.</td>
+          <td style="color:#666">Mauricio / Erick</td>
+        </tr>
+        <tr>
+          <td style="color:#666;white-space:nowrap">05-jun-2026</td>
+          <td>Secretario firmó el impacto urbano. Sigue bloqueado por conflicto vecinal; se necesita apoyo de Alcaldía Cuauhtémoc. Liberación estimada 2–3 semanas después del Mundial. Se contrata Rubén (ex-Urbania) para supervisar a Carlos.</td>
+          <td style="color:#666">Equipo</td>
+        </tr>
+      </tbody>
     </table>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Edison 106 — Edison Park · Actualizado 16-jun-2026</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Edison 106 · Núñez &amp; Esqueda Abogados · Actualizado 16-jun-2026</p>
+
 </div>
 
 <script>
 const items = [
-    { n: 1, desc: "Publicitar Impacto Urbano (colgar lona) — plazo: 15 días hábiles a partir de la autorización de firma", who: "Equipo", due: "TBD", urgent: false, done: false },
-  { n: 2, desc: "Desahogar prevención de publicitación vecinal (técnicamente ya complementada, verificar punto 26 para ISC)", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
-  { n: 3, desc: "Pago de derechos y manifestación (después de publicitación)", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
-  { n: 4, desc: "Obtener dictamen ISC — estimado 3 semanas desde entrega de documentación completa", who: "Erick", due: "TBD", urgent: false, done: false },
-  { n: 12, desc: "🔴 [ISC — SIGUIENTE PASO] Nayeli envió subsane Edison 106 ISC a Erick Sanz el 12-Jun-2026 (Drive: 1y7n8XHfDBXNKgECBygYJtjoElSozkgnp) — paquete estructural completo con respuesta a punto 38 (igual que el enviado a Rubén). Confirmar con Erick que el ingreso formal al ISC fue completado y que la prevención queda cubierta.", who: "Nayeli / Erick", due: "Inmediato", urgent: true, done: false },
-  { n: 5, desc: "Verificar vigencia de uso de suelo y Alineamiento y Número Oficial — riesgo de vencimiento", who: "Nayeli", due: "Inmediato", urgent: true, done: false },
-  { n: 7, desc: "Confirmar si hay que repetir publicitación (nueva lona) o si la del reingreso ya cubre", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
-  { n: 8, desc: "Estudio de suelos / interacción suelo-estructura Edison — Arq. Rubén (Triple Espacio) envió el 15-Jun-2026 versión actualizada: LermoProySismica-TAdison106-jun26.pdf (Drive: 11gPxcJsBm8Rr6C3r5AkOX8vcb5EWFHrv) — Reporte Técnico Final por M. en C. Javier Lermo Samaniego et al., junio 2026, sobre efecto de sitio con y sin pilotes en Tomas Alva Edison 106. Confirmar si este documento es el requerido para el expediente del ISC / ISC punto 38, o si era el del paquete del 11-Jun.", who: "Arq. Rubén / Erick", due: "TBD", urgent: false, done: false },
-  { n: 13, desc: "[ISC — Memoria Estructural r06] Arq. Rubén envió el 15-Jun-2026 versión r06 de la Memoria de Cálculo Estructural (Drive: 1buOf170hBw42tqDUNbYEgy8QSu8k-nfz). El ajuste es corrección de un par de textos incorrectos en el archivo r05 (enviado el 11-Jun en el paquete ISC). Confirmar con Erick si el paquete enviado al ISC necesita actualizarse con esta versión r06, o si los textos corregidos no afectan la prevención del punto 38.", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
-  { n: 9, desc: "Agendar reuniones con los 3 vecinos opositores y documentar acuerdos mínimos de no oposición (minutas firmadas)", who: "John", due: "Urgente", urgent: true, done: false },
-  { n: 10, desc: "Solicitar a Irazoke (Sedema) confirmación por escrito de los requisitos específicos para cerrar el expediente una vez se acrediten los acuerdos vecinales (lista de evidencias aceptables)", who: "Mauricio", due: "TBD", urgent: false, done: false }
+  { n: 9,  desc: "Agendar reuniones con los 3 vecinos opositores y obtener minutas firmadas de no oposición", who: "John", due: "Urgente", urgent: true, done: false },
+  { n: 12, desc: "Confirmar con Erick que el ingreso formal al ISC fue completado y que la prevención del punto 38 queda cubierta (subsane enviado 12-jun)", who: "Nayeli / Erick", due: "Inmediato", urgent: true, done: false },
+  { n: 13, desc: "Confirmar si Memoria Estructural r06 (15-jun) requiere reenviar el paquete al ISC, o si los textos corregidos no afectan la prevención del punto 38", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
+  { n: 8,  desc: "Confirmar si estudio Lermo actualizado (LermoProySismica-TAdison106-jun26.pdf, 15-jun) es el requerido para el expediente ISC o complementa el del 11-jun", who: "Arq. Rubén / Erick", due: "TBD", urgent: false, done: false },
+  { n: 5,  desc: "Verificar vigencia de uso de suelo y Alineamiento y Número Oficial — riesgo de vencimiento", who: "Nayeli", due: "Inmediato", urgent: true, done: false },
+  { n: 10, desc: "Solicitar a Irazoke (Sedema) confirmación por escrito de los requisitos para cerrar expediente una vez acreditados los acuerdos vecinales", who: "Mauricio", due: "TBD", urgent: false, done: false },
+  { n: 1,  desc: "Publicitar Impacto Urbano (colgar lona) — 15 días hábiles a partir de la autorización de firma", who: "Equipo", due: "TBD", urgent: false, done: false },
+  { n: 7,  desc: "Confirmar si hay que repetir publicitación (nueva lona) o si la del reingreso ya cubre", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
+  { n: 2,  desc: "Desahogar prevención de publicitación vecinal (técnicamente complementada — verificar punto 26 para ISC)", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
+  { n: 3,  desc: "Pago de derechos y manifestación (después de publicitación)", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
+  { n: 4,  desc: "Obtener dictamen ISC — estimado 3 semanas desde entrega de documentación completa", who: "Erick", due: "TBD", urgent: false, done: false },
+  { n: 6,  desc: "Dar acceso a Nayeli al Drive administrado por Svett para editar y actualizar", who: "Svett", due: "—", urgent: false, done: true },
+  { n: 11, desc: "Paquete estructural completo (punto 38 ISC) entregado por Rubén Castro el 11-jun-2026. Drive: ENTREGA-TOMAS ALVA 11.06.2026.zip (342 MB)", who: "Rubén Castro / Isaac", due: "—", urgent: false, done: true },
 ];
 
-const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");  // token partido para evitar secret scanner
-const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/edison106/state.json";
-const GITHUB_HDRS  = { "Content-Type": "application/json", "Authorization": `token ${GITHUB_TOKEN}`, "Accept": "application/vnd.github.v3+json" };
+// ── JSONBin (estado colaborativo sincronizado) ──────────────────
+const BIN_ID  = "6a21f0a1da38895dfe88f7bd";
+const API_KEY = ["$2a$10$isHY4rRb1fr", "KVc6unwENDe3dF", "B.YuWbJcwxYdzQ5eTLCpO11t28a"].join("");
+const BIN_URL = "https://api.jsonbin.io/v3/b/" + BIN_ID;
+// ────────────────────────────────────────────────────────────────
 
 const DEFAULT_STATE = {};
-items.forEach(i => { DEFAULT_STATE[i.n] = i.done || false; });
+items.forEach(i => { DEFAULT_STATE[i.n] = i.done; });
 
 let state = { ...DEFAULT_STATE };
-let obs = {};
 let saving = false;
-let saveTimer = null;
-let currentSha = null;
-
-function scheduleSave() {
-  clearTimeout(saveTimer);
-  saveTimer = setTimeout(saveState, 1200);
-}
 
 function showStatus(msg, color) {
   const el = document.getElementById("sync-status");
-  el.textContent = msg;
-  el.style.color = color || "#aaa";
+  if (el) { el.textContent = msg; el.style.color = color || "#aaa"; }
 }
 
 async function loadState() {
   try {
-    const res = await fetch(GITHUB_API, { headers: GITHUB_HDRS });
+    const res = await fetch(BIN_URL + "/latest", {
+      headers: { "X-Master-Key": API_KEY }
+    });
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
-    currentSha = data.sha;
-    const rec = JSON.parse(atob(data.content.replace(/\n/g, "")));
-    obs = rec._obs || {};
-    state = Object.fromEntries(Object.entries(rec).filter(([k]) => k !== "_obs"));
+    state = { ...DEFAULT_STATE, ...data.record };
     showStatus("● Sincronizado", "#3a6e10");
   } catch(e) {
     showStatus("⚠ Sin conexión", "#a33030");
@@ -175,21 +281,12 @@ async function saveState() {
   saving = true;
   showStatus("Guardando…", "#8a5010");
   try {
-    if (!currentSha) {
-      const r = await fetch(GITHUB_API, { headers: GITHUB_HDRS });
-      const d = await r.json();
-      currentSha = d.sha;
-    }
-    const payload = JSON.stringify({ ...state, _obs: obs });
-    const content = btoa(unescape(encodeURIComponent(payload)));
-    const res = await fetch(GITHUB_API, {
+    const res = await fetch(BIN_URL, {
       method: "PUT",
-      headers: GITHUB_HDRS,
-      body: JSON.stringify({ message: "Actualizar estado", content, sha: currentSha })
+      headers: { "Content-Type": "application/json", "X-Master-Key": API_KEY },
+      body: JSON.stringify(state)
     });
     if (!res.ok) throw new Error(res.status);
-    const data = await res.json();
-    currentSha = data.content.sha;
     showStatus("● Guardado", "#3a6e10");
   } catch(e) {
     showStatus("⚠ Error al guardar", "#a33030");
@@ -197,39 +294,35 @@ async function saveState() {
   saving = false;
 }
 
-setInterval(async () => { await loadState(); render(); }, 30000);
+setInterval(async () => { await loadState(); render(); }, 60000);
 
 function updateCounters() {
-  const done = Object.values(state).filter(Boolean).length;
+  const done = items.filter(i => state[i.n]).length;
   const total = items.length;
-  document.getElementById("done-count").textContent = done;
-  document.getElementById("total-count").textContent = total;
-  const p = document.getElementById("pending-counter");
-  if (p) p.textContent = (total - done);
-}
-
-function autoResize(ta) {
-  ta.style.height = "auto";
-  ta.style.height = ta.scrollHeight + "px";
+  const pending = items.filter(i => !state[i.n]).length;
+  const el1 = document.getElementById("done-count");
+  const el2 = document.getElementById("pending-counter");
+  const el3 = document.getElementById("done-counter");
+  if (el1) el1.textContent = done;
+  if (el2) el2.textContent = pending;
+  if (el3) el3.textContent = done;
 }
 
 function render() {
   const tbody = document.getElementById("pending-tbody");
+  if (!tbody) return;
   tbody.innerHTML = "";
-  const visible = items.filter(item => !state[item.n]);
-  visible.forEach((item, idx) => {
+  items.filter(item => !state[item.n]).forEach(item => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td class="check-col no-print"><input type="checkbox" data-n="${item.n}" title="Marcar como hecho"></td>
-      <td style="color:#999;font-size:12px">${idx + 1}</td>
+      <td style="color:#999;font-size:12px;white-space:nowrap">${item.n}</td>
       <td><span class="desc">${item.desc}</span></td>
-      <td style="color:#666">${item.who}</td>
+      <td style="color:#666;font-size:12px">${item.who}</td>
       <td><span class="badge ${item.urgent ? 'red' : 'gray'}">${item.due}</span></td>
-      <td><textarea class="obs-input" data-obs="${item.n}" rows="1" placeholder="—">${obs[item.n] || ""}</textarea></td>
     `;
     tbody.appendChild(tr);
   });
-
   tbody.querySelectorAll("input[type=checkbox]").forEach(cb => {
     cb.addEventListener("change", async () => {
       const n = parseInt(cb.dataset.n);
@@ -239,17 +332,6 @@ function render() {
       await saveState();
     });
   });
-
-  tbody.querySelectorAll("textarea.obs-input").forEach(ta => {
-    autoResize(ta);
-    ta.addEventListener("input", () => {
-      autoResize(ta);
-      obs[parseInt(ta.dataset.obs)] = ta.value;
-      showStatus("Por guardar…", "#8a5010");
-      scheduleSave();
-    });
-  });
-
   updateCounters();
 }
 
@@ -257,12 +339,15 @@ async function init() { await loadState(); render(); }
 init();
 
 function copyLink() {
-  navigator.clipboard.writeText(window.location.href).then(() => {
-    alert("Liga copiada.");
+  const url = "https://mnunezlozada-web.github.io/admivo-status-pages/edison106/";
+  navigator.clipboard.writeText(url).then(() => {
+    alert("Enlace copiado al portapapeles.");
   }).catch(() => {
-    prompt("Copia esta liga:", window.location.href);
+    prompt("Copia este enlace para compartir:", url);
   });
 }
+
+render();
 </script>
 </body>
 </html>
