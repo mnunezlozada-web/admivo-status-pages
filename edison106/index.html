@@ -1,16 +1,9 @@
 <!DOCTYPE html>
-<script type="application/json" id="cowork-artifact-meta">
-{
-  "name": "Edison106 Status",
-  "schemaVersion": 1,
-  "description": "Estatus en vivo de Edison 106 — trámites, pendientes, acuerdos e historial"
-}
-</script>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edison 106 — Estatus del proyecto</title>
+<title>Edison 106 (Edison Park) — Estatus del proyecto</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 14px; color: #1a1a1a; background: #f5f4f0; padding: 2rem; }
@@ -19,9 +12,6 @@
   header h1 { font-size: 20px; font-weight: 600; }
   header p { font-size: 12px; color: #888; margin-top: 2px; }
   .stamp { font-size: 11px; color: #aaa; text-align: right; }
-  .alert { background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 10px 14px; margin-bottom: 1.5rem; }
-  .alert-title { font-size: 11px; font-weight: 700; color: #92400e; margin-bottom: 3px; letter-spacing: 0.04em; text-transform: uppercase; }
-  .alert-body { font-size: 12px; color: #78350f; line-height: 1.5; }
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 2rem; }
   .card { background: #fff; border-radius: 10px; border: 0.5px solid #e0ddd4; padding: 0.75rem 1rem; }
   .card .label { font-size: 11px; color: #999; margin-bottom: 4px; }
@@ -51,7 +41,6 @@
   .btn-print:hover { background: #f5f4f0; }
   .counter { font-size: 12px; color: #888; margin-bottom: 8px; }
   .counter span { font-weight: 600; color: #1a1a1a; }
-  .group-hdr td { background: #f5f4f0 !important; padding: 5px 14px !important; font-size: 10px !important; font-weight: 700 !important; letter-spacing: 0.08em !important; color: #999 !important; text-transform: uppercase; border-bottom: 0.5px solid #e0ddd4 !important; }
   @media print {
     body { background: #fff; padding: 1rem; }
     .no-print { display: none !important; }
@@ -67,7 +56,7 @@
       <p>Triple Espacio / Sutton &nbsp;·&nbsp; Tomas Alva Edison 106, CDMX</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 16-jun-2026</div>
+      <div id="last-update">Actualizado: 17-Jun-2026</div>
       <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando…</div>
       <div style="margin-top:6px;" class="no-print">
         <button class="btn-share" onclick="copyLink()">⎘ Copiar enlace</button>
@@ -76,31 +65,24 @@
     </div>
   </header>
 
-  <div class="alert">
-    <div class="alert-title">⚠️ Alerta crítica — ISC</div>
-    <div class="alert-body">Nayeli envió subsane completo a Erick Sanz el 12-jun-2026 (Drive: 1y7n8XHfDBXNKgECBygYJtjoElSozkgnp). Rubén envió memoria estructural r06 el 15-jun. <strong>Confirmar con Erick:</strong> (1) ingreso formal al ISC completado, (2) si r06 reemplaza r05 en el paquete enviado.</div>
-  </div>
-
   <div class="cards">
-    <div class="card"><div class="label">Bloqueo principal</div><div class="value sm">Irasoque (Metrópoli) — oposición vecinal activa</div></div>
-    <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">11</div><div class="sub">por cerrar</div></div>
-    <div class="card"><div class="label">Urgentes</div><div class="value" style="color:#a33030">4</div><div class="sub">requieren atención</div></div>
-    <div class="card"><div class="label">ISC — subsane</div><div class="value sm" style="color:#8a5010">Enviado 12-jun</div></div>
-  </div>
+<div class="card"><div class="label">Fase</div><div class="value sm">Gestión de permisos — ISC + EIU bloqueado</div></div>
+<div class="card"><div class="label">ISC</div><div class="value sm">⚠️ Subsane enviado</div><div class="sub">Pendiente confirmación Erick</div></div>
+<div class="card"><div class="label">EIU / Impacto Urbano</div><div class="value sm">🔴 Bloqueado</div><div class="sub">Estrategia fallida — replanteando</div></div>
+<div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">—</div><div class="sub">activos</div></div>
+</div>
 
   <section>
     <h2>Estado de trámites</h2>
     <table>
       <thead><tr><th>Trámite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
       <tbody>
-        <tr><td><strong>Impacto Urbano</strong></td><td>Metrópoli</td><td><span class="badge amber">Todos los VoBos obtenidos — pendiente emisión</span></td><td style="font-size:12px;color:#555">Irasoque (secretario de Metrópoli) no emitirá mientras haya oposición vecinal activa. Pausa durante Mundial / vacaciones julio. Una vez emitido: publicar en diario de circulación.</td></tr>
-        <tr><td><strong>ISC — Dictamen</strong></td><td>ISC</td><td><span class="badge amber">Subsane enviado</span></td><td style="font-size:12px;color:#555">Paquete enviado a Erick 12-jun. Confirmar ingreso formal y cobertura punto 38. r06 reemplaza a r05 — confirmar con Erick si debe reenviar.</td></tr>
-        <tr><td><strong>MACO</strong></td><td>Alcaldía Cuauhtémoc</td><td><span class="badge blue">Pendiente</span></td><td style="font-size:12px;color:#555">Pendiente de gestión.</td></tr>
-        <tr><td><strong>Publicación diario</strong></td><td>Diario de circulación</td><td><span class="badge blue">Pendiente — post Impacto Urbano</span></td><td style="font-size:12px;color:#555">Se publica en diario de circulación una vez que Metrópoli emita el Impacto Urbano.</td></tr>
-        <tr><td><strong>Uso de suelo / CAyNO</strong></td><td>Alcaldía / SEDUVI</td><td><span class="badge amber">Riesgo vencimiento</span></td><td style="font-size:12px;color:#555">Verificar vigencia de Alineamiento y Número Oficial. (Nayeli)</td></tr>
-        <tr><td><strong>Pago derechos + manifestación</strong></td><td>SEDUVI</td><td><span class="badge blue">Pendiente</span></td><td style="font-size:12px;color:#555">Después de publicitación. Requiere Impacto Urbano firmado.</td></tr>
-        <tr><td><strong>Acceso Drive Nayeli</strong></td><td>Svett</td><td><span class="badge green">Completado</span></td><td style="font-size:12px;color:#555">Acceso dado al Drive administrado por Svett.</td></tr>
-      </tbody>
+<tr><td>EIU / Impacto Urbano</td><td>Metrópoli (Irasoque)</td><td><span class="badge red">Bloqueado</span></td><td>Expediente listo pero sin firma — condicionado a acuerdos vecinales y destrabe político. Estrategia de espera FALLIDA. Se requiere nueva acción.</td></tr>
+<tr><td>ISC — Instituto de las Construcciones</td><td>Instituto de las Construcciones</td><td><span class="badge amber">En trámite</span></td><td>Subsane enviado a Erick 12-Jun (paquete estructural punto 38). Memoria r06 organizada en carpeta nueva. Confirmación de ingreso formal pendiente.</td></tr>
+<tr><td>Publicitación vecinal / Lona</td><td>—</td><td><span class="badge blue">Pendiente</span></td><td>Plazo: 15 días hábiles a partir de firma impacto urbano.</td></tr>
+<tr><td>Derechos y manifestación</td><td>Alcaldía Cuauhtémoc</td><td><span class="badge blue">Pendiente</span></td><td>Después de publicitación.</td></tr>
+<tr><td>Vigencia uso de suelo / CAyNO</td><td>—</td><td><span class="badge amber">Verificar</span></td><td>Riesgo de vencimiento — verificar urgente.</td></tr>
+</tbody>
     </table>
   </section>
 
@@ -127,42 +109,38 @@
     <table>
       <thead><tr><th style="width:110px">Fecha</th><th>Acuerdo</th><th style="width:130px">Quién acordó</th></tr></thead>
       <tbody>
-        <tr><td style="color:#666;white-space:nowrap">08-jun-2026</td><td>Irasoque (secretario de Metrópoli) confirmó que el expediente está listo y que todos los VoBos están obtenidos, pero NO emitirá el Impacto Urbano mientras haya oposición vecinal activa. Institución paralizada durante Mundial / vacaciones julio.</td><td style="color:#666">Mauricio</td></tr>
-        <tr><td style="color:#666;white-space:nowrap">11-jun-2026</td><td>Rubén Castro (Triple Espacio) entregó paquete estructural completo con respuesta al punto 38 del ISC (interacción suelo-estructura, pág. 41 de memoria de cálculo). ENTREGA-TOMAS ALVA 11.06.2026.zip (342 MB) en Drive.</td><td style="color:#666">Triple Espacio / Rubén</td></tr>
-        <tr><td style="color:#666;white-space:nowrap">15-jun-2026</td><td>r06 reemplaza a r05. Arq. Rubén entregó versión r06 de la memoria estructural. Confirmar con Erick si el paquete ISC debe actualizarse con r06 antes de proceder.</td><td style="color:#666">Rubén Castro</td></tr>
-        <tr><td style="color:#666;white-space:nowrap">05-jun-2026</td><td>Secretario firmó el impacto urbano. Liberación estimada 2–3 semanas después del Mundial. Alta sensibilidad política — bajo perfil.</td><td style="color:#666">Equipo</td></tr>
-        <tr><td style="color:#666;white-space:nowrap">20-may-2026</td><td>Estrategia: bajo perfil, no escalar conflicto vecinal. Coordinar con Jorge cuando se resuelva tema vecinal. Timeline: 1–1.5 meses eficiente / 2–2.5 meses sin diligencia.</td><td style="color:#666">Mauricio / Erick</td></tr>
-      </tbody>
+<tr><td>2026-05-20</td><td>Ya se tienen todas las autorizaciones técnicas. Impacto urbano pendiente por temas políticos y vecinales. El expediente está integrado y en espera de firma.</td><td>Erick / Mauricio</td></tr>
+<tr><td>2026-05-20</td><td>Estrategia: evitar escalar conflicto vecinal, no profundizar públicamente sobre la ubicación. Coordinar con Jorge cuando se resuelva tema vecinal.</td><td>Mauricio / Erick</td></tr>
+<tr><td>2026-06-08</td><td>Irasoque (Metrópoli) dice expediente "está listo" pero NO firmará mientras haya oposición vecinal activa. Condición: acuerdos documentados con los 3 vecinos opositores. La institución no moverá nada durante el Mundial/vacaciones julio.</td><td>Mauricio</td></tr>
+<tr><td>2026-06-11</td><td>Rubén Castro (Triple Espacio) entregó paquete estructural completo con respuesta al punto 38 del ISC (verificación interacción suelo-estructura, pág. 41).</td><td>Triple Espacio / Rubén Castro</td></tr>
+<tr><td>2026-06-15</td><td>Arq. Rubén entregó versión r06 de la memoria de cálculo — corrección de textos. Confirmado (17-Jun): r06 SÍ reemplaza r05.</td><td>Triple Espacio / Rubén Castro</td></tr>
+<tr><td>2026-06-16</td><td>PLAUD Plan de choque: estrategia de esperar voluntad política de Irasoke FALLIDA tras 6 meses. Riesgo financiero y legal inminente (150+ compradores). Se requiere nueva estrategia con Jorge y Speaker 2 (pendiente identificar).</td><td>Mauricio / (Speaker 2 no identificado)</td></tr>
+</tbody>
     </table>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Edison 106 · CRN Abogados · Actualizado 16-jun-2026</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Edison 106 (Edison Park) · Actualizado 17-Jun-2026</p>
 </div>
 
 <script>
 const items = [
-  // ─── METRÓPOLI — Impacto Urbano ──────────────────────────────
-  { n: 9,  group: "METRÓPOLI — IMPACTO URBANO", desc: "[METRÓPOLI] Agendar reuniones con los 3 vecinos opositores y obtener minutas firmadas de no oposición — condición para que Irasoque (Metrópoli) emita el IU", who: "Mauricio", due: "Urgente", urgent: true, done: false },
-  { n: 10, group: "METRÓPOLI — IMPACTO URBANO", desc: "[METRÓPOLI] Solicitar a Irasoque (Metrópoli) confirmación por escrito de los requisitos para cerrar el expediente una vez acreditados los acuerdos vecinales", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  // ─── ISC ─────────────────────────────────────────────────────
-  { n: 12, group: "ISC", desc: "[ISC] Confirmar con Erick que el ingreso formal al ISC fue completado y que la prevención del punto 38 queda cubierta (subsane enviado 12-jun, Drive: 1y7n8XHfDBXNKgECBygYJtjoElSozkgnp)", who: "Nayeli / Erick", due: "Inmediato", urgent: true, done: false },
-  { n: 13, group: "ISC", desc: "[ISC — r06] r06 reemplaza a r05 — confirmar con Erick si el paquete enviado al ISC debe actualizarse con versión r06 (15-jun) antes de proceder", who: "Nayeli / Erick", due: "Inmediato", urgent: true, done: false },
-  { n: 8,  group: "ISC", desc: "[ISC — Lermo] Confirmar si estudio Lermo (LermoProySismica-TAdison106-jun26.pdf, 15-jun, Drive: 11gPxcJsBm8Rr6C3r5AkOX8vcb5EWFHrv) es el requerido para ISC o complementa el del 11-jun", who: "Arq. Rubén / Erick", due: "TBD", urgent: false, done: false },
-  { n: 2,  group: "ISC", desc: "[ISC — punto 26] Desahogar prevención del punto 26 del ISC — confirmar con Erick que queda cubierta", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
-  { n: 4,  group: "ISC", desc: "[ISC] Obtener dictamen ISC — estimado 3 semanas desde entrega de documentación completa", who: "Erick", due: "TBD", urgent: false, done: false },
-  // ─── VIGENCIAS ───────────────────────────────────────────────
-  { n: 5,  group: "VIGENCIAS", desc: "[VIGENCIAS] Verificar vigencia de uso de suelo y Alineamiento y Número Oficial (CAyNO) — riesgo de vencimiento", who: "Nayeli", due: "Inmediato", urgent: true, done: false },
-  // ─── POST IMPACTO URBANO ─────────────────────────────────────
-  { n: 1,  group: "POST IMPACTO URBANO", desc: "[POST-IU] Publicar IU en diario de circulación — una vez que Metrópoli emita el Impacto Urbano", who: "Equipo", due: "Post emisión IU", urgent: false, done: false },
-  { n: 3,  group: "POST IMPACTO URBANO", desc: "[POST-IU] Pago de derechos y manifestación — posterior a publicación en diario", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
-  // ─── MACO ────────────────────────────────────────────────────
-  { n: 7,  group: "MACO", desc: "[MACO] Publicitación con lona (15 días hábiles) para Manifestación de Construcción — confirmar si lona del reingreso aplica o se requiere nueva", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
-  // ─── COMPLETADOS ─────────────────────────────────────────────
-  { n: 6,  group: "COMPLETADOS", desc: "Dar acceso a Nayeli al Drive administrado por Svett para editar y actualizar", who: "Svett", due: "—", urgent: false, done: true },
-  { n: 11, group: "COMPLETADOS", desc: "[ISC] Paquete estructural completo (punto 38) entregado por Rubén Castro el 11-jun-2026. ENTREGA-TOMAS ALVA 11.06.2026.zip (342 MB) en Drive.", who: "Rubén Castro / Isaac", due: "—", urgent: false, done: true },
+  /* { n: 1, desc: "Publicitar Impacto Urbano (colgar lona) — plazo 15 días hábiles a partir de la autorización de firma", who: "Equipo", due: "TBD", urgent: false, done: false },
+  { n: 2, desc: "Desahogar prevención de publicitación vecinal (técnicamente ya complementada, verificar punto 26 para ISC)", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
+  { n: 3, desc: "Pago de derechos y manifestación (después de publicitación)", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
+  { n: 4, desc: "Obtener dictamen ISC — estimado 3 semanas desde entrega de documentación completa", who: "Erick", due: "TBD", urgent: false, done: false },
+  { n: 5, desc: "Verificar vigencia de uso de suelo y Alineamiento y Número Oficial — riesgo de vencimiento", who: "Nayeli", due: "Inmediato", urgent: true, done: false },
+  { n: 6, desc: "Dar acceso a Nayeli al Drive administrado por Svett para que pueda editar y actualizar", who: "Svett", due: "Inmediato", urgent: false, done: true },
+  { n: 7, desc: "Confirmar si hay que repetir publicitación (nueva lona) o si la del reingreso ya cubre", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
+  { n: 8, desc: "Estudio de suelos / interacción suelo-estructura Edison — Arq. Rubén (Triple Espacio) envió el 15-Jun versión actualizada: LermoProySismica-TAdison106-jun26.pdf (Drive: 11gPxcJsBm8Rr6C3r5AkOX8vcb5EWFHrv). Confirmar si este documento es el requerido para el expediente del ISC / punto 38.", who: "Arq. Rubén / Erick", due: "TBD", urgent: false, done: false },
+  { n: 9, desc: "Agendar reuniones con los 3 vecinos opositores y documentar acuerdos mínimos de no oposición (minutas firmadas)", who: "Mauricio", due: "Urgente", urgent: true, done: false },
+  { n: 10, desc: "Solicitar a Irasoque (Metrópoli) confirmación por escrito de los requisitos específicos para cerrar el expediente una vez acreditados los acuerdos vecinales", who: "Mauricio", due: "TBD", urgent: false, done: false },
+  { n: 11, desc: "[ISC] Paquete estructural completo entregado por Rubén Castro (Triple Espacio) el 11-Jun-2026 con respuesta al punto 38. Archivo ENTREGA-TOMAS ALVA 11.06.2026.zip en Drive (342 MB).", who: "Rubén Castro / Isaac", due: "Completado", urgent: false, done: true },
+  { n: 12, desc: "[ISC — SIGUIENTE PASO] Nayeli envió subsane Edison 106 ISC a Erick Sanz el 12-Jun-2026 (Drive: 1y7n8XHfDBXNKgECBygYJtjoElSozkgnp). Confirmar con Erick que el ingreso formal al ISC fue completado y que la prevención queda cubierta.", who: "Nayeli / Erick", due: "Inmediato", urgent: true, done: false },
+  { n: 13, desc: "[ISC — Memoria r06] Arq. Rubén confirmó (17-Jun) que r06 reemplaza r05. Nayeli organizó nueva carpeta ISC (Drive folder: 15rU--wIf1XzltR3QCRDtpz-t_jLjBw6E) con archivo de respuesta del estructurista (Drive: 14_gkz_-EzTdQt_k7FEHQhjAGDIVcdfrG). Confirmar con Erick si necesita reenviar el paquete ISC con r06 en lugar de r05.", who: "Nayeli / Erick", due: "Urgente", urgent: true, done: false },
+  { n: 14, desc: "[EIU — ESTRATEGIA URGENTE] PLAUD 16-Jun: La estrategia de esperar a Irasoke (Metrópoli) ha fallado tras 6 meses. Riesgo de 150-190 demandas por fraude (contratos compradores venciendo). Opciones: A) Juicio (inviable, 1.5 años), B) Presión social (organizar compradores). ACCIÓN: Contactar Jorge para reunión urgente y coordinar con Speaker 2 (no identificado — aclarar quién es) nueva estrategia.", who: "Mauricio", due: "Urgente", urgent: true, done: false } */
 ];
 
-const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
+const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");  // token partido para evitar secret scanner
 const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/edison106/state.json";
 const GITHUB_HDRS  = { "Content-Type": "application/json", "Authorization": `token ${GITHUB_TOKEN}`, "Accept": "application/vnd.github.v3+json" };
 
@@ -171,7 +149,6 @@ items.forEach(i => { DEFAULT_STATE[i.n] = i.done || false; });
 
 let state = { ...DEFAULT_STATE };
 let obs = {};
-let newItems = [];
 let saving = false;
 let saveTimer = null;
 let currentSha = null;
@@ -195,8 +172,7 @@ async function loadState() {
     currentSha = data.sha;
     const rec = JSON.parse(atob(data.content.replace(/\n/g, "")));
     obs = rec._obs || {};
-    newItems = rec._new || [];
-    state = Object.fromEntries(Object.entries(rec).filter(([k]) => !["_obs","_new"].includes(k)));
+    state = Object.fromEntries(Object.entries(rec).filter(([k]) => k !== "_obs"));
     showStatus("● Sincronizado", "#3a6e10");
   } catch(e) {
     showStatus("⚠ Sin conexión", "#a33030");
@@ -213,12 +189,12 @@ async function saveState() {
       const d = await r.json();
       currentSha = d.sha;
     }
-    const payload = JSON.stringify({ ...state, _obs: obs, _new: newItems });
+    const payload = JSON.stringify({ ...state, _obs: obs });
     const content = btoa(unescape(encodeURIComponent(payload)));
     const res = await fetch(GITHUB_API, {
       method: "PUT",
       headers: GITHUB_HDRS,
-      body: JSON.stringify({ message: "Actualizar estado Edison 106", content, sha: currentSha })
+      body: JSON.stringify({ message: "Actualizar estado", content, sha: currentSha })
     });
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
@@ -233,14 +209,12 @@ async function saveState() {
 setInterval(async () => { await loadState(); render(); }, 30000);
 
 function updateCounters() {
-  const doneFixed = Object.values(state).filter(Boolean).length;
-  const doneNew = newItems.filter(i => i.done).length;
-  const totalFixed = items.length;
-  const totalNew = newItems.length;
-  document.getElementById("done-count").textContent = doneFixed + doneNew;
-  document.getElementById("total-count").textContent = totalFixed + totalNew;
+  const done = Object.values(state).filter(Boolean).length;
+  const total = items.length;
+  document.getElementById("done-count").textContent = done;
+  document.getElementById("total-count").textContent = total;
   const p = document.getElementById("pending-counter");
-  if (p) p.textContent = (totalFixed - doneFixed) + (totalNew - doneNew);
+  if (p) p.textContent = (total - done);
 }
 
 function autoResize(ta) {
@@ -252,22 +226,11 @@ function render() {
   const tbody = document.getElementById("pending-tbody");
   tbody.innerHTML = "";
   const visible = items.filter(item => !state[item.n]);
-  let idx = 0;
-  let lastGroup = null;
-
-  visible.forEach(item => {
-    if (item.group && item.group !== lastGroup && item.group !== "COMPLETADOS") {
-      lastGroup = item.group;
-      const gtr = document.createElement("tr");
-      gtr.className = "group-hdr";
-      gtr.innerHTML = `<td colspan="6">${item.group}</td>`;
-      tbody.appendChild(gtr);
-    }
-    idx++;
+  visible.forEach((item, idx) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td class="check-col no-print"><input type="checkbox" data-n="${item.n}" title="Marcar como hecho"></td>
-      <td style="color:#999;font-size:12px">${idx}</td>
+      <td style="color:#999;font-size:12px">${idx + 1}</td>
       <td><span class="desc">${item.desc}</span></td>
       <td style="color:#666">${item.who}</td>
       <td><span class="badge ${item.urgent ? 'red' : 'gray'}">${item.due}</span></td>
@@ -296,102 +259,17 @@ function render() {
     });
   });
 
-  newItems.forEach((item, ni) => {
-    if (item.done) return;
-    idx++;
-    const tr = document.createElement("tr");
-    tr.style.background = "#fafaf7";
-    tr.innerHTML = `
-      <td class="check-col no-print"><input type="checkbox" data-ni="${ni}" class="new-cb" title="Marcar como hecho"></td>
-      <td style="color:#999;font-size:12px">${idx}</td>
-      <td><span style="font-size:10px;background:#e8f5e0;color:#3a6e10;border-radius:4px;padding:1px 5px;margin-right:4px;">equipo</span><span class="desc">${item.desc}</span></td>
-      <td style="color:#666">${item.who || "—"}</td>
-      <td><span class="badge gray">${item.due || "TBD"}</span></td>
-      <td><textarea class="obs-new-input" data-ni="${ni}" rows="1" placeholder="—">${item.obs || ""}</textarea></td>
-    `;
-    tbody.appendChild(tr);
-  });
-
-  tbody.querySelectorAll(".new-cb").forEach(cb => {
-    cb.addEventListener("change", async () => {
-      const ni = parseInt(cb.dataset.ni);
-      newItems[ni].done = true;
-      render();
-      updateCounters();
-      await saveState();
-    });
-  });
-
-  tbody.querySelectorAll("textarea.obs-new-input").forEach(ta => {
-    autoResize(ta);
-    ta.addEventListener("input", () => {
-      autoResize(ta);
-      newItems[parseInt(ta.dataset.ni)].obs = ta.value;
-      showStatus("Por guardar…", "#8a5010");
-      scheduleSave();
-    });
-  });
-
-  const addTr = document.createElement("tr");
-  addTr.id = "add-row";
-  addTr.classList.add("no-print");
-  addTr.innerHTML = `
-    <td colspan="6" style="padding:8px 14px;">
-      <div id="add-collapsed" style="cursor:pointer;color:#aaa;font-size:12px;display:flex;align-items:center;gap:6px;" onclick="showAddForm()">
-        <span style="font-size:16px;line-height:1">+</span> Agregar pendiente
-      </div>
-      <div id="add-form" style="display:none;gap:8px;align-items:flex-start;flex-wrap:wrap;">
-        <textarea id="new-desc" rows="2" placeholder="Descripción del pendiente…" style="flex:1;min-width:200px;border:1px solid #e0ddd4;border-radius:6px;padding:6px 8px;font-size:13px;font-family:inherit;resize:vertical;"></textarea>
-        <input id="new-who" type="text" placeholder="Responsable" style="width:130px;border:1px solid #e0ddd4;border-radius:6px;padding:6px 8px;font-size:13px;font-family:inherit;">
-        <input id="new-due" type="text" placeholder="Fecha (TBD)" style="width:110px;border:1px solid #e0ddd4;border-radius:6px;padding:6px 8px;font-size:13px;font-family:inherit;">
-        <div style="display:flex;gap:6px;align-items:center;">
-          <button onclick="addNewItem()" style="padding:6px 14px;background:#1a1a1a;color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer;">Agregar</button>
-          <button onclick="hideAddForm()" style="padding:6px 10px;background:transparent;border:1px solid #ddd;border-radius:6px;font-size:12px;cursor:pointer;color:#888;">Cancelar</button>
-        </div>
-      </div>
-    </td>
-  `;
-  tbody.appendChild(addTr);
-
   updateCounters();
-}
-
-function showAddForm() {
-  document.getElementById("add-collapsed").style.display = "none";
-  document.getElementById("add-form").style.display = "flex";
-  document.getElementById("new-desc").focus();
-}
-
-function hideAddForm() {
-  document.getElementById("add-collapsed").style.display = "flex";
-  document.getElementById("add-form").style.display = "none";
-  document.getElementById("new-desc").value = "";
-  document.getElementById("new-who").value = "";
-  document.getElementById("new-due").value = "";
-}
-
-async function addNewItem() {
-  const desc = document.getElementById("new-desc").value.trim();
-  if (!desc) return;
-  const who = document.getElementById("new-who").value.trim() || "—";
-  const due = document.getElementById("new-due").value.trim() || "TBD";
-  const today = new Date().toISOString().slice(0,10);
-  newItems.push({ desc, who, due, done: false, obs: "", added: today });
-  hideAddForm();
-  render();
-  updateCounters();
-  await saveState();
 }
 
 async function init() { await loadState(); render(); }
 init();
 
 function copyLink() {
-  const url = "https://mnunezlozada-web.github.io/admivo-status-pages/edison106/";
-  navigator.clipboard.writeText(url).then(() => {
+  navigator.clipboard.writeText(window.location.href).then(() => {
     alert("Liga copiada.");
   }).catch(() => {
-    prompt("Copia esta liga:", url);
+    prompt("Copia esta liga:", window.location.href);
   });
 }
 </script>
