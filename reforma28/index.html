@@ -57,16 +57,16 @@
     </div>
     <div class="stamp">
       <div id="last-update">Actualizado: 17-Jun-2026</div>
-      <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando…</div>
+      <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando...</div>
       <div style="margin-top:6px;" class="no-print">
-        <button class="btn-share" onclick="copyLink()">&#x2398; Copiar enlace</button>
+        <button class="btn-share" onclick="copyLink()">Copiar enlace</button>
         <button class="btn-print" onclick="window.print()">Imprimir</button>
       </div>
     </div>
   </header>
 
   <div class="cards">
-    <div class="card"><div class="label">Fase</div><div class="value sm">DEIU — visto bueno Sedema</div></div>
+    <div class="card"><div class="label">Fase</div><div class="value sm">DEIU -- visto bueno Sedema</div></div>
     <div class="card"><div class="label">DEIU</div><div class="value">5 / 6</div><div class="sub">instancias con opinion positiva</div></div>
     <div class="card"><div class="label">MIA Sedema</div><div class="value sm">3a revision</div><div class="sub">ultima revision posible</div></div>
     <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">--</div><div class="sub">activos</div></div>
@@ -85,10 +85,10 @@
         <tr><td>DEIU -- Proteccion Civil</td><td>Proteccion Civil</td><td><span class="badge green">Opinion positiva</span></td><td>Opinion emitida jun-2026</td></tr>
         <tr><td>DEIU -- Sedema (Lista Chequeo)</td><td>Sedema</td><td><span class="badge amber">En proceso</span></td><td>Lista de Chequeo 2 disponible en ventanilla -- pendiente notificacion al promovente</td></tr>
         <tr><td>MIA -- Sedema DGEIRA</td><td>Sedema</td><td><span class="badge red">3a revision</span></td><td>Rev 2 preparada por Claudia Bolanos (PSA) -- pendiente acceso Nayeli y revision de cambios</td></tr>
-        <tr><td>ACP / SPOTMET</td><td>SEDUVI/SPOTMET</td><td><span class="badge green">Dictamen favorable</span></td><td>Oficio SPOTMET/SUBPOT/DGOU/DPCUEP/3991/2025 (05-dic-2025) -- 411 depts, +139.10 m, 26,216.36 m2 SNB, 36 cajones, 107 bicis. DRO-0669 Jaime Sanchez</td></tr>
+        <tr><td>ACP / SPOTMET</td><td>SEDUVI/SPOTMET</td><td><span class="badge green">Dictamen favorable</span></td><td>Oficio 3991/2025 (05-dic-2025) -- 411 depts, +139.10 m, 26,216.36 m2 SNB, 36 cajones, 107 bicis. DRO-0669 Jaime Sanchez</td></tr>
         <tr><td>INBAL</td><td>INBAL</td><td><span class="badge blue">En gestion</span></td><td>Autorizacion en proceso. Nayeli escaneo y envio documento a Erick</td></tr>
-        <tr><td>ISC -- Instituto de las Construcciones</td><td>Instituto de las Construcciones</td><td><span class="badge red">Urgente</span></td><td>Expediente enviado a Erick 12-Jun -- pendiente confirmacion ingreso formal. Subsane estructural pendiente (6 observaciones)</td></tr>
-        <tr><td>Licencia de Demolicion</td><td>Alcaldia Cuauhtemoc</td><td><span class="badge blue">En preparacion</span></td><td>7 puntos de prevencion -- varios urgentes (fotos, fe de hechos, planos)</td></tr>
+        <tr><td>ISC -- Instituto de las Construcciones</td><td>Instituto de las Construcciones</td><td><span class="badge amber">En revision</span></td><td>Expediente enviado a Erick 12-Jun -- pendiente confirmacion ingreso formal</td></tr>
+        <tr><td>Licencia de Demolicion</td><td>Alcaldia Cuauhtemoc</td><td><span class="badge blue">En preparacion</span></td><td>7 puntos de prevencion -- varios en proceso</td></tr>
       </tbody>
     </table>
   </section>
@@ -131,45 +131,48 @@
 
 <script>
 var items = [
-  { n: 4,  desc: "Validar que el set Fer/Colores sea la base para ingenierias, memorias e instalaciones; confirmar biciestacionamientos = 107. Triple Espacio actualizo nomenclatura (06-Jun) -- Nayeli revisando version de Brian para confirmar si biciestacionamientos, areas y hatch ya estan corregidos.", who: "Nayeli", due: "TBD", urgent: false, done: false },
-  { n: 6,  desc: "Redactar justificacion de arbolado y factibilidad para el expediente.", who: "Nayeli", due: "TBD", urgent: false, done: false },
-  { n: 7,  desc: "Verificar ortofoto: version REV enviada a Luis via WeTransfer el 15-Jun (Reforma y Donato Guerra REV.dwg/.jpg/.tif). Confirmar si reemplaza la enviada el 10/06 y si Luis dio visto bueno.", who: "Luis", due: "TBD", urgent: false, done: false },
+  { n: 6,  desc: "[ARBOLADO] Redactar justificacion de arbolado para el expediente. El arbol colindante ya fue retirado (no existente). Desarrollar justificacion acreditando su ausencia y descartando impacto en tramite.", who: "Luis", due: "TBD", urgent: false, done: false },
   { n: 10, desc: "Crear Drive centralizado con version final unificada del proyecto ejecutivo. Plazo acordado PLAUD 15-Jun.", who: "Alan + Nayeli", due: "2026-06-22", urgent: false, done: false },
-  { n: 14, desc: "[ECOLEGIS] Obtener Dictamen de Factibilidad Hidraulica.", who: "Nayeli / Equipo", due: "TBD", urgent: false, done: false },
-  { n: 15, desc: "[ECOLEGIS] Carnet RAMIR del transportista elegido -- Guillermo Blancas descartado; otro transportista en padron asignado. Confirmar nombre y vigencia del carnet.", who: "Nayeli", due: "TBD", urgent: false, done: false },
-  { n: 16, desc: "[ECOLEGIS] Arbol exterior: si hubo afectacion incluir layer en plano topografico DWG georreferenciado; si no hubo afectacion redactar justificacion.", who: "Nayeli / Luis", due: "TBD", urgent: false, done: false },
+  { n: 16, desc: "[ECOLEGIS] Arbol exterior: si hubo afectacion incluir layer en plano topografico DWG georreferenciado; si no hubo afectacion redactar justificacion. Pendiente: preguntar a Luis el estatus del arbol faltante.", who: "Luis", due: "TBD", urgent: false, done: false },
   { n: 17, desc: "[ECOLEGIS] Ortofoto del predio -- version REV enviada a Luis el 15-Jun via WeTransfer. Visto bueno de Luis requerido antes de usar para expediente Ecolegis.", who: "Luis", due: "TBD", urgent: false, done: false },
   { n: 18, desc: "[ECOLEGIS] Corregir discrepancia hatches: cuadrar areas de planos vs memoria (Ecolegis adjunto Excel por nivel).", who: "Nayeli / Alan", due: "TBD", urgent: false, done: false },
-  { n: 19, desc: "[ECOLEGIS] Biciestacionamientos: planos muestran 114 (con error numeracion -- falta #61), memoria dice 107. Corregir plano para mostrar 107 y numeracion correcta. Numero 107 confirmado por dictamen modificacion 3991/2025.", who: "Nayeli / Alan", due: "TBD", urgent: false, done: false },
-  { n: 20, desc: "Cuadrar superficie sobre nivel banqueta: memoria (26,294.20 m2) vs SPOTMET (26,216.36 m2) -- diferencia 77.84 m2. Dictamen modificacion 3991/2025 confirma 26,216.36 m2 como numero oficial -- memoria y planos deben cuadrarse a ese valor.", who: "Nayeli / Alan", due: "TBD", urgent: false, done: false },
+  { n: 20, desc: "Cuadrar superficie sobre nivel banqueta: memoria (26,294.20 m2) vs SPOTMET (26,216.36 m2) -- diferencia 77.84 m2. Dictamen 3991/2025 confirma 26,216.36 m2 como numero oficial. Relacionado con pendientes de arbolado (6) y ortofoto (7 -- resuelto).", who: "Nayeli / Alan", due: "TBD", urgent: false, done: false },
   { n: 21, desc: "[ISC] Expediente Reforma 28 enviado a Erick Sanz el 12-Jun. Pendiente: confirmar con Erick que el ingreso formal al Instituto fue completado y que no hay observaciones adicionales.", who: "Nayeli / Erick", due: "Urgente", urgent: true, done: false },
-  { n: 22, desc: "[DEMOLICION] Reporte fotografico del estado actual del inmueble.", who: "Nayeli / Alan", due: "TBD", urgent: false, done: false },
-  { n: 23, desc: "[DEMOLICION] Revision en ventanilla economica (prevencion).", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 24, desc: "[DEMOLICION] Dictamen de estabilidad de colindancias (predios vecinos).", who: "Luis", due: "TBD", urgent: false, done: false },
+  { n: 22, desc: "[DEMOLICION] Reporte fotografico del estado actual del inmueble.", who: "Isaac", due: "TBD", urgent: false, done: false },
+  { n: 24, desc: "[DEMOLICION] Dictamen de estabilidad de colindancias (predios vecinos). Solicitar al cliente.", who: "Nayeli", due: "TBD", urgent: false, done: false },
   { n: 25, desc: "[DEMOLICION] Constancia de no adeudo predial (Finanzas CDMX).", who: "Mauricio", due: "TBD", urgent: false, done: false },
   { n: 26, desc: "[DEMOLICION] Constancia de no adeudo de agua (SACMEX).", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 28, desc: "[DEMOLICION] Memoria / programa del proceso de demolicion.", who: "Luis / Alan", due: "TBD", urgent: false, done: false },
+  { n: 28, desc: "[DEMOLICION] Memoria / programa del proceso de demolicion.", who: "Nayeli", due: "TBD", urgent: false, done: false },
   { n: 29, desc: "[DEMOLICION] INBAL -- autorizacion pendiente (ya en gestion).", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 30, desc: "[DEMOLICION] RAMIR para residuos de demolicion (carnet transportista) -- relacionado con Ecolegis.", who: "Nayeli", due: "TBD", urgent: false, done: false },
   { n: 31, desc: "Entregar al cliente el estimado de derechos de Reforma 28 (elaborado por Fer, en poder de Mauricio).", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 32, desc: "[ISC] Observaciones del corresponsable estructural a subsanar: (1) verificar coordenadas/Ts de ubicacion, (2) revision estructuras duales, (3) revision separacion colindancias, (4) limitacion dano DIR X -- distorsion 0.004 no cumple, (5) verificar desplazamientos todos los niveles, (6) distorsiones SV x1.1 -- no cumple DIR X. Alan afirma que ya se envio; Nayeli verificara.", who: "Cliente / Alan", due: "Urgente", urgent: true, done: false },
-  { n: 33, desc: "[CONTROL VERSIONES] Nayeli envio el 15-Jun la memoria EIU como version de referencia oficial. Discrepancia de 100 m2 entre proyecto Bryan/Alan y el ingresado al IU. Plazo para cuadrar: 2026-06-22.", who: "Nayeli / Alan / Bryan", due: "2026-06-22", urgent: false, done: false },
   { n: 35, desc: "[ECOLEGIS] Factibilidad hidraulica: Luis redactara respuesta indicando que la factibilidad no se notifica directamente al promovente, sino a SEDEMA o al Spotmet.", who: "Luis", due: "TBD", urgent: false, done: false },
   { n: 36, desc: "[DEMOLICION -- Punto 7] Complementar planos: plantas de cada nivel escaladas, cotas parciales y totales, sombreado areas a demoler en plantas/cortes/fachadas, tabla de areas por nivel con superficie total. Adicionalmente firmas del representante legal, DRO y corresponsables.", who: "Alan / Bryan", due: "Urgente", urgent: true, done: false },
   { n: 37, desc: "[DEMOLICION -- Punto 6] Cartas responsivas -- confirmar si ya estan emitidas o requieren gestion adicional.", who: "Nayeli", due: "TBD", urgent: false, done: false },
-  { n: 38, desc: "[DEMOLICION -- Punto 1 + fotos] Fechas de notificacion vecinal confirmadas con Eric. Pendiente: recibir reporte fotografico del cliente para completar la nueva notificacion (la original caduco por incidente en alcaldia).", who: "Nayeli", due: "Esta semana", urgent: true, done: false },
-  { n: 39, desc: "[DEMOLICION -- Punto 5 + Fe de hechos] Isaac preparara fe de hechos alternativa que acredite la negativa del vecino izquierdo a dar acceso. Mauricio confirmo viabilidad legal. Pendiente: cliente entregara documento esta semana.", who: "Mauricio / Isaac", due: "Esta semana", urgent: true, done: false },
+  { n: 39, desc: "[DEMOLICION -- Punto 5 + Fe de hechos] Isaac preparara fe de hechos alternativa que acredite la negativa del vecino izquierdo a dar acceso. Mauricio confirmo viabilidad legal. Pendiente: cliente entregara documento.", who: "Mauricio / Isaac", due: "Esta semana", urgent: true, done: false },
   { n: 40, desc: "[DEMOLICION -- Punto 5 alt.] Nayeli revisara si la memoria descriptiva de proteccion a colindancias existente ya cubre el Punto 5, o requiere actualizacion.", who: "Nayeli", due: "TBD", urgent: false, done: false },
-  { n: 41, desc: "[DEMOLICION -- Punto 2] Isaac debe presentar pasaporte original para cotejo de identificacion al momento de la subsanacion. Requiere aproximadamente medio dia.", who: "Isaac", due: "Al momento subsanacion", urgent: false, done: false },
-  { n: 43, desc: "[MIA SEDEMA -- Rev 2] Claudia Bolanos (PSA) compartio carpeta con subsane Rev 2 de la MIA ante DGEIRA-Sedema. Nayeli solicito acceso (16-Jun). Pendiente: (1) Claudia otorgar acceso a Nayeli, (2) Nayeli revisar y documentar que observaciones de DGEIRA fueron atendidas.", who: "Nayeli / Claudia Bolanos", due: "Urgente", urgent: true, done: false },
-  { n: 44, desc: "[SEDEMA -- Links actualizados 17-Jun] Nayeli reorganizo las dos revisiones en nuevas carpetas. Links anteriores ya no funcionan. Rev 1: drive.google.com/.../16rdWoUSQN6SgmUBlef2pvmVlkabSE75F | Rev 2: drive.google.com/.../1-l1mB3FvwMmjHPQi1N-CSGh8mzCseAcW. Allan/Isaac/Brayan deben confirmar recepcion.", who: "Nayeli / Allan / Brayan", due: "Urgente", urgent: true, done: false }
+  { n: 41, desc: "[DEMOLICION -- Punto 2] Isaac debe presentar pasaporte original para cotejo de identificacion al momento de la subsanacion. Requiere aproximadamente medio dia.", who: "Isaac", due: "Al momento subsanacion", urgent: false, done: false }
 ];
 
 var GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
 var GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/reforma28/state.json";
 var GITHUB_HDRS  = { "Content-Type": "application/json", "Authorization": "token " + GITHUB_TOKEN, "Accept": "application/vnd.github.v3+json" };
 
-var PREFETCH = {"4":false,"6":false,"7":false,"10":false,"14":false,"15":false,"16":false,"17":false,"18":false,"19":false,"20":false,"21":false,"22":false,"23":false,"24":false,"25":false,"26":false,"28":false,"29":false,"30":false,"31":false,"32":false,"33":false,"35":false,"36":false,"37":false,"38":false,"39":false,"40":false,"41":false,"43":false,"44":false,"_obs":{"6":"respecto al arbol que se quito, responsable luis ","7":"Enviado a Luis, 10jun26","14":"Luis "}};
+/* Estado sincronizado con GitHub al 17-Jun-2026 */
+var PREFETCH = {
+  "6":false,"10":false,"16":false,"17":false,"18":false,"20":false,
+  "21":false,"22":false,"24":false,"25":false,"26":false,"28":false,
+  "29":false,"31":false,"35":false,"36":false,"37":false,"39":false,
+  "40":false,"41":false,
+  "_obs":{
+    "6":"respomsable luis",
+    "16":"preguntar a Luis status de arbol faltante.",
+    "20":"fusionar pendiente 6 y 7",
+    "22":"responsable Isaac",
+    "24":"responsable nayeli, solicitar al cliente",
+    "28":"responsable nayeli",
+    "36":"tbd"
+  }
+};
 
 var state = {};
 items.forEach(function(i) { state[i.n] = i.done || false; });
@@ -197,7 +200,7 @@ function loadState() {
     currentSha = data.sha;
     var rec = JSON.parse(atob(data.content.replace(/\n/g, "")));
     obs = rec._obs || {};
-    Object.keys(rec).forEach(function(k) { if (k !== "_obs") state[k] = rec[k]; });
+    Object.keys(rec).forEach(function(k) { if (k !== "_obs" && k !== "_new") state[k] = rec[k]; });
     showStatus("Sincronizado", "#3a6e10");
   }).catch(function() {
     obs = PREFETCH._obs || {};
