@@ -41,6 +41,21 @@
   .btn-print:hover { background: #f5f4f0; }
   .counter { font-size: 12px; color: #888; margin-bottom: 8px; }
   .counter span { font-weight: 600; color: #1a1a1a; }
+  .add-form { margin-top: 8px; }
+  .btn-add { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; padding: 5px 12px; border-radius: 8px; border: 0.5px dashed #bbb; background: #fff; cursor: pointer; color: #888; }
+  .btn-add:hover { background: #f5f4f0; color: #444; }
+  .add-fields { display: none; background: #fff; border: 0.5px solid #e0ddd4; border-radius: 10px; padding: 12px 14px; margin-top: 6px; }
+  .add-fields.open { display: block; }
+  .add-fields input { font-size: 13px; font-family: inherit; border: 0.5px solid #ddd; border-radius: 6px; padding: 5px 8px; color: #1a1a1a; background: #faf9f6; outline: none; }
+  .add-fields input:focus { border-color: #aaa; }
+  .add-fields .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 8px; }
+  .add-fields .inp-desc { flex: 1; min-width: 200px; }
+  .add-fields .inp-who { width: 140px; }
+  .add-fields .inp-due { width: 110px; }
+  .add-fields label { font-size: 11px; color: #999; display: block; margin-bottom: 3px; }
+  .btn-confirm { font-size: 12px; padding: 5px 14px; border-radius: 7px; border: none; background: #3a6e10; color: #fff; cursor: pointer; }
+  .btn-confirm:hover { background: #2e570d; }
+  .btn-cancel { font-size: 12px; padding: 5px 12px; border-radius: 7px; border: 0.5px solid #ccc; background: #fff; color: #888; cursor: pointer; margin-left: 4px; }
   @media print {
     body { background: #fff; padding: 1rem; }
     .no-print { display: none !important; }
@@ -109,6 +124,18 @@
       </thead>
       <tbody id="pending-tbody"></tbody>
     </table>
+    <div class="add-form no-print">
+      <button class="btn-add" onclick="toggleAddForm()">+ Agregar pendiente</button>
+      <div class="add-fields" id="add-fields">
+        <div class="row">
+          <div style="flex:1;min-width:200px"><label>Pendiente *</label><input class="inp-desc" id="inp-desc" placeholder="Descripcion del pendiente..." style="width:100%"></div>
+          <div><label>Responsable</label><input class="inp-who" id="inp-who" placeholder="Nombre" style="width:130px"></div>
+          <div><label>Fecha limite</label><input class="inp-due" id="inp-due" placeholder="TBD" style="width:100px"></div>
+        </div>
+        <button class="btn-confirm" onclick="addNewItem()">Agregar</button>
+        <button class="btn-cancel" onclick="toggleAddForm()">Cancelar</button>
+      </div>
+    </div>
   </section>
 
   <section>
@@ -169,6 +196,7 @@ var PREFETCH = {
 var state = {};
 items.forEach(function(i) { state[i.n] = i.done || false; });
 var obs = {};
+var newItems = [];   /* items agregados por el equipo desde la página */
 var saving = false;
 var saveTimer = null;
 var currentSha = null;
@@ -192,11 +220,13 @@ function loadState() {
     currentSha = data.sha;
     var rec = JSON.parse(atob(data.content.replace(/\n/g, "")));
     obs = rec._obs || {};
+    newItems = rec._new || [];
     Object.keys(rec).forEach(function(k) { if (k !== "_obs" && k !== "_new") state[k] = rec[k]; });
     showStatus("Sincronizado", "#3a6e10");
   }).catch(function() {
     obs = PREFETCH._obs || {};
-    Object.keys(PREFETCH).forEach(function(k) { if (k !== "_obs") state[k] = PREFETCH[k]; });
+    newItems = PREFETCH._new || [];
+    Object.keys(PREFETCH).forEach(function(k) { if (k !== "_obs" && k !== "_new") state[k] = PREFETCH[k]; });
     showStatus("Sin conexion -- datos locales", "#8a5010");
   });
 }
@@ -206,7 +236,7 @@ function saveState() {
   saving = true;
   showStatus("Guardando...", "#8a5010");
   var doSave = function(sha) {
-    var payload = JSON.stringify(Object.assign({}, state, { _obs: obs }));
+    var payload = JSON.stringify(Object.assign({}, state, { _obs: obs, _new: newItems }));
     var content = btoa(unescape(encodeURIComponent(payload)));
     return fetch(GITHUB_API, {
       method: "PUT",
@@ -239,7 +269,8 @@ setInterval(function() { loadState().then(render); }, 30000);
 function updateCounters() {
   var done = 0;
   Object.keys(state).forEach(function(k) { if (state[k]) done++; });
-  var total = items.length;
+  newItems.forEach(function(item) { if (item.done) done++; });
+  var total = items.length + newItems.length;
   document.getElementById("done-count").textContent = done;
   document.getElementById("total-count").textContent = total;
   var p = document.getElementById("pending-counter");
@@ -267,10 +298,34 @@ function render() {
     tbody.appendChild(tr);
   });
 
-  tbody.querySelectorAll("input[type=checkbox]").forEach(function(cb) {
+  newItems.forEach(function(item, idx) {
+    if (item.done) return;
+    var tr = document.createElement("tr");
+    tr.style.background = "#fffef8";
+    tr.innerHTML =
+      '<td class="check-col no-print"><input type="checkbox" data-nid="' + item.id + '" title="Marcar como hecho"></td>' +
+      '<td style="color:#bbb;font-size:12px">&#43;</td>' +
+      '<td>' + item.desc + '</td>' +
+      '<td style="color:#666">' + item.who + '</td>' +
+      '<td><span class="badge gray">' + item.due + '</span></td>' +
+      '<td></td>';
+    tbody.appendChild(tr);
+  });
+
+  tbody.querySelectorAll("input[type=checkbox][data-n]").forEach(function(cb) {
     cb.addEventListener("change", function() {
       var n = parseInt(cb.dataset.n);
       state[n] = true;
+      render();
+      updateCounters();
+      saveState();
+    });
+  });
+
+  tbody.querySelectorAll("input[type=checkbox][data-nid]").forEach(function(cb) {
+    cb.addEventListener("change", function() {
+      var id = cb.dataset.nid;
+      newItems.forEach(function(item) { if (item.id === id) item.done = true; });
       render();
       updateCounters();
       saveState();
@@ -288,6 +343,27 @@ function render() {
   });
 
   updateCounters();
+}
+
+function toggleAddForm() {
+  var f = document.getElementById("add-fields");
+  f.classList.toggle("open");
+  if (f.classList.contains("open")) document.getElementById("inp-desc").focus();
+}
+
+function addNewItem() {
+  var desc = document.getElementById("inp-desc").value.trim();
+  if (!desc) return;
+  var who = document.getElementById("inp-who").value.trim() || "--";
+  var due = document.getElementById("inp-due").value.trim() || "TBD";
+  var id = "n_" + Date.now();
+  newItems.push({ id: id, desc: desc, who: who, due: due, done: false });
+  document.getElementById("inp-desc").value = "";
+  document.getElementById("inp-who").value = "";
+  document.getElementById("inp-due").value = "";
+  document.getElementById("add-fields").classList.remove("open");
+  render();
+  saveState();
 }
 
 function init() { loadState().then(render); }
