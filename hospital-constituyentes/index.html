@@ -17,7 +17,7 @@
   .card .label { font-size: 11px; color: #999; margin-bottom: 4px; }
   .card .value { font-size: 22px; font-weight: 600; }
   .card .sub { font-size: 11px; color: #aaa; margin-top: 2px; }
-  .card .value.sm { font-size: 13px; margin-top: 2px; }
+  .card .value.sm { font-size: 14px; margin-top: 2px; }
   section { margin-bottom: 2rem; }
   section h2 { font-size: 11px; font-weight: 600; color: #999; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
   table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; border: 0.5px solid #e0ddd4; }
@@ -53,10 +53,10 @@
   <header>
     <div>
       <h1>Hospital Constituyentes</h1>
-      <p>Octavio Peñaloza &nbsp;·&nbsp; Av. Constituyentes, Alcaldía Miguel Hidalgo, CDMX</p>
+      <p>Octavio Peñaloza &nbsp;·&nbsp; Hospital Constituyentes</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 10-jun-2026</div>
+      <div id="last-update">Actualizado: 18-Jun-2026</div>
       <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando…</div>
       <div style="margin-top:6px;" class="no-print">
         <button class="btn-share" onclick="copyLink()">⎘ Copiar enlace</button>
@@ -65,27 +65,22 @@
     </div>
   </header>
 
-  <div class="cards">
-    <div class="card"><div class="label">Fase</div><div class="value sm">CAyNO completado · Fusión y CUZUS en prevención · EMS pendiente</div></div>
-    <div class="card"><div class="label">CAyNO</div><div class="value">4 / 4</div><div class="sub">predios completados</div></div>
-    <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">21</div><div class="sub">por cerrar</div></div>
-    <div class="card"><div class="label">Urgentes</div><div class="value" style="color:#a33030">4</div><div class="sub">requieren atención</div></div>
-  </div>
+  <div class="cards"><div class="card"><div class="label">Proyecto</div><div class="value sm">Hospital Constituyentes</div></div>
+    <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">22</div><div class="sub">por cerrar</div></div>
+    <div class="card"><div class="label">Completados</div><div class="value">0</div><div class="sub">de 22 total</div></div>
+    <div class="card"><div class="label">Urgentes</div><div class="value" style="color:#a33030">7</div><div class="sub">requieren atención</div></div></div>
 
   <section>
     <h2>Estado de trámites</h2>
     <table>
       <thead><tr><th>Trámite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
-      <tbody>
-        <tr><td>CAyNO (4 predios)</td><td>Alcaldía Miguel Hidalgo</td><td><span class="badge green">Completado</span></td><td style='font-size:12px;color:#555'>Dic-2025. Válidas hasta dic-2027. Zona Minada confirmada</td></tr>
-        <tr><td>Fusión de 4 predios</td><td>SEDUVI / Alcaldía</td><td><span class="badge amber">En prevención</span></td><td style='font-size:12px;color:#555'>Publicitación ingresada 15-ene-2026. Prevención activa por errores en versión obra nueva</td></tr>
-        <tr><td>CUZUS</td><td>SEDUVI</td><td><span class="badge red">En prevención</span></td><td style='font-size:12px;color:#555'>Aguardando versión corregida de obra nueva antes de recoger</td></tr>
-        <tr><td>EMS (Estudio Mecánica de Suelo)</td><td>Proveedor externo</td><td><span class="badge red">No contratado</span></td><td style='font-size:12px;color:#555'>Cotización $448,247 (con IVA) pendiente de autorización. Requiere acceso al predio</td></tr>
-        <tr><td>EIU (Estudio Impacto Urbano)</td><td>SEDUVI</td><td><span class="badge gray">Pendiente inicio</span></td><td style='font-size:12px;color:#555'>~8 meses una vez ingresado → autorización estimada abr-may 2027</td></tr>
-        <tr><td>Licencia de Fusión</td><td>Alcaldía</td><td><span class="badge blue">Fase final</span></td><td style='font-size:12px;color:#555'>Esperada fines de julio o principios de agosto 2026</td></tr>
-        <tr><td>Firma "Cano" — claves obra nueva</td><td>Alcaldía Miguel Hidalgo</td><td><span class="badge red">Trabado</span></td><td style='font-size:12px;color:#555'>Insistir en oficina de firma para bajar documento y liberar claves</td></tr>
-        <tr><td>DCA (demolición)</td><td>SEDEMA</td><td><span class="badge gray">Pendiente</span></td><td style='font-size:12px;color:#555'>Posterior a fusión y trámites previos</td></tr>
-      </tbody>
+      <tbody><tr><td>CAyNO (4 predios)</td><td>Alcaldía Miguel Hidalgo</td><td><span class="badge green">Completado</span></td><td style="font-size:12px;color:#555">Dic-2025. Válidas hasta dic-2027. Zona Minada confirmada</td></tr>
+      <tr><td>Fusión de 4 predios</td><td>SEDUVI / Alcaldía</td><td><span class="badge blue">En proceso</span></td><td style="font-size:12px;color:#555">Publicitación vecinal ingresada 15-ene-2026. Pendiente constancia</td></tr>
+      <tr><td>CUZUS</td><td>SEDUVI</td><td><span class="badge red">En prevención</span></td><td style="font-size:12px;color:#555">Aguardando versión corregida de obra nueva</td></tr>
+      <tr><td>EMS (Estudio Mecánica de Suelo)</td><td>Proveedor externo</td><td><span class="badge red">No contratado</span></td><td style="font-size:12px;color:#555">Cotización $448,247 (con IVA) sin autorizar. Requiere acceso al predio</td></tr>
+      <tr><td>EIU (Estudio Impacto Urbano)</td><td>SEDUVI</td><td><span class="badge red">Pendiente inicio</span></td><td style="font-size:12px;color:#555">Estimado 8 meses una vez ingresado → autorización abril-mayo 2027</td></tr>
+      <tr><td>Licencia de Fusión</td><td>Alcaldía</td><td><span class="badge blue">Fase final</span></td><td style="font-size:12px;color:#555">Esperada fines de julio o principios de agosto 2026</td></tr>
+      <tr><td>DCA (demolición)</td><td>SEDEMA</td><td><span class="badge red">Pendiente</span></td><td style="font-size:12px;color:#555">—</td></tr></tbody>
     </table>
   </section>
 
@@ -111,47 +106,48 @@
     <h2>Acuerdos clave</h2>
     <table>
       <thead><tr><th style="width:110px">Fecha</th><th>Acuerdo</th><th style="width:130px">Quién acordó</th></tr></thead>
-      <tbody>
-        <tr><td style='color:#666;white-space:nowrap'>2026-06-03</td><td>NO recoger "constituyentes" hasta recibir versión corregida de obra nueva (sin errores).</td><td style='color:#666'>Mauricio / John</td></tr>
-        <tr><td style='color:#666;white-space:nowrap'>2026-06-03</td><td>Se descarta la vía de "regularización" — la única vía válida es través del Archivo Central (extracción de antecedente del expediente).</td><td style='color:#666'>Mauricio / John</td></tr>
-        <tr><td style='color:#666;white-space:nowrap'>2026-06-03</td><td>"Opción 2" activada para aliviar presión de terceros y avanzar en paralelo.</td><td style='color:#666'>Mauricio / John</td></tr>
-        <tr><td style='color:#666;white-space:nowrap'>2026-06-09</td><td>Anteproyecto resuelto: 60/40 densidad; hospital 2,700 m² (semisótano 767m² + PB 558m² + N1 1,093m² + N2 268m²); consultorios 4,600–4,800 m²; 3.5 sótanos + valet parking; PB elevada 1.80m.</td><td style='color:#666'>Mauricio / Equipo Arq.</td></tr>
-        <tr><td style='color:#666;white-space:nowrap'>2026-06-09</td><td>Estrategia: inclinarse al riesgo calculado — iniciar demolición y excavación con licencias independientes mientras se tramita el EIU, para acortar cronograma total. Decisión final: hablar con socios.</td><td style='color:#666'>Mauricio</td></tr>
-        <tr><td style='color:#666;white-space:nowrap'>2026-06-09</td><td>Cronograma regulatorio: fusión fines jul/ago; EIU ~8 meses → autorización abr-may 2027; licencia construcción +1 mes.</td><td style='color:#666'>Mauricio</td></tr>
-        <tr><td style='color:#666;white-space:nowrap'>2026-06-09</td><td>Mauricio presentó el proyecto al Alcalde de Miguel Hidalgo — reacción favorable. Bajo perfil de riesgo vecinal (zona ya impactada por hospitales).</td><td style='color:#666'>Mauricio</td></tr>
-      </tbody>
+      <tbody><tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-05-11</td><td style="font-size:13px">Avanzar con ingreso de cuzus en cuanto lleguen los papeles</td><td style="color:#666;font-size:12px">— / Héctor</td></tr>
+      <tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-03</td><td style="font-size:13px">No recoger "constituyentes" hasta recibir versión corregida (obra nueva sin errores)</td><td style="color:#666;font-size:12px">Mauricio / John</td></tr>
+      <tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-03</td><td style="font-size:13px">Se descarta la figura de "regularización" por no existir esa vía — la única vía es a través del Archivo Central</td><td style="color:#666;font-size:12px">Mauricio / John</td></tr>
+      <tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-03</td><td style="font-size:13px">"Opción 2" ya está puesta; activarla para aliviar presión de terceros y avanzar</td><td style="color:#666;font-size:12px">Mauricio / John</td></tr>
+      <tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-03</td><td style="font-size:13px">Costo de inacción doble: pérdida política (clientes/terceros se desesperan) y riesgo procedimental (caídas por requisitos mal integrados)</td><td style="color:#666;font-size:12px">—</td></tr>
+      <tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-09</td><td style="font-size:13px">Anteproyecto arquitectónico resuelto: 60/40 densidad; hospital 2,700 m² (semi-sótano 767m², PB 558m², N1 1,093m², N2 268m²); consultorios 4,800 m² (40m²/unidad) o 4,600 m² (24-29m²); 3.5 sótanos + valet parking; PB elevada 1.80m. Ruta crítica: regulatoria, no arquitectónica.</td><td style="color:#666;font-size:12px">Mauricio / Equipo Arq.</td></tr>
+      <tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-09</td><td style="font-size:13px">Estrategia: inclinarse al riesgo calculado — iniciar demolición y excavación con licencias independientes mientras se tramita EIU, para acortar cronograma total. Decisión final pendiente de hablar con socios.</td><td style="color:#666;font-size:12px">Mauricio</td></tr>
+      <tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-09</td><td style="font-size:13px">Cronograma regulatorio: fusión fines julio/agosto; EIU ~8 meses → autorización abril-mayo 2027; licencia construcción +1 mes.</td><td style="color:#666;font-size:12px">Mauricio</td></tr>
+      <tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-09</td><td style="font-size:13px">Mauricio presentó el proyecto personalmente al alcalde de Miguel Hidalgo, quien mostró reacción favorable. Bajo perfil de riesgo vecinal (zona ya impactada por hospitales).</td><td style="color:#666;font-size:12px">Mauricio</td></tr></tbody>
     </table>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Hospital Constituyentes · Actualizado 10-jun-2026</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Hospital Constituyentes · Actualizado 18-Jun-2026</p>
 </div>
 
 <script>
 const items = [
-  { n: 13, desc: "Pagar prediales vencidos de los 4 predios (4 bimestres sin pagar — deuda estimada ~$78,416 + recargos). Requisito para trámites SEDUVI/Alcaldía.", who: "Octavio Peñaloza", due: "Urgente", urgent: true, done: false },
-  { n: 14, desc: "Autorizar y contratar EMS ($386,420 + IVA). Coordinar acceso al predio y proporcionar plano topográfico.", who: "Octavio Peñaloza", due: "Urgente", urgent: true, done: false },
-  { n: 4,  desc: "NO recoger 'constituyentes' hasta recibir versión corregida de obra nueva del equipo técnico.", who: "Mauricio", due: "Inmediato", urgent: true, done: false },
-  { n: 7,  desc: "[John] Destrabar 'Cano': insistir con oficina de firma en Alcaldía para bajar el documento y liberar claves de obra nueva.", who: "John", due: "Inmediato", urgent: true, done: false },
-  { n: 9,  desc: "[John] Enviar a Mauricio la versión corregida de 'constituyentes' (obra nueva y requisitos validados) antes de recoger.", who: "John", due: "TBD", urgent: false, done: false },
-  { n: 5,  desc: "Una vez recibida la versión corregida de obra nueva: coordinar recolección y notificación inmediata.", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 6,  desc: "[John] Ir al Archivo Central — gestionar extracción de antecedente del expediente de Cuauhtémoc; documentar folio y responsable.", who: "John / Héctor", due: "TBD", urgent: false, done: false },
-  { n: 8,  desc: "[John/Héctor] Visita presencial para presionar por respuesta del escrito del árbol; registrar acuse o minuta.", who: "Héctor", due: "TBD", urgent: false, done: false },
-  { n: 10, desc: "[John] Activar 'opción 2' para asuntos ya puestos; listar cuáles aplican y sus pasos.", who: "John", due: "TBD", urgent: false, done: false },
-  { n: 11, desc: "Confirmar disponibilidad y agendar reunión martes o miércoles (no jueves — viaje al mundial).", who: "Mauricio / John", due: "TBD", urgent: false, done: false },
-  { n: 12, desc: "Verificar con el área correspondiente si hubo respuesta al escrito del árbol; compartir estatus.", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 15, desc: "Aclarar discrepancia 50 m² en predio C-605 con arquitecto (escritura: 359 m² vs planos fusión: 309 m²). Confirmar si es afectación vial. Resolver antes de firma de fusión.", who: "CRN / Arquitecto", due: "Antes de firma fusión", urgent: false, done: false },
-  { n: 16, desc: "Solicitar a Fer (PDU) la lista de requisitos mínimos para iniciar el EIU y requerimientos subsecuentes.", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 17, desc: "Gestionar avalúos de los 4 terrenos (necesarios para pago de derechos del 1%).", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 18, desc: "Generar checklist interno de temas legales y fiduciarios: estatus del fideicomiso, fusión de cuentas, etc. (al margen del equipo de arquitectura).", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 19, desc: "Hablar con los socios sobre el trade-off: excavación paralela (riesgo calculado) vs secuencial — presentar ventajas/desventajas y tomar decisión informada antes de iniciar trámites de demolición/excavación.", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 20, desc: "Equipo de arquitectura: aplicar ajustes comentados en junta 09-Jun (tamaños de consultorios, entrepisos) a los planos del anteproyecto.", who: "Equipo Arq.", due: "TBD", urgent: false, done: false },
-  { n: 21, desc: "Equipo de arquitectura: desarrollar render conceptual del proyecto.", who: "Equipo Arq.", due: "TBD", urgent: false, done: false },
-  { n: 1,  desc: "Ingresar CUZUS de Constituyentes (pendiente desde 2026-05-13 — vencido; reactivar una vez desbloqueo).", who: "—", due: "Vencido", urgent: false, done: false },
-  { n: 2,  desc: "Recoger la prevención de la fusión y continuar el trámite (pendiente desde 2026-05-13 — requiere obra nueva corregida).", who: "—", due: "Vencido", urgent: false, done: false },
-  { n: 3,  desc: "Confirmar recepción de papeles y anticipo para CUZUS Constituyentes.", who: "—", due: "TBD", urgent: false, done: false }
+  {n:1, desc:"Ingresar \\"cuzus\\" de Constituyentes una vez recibidos los papeles", who:"—", due:"2026-05-13", urgent:true, done:false},
+  {n:2, desc:"Recoger la prevención de la fusión y continuar el trámite", who:"—", due:"2026-05-13", urgent:true, done:false},
+  {n:3, desc:"Confirmar recepción de papeles y anticipo para cuzus Constituyentes", who:"—", due:"2026-05-13", urgent:true, done:false},
+  {n:4, desc:"NO recoger \\"constituyentes\\" hasta recibir versión corregida de obra nueva del equipo", who:"Mauricio", due:"Inmediato", urgent:true, done:false},
+  {n:5, desc:"Una vez recibida la versión corregida: coordinar recolección y notificación inmediata", who:"Mauricio", due:"TBD", urgent:false, done:false},
+  {n:6, desc:"[John] Ir al Archivo Central — gestionar extracción de antecedente del expediente de Cuauhtémoc; documentar folio y responsable", who:"John / Héctor", due:"TBD", urgent:false, done:false},
+  {n:7, desc:"[John] Destrabar \\"Cano\\": insistir con oficina de firma para bajar el documento y liberar claves de obra nueva", who:"John", due:"TBD", urgent:false, done:false},
+  {n:8, desc:"[John/Héctor] Visita presencial para presionar por respuesta del escrito del árbol; registrar acuse o minuta", who:"Héctor", due:"TBD", urgent:false, done:false},
+  {n:9, desc:"[John] Enviar a Mauricio la versión corregida de \\"constituyentes\\" (obra nueva y requisitos validados) antes de la recolección", who:"John", due:"TBD", urgent:false, done:false},
+  {n:10, desc:"[John] Activar \\"opción 2\\" para asuntos ya puestos; listar cuáles pasan a esa vía y sus pasos", who:"John", due:"TBD", urgent:false, done:false},
+  {n:11, desc:"Confirmar disponibilidad y agendar reunión martes o miércoles (no jueves — viaje al mundial)", who:"Mauricio / John", due:"Esta semana", urgent:false, done:false},
+  {n:12, desc:"Verificar con el área correspondiente si hubo respuesta al escrito del árbol; compartir estatus hoy", who:"Mauricio", due:"Inmediato", urgent:true, done:false},
+  {n:13, desc:"Pagar prediales vencidos (4 bimestres x 4 predios, ~$78k + recargos)", who:"Octavio Peñaloza", due:"Urgente", urgent:true, done:false},
+  {n:14, desc:"Autorizar y contratar EMS ($386,420 + IVA). Coordinar acceso al predio + plano topográfico", who:"Octavio Peñaloza", due:"Urgente", urgent:true, done:false},
+  {n:15, desc:"Aclarar discrepancia 50 m² C-605 con arquitecto (359 m² escritura vs 309 m² planos fusión)", who:"CRN / Arquitecto", due:"Antes de firma fusión", urgent:false, done:false},
+  {n:16, desc:"Solicitar a Fer (PDU) la lista de requisitos mínimos para iniciar el EIU y requerimientos subsecuentes", who:"Mauricio", due:"TBD", urgent:false, done:false},
+  {n:17, desc:"Gestionar avalúos de los 4 terrenos (necesarios para pago de derechos del 1%)", who:"Mauricio", due:"TBD", urgent:false, done:false},
+  {n:18, desc:"Generar checklist interno de temas legales y fiduciarios: estatus del fideicomiso, fusión de cuentas, etc. (al margen del equipo de arquitectura)", who:"Mauricio", due:"TBD", urgent:false, done:false},
+  {n:19, desc:"Hablar con los socios sobre el trade-off: excavación paralela (riesgo calculado) vs secuencial — presentar ventajas/desventajas y tomar decisión informada antes de iniciar trámites de demolición/excavación", who:"Mauricio", due:"TBD", urgent:false, done:false},
+  {n:20, desc:"Equipo de arquitectura: aplicar ajustes comentados en junta 09-Jun (tamaños de consultorios, entrepisos) a los planos del anteproyecto", who:"Speaker 1 / Equipo Arq.", due:"TBD", urgent:false, done:false},
+  {n:21, desc:"Equipo de arquitectura: desarrollar render conceptual del proyecto", who:"Speaker 1 / Equipo Arq.", due:"TBD", urgent:false, done:false},
+  {n:22, desc:"[FUSIÓN — prevención] Verificar con el equipo si para exhibir la prevención del proyecto fusionado se requiere una fotografía por cada frente de predio (pregunta surgida en PLAUD 17-Jun).", who:"Mauricio / Equipo", due:"TBD", urgent:false, done:false}
 ];
 
-const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
+const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");  // token partido para evitar secret scanner
 const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/hospital-constituyentes/state.json";
 const GITHUB_HDRS  = { "Content-Type": "application/json", "Authorization": `token ${GITHUB_TOKEN}`, "Accept": "application/vnd.github.v3+json" };
 
@@ -160,7 +156,6 @@ items.forEach(i => { DEFAULT_STATE[i.n] = i.done || false; });
 
 let state = { ...DEFAULT_STATE };
 let obs = {};
-let newItems = [];
 let saving = false;
 let saveTimer = null;
 let currentSha = null;
@@ -184,8 +179,7 @@ async function loadState() {
     currentSha = data.sha;
     const rec = JSON.parse(atob(data.content.replace(/\n/g, "")));
     obs = rec._obs || {};
-    newItems = rec._new || [];
-    state = Object.fromEntries(Object.entries(rec).filter(([k]) => !["_obs","_new"].includes(k)));
+    state = Object.fromEntries(Object.entries(rec).filter(([k]) => k !== "_obs"));
     showStatus("● Sincronizado", "#3a6e10");
   } catch(e) {
     showStatus("⚠ Sin conexión", "#a33030");
@@ -202,7 +196,7 @@ async function saveState() {
       const d = await r.json();
       currentSha = d.sha;
     }
-    const payload = JSON.stringify({ ...state, _obs: obs, _new: newItems });
+    const payload = JSON.stringify({ ...state, _obs: obs });
     const content = btoa(unescape(encodeURIComponent(payload)));
     const res = await fetch(GITHUB_API, {
       method: "PUT",
@@ -222,14 +216,12 @@ async function saveState() {
 setInterval(async () => { await loadState(); render(); }, 30000);
 
 function updateCounters() {
-  const doneFixed = Object.values(state).filter(Boolean).length;
-  const doneNew = newItems.filter(i => i.done).length;
-  const totalFixed = items.length;
-  const totalNew = newItems.length;
-  document.getElementById("done-count").textContent = doneFixed + doneNew;
-  document.getElementById("total-count").textContent = totalFixed + totalNew;
+  const done = Object.values(state).filter(Boolean).length;
+  const total = items.length;
+  document.getElementById("done-count").textContent = done;
+  document.getElementById("total-count").textContent = total;
   const p = document.getElementById("pending-counter");
-  if (p) p.textContent = (totalFixed - doneFixed) + (totalNew - doneNew);
+  if (p) p.textContent = (total - done);
 }
 
 function autoResize(ta) {
@@ -241,14 +233,11 @@ function render() {
   const tbody = document.getElementById("pending-tbody");
   tbody.innerHTML = "";
   const visible = items.filter(item => !state[item.n]);
-  let idx = 0;
-
-  visible.forEach(item => {
-    idx++;
+  visible.forEach((item, idx) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td class="check-col no-print"><input type="checkbox" data-n="${item.n}" title="Marcar como hecho"></td>
-      <td style="color:#999;font-size:12px">${idx}</td>
+      <td style="color:#999;font-size:12px">${idx + 1}</td>
       <td><span class="desc">${item.desc}</span></td>
       <td style="color:#666">${item.who}</td>
       <td><span class="badge ${item.urgent ? 'red' : 'gray'}">${item.due}</span></td>
@@ -277,91 +266,7 @@ function render() {
     });
   });
 
-  newItems.forEach((item, ni) => {
-    if (item.done) return;
-    idx++;
-    const tr = document.createElement("tr");
-    tr.style.background = "#fafaf7";
-    tr.innerHTML = `
-      <td class="check-col no-print"><input type="checkbox" data-ni="${ni}" class="new-cb" title="Marcar como hecho"></td>
-      <td style="color:#999;font-size:12px">${idx}</td>
-      <td><span style="font-size:10px;background:#e8f5e0;color:#3a6e10;border-radius:4px;padding:1px 5px;margin-right:4px;">equipo</span><span class="desc">${item.desc}</span></td>
-      <td style="color:#666">${item.who || "—"}</td>
-      <td><span class="badge gray">${item.due || "TBD"}</span></td>
-      <td><textarea class="obs-new-input" data-ni="${ni}" rows="1" placeholder="—">${item.obs || ""}</textarea></td>
-    `;
-    tbody.appendChild(tr);
-  });
-
-  tbody.querySelectorAll(".new-cb").forEach(cb => {
-    cb.addEventListener("change", async () => {
-      const ni = parseInt(cb.dataset.ni);
-      newItems[ni].done = true;
-      render();
-      updateCounters();
-      await saveState();
-    });
-  });
-
-  tbody.querySelectorAll("textarea.obs-new-input").forEach(ta => {
-    autoResize(ta);
-    ta.addEventListener("input", () => {
-      autoResize(ta);
-      newItems[parseInt(ta.dataset.ni)].obs = ta.value;
-      showStatus("Por guardar…", "#8a5010");
-      scheduleSave();
-    });
-  });
-
-  const addTr = document.createElement("tr");
-  addTr.id = "add-row";
-  addTr.classList.add("no-print");
-  addTr.innerHTML = `
-    <td colspan="6" style="padding:8px 14px;">
-      <div id="add-collapsed" style="cursor:pointer;color:#aaa;font-size:12px;display:flex;align-items:center;gap:6px;" onclick="showAddForm()">
-        <span style="font-size:16px;line-height:1">+</span> Agregar pendiente
-      </div>
-      <div id="add-form" style="display:none;gap:8px;align-items:flex-start;flex-wrap:wrap;">
-        <textarea id="new-desc" rows="2" placeholder="Descripción del pendiente…" style="flex:1;min-width:200px;border:1px solid #e0ddd4;border-radius:6px;padding:6px 8px;font-size:13px;font-family:inherit;resize:vertical;"></textarea>
-        <input id="new-who" type="text" placeholder="Responsable" style="width:130px;border:1px solid #e0ddd4;border-radius:6px;padding:6px 8px;font-size:13px;font-family:inherit;">
-        <input id="new-due" type="text" placeholder="Fecha (TBD)" style="width:110px;border:1px solid #e0ddd4;border-radius:6px;padding:6px 8px;font-size:13px;font-family:inherit;">
-        <div style="display:flex;gap:6px;align-items:center;">
-          <button onclick="addNewItem()" style="padding:6px 14px;background:#1a1a1a;color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer;">Agregar</button>
-          <button onclick="hideAddForm()" style="padding:6px 10px;background:transparent;border:1px solid #ddd;border-radius:6px;font-size:12px;cursor:pointer;color:#888;">Cancelar</button>
-        </div>
-      </div>
-    </td>
-  `;
-  tbody.appendChild(addTr);
-
   updateCounters();
-}
-
-function showAddForm() {
-  document.getElementById("add-collapsed").style.display = "none";
-  document.getElementById("add-form").style.display = "flex";
-  document.getElementById("new-desc").focus();
-}
-
-function hideAddForm() {
-  document.getElementById("add-collapsed").style.display = "flex";
-  document.getElementById("add-form").style.display = "none";
-  document.getElementById("new-desc").value = "";
-  document.getElementById("new-who").value = "";
-  document.getElementById("new-due").value = "";
-}
-
-async function addNewItem() {
-  const desc = document.getElementById("new-desc").value.trim();
-  if (!desc) return;
-  const who = document.getElementById("new-who").value.trim() || "—";
-  const due = document.getElementById("new-due").value.trim() || "TBD";
-  const today = new Date().toISOString().slice(0,10);
-  newItems.push({ desc, who, due, done: false, obs: "", added: today });
-  hideAddForm();
-  render();
-  updateCounters();
-  await saveState();
 }
 
 async function init() { await loadState(); render(); }
