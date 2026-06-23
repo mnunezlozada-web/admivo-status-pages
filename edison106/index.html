@@ -86,7 +86,7 @@
 
   <div class="cards">
     <div class="card"><div class="label">Fase</div><div class="value sm">EIU — Bloqueado por vecinos</div></div>
-    <div class="card"><div class="label">ISC</div><div class="value sm">⚠️ Pendiente confirmación ingreso</div></div>
+    <div class="card"><div class="label">SEDEMA</div><div class="value sm">✅ EDA + MIAG concluidos</div></div>
     <div class="card"><div class="label">CAyNO</div><div class="value sm">🔴 Vencido est. feb-2025</div></div>
     <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">—</div><div class="sub">por cerrar</div></div>
   </div>
@@ -102,8 +102,8 @@
         <tr><td>ACP DPCUEP</td><td>SEDUVI — DPCUEP</td><td><span class="badge green">✅ Favorable</span></td><td>DPCUEP/1036/2024 — 25-mar-2024 — integración patrimonial contemporánea</td></tr>
         <tr><td>EIU / DIU</td><td>CIU — Metrópolis (Irasoke)</td><td><span class="badge red">🔴 Bloqueado</span></td><td>Folio 14515-121SUIS24 — vecinos opositores. Secretario firmó; Irasoke no. Institución paralizada durante Mundial.</td></tr>
         <tr><td>ISC</td><td>SPOTMET / Erick Sanz</td><td><span class="badge amber">⚠️ En revisión</span></td><td>Subsane enviado 12-jun-2026 (r05 → confirmar si r06 reemplaza). Pendiente confirmación de ingreso formal.</td></tr>
-        <tr><td>MIAG</td><td>SEDEMA — DGEIRA</td><td><span class="badge amber">⚠️ En proceso</span></td><td>Ingresada may-2024. Obs. Lista Chequeo 1 (jun-2024). Subsanación parcial (oct-2024). Pendiente 2do ciclo.</td></tr>
-        <tr><td>EDA (post demolición)</td><td>SEDEMA — DGEIRA</td><td><span class="badge red">🔴 Obs. pendientes</span></td><td>Ingresado 11-mar-2025. Obs. SEDEMA 19-mar-2025 enviadas al correo incorrecto (gestores revocados). Svetlana pidió reenvío 11-jun-2025.</td></tr>
+        <tr><td>MIAG</td><td>SEDEMA — DGEIRA</td><td><span class="badge green">✅ Concluida</span></td><td>Concluida favorablemente — 23-jun-2026.</td></tr>
+        <tr><td>EDA (post demolición)</td><td>SEDEMA — DGEIRA</td><td><span class="badge green">✅ Concluido</span></td><td>Concluido favorablemente — 23-jun-2026.</td></tr>
       </tbody>
     </table>
   </section>
@@ -163,6 +163,7 @@
         <tr><td>2026-06-15</td><td>Arq. Rubén entregó versión r06 de la memoria estructural (corrección de textos r05). Confirmar con Erick si afecta el paquete enviado al ISC. r06 reemplaza r05 (confirmado 17-jun-2026).</td><td>Triple Espacio / Rubén Castro</td></tr>
         <tr><td>2026-06-16</td><td>Estrategia de esperar voluntad política de Irasoke ha FALLADO tras 6 meses. Riesgo: contratos 150-190 compradores a punto de vencer. Promesas de Jorge (10-12 días) incumplidas. Se requiere reunión urgente con Jorge para redefinir estrategia.</td><td>PLAUD (Plan de choque)</td></tr>
         <tr><td>2026-06-17</td><td>Nayeli organizó nueva carpeta ISC Edison. r06 confirmado como sustituto de r05 por Arq. Rubén. Pendiente: Erick confirme si necesita reenviar paquete ISC con r06.</td><td>Nayeli / Arq. Rubén</td></tr>
+        <tr><td>2026-06-23</td><td>✅ <strong>EDA y MIAG/SEDEMA CONCLUIDOS</strong> — Ambos trámites ambientales ante SEDEMA resueltos favorablemente. Camino crítico restante: EIU (vecinos) + ISC.</td><td>Mauricio</td></tr>
         <tr><td>2026-06-23</td><td>CAyNO Folio 000073 confirmado VENCIDO est. 08-feb-2025 (16 meses). MIAG/EDA: observaciones SEDEMA fueron enviadas al correo equivocado (geogmab). Svetlana solicitó reenvío 11-jun-2025. Reunión con Jorge del 23-jun no se realizó — Mariana sigue gestionando vecinos.</td><td>Claude (análisis documentos legales)</td></tr>
       </tbody>
     </table>
@@ -187,7 +188,7 @@ const items = [
   { n: 12, desc: "[ISC — SIGUIENTE PASO] Nayeli envió subsane Edison 106 ISC a Erick Sanz el 12-jun-2026 (Drive: 1y7n8XHfDBXNKgECBygYJtjoElSozkgnp). Confirmar con Erick que el ingreso formal al ISC fue completado y que la prevención queda cubierta.", who: "Nayeli / Erick", due: "Inmediato", urgent: true, done: false },
   { n: 13, desc: "[ISC — Memoria r06] Arq. Rubén envió versión r06 el 15-jun-2026. r06 SÍ reemplaza r05 (confirmado 17-jun). Nayeli organizó nueva carpeta ISC con materiales actualizados. ¿Requiere reenviar el paquete ISC a Erick con r06?", who: "Nayeli / Erick", due: "Urgente", urgent: true, done: false },
   { n: 14, desc: "[EIU — ESTRATEGIA] PLAUD 16-jun: estrategia de esperar voluntad política de Irasoke ha fallado tras 6 meses. Contratos de compradores a punto de vencer — riesgo 150-190 demandas por fraude. Opciones: A) Contencioso (1.5 años, inviable), B) Presión social (compradores). Acción: reunión urgente con Jorge para redefinir.", who: "Mauricio", due: "Urgente", urgent: true, done: false },
-  { n: 15, desc: "[MIAG/EDA — SEDEMA] SEDEMA envió observaciones al EDA el 19-mar-2025 al correo equivocado (geogmab_equipo@geogamb.com — gestores revocados). Svetlana pidió reenvío el 11-jun-2025. Confirmar que SEDEMA efectivamente reenviará las observaciones a svetlana.morelos@nunezyesqueda.com.", who: "Nayeli / Mauricio", due: "Urgente", urgent: true, done: false },
+  { n: 15, desc: "[MIAG/EDA — SEDEMA] ✅ EDA y MIAG concluidos favorablemente — 23-jun-2026.", who: "Nayeli / Mauricio", due: "23-jun-2026", urgent: false, done: true },
   { n: 16, desc: "[CUZUS faltante] DAN cita CUZUS Folio 14482-151SOJE23 (29-may-2023). Este certificado NO está en iCloud ni en el expediente digital. Localizar y archivar.", who: "Nayeli", due: "Media prioridad", urgent: false, done: false },
   { n: 17, desc: "[EIU — Reunión Jorge] Reunión con Jorge para redefinir estrategia EIU (planeada 23-jun-2026) NO se realizó. Mariana sigue gestionando vecinos. Agendar con Jorge ANTES del 30-jun — institución paralizada durante julio (Mundial).", who: "Mauricio", due: "Antes 30-jun-2026", urgent: true, done: false }
 ];
