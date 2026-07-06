@@ -96,9 +96,8 @@
         <tr><td><strong>Impacto Urbano</strong></td><td>Metrópoli</td><td><span class="badge green">Notificación: 13-jul-2026</span></td><td style="font-size:12px;color:#555">Metrópoli notificará el IU el lunes 13-jul-2026. Vecinos opositores resueltos. Siguiente paso: iniciar trámites para Manifestación de Construcción (MACO).</td></tr>
         <tr><td><strong>ISC — Dictamen</strong></td><td>ISC</td><td><span class="badge amber">Subsane enviado</span></td><td style="font-size:12px;color:#555">Paquete enviado a Erick 12-jun. Confirmar ingreso formal y cobertura punto 38. r06 reemplaza a r05 — confirmar con Erick si debe reenviar.</td></tr>
         <tr><td><strong>MACO</strong></td><td>Alcaldía Cuauhtémoc</td><td><span class="badge blue">Pendiente</span></td><td style="font-size:12px;color:#555">Pendiente de gestión.</td></tr>
-        <tr><td><strong>Publicación diario</strong></td><td>Diario de circulación</td><td><span class="badge blue">Pendiente — post Impacto Urbano</span></td><td style="font-size:12px;color:#555">Se publica en diario de circulación una vez que Metrópoli emita el Impacto Urbano.</td></tr>
-        <tr><td><strong>Uso de suelo / CAyNO</strong></td><td>Alcaldía / SEDUVI</td><td><span class="badge amber">Riesgo vencimiento</span></td><td style="font-size:12px;color:#555">Verificar vigencia de Alineamiento y Número Oficial. (Nayeli)</td></tr>
-        <tr><td><strong>Pago derechos + manifestación</strong></td><td>SEDUVI</td><td><span class="badge blue">Pendiente</span></td><td style="font-size:12px;color:#555">Después de publicitación. Requiere Impacto Urbano firmado.</td></tr>
+        <tr><td><strong>Uso de suelo / CAyNO</strong></td><td>Alcaldía</td><td><span class="badge amber">Riesgo vencimiento</span></td><td style="font-size:12px;color:#555">Verificar vigencia de Alineamiento y Número Oficial. (Nayeli)</td></tr>
+        <tr><td><strong>Pago derechos + manifestación</strong></td><td>Alcaldía Cuauhtémoc</td><td><span class="badge blue">Pendiente</span></td><td style="font-size:12px;color:#555">Trámite ante Alcaldía. Los clientes pagaron parte de derechos con anterioridad — verificar con DRO y equipo cómo acreditarlos.</td></tr>
         <tr><td><strong>Acceso Drive Nayeli</strong></td><td>Svett</td><td><span class="badge green">Completado</span></td><td style="font-size:12px;color:#555">Acceso dado al Drive administrado por Svett.</td></tr>
       </tbody>
     </table>
@@ -152,8 +151,9 @@ const items = [
   // ─── VIGENCIAS ───────────────────────────────────────────────
   { n: 5,  group: "VIGENCIAS", desc: "[VIGENCIAS] Verificar vigencia de uso de suelo y Alineamiento y Número Oficial (CAyNO) — riesgo de vencimiento", who: "Nayeli", due: "Inmediato", urgent: true, done: false },
   // ─── PARA MANIFESTAR (MACO) ──────────────────────────────────
-  { n: 3,  group: "PARA MANIFESTAR (MACO)", desc: "[MACO] Pago de derechos y manifestación", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
+  { n: 15, group: "PARA MANIFESTAR (MACO)", desc: "[MACO — URGENTE] Los clientes pagaron parte de derechos de manifestación años antes — verificar con DRO y equipo cómo acreditar ese pago ante Alcaldía para no pagar dos veces", who: "Mauricio / DRO", due: "TBD", urgent: true, done: false },
   { n: 7,  group: "PARA MANIFESTAR (MACO)", desc: "[MACO] Publicitación con lona (15 días hábiles) para Manifestación de Construcción — confirmar si lona del reingreso aplica o se requiere nueva", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
+  { n: 3,  group: "PARA MANIFESTAR (MACO)", desc: "[MACO] Pago de derechos y manifestación ante Alcaldía Cuauhtémoc", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
   // ─── COMPLETADOS ─────────────────────────────────────────────
   { n: 9,  group: "COMPLETADOS", desc: "[METRÓPOLI] Vecinos opositores resueltos — Irasoque (Metrópoli) emitirá el IU el 13-jul-2026", who: "Mauricio", due: "—", urgent: false, done: true },
   { n: 10, group: "COMPLETADOS", desc: "[METRÓPOLI] Confirmación de requisitos para cerrar expediente con Irasoque (Metrópoli)", who: "Mauricio", due: "—", urgent: false, done: true },
