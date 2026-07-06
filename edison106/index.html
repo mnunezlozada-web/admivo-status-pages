@@ -1,9 +1,16 @@
 <!DOCTYPE html>
+<script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Edison106 Status",
+  "schemaVersion": 1,
+  "description": "Estatus en vivo de Edison 106 — trámites, pendientes, acuerdos e historial"
+}
+</script>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edison Park 106 — Estatus del proyecto</title>
+<title>Edison 106 — Estatus del proyecto</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 14px; color: #1a1a1a; background: #f5f4f0; padding: 2rem; }
@@ -12,12 +19,15 @@
   header h1 { font-size: 20px; font-weight: 600; }
   header p { font-size: 12px; color: #888; margin-top: 2px; }
   .stamp { font-size: 11px; color: #aaa; text-align: right; }
+  .alert { background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 10px 14px; margin-bottom: 1.5rem; }
+  .alert-title { font-size: 11px; font-weight: 700; color: #92400e; margin-bottom: 3px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .alert-body { font-size: 12px; color: #78350f; line-height: 1.5; }
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 2rem; }
   .card { background: #fff; border-radius: 10px; border: 0.5px solid #e0ddd4; padding: 0.75rem 1rem; }
   .card .label { font-size: 11px; color: #999; margin-bottom: 4px; }
   .card .value { font-size: 22px; font-weight: 600; }
   .card .sub { font-size: 11px; color: #aaa; margin-top: 2px; }
-  .card .value.sm { font-size: 13px; margin-top: 2px; line-height: 1.3; }
+  .card .value.sm { font-size: 14px; margin-top: 2px; }
   section { margin-bottom: 2rem; }
   section h2 { font-size: 11px; font-weight: 600; color: #999; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
   table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; border: 0.5px solid #e0ddd4; }
@@ -30,7 +40,6 @@
   .badge.amber  { background: #fef3dc; color: #8a5010; }
   .badge.red    { background: #fde8e8; color: #a33030; }
   .badge.gray   { background: #f0ede6; color: #666; }
-  .badge.purple { background: #f0e8fa; color: #6a10a3; }
   .check-col { width: 36px; text-align: center; }
   input[type=checkbox] { width: 16px; height: 16px; cursor: pointer; accent-color: #3a6e10; }
   .obs-input { width: 100%; min-width: 140px; border: none; background: transparent; resize: none; font-size: 12px; color: #555; font-family: inherit; padding: 0; line-height: 1.4; overflow: hidden; }
@@ -42,24 +51,7 @@
   .btn-print:hover { background: #f5f4f0; }
   .counter { font-size: 12px; color: #888; margin-bottom: 8px; }
   .counter span { font-weight: 600; color: #1a1a1a; }
-  .add-item-area { margin-top: 10px; }
-  .btn-add-toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 7px 14px; border-radius: 8px; border: 1px dashed #c8c4bc; background: transparent; cursor: pointer; color: #888; transition: all .15s; }
-  .btn-add-toggle:hover { background: #fff; border-color: #aaa; color: #444; }
-  .add-form { display: none; background: #fff; border: 0.5px solid #e0ddd4; border-radius: 10px; padding: 14px 16px; margin-top: 8px; }
-  .add-form.open { display: block; }
-  .add-form-grid { display: grid; grid-template-columns: 1fr 160px 130px; gap: 10px; align-items: start; }
-  .add-form label { font-size: 10px; color: #999; display: block; margin-bottom: 3px; letter-spacing: .04em; text-transform: uppercase; }
-  .add-form input, .add-form textarea { width: 100%; border: 0.5px solid #ddd; border-radius: 6px; padding: 6px 10px; font-size: 13px; font-family: inherit; color: #1a1a1a; background: #faf9f6; resize: none; }
-  .add-form input:focus, .add-form textarea:focus { outline: none; border-color: #aaa; background: #fff; }
-  .add-form textarea { min-height: 54px; }
-  .add-form-actions { display: flex; gap: 8px; margin-top: 10px; }
-  .btn-save-item { font-size: 12px; padding: 6px 16px; border-radius: 8px; border: none; background: #1a1a1a; color: #fff; cursor: pointer; }
-  .btn-save-item:hover { background: #333; }
-  .btn-cancel-item { font-size: 12px; padding: 6px 12px; border-radius: 8px; border: 0.5px solid #ccc; background: #fff; color: #666; cursor: pointer; }
-  .btn-cancel-item:hover { background: #f5f4f0; }
-  .btn-delete-item { background: none; border: none; cursor: pointer; color: #ccc; font-size: 13px; padding: 0 4px; line-height: 1; }
-  .btn-delete-item:hover { color: #a33030; }
-  .new-row td { background: #fdfcf8; }
+  .group-hdr td { background: #f5f4f0 !important; padding: 5px 14px !important; font-size: 10px !important; font-weight: 700 !important; letter-spacing: 0.08em !important; color: #999 !important; text-transform: uppercase; border-bottom: 0.5px solid #e0ddd4 !important; }
   @media print {
     body { background: #fff; padding: 1rem; }
     .no-print { display: none !important; }
@@ -71,39 +63,43 @@
 <div class="container">
   <header>
     <div>
-      <h1>Edison Park 106</h1>
-      <p>Triple Espacio / Sutton &nbsp;·&nbsp; Tomás Alva Edison 106, Col. Tabacalera, Cuauhtémoc</p>
+      <h1>Edison 106 (Edison Park)</h1>
+      <p>Triple Espacio / Sutton &nbsp;·&nbsp; Tomas Alva Edison 106, CDMX</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 23-jun-2026</div>
-      <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando...</div>
+      <div id="last-update">Actualizado: 06-jul-2026</div>
+      <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando…</div>
       <div style="margin-top:6px;" class="no-print">
-        <button class="btn-share" onclick="copyLink()">Copiar enlace</button>
-        <button class="btn-print" onclick="window.print()">Imprimir</button>
+        <button class="btn-share" onclick="copyLink()">⎘ Copiar enlace</button>
+        <button class="btn-print" onclick="window.print()">🖨 Imprimir</button>
       </div>
     </div>
   </header>
 
+  <div class="alert">
+    <div class="alert-title">🟢 Impacto Urbano — Notificación próximo lunes 13-jul-2026</div>
+    <div class="alert-body">Metrópoli notificará el Impacto Urbano el <strong>lunes 13-jul-2026</strong>. Enfoque: completar requisitos para Manifestación de Construcción (MACO). <strong>ISC pendiente:</strong> confirmar con Erick ingreso formal y cobertura punto 38 (subsane 12-jun). r06 reemplaza r05 — confirmar si requiere reenvío al ISC.</div>
+  </div>
+
   <div class="cards">
-    <div class="card"><div class="label">EIU</div><div class="value sm">✅ Firmado — Secretario Metrópolis</div></div>
-    <div class="card"><div class="label">EDA</div><div class="value sm">✅ Concluido (SEDEMA)</div></div>
-    <div class="card"><div class="label">CAyNO</div><div class="value sm">🔴 Vencido est. feb-2025</div></div>
+    <div class="card"><div class="label">Notificación IU</div><div class="value sm" style="color:#3a6e10">13-jul-2026</div></div>
     <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">—</div><div class="sub">por cerrar</div></div>
+    <div class="card"><div class="label">Urgentes</div><div class="value" style="color:#a33030">2</div><div class="sub">requieren atención</div></div>
+    <div class="card"><div class="label">ISC — subsane</div><div class="value sm" style="color:#8a5010">Enviado 12-jun</div></div>
   </div>
 
   <section>
-    <h2>Estado de tramites</h2>
+    <h2>Estado de trámites</h2>
     <table>
-      <thead><tr><th>Tramite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
+      <thead><tr><th>Trámite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
       <tbody>
-        <tr><td>CUZUS</td><td>SEDUVI</td><td><span class="badge green">✅ Vigente</span></td><td>888-151SUIS23D (ene-2023) / 14482-151SOJE23 (may-2023, no localizado)</td></tr>
-        <tr><td>CAyNO</td><td>Alcaldía Cuauhtémoc</td><td><span class="badge red">🔴 Vencido</span></td><td>Folio 000073 — est. vencido 08-feb-2025 (16 meses) — renovar urgente</td></tr>
-        <tr><td>DAN (Norma 7 Alturas)</td><td>SEDUVI — DGOU</td><td><span class="badge green">✅ Procedente</span></td><td>SEDUVI/DGOU/0691/2024 — 15-abr-2024 — 461 dptos / 78.60m / 25 niv.</td></tr>
-        <tr><td>ACP DPCUEP</td><td>SEDUVI — DPCUEP</td><td><span class="badge green">✅ Favorable</span></td><td>DPCUEP/1036/2024 — 25-mar-2024 — integración patrimonial contemporánea</td></tr>
-        <tr><td>EIU / DIU</td><td>CIU — Metrópolis</td><td><span class="badge green">✅ Firmado</span></td><td>Folio 14515-121SUIS24 — Secretario de Metrópolis firmó (23-jun-2026). Siguiente paso: publicitación (lona 15 días hábiles) + pago derechos.</td></tr>
-        <tr><td>ISC</td><td>SPOTMET / Erick Sanz</td><td><span class="badge amber">⚠️ En revisión</span></td><td>Subsane enviado 12-jun-2026 (r05 → confirmar si r06 reemplaza). Pendiente confirmación de ingreso formal.</td></tr>
-        <tr><td>MIAG</td><td>SEDEMA — DGEIRA</td><td><span class="badge amber">⚠️ En proceso</span></td><td>Ingresada may-2024. Obs. subsanadas parcialmente (oct-2024). Pendiente 2do ciclo observaciones.</td></tr>
-        <tr><td>EDA (post demolición)</td><td>SEDEMA — DGEIRA</td><td><span class="badge green">✅ Concluido</span></td><td>Concluido favorablemente — 23-jun-2026.</td></tr>
+        <tr><td><strong>Impacto Urbano</strong></td><td>Metrópoli</td><td><span class="badge green">Notificación: 13-jul-2026</span></td><td style="font-size:12px;color:#555">Metrópoli notificará el IU el lunes 13-jul-2026. Vecinos opositores resueltos. Siguiente paso: iniciar trámites para Manifestación de Construcción (MACO).</td></tr>
+        <tr><td><strong>ISC — Dictamen</strong></td><td>ISC</td><td><span class="badge amber">Subsane enviado</span></td><td style="font-size:12px;color:#555">Paquete enviado a Erick 12-jun. Confirmar ingreso formal y cobertura punto 38. r06 reemplaza a r05 — confirmar con Erick si debe reenviar.</td></tr>
+        <tr><td><strong>MACO</strong></td><td>Alcaldía Cuauhtémoc</td><td><span class="badge blue">Pendiente</span></td><td style="font-size:12px;color:#555">Pendiente de gestión.</td></tr>
+        <tr><td><strong>Publicación diario</strong></td><td>Diario de circulación</td><td><span class="badge blue">Pendiente — post Impacto Urbano</span></td><td style="font-size:12px;color:#555">Se publica en diario de circulación una vez que Metrópoli emita el Impacto Urbano.</td></tr>
+        <tr><td><strong>Uso de suelo / CAyNO</strong></td><td>Alcaldía / SEDUVI</td><td><span class="badge amber">Riesgo vencimiento</span></td><td style="font-size:12px;color:#555">Verificar vigencia de Alineamiento y Número Oficial. (Nayeli)</td></tr>
+        <tr><td><strong>Pago derechos + manifestación</strong></td><td>SEDUVI</td><td><span class="badge blue">Pendiente</span></td><td style="font-size:12px;color:#555">Después de publicitación. Requiere Impacto Urbano firmado.</td></tr>
+        <tr><td><strong>Acceso Drive Nayeli</strong></td><td>Svett</td><td><span class="badge green">Completado</span></td><td style="font-size:12px;color:#555">Acceso dado al Drive administrado por Svett.</td></tr>
       </tbody>
     </table>
   </section>
@@ -118,100 +114,78 @@
           <th>#</th>
           <th>Pendiente</th>
           <th>Responsable</th>
-          <th>Fecha limite</th>
+          <th>Fecha límite</th>
           <th>Observaciones</th>
-          <th class="no-print" style="width:28px"></th>
         </tr>
       </thead>
       <tbody id="pending-tbody"></tbody>
     </table>
-
-    <div class="add-item-area no-print">
-      <button class="btn-add-toggle" id="btn-add-toggle" onclick="toggleAddForm()">+ Agregar pendiente</button>
-      <div class="add-form" id="add-form">
-        <div class="add-form-grid">
-          <div>
-            <label>Descripcion</label>
-            <textarea id="new-desc" rows="2" placeholder="Que hay que hacer?"></textarea>
-          </div>
-          <div>
-            <label>Responsable</label>
-            <input id="new-who" type="text" placeholder="Nombre">
-          </div>
-          <div>
-            <label>Fecha limite</label>
-            <input id="new-due" type="text" placeholder="ej. 30-jun-2026">
-          </div>
-        </div>
-        <div class="add-form-actions">
-          <button class="btn-save-item" onclick="addNewItem()">Guardar pendiente</button>
-          <button class="btn-cancel-item" onclick="toggleAddForm()">Cancelar</button>
-        </div>
-      </div>
-    </div>
   </section>
 
   <section>
     <h2>Acuerdos clave</h2>
     <table>
-      <thead><tr><th style="width:110px">Fecha</th><th>Acuerdo</th><th style="width:160px">Quien acordo</th></tr></thead>
+      <thead><tr><th style="width:110px">Fecha</th><th>Acuerdo</th><th style="width:130px">Quién acordó</th></tr></thead>
       <tbody>
-        <tr><td>2026-05-20</td><td>Todas las autorizaciones técnicas obtenidas. EIU bloqueado por tema político-vecinal. Sistema alternativo autorizado. Estrategia: no escalar conflicto vecinal, coordinar con Jorge.</td><td>Erick / Mauricio</td></tr>
-        <tr><td>2026-06-05</td><td>Secretario firmó IU. Sigue bloqueado por conflicto vecinal — necesita apoyo Alcaldía Cuauhtémoc. Liberación estimada 2-3 semanas post-Mundial. Alta sensibilidad política — bajo perfil.</td><td>PLAUD</td></tr>
-        <tr><td>2026-06-08</td><td>Irasoque (Metrópoli) confirmó: expediente "está listo" pero NO firmará mientras haya oposición vecinal activa. Condición: acuerdos documentados con los 3 vecinos. Institución paralizada durante Mundial/vacaciones julio.</td><td>Mauricio</td></tr>
-        <tr><td>2026-06-11</td><td>Rubén Castro (Triple Espacio) entregó paquete estructural ISC completo con respuesta al punto 38 (interacción suelo-estructura, pág. 41 memoria de cálculo). 342 MB. Pendiente: confirmación ingreso formal con Erick.</td><td>Triple Espacio / Rubén Castro</td></tr>
-        <tr><td>2026-06-15</td><td>Arq. Rubén entregó versión r06 de la memoria estructural (corrección de textos r05). Confirmar con Erick si afecta el paquete enviado al ISC. r06 reemplaza r05 (confirmado 17-jun-2026).</td><td>Triple Espacio / Rubén Castro</td></tr>
-        <tr><td>2026-06-16</td><td>Estrategia de esperar voluntad política de Irasoque ha FALLADO tras 6 meses. Riesgo: contratos 150-190 compradores a punto de vencer. Promesas de Jorge (10-12 días) incumplidas. Se requiere reunión urgente con Jorge para redefinir estrategia.</td><td>PLAUD (Plan de choque)</td></tr>
-        <tr><td>2026-06-17</td><td>Nayeli organizó nueva carpeta ISC Edison. r06 confirmado como sustituto de r05 por Arq. Rubén. Pendiente: Erick confirme si necesita reenviar paquete ISC con r06.</td><td>Nayeli / Arq. Rubén</td></tr>
-        <tr><td>2026-06-23</td><td>✅ <strong>EDA concluido (SEDEMA)</strong> + <strong>Secretario de Metrópolis firmó el EIU</strong>. Camino crítico restante: ISC (confirmación Erick) + CAyNO (renovar) + publicitación.</td><td>Mauricio</td></tr>
-        <tr><td>2026-06-23</td><td>CAyNO Folio 000073 confirmado VENCIDO est. 08-feb-2025 (16 meses). MIAG/EDA: observaciones SEDEMA fueron enviadas al correo equivocado (geogmab). Svetlana solicitó reenvío 11-jun-2025. Reunión con Jorge del 23-jun no se realizó — Mariana sigue gestionando vecinos.</td><td>Claude (análisis documentos legales)</td></tr>
+        <tr><td style="color:#666;white-space:nowrap">06-jul-2026</td><td>Metrópoli notificará el Impacto Urbano el <strong>lunes 13-jul-2026</strong>. Vecinos opositores resueltos. Enfoque: completar ISC y avanzar hacia Manifestación de Construcción (MACO).</td><td style="color:#666">Mauricio</td></tr>
+        <tr><td style="color:#666;white-space:nowrap">08-jun-2026</td><td>Irasoque (secretario de Metrópoli) confirmó que el expediente está listo y que todos los VoBos están obtenidos, pero NO emitirá el Impacto Urbano mientras haya oposición vecinal activa. Institución paralizada durante Mundial / vacaciones julio.</td><td style="color:#666">Mauricio</td></tr>
+        <tr><td style="color:#666;white-space:nowrap">11-jun-2026</td><td>Rubén Castro (Triple Espacio) entregó paquete estructural completo con respuesta al punto 38 del ISC (interacción suelo-estructura, pág. 41 de memoria de cálculo). ENTREGA-TOMAS ALVA 11.06.2026.zip (342 MB) en Drive.</td><td style="color:#666">Triple Espacio / Rubén</td></tr>
+        <tr><td style="color:#666;white-space:nowrap">15-jun-2026</td><td>r06 reemplaza a r05. Arq. Rubén entregó versión r06 de la memoria estructural. Confirmar con Erick si el paquete ISC debe actualizarse con r06 antes de proceder.</td><td style="color:#666">Rubén Castro</td></tr>
+        <tr><td style="color:#666;white-space:nowrap">05-jun-2026</td><td>Secretario firmó el impacto urbano. Liberación estimada 2–3 semanas después del Mundial. Alta sensibilidad política — bajo perfil.</td><td style="color:#666">Equipo</td></tr>
+        <tr><td style="color:#666;white-space:nowrap">20-may-2026</td><td>Estrategia: bajo perfil, no escalar conflicto vecinal. Coordinar con Jorge cuando se resuelva tema vecinal. Timeline: 1–1.5 meses eficiente / 2–2.5 meses sin diligencia.</td><td style="color:#666">Mauricio / Erick</td></tr>
       </tbody>
     </table>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Edison Park 106 - Actualizado 23-jun-2026</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Edison 106 · CRN Abogados · Actualizado 16-jun-2026</p>
 </div>
 
 <script>
 const items = [
-  { n: 1,  desc: "Publicitar Impacto Urbano (colgar lona) — plazo: 15 días hábiles a partir de la autorización de firma", who: "Equipo", due: "TBD", urgent: false, done: false },
-  { n: 2,  desc: "Desahogar prevención de publicitación vecinal (técnicamente ya complementada, verificar punto 26 para ISC)", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
-  { n: 3,  desc: "Pago de derechos y manifestación (después de publicitación)", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
-  { n: 4,  desc: "Obtener dictamen ISC — estimado 3 semanas desde entrega de documentación completa", who: "Erick", due: "TBD", urgent: false, done: false },
-  { n: 5,  desc: "[CAyNO VENCIDO] CAyNO Folio 000073 VENCIDO est. 08-feb-2025 (16 meses). Renovar ante VUC/Alcaldía Cuauhtémoc urgente — bloquea eventual manifestación de construcción.", who: "Nayeli", due: "Urgente", urgent: true, done: false },
-  { n: 6,  desc: "Dar acceso a Nayeli al Drive administrado por Svett", who: "Svett", due: "Completado", urgent: false, done: true },
-  { n: 7,  desc: "Confirmar si hay que repetir publicitación (nueva lona) o si la del reingreso ya cubre", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
-  { n: 8,  desc: "[Estudio suelos] Arq. Rubén envió LermoProySismica-TAdison106-jun26.pdf el 15-jun-2026 (Drive: 11gPxcJsBm8Rr6C3r5AkOX8vcb5EWFHrv). Confirmar si este estudio es el requerido para el expediente ISC / punto 38, o si era el paquete del 11-jun.", who: "Arq. Rubén / Erick", due: "TBD", urgent: false, done: false },
-  { n: 9,  desc: "Agendar reuniones con los 3 vecinos opositores y documentar acuerdos mínimos de no oposición (minutas firmadas)", who: "Mauricio", due: "Urgente", urgent: true, done: false },
-  { n: 10, desc: "Solicitar a Irasoque (Metrópoli) confirmación por escrito de los requisitos para cerrar el expediente una vez se acrediten acuerdos vecinales (lista de evidencias aceptables)", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 11, desc: "[ISC] Paquete estructural completo entregado por Rubén Castro (Triple Espacio) el 11-jun-2026. Contiene respuesta al punto 38 del ISC (interacción suelo-estructura, pág. 41 memoria de cálculo). 342 MB en Drive.", who: "Rubén Castro / Isaac", due: "2026-06-11", urgent: false, done: true },
-  { n: 12, desc: "[ISC — SIGUIENTE PASO] Nayeli envió subsane Edison 106 ISC a Erick Sanz el 12-jun-2026 (Drive: 1y7n8XHfDBXNKgECBygYJtjoElSozkgnp). Confirmar con Erick que el ingreso formal al ISC fue completado y que la prevención queda cubierta.", who: "Nayeli / Erick", due: "Inmediato", urgent: true, done: false },
-  { n: 13, desc: "[ISC — Memoria r06] Arq. Rubén envió versión r06 el 15-jun-2026. r06 SÍ reemplaza r05 (confirmado 17-jun). Nayeli organizó nueva carpeta ISC con materiales actualizados. ¿Requiere reenviar el paquete ISC a Erick con r06?", who: "Nayeli / Erick", due: "Urgente", urgent: true, done: false },
-  { n: 14, desc: "✅ [EIU] Secretario de Metrópolis firmó el dictamen EIU (23-jun-2026). Siguiente paso: publicitación (lona 15 días hábiles) + pago de derechos.", who: "Mauricio", due: "23-jun-2026", urgent: false, done: true },
-  { n: 15, desc: "✅ [EDA — SEDEMA] EDA concluido favorablemente — 23-jun-2026.", who: "Nayeli / Mauricio", due: "23-jun-2026", urgent: false, done: true },
-  { n: 16, desc: "[CUZUS faltante] DAN cita CUZUS Folio 14482-151SOJE23 (29-may-2023). Este certificado NO está en iCloud ni en el expediente digital. Localizar y archivar.", who: "Nayeli", due: "Media prioridad", urgent: false, done: false },
-  { n: 17, desc: "[EIU — Reunión Jorge] Reunión con Jorge para redefinir estrategia EIU (planeada 23-jun-2026) NO se realizó. Mariana sigue gestionando vecinos. Agendar con Jorge ANTES del 30-jun — institución paralizada durante julio (Mundial).", who: "Mauricio", due: "Antes 30-jun-2026", urgent: true, done: false }
+  // ─── METRÓPOLI — Impacto Urbano ──────────────────────────────
+  { n: 14, group: "METRÓPOLI — IMPACTO URBANO", desc: "[METRÓPOLI] Monitorear posibles acciones vecinales post-notificación del IU — estar atentos a impugnaciones o recursos de los vecinos opositores", who: "Mauricio", due: "13-jul-2026", urgent: false, done: false },
+  // ─── ISC ─────────────────────────────────────────────────────
+  { n: 12, group: "ISC", desc: "[ISC] Confirmar con Erick que el ingreso formal al ISC fue completado y que la prevención del punto 38 queda cubierta (subsane enviado 12-jun, Drive: 1y7n8XHfDBXNKgECBygYJtjoElSozkgnp)", who: "Nayeli / Erick", due: "Inmediato", urgent: true, done: false },
+  { n: 13, group: "ISC", desc: "[ISC — r06] r06 reemplaza a r05 — confirmar con Erick si el paquete enviado al ISC debe actualizarse con versión r06 (15-jun) antes de proceder", who: "Nayeli / Erick", due: "Inmediato", urgent: true, done: false },
+  { n: 8,  group: "ISC", desc: "[ISC — Lermo] Confirmar si estudio Lermo (LermoProySismica-TAdison106-jun26.pdf, 15-jun, Drive: 11gPxcJsBm8Rr6C3r5AkOX8vcb5EWFHrv) es el requerido para ISC o complementa el del 11-jun", who: "Arq. Rubén / Erick", due: "TBD", urgent: false, done: false },
+  { n: 4,  group: "ISC", desc: "[ISC] Obtener dictamen ISC — estimado 3 semanas desde entrega de documentación completa", who: "Erick", due: "TBD", urgent: false, done: false },
+  // ─── VIGENCIAS ───────────────────────────────────────────────
+  { n: 5,  group: "VIGENCIAS", desc: "[VIGENCIAS] Verificar vigencia de uso de suelo y Alineamiento y Número Oficial (CAyNO) — riesgo de vencimiento", who: "Nayeli", due: "Inmediato", urgent: true, done: false },
+  // ─── PARA MANIFESTAR (MACO) ──────────────────────────────────
+  { n: 3,  group: "PARA MANIFESTAR (MACO)", desc: "[MACO] Pago de derechos y manifestación", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
+  { n: 7,  group: "PARA MANIFESTAR (MACO)", desc: "[MACO] Publicitación con lona (15 días hábiles) para Manifestación de Construcción — confirmar si lona del reingreso aplica o se requiere nueva", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
+  // ─── COMPLETADOS ─────────────────────────────────────────────
+  { n: 9,  group: "COMPLETADOS", desc: "[METRÓPOLI] Vecinos opositores resueltos — Irasoque (Metrópoli) emitirá el IU el 13-jul-2026", who: "Mauricio", due: "—", urgent: false, done: true },
+  { n: 10, group: "COMPLETADOS", desc: "[METRÓPOLI] Confirmación de requisitos para cerrar expediente con Irasoque (Metrópoli)", who: "Mauricio", due: "—", urgent: false, done: true },
+  { n: 1,  group: "COMPLETADOS", desc: "[POST-IU] Publicación del IU en diario de circulación — gestionada con la notificación", who: "Equipo", due: "—", urgent: false, done: true },
+  { n: 2,  group: "COMPLETADOS", desc: "[ISC — punto 26] Prevención punto 26 del ISC — ya no requerida", who: "Nayeli / Erick", due: "—", urgent: false, done: true },
+  { n: 6,  group: "COMPLETADOS", desc: "Dar acceso a Nayeli al Drive administrado por Svett para editar y actualizar", who: "Svett", due: "—", urgent: false, done: true },
+  { n: 11, group: "COMPLETADOS", desc: "[ISC] Paquete estructural completo (punto 38) entregado por Rubén Castro el 11-jun-2026. ENTREGA-TOMAS ALVA 11.06.2026.zip (342 MB) en Drive.", who: "Rubén Castro / Isaac", due: "—", urgent: false, done: true },
 ];
 
 const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
 const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/edison106/state.json";
-const GITHUB_HDRS  = { "Content-Type": "application/json", "Authorization": "token " + GITHUB_TOKEN, "Accept": "application/vnd.github.v3+json" };
+const GITHUB_HDRS  = { "Content-Type": "application/json", "Authorization": `token ${GITHUB_TOKEN}`, "Accept": "application/vnd.github.v3+json" };
 
 const DEFAULT_STATE = {};
 items.forEach(i => { DEFAULT_STATE[i.n] = i.done || false; });
 
-let state    = { ...DEFAULT_STATE };
-let obs      = {};
+let state = { ...DEFAULT_STATE };
+let obs = {};
 let newItems = [];
-let saving   = false;
+let saving = false;
 let saveTimer = null;
 let currentSha = null;
 
-function scheduleSave() { clearTimeout(saveTimer); saveTimer = setTimeout(saveState, 1200); }
+function scheduleSave() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveState, 1200);
+}
 
 function showStatus(msg, color) {
   const el = document.getElementById("sync-status");
-  el.textContent = msg; el.style.color = color || "#aaa";
+  el.textContent = msg;
+  el.style.color = color || "#aaa";
 }
 
 async function loadState() {
@@ -221,154 +195,205 @@ async function loadState() {
     const data = await res.json();
     currentSha = data.sha;
     const rec = JSON.parse(atob(data.content.replace(/\n/g, "")));
-    obs      = rec._obs  || {};
-    newItems = rec._new  || [];
-    state = Object.fromEntries(Object.entries(rec).filter(([k]) => k !== "_obs" && k !== "_new"));
-    showStatus("Sincronizado", "#3a6e10");
-  } catch(e) { showStatus("Sin conexion", "#a33030"); }
+    obs = rec._obs || {};
+    newItems = rec._new || [];
+    state = Object.fromEntries(Object.entries(rec).filter(([k]) => !["_obs","_new"].includes(k)));
+    showStatus("● Sincronizado", "#3a6e10");
+  } catch(e) {
+    showStatus("⚠ Sin conexión", "#a33030");
+  }
 }
 
 async function saveState() {
   if (saving) return;
-  saving = true; showStatus("Guardando...", "#8a5010");
+  saving = true;
+  showStatus("Guardando…", "#8a5010");
   try {
     if (!currentSha) {
       const r = await fetch(GITHUB_API, { headers: GITHUB_HDRS });
-      const d = await r.json(); currentSha = d.sha;
+      const d = await r.json();
+      currentSha = d.sha;
     }
     const payload = JSON.stringify({ ...state, _obs: obs, _new: newItems });
     const content = btoa(unescape(encodeURIComponent(payload)));
     const res = await fetch(GITHUB_API, {
-      method: "PUT", headers: GITHUB_HDRS,
-      body: JSON.stringify({ message: "Actualizar estado", content, sha: currentSha })
+      method: "PUT",
+      headers: GITHUB_HDRS,
+      body: JSON.stringify({ message: "Actualizar estado Edison 106", content, sha: currentSha })
     });
     if (!res.ok) throw new Error(res.status);
-    const d2 = await res.json(); currentSha = d2.content.sha;
-    showStatus("Guardado", "#3a6e10");
-  } catch(e) { showStatus("Error al guardar", "#a33030"); }
+    const data = await res.json();
+    currentSha = data.content.sha;
+    showStatus("● Guardado", "#3a6e10");
+  } catch(e) {
+    showStatus("⚠ Error al guardar", "#a33030");
+  }
   saving = false;
 }
 
 setInterval(async () => { await loadState(); render(); }, 30000);
 
 function updateCounters() {
-  const doneOrig = items.filter(i => state[i.n]).length;
-  const doneNew  = newItems.filter(i => i.done).length;
-  const done = doneOrig + doneNew;
-  const total = items.length + newItems.length;
-  document.getElementById("done-count").textContent = done;
-  document.getElementById("total-count").textContent = total;
+  const doneFixed = Object.values(state).filter(Boolean).length;
+  const doneNew = newItems.filter(i => i.done).length;
+  const totalFixed = items.length;
+  const totalNew = newItems.length;
+  document.getElementById("done-count").textContent = doneFixed + doneNew;
+  document.getElementById("total-count").textContent = totalFixed + totalNew;
   const p = document.getElementById("pending-counter");
-  if (p) p.textContent = (total - done);
+  if (p) p.textContent = (totalFixed - doneFixed) + (totalNew - doneNew);
 }
 
-function autoResize(ta) { ta.style.height = "auto"; ta.style.height = ta.scrollHeight + "px"; }
-
-function escH(str) {
-  if (!str) return "";
-  return String(str).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+function autoResize(ta) {
+  ta.style.height = "auto";
+  ta.style.height = ta.scrollHeight + "px";
 }
 
 function render() {
   const tbody = document.getElementById("pending-tbody");
   tbody.innerHTML = "";
-  let idx = 1;
+  const visible = items.filter(item => !state[item.n]);
+  let idx = 0;
+  let lastGroup = null;
 
-  items.filter(item => !state[item.n]).forEach(item => {
+  visible.forEach(item => {
+    if (item.group && item.group !== lastGroup && item.group !== "COMPLETADOS") {
+      lastGroup = item.group;
+      const gtr = document.createElement("tr");
+      gtr.className = "group-hdr";
+      gtr.innerHTML = `<td colspan="6">${item.group}</td>`;
+      tbody.appendChild(gtr);
+    }
+    idx++;
     const tr = document.createElement("tr");
-    tr.innerHTML =
-      `<td class="check-col no-print"><input type="checkbox" data-n="${item.n}" title="Marcar como hecho"></td>` +
-      `<td style="color:#999;font-size:12px">${idx++}</td>` +
-      `<td><span class="desc">${item.desc}</span></td>` +
-      `<td style="color:#666">${item.who}</td>` +
-      `<td><span class="badge ${item.urgent ? 'red' : 'gray'}">${item.due}</span></td>` +
-      `<td><textarea class="obs-input" data-obs="${item.n}" rows="1" placeholder="--">${escH(obs[item.n] || "")}</textarea></td>` +
-      `<td class="no-print"></td>`;
+    tr.innerHTML = `
+      <td class="check-col no-print"><input type="checkbox" data-n="${item.n}" title="Marcar como hecho"></td>
+      <td style="color:#999;font-size:12px">${idx}</td>
+      <td><span class="desc">${item.desc}</span></td>
+      <td style="color:#666">${item.who}</td>
+      <td><span class="badge ${item.urgent ? 'red' : 'gray'}">${item.due}</span></td>
+      <td><textarea class="obs-input" data-obs="${item.n}" rows="1" placeholder="—">${obs[item.n] || ""}</textarea></td>
+    `;
     tbody.appendChild(tr);
   });
 
-  newItems.filter(item => !item.done).forEach(item => {
-    const tr = document.createElement("tr");
-    tr.classList.add("new-row");
-    tr.innerHTML =
-      `<td class="check-col no-print"><input type="checkbox" data-new-id="${item.id}" title="Marcar como hecho"></td>` +
-      `<td style="color:#999;font-size:12px">${idx++} <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">nuevo</span></td>` +
-      `<td><span class="desc">${escH(item.desc)}</span></td>` +
-      `<td style="color:#666">${escH(item.who || "--")}</td>` +
-      `<td><span class="badge gray">${escH(item.due || "TBD")}</span></td>` +
-      `<td><textarea class="obs-input" data-new-obs="${item.id}" rows="1" placeholder="--">${escH(item.obs || "")}</textarea></td>` +
-      `<td class="no-print" style="text-align:center"><button class="btn-delete-item" data-del-id="${item.id}" title="Eliminar">x</button></td>`;
-    tbody.appendChild(tr);
+  tbody.querySelectorAll("input[type=checkbox]").forEach(cb => {
+    cb.addEventListener("change", async () => {
+      const n = parseInt(cb.dataset.n);
+      state[n] = true;
+      render();
+      updateCounters();
+      await saveState();
+    });
   });
 
-  tbody.querySelectorAll("input[type=checkbox][data-n]").forEach(cb => {
-    cb.addEventListener("change", async () => {
-      state[parseInt(cb.dataset.n)] = true; render(); updateCounters(); await saveState();
-    });
-  });
-  tbody.querySelectorAll("input[type=checkbox][data-new-id]").forEach(cb => {
-    cb.addEventListener("change", async () => {
-      const item = newItems.find(i => i.id === cb.dataset.newId);
-      if (item) item.done = true; render(); updateCounters(); await saveState();
-    });
-  });
-  tbody.querySelectorAll("textarea.obs-input[data-obs]").forEach(ta => {
-    autoResize(ta);
-    ta.addEventListener("input", () => { autoResize(ta); obs[parseInt(ta.dataset.obs)] = ta.value; showStatus("Por guardar...", "#8a5010"); scheduleSave(); });
-  });
-  tbody.querySelectorAll("textarea.obs-input[data-new-obs]").forEach(ta => {
+  tbody.querySelectorAll("textarea.obs-input").forEach(ta => {
     autoResize(ta);
     ta.addEventListener("input", () => {
       autoResize(ta);
-      const item = newItems.find(i => i.id === ta.dataset.newObs);
-      if (item) item.obs = ta.value; showStatus("Por guardar...", "#8a5010"); scheduleSave();
+      obs[parseInt(ta.dataset.obs)] = ta.value;
+      showStatus("Por guardar…", "#8a5010");
+      scheduleSave();
     });
   });
-  tbody.querySelectorAll(".btn-delete-item[data-del-id]").forEach(btn => {
-    btn.addEventListener("click", async () => {
-      if (!confirm("Eliminar este pendiente?")) return;
-      newItems = newItems.filter(i => i.id !== btn.dataset.delId);
-      render(); updateCounters(); await saveState();
+
+  newItems.forEach((item, ni) => {
+    if (item.done) return;
+    idx++;
+    const tr = document.createElement("tr");
+    tr.style.background = "#fafaf7";
+    tr.innerHTML = `
+      <td class="check-col no-print"><input type="checkbox" data-ni="${ni}" class="new-cb" title="Marcar como hecho"></td>
+      <td style="color:#999;font-size:12px">${idx}</td>
+      <td><span style="font-size:10px;background:#e8f5e0;color:#3a6e10;border-radius:4px;padding:1px 5px;margin-right:4px;">equipo</span><span class="desc">${item.desc}</span></td>
+      <td style="color:#666">${item.who || "—"}</td>
+      <td><span class="badge gray">${item.due || "TBD"}</span></td>
+      <td><textarea class="obs-new-input" data-ni="${ni}" rows="1" placeholder="—">${item.obs || ""}</textarea></td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  tbody.querySelectorAll(".new-cb").forEach(cb => {
+    cb.addEventListener("change", async () => {
+      const ni = parseInt(cb.dataset.ni);
+      newItems[ni].done = true;
+      render();
+      updateCounters();
+      await saveState();
     });
   });
+
+  tbody.querySelectorAll("textarea.obs-new-input").forEach(ta => {
+    autoResize(ta);
+    ta.addEventListener("input", () => {
+      autoResize(ta);
+      newItems[parseInt(ta.dataset.ni)].obs = ta.value;
+      showStatus("Por guardar…", "#8a5010");
+      scheduleSave();
+    });
+  });
+
+  const addTr = document.createElement("tr");
+  addTr.id = "add-row";
+  addTr.classList.add("no-print");
+  addTr.innerHTML = `
+    <td colspan="6" style="padding:8px 14px;">
+      <div id="add-collapsed" style="cursor:pointer;color:#aaa;font-size:12px;display:flex;align-items:center;gap:6px;" onclick="showAddForm()">
+        <span style="font-size:16px;line-height:1">+</span> Agregar pendiente
+      </div>
+      <div id="add-form" style="display:none;gap:8px;align-items:flex-start;flex-wrap:wrap;">
+        <textarea id="new-desc" rows="2" placeholder="Descripción del pendiente…" style="flex:1;min-width:200px;border:1px solid #e0ddd4;border-radius:6px;padding:6px 8px;font-size:13px;font-family:inherit;resize:vertical;"></textarea>
+        <input id="new-who" type="text" placeholder="Responsable" style="width:130px;border:1px solid #e0ddd4;border-radius:6px;padding:6px 8px;font-size:13px;font-family:inherit;">
+        <input id="new-due" type="text" placeholder="Fecha (TBD)" style="width:110px;border:1px solid #e0ddd4;border-radius:6px;padding:6px 8px;font-size:13px;font-family:inherit;">
+        <div style="display:flex;gap:6px;align-items:center;">
+          <button onclick="addNewItem()" style="padding:6px 14px;background:#1a1a1a;color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer;">Agregar</button>
+          <button onclick="hideAddForm()" style="padding:6px 10px;background:transparent;border:1px solid #ddd;border-radius:6px;font-size:12px;cursor:pointer;color:#888;">Cancelar</button>
+        </div>
+      </div>
+    </td>
+  `;
+  tbody.appendChild(addTr);
+
   updateCounters();
 }
 
-function toggleAddForm() {
-  const form = document.getElementById("add-form");
-  const btn  = document.getElementById("btn-add-toggle");
-  const open = form.classList.toggle("open");
-  btn.textContent = open ? "x Cancelar" : "+ Agregar pendiente";
-  if (open) document.getElementById("new-desc").focus();
-  else clearAddForm();
+function showAddForm() {
+  document.getElementById("add-collapsed").style.display = "none";
+  document.getElementById("add-form").style.display = "flex";
+  document.getElementById("new-desc").focus();
 }
 
-function clearAddForm() {
+function hideAddForm() {
+  document.getElementById("add-collapsed").style.display = "flex";
+  document.getElementById("add-form").style.display = "none";
   document.getElementById("new-desc").value = "";
-  document.getElementById("new-who").value  = "";
-  document.getElementById("new-due").value  = "";
+  document.getElementById("new-who").value = "";
+  document.getElementById("new-due").value = "";
 }
 
 async function addNewItem() {
   const desc = document.getElementById("new-desc").value.trim();
-  const who  = document.getElementById("new-who").value.trim();
-  const due  = document.getElementById("new-due").value.trim();
-  if (!desc) { document.getElementById("new-desc").focus(); return; }
-  newItems.push({ id: "n_" + Date.now(), desc, who: who || "--", due: due || "TBD", done: false, obs: "" });
-  clearAddForm(); toggleAddForm(); render(); updateCounters(); await saveState();
+  if (!desc) return;
+  const who = document.getElementById("new-who").value.trim() || "—";
+  const due = document.getElementById("new-due").value.trim() || "TBD";
+  const today = new Date().toISOString().slice(0,10);
+  newItems.push({ desc, who, due, done: false, obs: "", added: today });
+  hideAddForm();
+  render();
+  updateCounters();
+  await saveState();
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  const ta = document.getElementById("new-desc");
-  if (ta) ta.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); addNewItem(); } });
-});
 
 async function init() { await loadState(); render(); }
 init();
 
 function copyLink() {
-  if (navigator.clipboard) navigator.clipboard.writeText(window.location.href).then(() => alert("Liga copiada.")).catch(() => prompt("Copia esta liga:", window.location.href));
-  else prompt("Copia esta liga:", window.location.href);
+  const url = "https://mnunezlozada-web.github.io/admivo-status-pages/edison106/";
+  navigator.clipboard.writeText(url).then(() => {
+    alert("Liga copiada.");
+  }).catch(() => {
+    prompt("Copia esta liga:", url);
+  });
 }
 </script>
 </body>
