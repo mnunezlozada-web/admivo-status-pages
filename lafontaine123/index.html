@@ -212,7 +212,21 @@ async function saveState() {
   saving = false;
 }
 
-setInterval(async () => { await loadState(); render(); }, 30000);
+setInterval(async () => {
+  await loadState();
+  const addForm = document.getElementById("add-form");
+  const formOpen = addForm && addForm.style.display !== "none";
+  const savedDesc = formOpen ? document.getElementById("new-desc").value : "";
+  const savedWho  = formOpen ? document.getElementById("new-who").value  : "";
+  const savedDue  = formOpen ? document.getElementById("new-due").value  : "";
+  render();
+  if (formOpen) {
+    showAddForm();
+    document.getElementById("new-desc").value = savedDesc;
+    document.getElementById("new-who").value  = savedWho;
+    document.getElementById("new-due").value  = savedDue;
+  }
+}, 30000);
 
 function updateCounters() {
   const doneOrig = items.filter(i => state[i.n]).length;
