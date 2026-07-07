@@ -118,17 +118,21 @@ async function saveState() {
 }
 setInterval(async () => {
   await loadState();
+  // No re-renderizar si el usuario está escribiendo en algún campo
+  const activeEl = document.activeElement;
+  if (activeEl && (activeEl.tagName === "TEXTAREA" || activeEl.tagName === "INPUT")) return;
+  // Preservar estado del formulario de agregar pendiente si está abierto
   const addForm = document.getElementById("add-form");
   const formOpen = addForm && addForm.style.display !== "none";
-  const savedDesc = formOpen ? document.getElementById("new-desc").value : "";
-  const savedWho  = formOpen ? document.getElementById("new-who").value  : "";
-  const savedDue  = formOpen ? document.getElementById("new-due").value  : "";
+  const savedDesc = formOpen && document.getElementById("new-desc") ? document.getElementById("new-desc").value : "";
+  const savedWho  = formOpen && document.getElementById("new-who")  ? document.getElementById("new-who").value  : "";
+  const savedDue  = formOpen && document.getElementById("new-due")  ? document.getElementById("new-due").value  : "";
   render();
   if (formOpen) {
     showAddForm();
-    document.getElementById("new-desc").value = savedDesc;
-    document.getElementById("new-who").value  = savedWho;
-    document.getElementById("new-due").value  = savedDue;
+    if (savedDesc) document.getElementById("new-desc").value = savedDesc;
+    if (savedWho)  document.getElementById("new-who").value  = savedWho;
+    if (savedDue)  document.getElementById("new-due").value  = savedDue;
   }
 }, 30000);
 function updateCounters() {
