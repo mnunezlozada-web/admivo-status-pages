@@ -75,7 +75,7 @@
       <p>Carlos Sámano &nbsp;·&nbsp; </p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 18-Jun-2026</div>
+      <div id="last-update">Actualizado: 07-jul-2026</div>
       <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando...</div>
       <div style="margin-top:6px;" class="no-print">
         <button class="btn-share" onclick="copyLink()">Copiar enlace</button>
@@ -85,9 +85,9 @@
   </header>
 
   <div class="cards"><div class="card"><div class="label">Proyecto</div><div class="value sm">Lafontaine 123</div></div>
-    <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">3</div><div class="sub">por cerrar</div></div>
-    <div class="card"><div class="label">Completados</div><div class="value">1</div><div class="sub">de 4 total</div></div>
-    <div class="card"><div class="label">Urgentes</div><div class="value" style="color:#a33030">1</div><div class="sub">requieren atención</div></div></div>
+    <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">6</div><div class="sub">por cerrar</div></div>
+    <div class="card"><div class="label">Completados</div><div class="value">1</div><div class="sub">de 7 total</div></div>
+    <div class="card"><div class="label">Urgentes</div><div class="value" style="color:#a33030">2</div><div class="sub">requieren atención</div></div></div>
 
   <section>
     <h2>Estado de tramites</h2>
@@ -153,7 +153,13 @@
 
 <script>
 const items = [
-  
+  { n: 1, desc: "Armar carpeta Drive de La Fontan y enviar el enlace a Mauricio", who: "Nayeli", due: "TBD", urgent: false, done: true },
+  { n: 2, desc: "Erick Sanz trabajando para acelerar la obtención de la DSA (Declaratoria de Cumplimiento Ambiental) para la demolición", who: "Erick Sanz", due: "TBD", urgent: false, done: false },
+  { n: 3, desc: "Entregar documentos técnicos y legales faltantes para completar expediente DCA", who: "Carlos Sámano (cliente)", due: "TBD", urgent: true, done: false },
+  { n: 4, desc: "Una vez recibidos documentos del cliente: completar expediente DCA e ingresar ante SEDEMA", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
+  { n: 5, desc: "Gestionar dictamen INBAL", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
+  { n: 6, desc: "Gestionar dictamen ACP", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
+  { n: 7, desc: "Trámite de agua (SACMEX) — el punto más preocupante y prioritario del proyecto (reconfirmado 07-jul)", who: "Nayeli / Mauricio", due: "TBD", urgent: true, done: false },
 ];
 
 const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
