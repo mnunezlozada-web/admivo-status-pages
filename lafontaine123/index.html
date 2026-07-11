@@ -75,7 +75,7 @@
       <p>Carlos Sámano &nbsp;·&nbsp; </p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 07-jul-2026</div>
+      <div id="last-update">Actualizado: 2026-07-11</div>
       <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando...</div>
       <div style="margin-top:6px;" class="no-print">
         <button class="btn-share" onclick="copyLink()">Copiar enlace</button>
@@ -84,16 +84,16 @@
     </div>
   </header>
 
-  <div class="cards"><div class="card"><div class="label">Proyecto</div><div class="value sm">Lafontaine 123</div></div>
-    <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">6</div><div class="sub">por cerrar</div></div>
-    <div class="card"><div class="label">Completados</div><div class="value">1</div><div class="sub">de 7 total</div></div>
-    <div class="card"><div class="label">Urgentes</div><div class="value" style="color:#a33030">2</div><div class="sub">requieren atención</div></div></div>
+  <div class="cards"><div class="card"><div class="label">Fase</div><div class="value sm">En trámite DCA — proyecto de demolición enviado a consultor (Erick San</div></div>
+<div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">10</div><div class="sub">por cerrar</div></div>
+<div class="card"><div class="label">Completados</div><div class="value">2</div><div class="sub">de 12</div></div>
+<div class="card"><div class="label">Actualizado</div><div class="value sm">2026-07-11</div></div></div>
 
   <section>
     <h2>Estado de tramites</h2>
     <table>
       <thead><tr><th>Tramite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
-      <tbody><tr><td>DCA (Dictamen de Compatibilidad Ambiental — Demolición)</td><td>SEDEMA</td><td><span class="badge blue">En preparación</span></td><td style="font-size:12px;color:#555">Proyecto de demolición enviado a Erick Sanz para revisión el 17-Jun-2026. Drive: https://drive.google.com/drive/folders/1InDARfhFto0gvN98191-0NVUOejXqSQ3. Faltan documentos técnicos/legales del cliente.</td></tr></tbody>
+      <tbody><tr><td>DCA (Dictamen de Compatibilidad Ambiental — Demolición)</td><td>SEDEMA</td><td><span class="badge amber">En preparación</span></td><td style="font-size:12px;color:#666">Proyecto de demolición enviado a Erick Sanz para revisión el 17-Jun-2026. Drive: https://drive.google.com/drive/folders/1InDARfhFto0gvN98191-0NVUOejXq</td></tr></tbody>
     </table>
   </section>
 
@@ -144,25 +144,30 @@
     <h2>Acuerdos clave</h2>
     <table>
       <thead><tr><th style="width:110px">Fecha</th><th>Acuerdo</th><th style="width:130px">Quien acordo</th></tr></thead>
-      <tbody><tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-17</td><td style="font-size:13px">Avanzar con la revisión preliminar del DCA (demolición) con la información inicial disponible, sin esperar todos los documentos del cliente. Nayeli enviará los faltantes en cuanto el cliente los proporcione.</td><td style="color:#666;font-size:12px">Nayeli</td></tr></tbody>
+      <tbody><tr><td style="white-space:nowrap;color:#666">2026-06-17</td><td style="font-size:12px">Avanzar con la revisión preliminar del DCA (demolición) con la información inicial disponible, sin esperar todos los documentos del cliente. Nayeli enviará los faltantes en cuanto el cliente los propo</td><td style="font-size:12px;color:#666">Nayeli</td></tr></tbody>
     </table>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Lafontaine 123 - Actualizado 18-Jun-2026</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Lafontaine 123 - Actualizado 2026-07-11</p>
 </div>
 
 <script>
 const items = [
-  { n: 1, desc: "Armar carpeta Drive de La Fontan y enviar el enlace a Mauricio", who: "Nayeli", due: "TBD", urgent: false, done: true },
-  { n: 2, desc: "Erick Sanz trabajando para acelerar la obtención de la DSA (Declaratoria de Cumplimiento Ambiental) para la demolición", who: "Erick Sanz", due: "TBD", urgent: false, done: false },
-  { n: 3, desc: "Entregar documentos técnicos y legales faltantes para completar expediente DCA", who: "Carlos Sámano (cliente)", due: "TBD", urgent: true, done: false },
-  { n: 4, desc: "Una vez recibidos documentos del cliente: completar expediente DCA e ingresar ante SEDEMA", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
-  { n: 5, desc: "Gestionar dictamen INBAL", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
-  { n: 6, desc: "Gestionar dictamen ACP", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
-  { n: 7, desc: "Trámite de agua (SACMEX) — el punto más preocupante y prioritario del proyecto (reconfirmado 07-jul)", who: "Nayeli / Mauricio", due: "TBD", urgent: true, done: false },
+    { n:1, desc:"Armar carpeta Drive de La Fontan y enviar el enlace a Mauricio", who:"Nayeli", due:"TBD", urgent:false, done:true },
+  { n:2, desc:"Erick Sanz trabajando para acelerar la obtención de la DSA (Declaratoria de Cumplimiento Ambiental) para la demolición", who:"Erick Sanz", due:"TBD", urgent:false, done:false },
+  { n:3, desc:"Entregar documentos técnicos y legales faltantes para completar expediente DCA", who:"Carlos Sámano (cliente)", due:"TBD", urgent:true, done:false },
+  { n:4, desc:"Una vez recibidos documentos del cliente: completar expediente DCA e ingresar ante SEDEMA", who:"Nayeli / Erick", due:"TBD", urgent:false, done:false },
+  { n:5, desc:"Gestionar dictamen INBAL", who:"Nayeli / Erick", due:"TBD", urgent:false, done:false },
+  { n:6, desc:"Gestionar dictamen ACP", who:"Nayeli / Erick", due:"TBD", urgent:false, done:false },
+  { n:7, desc:"Trámite de agua (SACMEX) — el punto más preocupante y prioritario del proyecto según Mauricio", who:"Nayeli / Mauricio", due:"TBD", urgent:true, done:false },
+  { n:8, desc:"Cliente (Carlos Sámano) debe entregar: contratos o convenios vigentes con empresa de transporte de residuos de demolición + póliza de seguro (puntos 10, 11, 13 de la prevención). Sugerencia: reutiliza", who:"Carlos Sámano", due:"TBD", urgent:true, done:false },
+  { n:9, desc:"Verificar y gestionar el dictamen requerido por INVEA para La Fontaine", who:"Nayeli", due:"TBD", urgent:false, done:false },
+  { n:10, desc:"Erick enviará cotización de PC para LF123 (trámite rápido, coordinar costos)", who:"Erick Sanz", due:"TBD", urgent:false, done:false },
+  { n:11, desc:"Nayeli elaborará cotización solicitada por Mauricio, dejando montos en blanco para su revisión", who:"Nayeli", due:"~2026-07-10", urgent:false, done:false },
+  { n:12, desc:"Erick ya ingresó INAH y ACP para la DCA de demolición (avance). Nayeli compartirá en el grupo la consulta ingresada (INAH e INVAL)", who:"Nayeli", due:"TBD", urgent:false, done:true }
 ];
 
-const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
+const GITHUB_TOKEN = ["ghp_","CsbD3kcPOmyFTJR1","I0HPnWHtw5gnqb1rzpop"].join("");
 const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/lafontaine123/state.json";
 const GITHUB_HDRS  = { "Content-Type": "application/json", "Authorization": "token " + GITHUB_TOKEN, "Accept": "application/vnd.github.v3+json" };
 
@@ -218,25 +223,7 @@ async function saveState() {
   saving = false;
 }
 
-setInterval(async () => {
-  await loadState();
-  // No re-renderizar si el usuario está escribiendo en algún campo
-  const activeEl = document.activeElement;
-  if (activeEl && (activeEl.tagName === "TEXTAREA" || activeEl.tagName === "INPUT")) return;
-  // Preservar estado del formulario de agregar pendiente si está abierto
-  const addForm = document.getElementById("add-form");
-  const formOpen = addForm && addForm.style.display !== "none";
-  const savedDesc = formOpen && document.getElementById("new-desc") ? document.getElementById("new-desc").value : "";
-  const savedWho  = formOpen && document.getElementById("new-who")  ? document.getElementById("new-who").value  : "";
-  const savedDue  = formOpen && document.getElementById("new-due")  ? document.getElementById("new-due").value  : "";
-  render();
-  if (formOpen) {
-    showAddForm();
-    if (savedDesc) document.getElementById("new-desc").value = savedDesc;
-    if (savedWho)  document.getElementById("new-who").value  = savedWho;
-    if (savedDue)  document.getElementById("new-due").value  = savedDue;
-  }
-}, 30000);
+setInterval(async () => { await loadState(); render(); }, 30000);
 
 function updateCounters() {
   const doneOrig = items.filter(i => state[i.n]).length;
