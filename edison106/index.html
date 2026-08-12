@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edison 106 (Edison Park) — Estatus del proyecto</title>
+<title>Edison 106 — Edison Park — Estatus del proyecto</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 14px; color: #1a1a1a; background: #f5f4f0; padding: 2rem; }
@@ -71,11 +71,11 @@
 <div class="container">
   <header>
     <div>
-      <h1>Edison 106 (Edison Park)</h1>
+      <h1>Edison 106 — Edison Park</h1>
       <p>Triple Espacio / Sutton &nbsp;·&nbsp; Tomás Alva Edison 106, Col. Tabacalera, Alcaldía Cuauhtémoc</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 15-jul-2026</div>
+      <div id="last-update">Actualizado: 12-ago-2026</div>
       <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando...</div>
       <div style="margin-top:6px;" class="no-print">
         <button class="btn-share" onclick="copyLink()">Copiar enlace</button>
@@ -84,23 +84,26 @@
     </div>
   </header>
 
-  <div class="cards"><div class="card"><div class="label">Fase</div><div class="value sm">EIU — publicación + prevención 43 pts</div></div>
-<div class="card"><div class="label">EIU</div><div class="value">IU notif.</div><div class="sub">13-jul-2026</div></div>
-<div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">19</div><div class="sub">por cerrar</div></div>
-<div class="card"><div class="label">Meta manifestación</div><div class="value sm">Ago/Sep 2026</div></div></div>
+  <div class="cards">
+<div class="card"><div class="label">Fase</div><div class="value sm">Prevención EIU — 43 puntos</div></div>
+<div class="card"><div class="label">EIU</div><div class="value">✅</div><div class="sub">dictamen emitido</div></div>
+<div class="card"><div class="label">Prevención</div><div class="value sm">Resp. completa enviada</div><div class="sub">11-ago-2026 (Rubén)</div></div>
+<div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">—</div><div class="sub">por cerrar</div></div>
+</div>
 
   <section>
     <h2>Estado de tramites</h2>
     <table>
       <thead><tr><th>Tramite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
-      <tbody><tr><td>EIU / Impacto Urbano</td><td>SEDUVI / CIU — Metrópolis</td><td><span class="badge amber">⚠️ En proceso</span></td><td>Notificación 13-jul; publicación 15 días hábiles; prevención 43 puntos</td></tr>
-<tr><td>ISC</td><td>SEDUVI / ISC</td><td><span class="badge amber">⚠️ Enviado</span></td><td>Paquete enviado a Erick 12-jun; confirmar ingreso formal y feedback lunes 13-jul</td></tr>
-<tr><td>CAyNO</td><td>Alcaldía Cuauhtémoc</td><td><span class="badge red">🔴 Vencido</span></td><td>Folio 000073, vencido 08-feb-2025 (est.) — renovar urgente</td></tr>
-<tr><td>CUZUS</td><td>SEDUVI</td><td><span class="badge blue">⏳ Por verificar</span></td><td>CUZUS 2023 (14482-151SOJE23) — verificar si es el más reciente</td></tr>
-<tr><td>MIAG / EDA</td><td>SEDEMA</td><td><span class="badge green">✅ Concluido</span></td><td>EDA y MIAG favorables (23-jun-2026)</td></tr>
-<tr><td>DAN (Norma 7)</td><td>SEDUVI</td><td><span class="badge green">✅ Favorable</span></td><td>SEDUVI/DGOU/0691/2024 — 15-abr-2024</td></tr>
-<tr><td>ACP DPCUEP</td><td>SEDUVI</td><td><span class="badge green">✅ Favorable</span></td><td>DPCUEP/1036/2024 — 25-mar-2024</td></tr>
-<tr><td>Publicación Impacto Urbano</td><td>Diario nacional</td><td><span class="badge red">🔴 Pendiente</span></td><td>Nuevo ingreso con expediente completo + ISC (decisión 09-jul); meta 13-jul</td></tr></tbody>
+      <tbody>
+<tr><td>EIU / DEIU</td><td>SEDUVI / Metrópolis</td><td><span class="badge green">✅ Dictamen emitido</span></td><td>Folio 14515-121SUIS24. Prevención 43 puntos en proceso de desahogo.</td></tr>
+<tr><td>ISC</td><td>ISC — Instituto de las Construcciones</td><td><span class="badge amber">⚠️ Puntos CSE pendientes</span></td><td>Todos los puntos atendidos excepto los relacionados al CSE (Corresponsable de Seguridad Estructural).</td></tr>
+<tr><td>CAyNO / Alineamiento</td><td>Alcaldía Cuauhtémoc</td><td><span class="badge red">🔴 Vencido feb-2025</span></td><td>Folio 000073 (08-feb-2023). Renovar antes de manifestación.</td></tr>
+<tr><td>CUZUS</td><td>SEDUVI</td><td><span class="badge amber">⚠️ Verificar vigencia</span></td><td>14482-151SOJE23 (may-2023). Confirmar si es el más reciente.</td></tr>
+<tr><td>MIAG / EDA</td><td>SEDEMA</td><td><span class="badge green">✅ Concluido</span></td><td>EDA y MIAG concluidos favorablemente (23-jun-2026).</td></tr>
+<tr><td>Derechos previos</td><td>Alcaldía / Tesorería</td><td><span class="badge amber">⚠️ Acreditación pendiente</span></td><td>Isaac Sutton envió ZIP 14-jul. Nayeli debe revisar y preparar acreditación.</td></tr>
+<tr><td>Prevención Alcaldía</td><td>Alcaldía Cuauhtémoc</td><td><span class="badge amber">⚠️ Pendiente acuse Nayeli</span></td><td>11-ago: Rubén Castro envió respuesta completa (elevadores + conductores). Nayeli debe acusar recibo.</td></tr>
+</tbody>
     </table>
   </section>
 
@@ -151,51 +154,62 @@
     <h2>Acuerdos clave</h2>
     <table>
       <thead><tr><th style="width:110px">Fecha</th><th>Acuerdo</th><th style="width:130px">Quien acordo</th></tr></thead>
-      <tbody><tr><td>2026-07-14</td><td>Isaac Sutton envió "pagos de derechos anteriores.zip" — documentos de derechos previos recibidos. Nayeli debe revisar y preparar acreditación para evitar pago doble.</td><td>Isaac Sutton / Correo</td></tr>
-<tr><td>2026-07-09</td><td>PLAUD 07-09: Se decidió REPETIR la publicación con expediente completo + ISC desde el inicio. Punto crítico prevención: patios de iluminación de cubos (posible cruce R95 — validar con Fer). Feedback ISC esperado lunes 13-jul.</td><td>Erick / Nayeli / Mauricio</td></tr>
-<tr><td>2026-07-07</td><td>PLAUD 07-07: Notificación del EIU esperada 13-jul-2026, activa plazo de 15 días hábiles para publicación en diario nacional. Prevención de 43 puntos identificada. Meta: manifestar fin-ago/inicio-sep 2026.</td><td>Mauricio / Nayeli</td></tr>
-<tr><td>2026-06-23</td><td>EDA concluido (SEDEMA). Secretario de Metrópolis firmó el EIU. Camino crítico restante: ISC + CAyNO (renovar) + publicitación.</td><td>Mauricio</td></tr>
-<tr><td>2026-06-12</td><td>Nayeli envió subsane Edison 106 ISC completo a Erick Sanz (Drive: 1y7n8XHfDBXNKgECBygYJtjoElSozkgnp). Paquete estructural con respuesta al punto 38.</td><td>Nayeli Cardona</td></tr>
-<tr><td>2026-06-08</td><td>Irasoke (Metrópoli) confirmó expediente listo pero no firmará con oposición activa. Institución paralizada durante Mundial/vacaciones julio.</td><td>Mauricio</td></tr></tbody>
+      <tbody><tr><td style="white-space:nowrap">2026-05-20</td><td>Ya se tienen todas las autorizaciones técnicas. Impacto urbano pendiente por temas políticos y vecinales. El expediente está integrado y en espera de firma.</td><td>Erick / Mauricio</td></tr>
+<tr><td style="white-space:nowrap">2026-05-20</td><td>Sistema alternativo ya autorizado</td><td>Equipo</td></tr>
+<tr><td style="white-space:nowrap">2026-05-20</td><td>Estrategia: evitar escalar conflicto vecinal, no profundizar públicamente sobre la ubicación. Coordinar con Jorge cuando se resuelva tema vecinal para que emita el dictamen.</td><td>Mauricio / Erick</td></tr>
+<tr><td style="white-space:nowrap">2026-05-20</td><td>Timeline estimado: 1-1.5 meses con eficiencia; 2-2.5 meses sin diligencia</td><td>Erick</td></tr>
+<tr><td style="white-space:nowrap">2026-06-08</td><td>Irasoque (Metrópoli) dice expediente "está listo" pero NO firmará mientras haya oposición vecinal activa. Condición para firma: acuerdos documentados con los 3 vecinos opositores. La institución no moverá nada durante el Mundial/vacaciones julio para evitar accidentes políticos.</td><td>Mauricio</td></tr>
+<tr><td style="white-space:nowrap">2026-06-11</td><td>Rubén Castro (Triple Espacio) entregó paquete estructural completo con respuesta al punto 38 del ISC (verificación de interacción suelo-estructura, pág. 41 de memoria de cálculo). Archivo ENTREGA-TOMAS ALVA 11.06.2026.zip (342 MB) en Drive. Pendiente: confirmar ingreso formal al ISC con Erick/Nayeli para cerrar la prevención.</td><td>Triple Espacio / Rubén Castro</td></tr>
+<tr><td style="white-space:nowrap">2026-06-15</td><td>Arq. Rubén entregó versión r06 de la memoria de cálculo — corrección de textos; confirmar si afecta el paquete enviado al ISC.</td><td>Triple Espacio / Rubén Castro</td></tr>
+<tr><td style="white-space:nowrap">2026-06-16</td><td>PLAUD "Plan de choque para destrabar la firma de impacto urbano ante colapso financiero y legal inminente": La estrategia de esperar la voluntad política de Irasoque (Metrópoli) ha fallado tras 6 meses. Contratos de compradores a punto de vencer; riesgo de 150-190 demandas por fraude. No hay liquidez para reembolsar. Promesas de Jorge (10-12 días) incumplidas. Intermediarias Mariana y Carol sin resultados. Opciones discutidas: A) Juicio contencioso/amparo — inviable a corto plazo (1.5 años, sin suspensión que acelere el trámite). B) Presión social — organizar compradores para que se manifiesten y generar visibilidad del problema. Se requiere reunión urgente con Jorge y Speaker 2 (no identificado — posiblemente socio principal; Mauricio debe aclarar) para redefinir estrategia.</td><td>PLAUD (Google Drive ID: 1DZYNdcz1z3c6aoAUO_j1uyDFYasixiweAL4wQjpyUGs)</td></tr>
+<tr><td style="white-space:nowrap">2026-06-17</td><td>Correo — Nayeli organizó nueva carpeta ISC Edison y confirmó sustitución r06/r05</td><td>Nayeli Cardona generó nueva carpeta Drive para organizar la información del ISC: https://drive.google.com/drive/folders/15rU--wIf1XzltR3QCRDtpz-t_jLjBw6E. Incluyó archivo de respuesta del estructurista: https://drive.google.com/file/d/14_gkz_-EzTdQt_k7FEHQhjAGDIVcdfrG/view. La memoria r06 sustituye la r05 — confirmado por Arq. Rubén Castro el mismo día (01:27). Pendiente: Erick confirme si debe reenviar paquete ISC con r06. | Correo (nayeli.cardona@crnabogados.com / arq.ruben@tripleespacio.com)</td></tr>
+<tr><td style="white-space:nowrap">2026-06-23</td><td>✅ **EDA concluido (SEDEMA)**. ✅ **Secretario de Metrópolis firmó el EIU** (dictamen impacto urbano). Camino crítico restante: ISC (confirmación Erick) + CAyNO (renovar, vencido est.) + publicitación (lona 15 días hábiles).</td><td>Mauricio</td></tr>
+<tr><td style="white-space:nowrap">2026-07-07</td><td>PLAUD Mauricio/Nayeli: notificación del EIU esperada 13-jul-2026, activa plazo de 15 días hábiles para publicación en diario nacional. Prevención de 43 puntos identificada. Meta: manifestar fin-ago/inicio-sep 2026.</td><td>Mauricio / Nayeli</td></tr>
+<tr><td style="white-space:nowrap">2026-07-09</td><td>PLAUD 07-09 (Mauricio/Nayeli/Erick): Se decidió REPETIR la publicación con expediente completo + ISC. Punto crítico prevención: patios de iluminación (cruce R95 — validar Fer). Feedback ISC esperado lunes 13-jul. Nayeli pedirá desglose de pagos de derechos a clientes. Corroborar vigencia Cano/Cusús.</td><td>Erick / Nayeli / Mauricio</td></tr>
+<tr><td style="white-space:nowrap">2026-07-21</td><td>Correo — Rubén Castro (Triple Espacio) envió "Respuesta Prevención Julio" con RAR adjunto en Drive (ID: 1PJq4BihdtlqdwO3Uca8S3QfEvQurlg8b) — respuesta técnica de Triple Espacio a la prevención de julio de Edison 106. Dirigido a Nayeli, Mauricio, Allan e Isaac.</td><td>Rubén Castro (Triple Espacio)</td></tr>
+<tr><td style="white-space:nowrap">2026-07-22</td><td>Correo — Nayeli acusa recibo de respuesta de Rubén Castro. Indica: "Trabajaremos con el equipo y regreso con ustedes para revisar los 3 puntos que están pendientes de responder." ⚠️ Quedan 3 puntos sin cubrir en la prevención.</td><td>Nayeli Cardona</td></tr>
+<tr><td style="white-space:nowrap">2026-07-23</td><td>**Correo (ISC) — Rubén Castro** reenvió a Nayeli (cc: Allan, Isaac, Mauricio) la respuesta a la revisión ISC de marzo 2026: **"Respuesta a Revision Marzo 2026.rar"** (Drive ID: 1F4qvhOvoQ8N-Soz0eLlyUgUBAN-Dv3nq). El original fue enviado a Svetlana (ex-apoderada) el 14-abr-2026. Contenido: todos los puntos atendidos excepto los relacionados al CSE. Nayeli acusó recibo: "Gracias, dame oportunidad de revisar."</td><td>Rubén Castro → Nayeli</td></tr>
+</tbody>
     </table>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Edison 106 (Edison Park) - Actualizado 15-jul-2026</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Edison 106 — Edison Park - Actualizado 12-ago-2026</p>
 </div>
 
 <script>
 const items = [
-    { n: 1, desc: "Publicitar Impacto Urbano (colgar lona) — plazo: 15 días hábiles a partir de la autorización de firma", who: "Equipo", due: "TBD", urgent: false, done: true },
+  { n: 1, desc: "Publicitar Impacto Urbano (colgar lona) — plazo: 15 días hábiles a partir de la autorización de firma", who: "Equipo", due: "TBD", urgent: false, done: true },
   { n: 2, desc: "Desahogar prevención de publicitación vecinal (técnicamente ya complementada, verificar punto 26 para ISC)", who: "Nayeli / Erick", due: "TBD", urgent: false, done: true },
   { n: 3, desc: "Pago de derechos y manifestación (después de publicitación)", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
   { n: 4, desc: "Obtener dictamen ISC — estimado 3 semanas desde entrega de documentación completa", who: "Erick", due: "TBD", urgent: false, done: true },
-  { n: 5, desc: "✅ [ISC] Paquete estructural completo entregado por Rubén Castro (Triple Espacio) el 11-Jun-2026. Contiene respuesta al punto 38 del ISC (interacción suelo-estructura, pág. 41 de memoria de cálculo).", who: "Rubén Castro / Isaac", due: "2026-06-11", urgent: false, done: true },
-  { n: 6, desc: "[ISC — SIGUIENTE PASO] Nayeli envió subsane Edison 106 ISC a Erick Sanz el 12-Jun-2026. Confirmar con Erick que el ingreso formal al ISC fue completado y que la prevención queda cubierta.", who: "Nayeli / Erick", due: "Inmediato", urgent: true, done: true },
-  { n: 7, desc: "[CAyNO — VENCIDO] CAyNO Folio 000073 (Alcaldía Cuauhtémoc) VENCIDO est. 08-feb-2025. Formato TCUH-ECA_1. Renovar ante VUC/Alcaldía Cuauhtémoc antes de la eventual manifestación de construcción.", who: "Nayeli", due: "Urgente", urgent: true, done: false },
-  { n: 8, desc: "Dar acceso a Nayeli al Drive administrado por Svett para que pueda editar y actualizar", who: "Svett", due: "Inmediato", urgent: false, done: true },
-  { n: 9, desc: "Confirmar si hay que repetir publicitación (nueva lona) o si la del reingreso ya cubre", who: "Mauricio / Erick", due: "TBD", urgent: false, done: true },
-  { n: 10, desc: "Estudio de suelos / interacción suelo-estructura Edison — Arq. Rubén envió versión actualizada LermoProySismica-TAdison106-jun26.pdf el 15-Jun-2026. Confirmar si reemplaza o complementa el paquete enviado al ISC.", who: "Arq. Rubén / Erick", due: "TBD", urgent: false, done: true },
-  { n: 11, desc: "[ISC — Memoria Estructural r06] Arq. Rubén envió r06 el 15-Jun-2026. r06 SÍ reemplaza r05 (confirmado 17-Jun). Confirmar con Erick si necesita reenviar el paquete ISC con r06.", who: "Nayeli / Erick", due: "Urgente", urgent: true, done: true },
-  { n: 12, desc: "[EIU — ESTRATEGIA] PLAUD 16-Jun: La estrategia de esperar voluntad política de Irasoke ha fallado tras 6 meses. Riesgo de 150-190 demandas por fraude. Se decidió repetir publicación con expediente completo + ISC (09-jul).", who: "Mauricio", due: "Urgente", urgent: true, done: true },
-  { n: 13, desc: "Agendar reuniones con los 3 vecinos opositores y documentar acuerdos mínimos de no oposición (minutas firmadas)", who: "Mauricio", due: "Urgente", urgent: true, done: true },
-  { n: 14, desc: "Solicitar a Irasoke (Metrópoli) confirmación por escrito de los requisitos específicos para cerrar el expediente una vez se acrediten los acuerdos vecinales", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 15, desc: "✅ [MIAG/EDA — SEDEMA] EDA y MIAG/SEDEMA concluidos favorablemente (23-jun-2026). Trámites ambientales ante SEDEMA resueltos.", who: "Nayeli / Mauricio", due: "—", urgent: false, done: true },
-  { n: 16, desc: "[CUZUS faltante] El DAN cita CUZUS posterior Folio 14482-151SOJE23 (29-may-2023). Este certificado NO está en iCloud. Localizar y archivar para expediente completo.", who: "Nayeli", due: "Media", urgent: false, done: false },
-  { n: 17, desc: "[EIU — Reunión con Jorge] Reunión con Jorge para redefinir estrategia EIU (planeada 23-jun) no se realizó. Reagendar.", who: "Mauricio", due: "Urgente", urgent: true, done: false },
-  { n: 18, desc: "[EIU — NOTIFICACIÓN 13-jul] Notificación del dictamen de Impacto Urbano esperada el lunes 13-jul-2026. Gestionar publicación en diario nacional (15 días hábiles) para evitar anulación.", who: "Mauricio", due: "13-jul-2026", urgent: true, done: false },
-  { n: 19, desc: "[EIU — Prevención 43 puntos] Elaborar checklist de la prevención de 43 puntos con Alan, asignar responsables y compartir con el cliente.", who: "Nayeli", due: "TBD", urgent: true, done: false },
-  { n: 20, desc: "[Alineamiento/CAyNO] Tramitar el nuevo alineamiento — confirmado vencido feb-2025.", who: "Nayeli", due: "Urgente", urgent: true, done: false },
-  { n: 21, desc: "[CUZUS] Verificar si el CUZUS 2023 es el más reciente; si no, renovar.", who: "Nayeli", due: "TBD", urgent: false, done: false },
+  { n: 11, desc: "**✅ [ISC]** Paquete estructural completo entregado por Rubén Castro (Triple Espacio) el 11-Jun-2026. Contiene respuesta al punto 38 del ISC (interacción suelo-estructura, pág. 41 de memoria de cálculo). Archivo: ENTREGA-TOMAS ALVA 11.06.2026.zip en Drive (342 MB).", who: "Rubén Castro / Isaac", due: "2026-06-11", urgent: false, done: true },
+  { n: 12, desc: "**🔴 [ISC — SIGUIENTE PASO]** Nayeli envió subsane Edison 106 ISC a Erick Sanz el 12-Jun-2026 (Drive: 1y7n8XHfDBXNKgECBygYJtjoElSozkgnp) — paquete estructural completo con respuesta a punto 38 (igual que el enviado a Rubén). Confirmar con Erick que el ingreso formal al ISC fue completado y que la prevención queda cubierta.", who: "Nayeli / Erick", due: "Inmediato", urgent: true, done: true },
+  { n: 5, desc: "**[CAyNO — VENCIDO]** CAyNO Folio 000073 (Alcaldía Cuauhtémoc) **VENCIDO est. 08-feb-2025** (16 meses de retraso). Formato TCUH-ECA_1. Renovar ante VUC/Alcaldía Cuauhtémoc antes de la eventual manifestación de construcción. CUZUS 888-151SUIS23D: vigente.", who: "Nayeli", due: "Urgente", urgent: true, done: false },
+  { n: 6, desc: "Dar acceso a Nayeli al Drive administrado por Svett para que pueda editar y actualizar", who: "Svett", due: "Inmediato", urgent: true, done: true },
+  { n: 7, desc: "Confirmar si hay que repetir publicitación (nueva lona) o si la del reingreso ya cubre", who: "Mauricio / Erick", due: "TBD", urgent: false, done: false },
+  { n: 8, desc: "**Estudio de suelos / interacción suelo-estructura Edison** — Arq. Rubén (Triple Espacio) envió el **15-Jun-2026** versión actualizada: **LermoProySismica-TAdison106-jun26.pdf** (Drive: 11gPxcJsBm8Rr6C3r5AkOX8vcb5EWFHrv) — Reporte Técnico Final por M. en C. Javier Lermo Samaniego et al., junio 2026, sobre efecto de sitio con y sin pilotes en Tomas Alva Edison 106. Confirmar si este documento es el requerido para el expediente del ISC / ISC punto 38, o si era el del paquete del 11-Jun.", who: "Arq. Rubén / Erick", due: "TBD", urgent: false, done: true },
+  { n: 13, desc: "**[ISC — Memoria Estructural r06]** Arq. Rubén envió el **15-Jun-2026** versión **r06** de la **Memoria de Cálculo Estructural** (Drive: 1buOf170hBw42tqDUNbYEgy8QSu8k-nfz). El ajuste es corrección de un par de textos incorrectos en el archivo r05. **Confirmado por Arq. Rubén (17-Jun-2026):** r06 SÍ reemplaza r05. Nayeli organizó nueva carpeta ISC con materiales actualizados (Drive folder: 15rU--wIf1XzltR3QCRDtpz-t_jLjBw6E) incluyendo archivo de respuesta del estructurista (Drive: 14_gkz_-EzTdQt_k7FEHQhjAGDIVcdfrG). ⚠️ Confirmar con Erick si necesita reenviar el paquete ISC con r06 en lugar de r05.", who: "Nayeli / Erick", due: "Urgente", urgent: true, done: true },
+  { n: 14, desc: "**[EIU — ESTRATEGIA URGENTE]** PLAUD 16-Jun: La estrategia de esperar voluntad política de Irasoque (Metrópoli) para firmar el impacto urbano ha fallado tras 6 meses. Contratos de compradores a punto de vencer — riesgo de 150-190 demandas por fraude. Promesas de Jorge (resolución en 10-12 días) incumplidas. Opciones: A) Juicio contencioso — inviable (1.5 años, sin suspensión que acelere), B) Presión social — organizar compradores para manifestarse. **Acción urgente:** Contactar a Jorge para reunión y coordinar con Speaker 2 (no identificado) una reunión con Jorge para redefinir estrategia.", who: "Mauricio", due: "Urgente", urgent: true, done: false },
+  { n: 9, desc: "Agendar reuniones con los 3 vecinos opositores y documentar acuerdos mínimos de no oposición (minutas firmadas)", who: "Mauricio", due: "Urgente", urgent: true, done: true },
+  { n: 10, desc: "Solicitar a Irasoque (Metrópoli) confirmación por escrito de los requisitos específicos para cerrar el expediente una vez se acrediten los acuerdos vecinales (lista de evidencias aceptables)", who: "Mauricio", due: "TBD", urgent: false, done: true },
+  { n: 15, desc: "**[MIAG/EDA — SEDEMA]** ✅ EDA y MIAG/SEDEMA concluidos favorablemente (23-jun-2026). Trámites ambientales ante SEDEMA resueltos.", who: "Nayeli / Mauricio", due: "—", urgent: false, done: true },
+  { n: 16, desc: "**[CUZUS faltante]** El DAN (SEDUVI/DGOU/0691/2024) cita CUZUS posterior: **Folio 14482-151SOJE23** (29-may-2023). Este certificado NO está en iCloud. Localizar y archivar para expediente completo.", who: "Nayeli", due: "Media", urgent: false, done: false },
+  { n: 17, desc: "**[EIU — Reunión con Jorge]** Reunión con Jorge para redefinir estrategia EIU (planeada 23-jun-2026) no se realizó. Mariana sigue gestionando vecinos. Antes de 30-jun agendar con Jorge — institución paralizada durante julio (Mundial).", who: "Mauricio", due: "Urgente", urgent: true, done: false },
+  { n: 18, desc: "**[EIU — NOTIFICACIÓN 13-jul]** Notificación del dictamen de Impacto Urbano esperada el lunes 13-jul-2026. Gestionar cómputo del plazo y publicación en diario de circulación nacional (15 días hábiles) para evitar anulación.", who: "Mauricio", due: "13-jul-2026", urgent: true, done: false },
+  { n: 19, desc: "**[EIU — Prevención 43 puntos]** Elaborar checklist de la prevención de 43 puntos con Alan, asignar responsables y compartir con el cliente. Incluye correcciones de plataforma, responsivas de corresponsables, póliza de seguro vigente, no-adeudos agua/predial.", who: "Nayeli", due: "TBD", urgent: true, done: false },
+  { n: 20, desc: "**[Alineamiento/CAyNO]** Tramitar el nuevo alineamiento — confirmado vencido feb-2025.", who: "Nayeli", due: "Urgente", urgent: true, done: false },
+  { n: 21, desc: "**[CUZUS]** Verificar si el CUZUS 2023 es el más reciente; si no, renovar.", who: "Nayeli", due: "TBD", urgent: false, done: false },
   { n: 22, desc: "Confirmar con Erick quién subió el expediente a la plataforma para corregir datos según la prevención", who: "Nayeli", due: "TBD", urgent: false, done: false },
   { n: 23, desc: "Solicitar a Erick el proyecto del sistema alternativo y subirlo al Drive", who: "Nayeli", due: "TBD", urgent: false, done: false },
-  { n: 24, desc: "Solicitar al cliente póliza de seguro vigente y constancias de no adeudo de agua y predial", who: "Mauricio", due: "TBD", urgent: true, done: false },
+  { n: 24, desc: "Solicitar al cliente póliza de seguro vigente y constancias de no adeudo de agua y predial", who: "Mauricio", due: "TBD", urgent: false, done: false },
   { n: 25, desc: "Hablar con Isaac para definir priorización del proyecto Edison", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 26, desc: "Monitorear el tema de los vecinos para prevenir conflictos que frenen la publicación/manifestación (ya no bloqueante total)", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 27, desc: "[09-JUL — NUEVO INGRESO COMPLETO] Se decidió repetir la publicación de Edison con expediente completo incluyendo ISC desde el inicio. Meta: nuevo ingreso listo lunes 13-jul, sujeto a feedback ISC.", who: "Erick / Mauricio", due: "2026-07-13", urgent: true, done: false },
-  { n: 28, desc: "[09-JUL — ISC] Feedback del ISC esperado mañana/lunes 13-jul (desde Erick). Confirmar y proceder con la estrategia de nuevo ingreso completo.", who: "Erick", due: "2026-07-13", urgent: true, done: false },
-  { n: 29, desc: "[09-JUL — PREVENCIÓN 43 PUNTOS — PUNTO CRÍTICO] Patios de iluminación de cubos = punto más crítico. Nayeli detectó posible cruce con R95. Coordinar con Fer para confirmar cumplimiento normativo y preparar nota informativa jurídico-técnica.", who: "Nayeli", due: "Urgente", urgent: true, done: false },
-  { n: 30, desc: "[14-JUL — DERECHOS PREVIOS — DOCS RECIBIDOS] Isaac Sutton envió pagos de derechos anteriores.zip el 14-jul-2026. Nayeli debe revisar archivo, extraer artículos/líneas de captura/comprobantes y verificar que no se aplicaron a otro expediente antes de preparar la acreditación.", who: "Nayeli", due: "TBD", urgent: false, done: false },
-  { n: 31, desc: "[09-JUL — CANO/CUSÚS] Corroborar vigencia de Cano y Cusús de Edison y tramitar de inmediato si están vencidos.", who: "Nayeli", due: "Urgente", urgent: true, done: false }
+  { n: 26, desc: "Monitorear el tema de los vecinos para prevenir conflictos que frenen la publicación/manifestación", who: "Mauricio", due: "TBD", urgent: false, done: false },
+  { n: 27, desc: "**[09-JUL — NUEVO INGRESO COMPLETO]** Se decidió repetir la publicación de Edison con expediente completo incluyendo ISC desde el inicio. Erick coordinará con Jorge la estrategia. Meta: nuevo ingreso listo lunes 13-jul, sujeto a feedback ISC.", who: "Erick / Mauricio", due: "2026-07-13", urgent: true, done: false },
+  { n: 28, desc: "**[09-JUL — ISC]** Feedback del ISC esperado mañana/lunes 13-jul (desde Erick). Confirmar y proceder con la estrategia de nuevo ingreso completo.", who: "Erick", due: "2026-07-13", urgent: true, done: false },
+  { n: 29, desc: "**[09-JUL — PREVENCIÓN 43 PUNTOS — PUNTO CRÍTICO]** Patios de iluminación de cubos = punto más crítico. Nayeli detectó posible cruce con R95. Coordinar con Fer para confirmar cumplimiento normativo y preparar nota informativa jurídico-técnica. Si la alcaldía lo señala: cita con revisor.", who: "Nayeli", due: "Urgente", urgent: true, done: false },
+  { n: 30, desc: "**[14-JUL — DERECHOS PREVIOS — DOCS RECIBIDOS ✅]** Isaac Sutton envió \"pagos de derechos anteriores.zip\" el 14-jul-2026 (correo \"relacion de pago de derechos\"). Pendiente: Nayeli revisar archivo, extraer artículos/líneas de captura/comprobantes y verificar que no se aplicaron a otro expediente antes de preparar la acreditación.", who: "Nayeli", due: "TBD", urgent: false, done: false },
+  { n: 32, desc: "**[21-JUL → 11-AGO — RESPUESTA PREVENCIÓN COMPLETA ✅]** Rubén Castro (Triple Espacio, arq.ruben@tripleespacio.com) entregó \"Respuesta Prevencion Julio 2026.rar\" (Drive ID: 1PJq4BihdtlqdwO3Uca8S3QfEvQurlg8b) el 21-jul. Nayeli confirmó recepción (22-jul) e identificó 3 puntos pendientes. **11-ago-2026: Rubén envió \"Respuesta Prevencion Alcaldia Julio 2026.rar\" (Drive ID: 1cT4VdgmXGQG5mE_FAxLY-j14tzftiPgW) con los puntos faltantes: elevadores y separación de conductores — declara respuesta COMPLETA.** Nayeli debe revisar y acusar recibo. ⚠️ Aclarar si la \"prevención de la alcaldía\" es la misma prevención EIU de 43 pts o una prevención separada de Alcaldía Cuauhtémoc.", who: "Nayeli", due: "Inmediato", urgent: true, done: false },
+  { n: 31, desc: "**[09-JUL — CANO/CUSÚS]** Corroborar vigencia de Cano y Cusús de Edison y tramitar de inmediato si están vencidos.", who: "Nayeli", due: "Urgente", urgent: true, done: false }
 ];
 
 const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
