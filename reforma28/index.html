@@ -249,7 +249,7 @@ const items = [
   { n: 68, desc: "[DEMOLICIÓN — INVAL — 12-ago] Obtener dictamen INVAL requerido por alcaldía para subsanar prevención de demolición e ingresar licencia (condicionada a INVAL, ya palabrada)", who: "Erick", due: "TBD", urgent: true, done: false },
 ];
 
-const VERSION = "2026-08-21g";
+const VERSION = "2026-08-21h";
 
 const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
 const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/reforma28/state.json";
@@ -286,7 +286,8 @@ async function loadState() {
       showStatus("Estado actualizado", "#3a6e10");
       return;
     }
-    obs      = rec._obs  || {};
+    const remoteObs = rec._obs || {};
+    obs = { ...obs, ...remoteObs };   // merge: remoto gana en conflicto, pero preserva obs locales no guardadas
     newItems = rec._new  || [];
     state = Object.fromEntries(Object.entries(rec).filter(([k]) => !["_obs","_new","_version"].includes(k)));
     showStatus("Sincronizado", "#3a6e10");
