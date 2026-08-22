@@ -249,7 +249,7 @@ const items = [
   { n: 68, desc: "[DEMOLICIÓN — INVAL — 12-ago] Obtener dictamen INVAL requerido por alcaldía para subsanar prevención de demolición e ingresar licencia (condicionada a INVAL, ya palabrada)", who: "Erick", due: "TBD", urgent: true, done: false },
 ];
 
-const VERSION = "2026-08-21h";
+const VERSION = "2026-08-21i";
 
 const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
 const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/reforma28/state.json";
@@ -280,10 +280,15 @@ async function loadState() {
     currentSha = data.sha;
     const rec = JSON.parse(atob(data.content.replace(/\n/g, "")));
     if (rec._version !== VERSION) {
+      // Migración suave: preservar checkboxes y observaciones existentes
+      const savedState = Object.fromEntries(Object.entries(rec).filter(([k]) => !["_obs","_new","_version"].includes(k)));
       state = { ...DEFAULT_STATE };
-      obs = {}; newItems = [];
+      Object.entries(savedState).forEach(([k, v]) => { if (k in state) state[parseInt(k)] = v; });
+      const remoteObs = rec._obs || {};
+      obs = { ...obs, ...remoteObs };
+      newItems = rec._new || [];
       scheduleSave();
-      showStatus("Estado actualizado", "#3a6e10");
+      showStatus("Actualizado", "#3a6e10");
       return;
     }
     const remoteObs = rec._obs || {};
