@@ -60,6 +60,7 @@
   .btn-delete-item { background: none; border: none; cursor: pointer; color: #ccc; font-size: 13px; padding: 0 4px; line-height: 1; }
   .btn-delete-item:hover { color: #a33030; }
   .new-row td { background: #fdfcf8; }
+  .highlight-row td { background: #fffbe8; }
   @media print {
     body { background: #fff; padding: 1rem; }
     .no-print { display: none !important; }
@@ -72,10 +73,10 @@
   <header>
     <div>
       <h1>Lafontaine 123</h1>
-      <p>Carlos Sámano &nbsp;·&nbsp; Lafontaine 123, CDMX</p>
+      <p>Carlos Samano — Lafontaine 123, Polanco, Miguel Hidalgo</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 18-jul-2026</div>
+      <div id="last-update">Actualizado: 25-ago-2026</div>
       <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando...</div>
       <div style="margin-top:6px;" class="no-print">
         <button class="btn-share" onclick="copyLink()">Copiar enlace</button>
@@ -85,11 +86,13 @@
   </header>
 
   <div class="cards">
-    <div class="card"><div class="label">Fase</div><div class="value sm">DCA demolición + obra nueva</div></div>
-    <div class="card"><div class="label">Terreno</div><div class="value">452<span style="font-size:14px"> m²</span></div><div class="sub">verificado AutoCAD</div></div>
-    <div class="card"><div class="label">Meta demolición</div><div class="value sm">Septiembre 2026</div><div class="sub">lic. en 1.5–2 meses</div></div>
+    
+    <div class="card"><div class="label">Fase actual</div><div class="value sm">DCA en preparacion</div><div class="sub">Demolicion, ante Sedema</div></div>
+    <div class="card"><div class="label">Lo mas urgente</div><div class="value sm">SACMEX</div><div class="sub">Portal sin acuse tras 2 intentos</div></div>
+    <div class="card"><div class="label">Meta demolicion</div><div class="value sm">Septiembre 2026</div><div class="sub">263.20 m2 a demoler en PB</div></div>
+    <div class="card"><div class="label">Superficie del terreno</div><div class="value sm">452.40 m2</div><div class="sub">Verificado en AutoCAD</div></div>
+
     <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">—</div><div class="sub">por cerrar</div></div>
-    <div class="card"><div class="label">Vacaciones gov.</div><div class="value sm">Hasta ~4-ago</div><div class="sub">ingresos pausados</div></div>
   </div>
 
   <section>
@@ -97,12 +100,17 @@
     <table>
       <thead><tr><th>Tramite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
       <tbody>
-        <tr><td>DCA — Demolición</td><td>Sedema</td><td><span class="badge blue">En preparación</span></td><td>Erick ingresó INAH y ACP. DSA acelerando. Expediente completo pendiente docs cliente.</td></tr>
-        <tr><td>Factibilidad agua</td><td>SACMEX</td><td><span class="badge red">Crítico — no iniciado</span></td><td>Trámite más lento y complejo. Sin radicación no se puede comprometer fecha de manifestación.</td></tr>
-        <tr><td>DCA — Obra nueva</td><td>Sedema</td><td><span class="badge amber">En preparación</span></td><td>Requiere ingenierías: hidráulico, sanitario, eléctrico, calentamiento solar. Checklist Mauricio pendiente.</td></tr>
-        <tr><td>Licencia demolición</td><td>Alcaldía</td><td><span class="badge amber">Prevención activa</span></td><td>Puntos 10/11/13 → cliente (contratos transporte + póliza seguro). Planos en ajuste. INVEA + PC pendientes.</td></tr>
-        <tr><td>ISC — Estructural</td><td>ISC</td><td><span class="badge gray">No iniciado</span></td><td>Corresponsable Estructural definirá formato. Reunión estructurista: 23-jul 13:00.</td></tr>
-        <tr><td>Consulta patrimonial</td><td>Sitios patrimoniales</td><td><span class="badge green">Opinión positiva prelim.</span></td><td>Consulta formal de obra nueva pendiente de ingreso.</td></tr>
+        
+        <tr><td>DCA — Demolicion</td><td>Sedema</td><td><span class="badge amber">En preparacion</span></td><td>Enviado a Erick Sanz el 17-jun-2026. Faltan documentos del cliente.</td></tr>
+        <tr><td>Factibilidad hidraulica</td><td>SACMEX</td><td><span class="badge red">Portal sin acuse</span></td><td>Solicitud lista, 2 intentos de carga sin acuse. Punto mas prioritario.</td></tr>
+        <tr><td>Licencia de demolicion</td><td>Alcaldia Miguel Hidalgo</td><td><span class="badge amber">Prevencion activa</span></td><td>Contrato de transportista de residuos y poliza RC pendientes.</td></tr>
+        <tr><td>INAH</td><td>INAH</td><td><span class="badge green">Ingresado</span></td><td>Ingresado por Erick. Falta compartir la consulta en el grupo.</td></tr>
+        <tr><td>ACP</td><td>SPOTMET</td><td><span class="badge amber">En gestion</span></td><td>Erick gestiona si el proyecto esta correcto.</td></tr>
+        <tr><td>INVEA</td><td>INVEA</td><td><span class="badge gray">Por verificar</span></td><td>Nayeli verifica si se requiere dictamen.</td></tr>
+        <tr><td>Proteccion Civil</td><td>PC</td><td><span class="badge gray">Por cotizar</span></td><td>Erick enviara cotizacion.</td></tr>
+        <tr><td>Estudio de riesgo</td><td>—</td><td><span class="badge amber">En elaboracion</span></td><td>Cotizacion aceptada 18-ago. Requiere rutas de evacuacion.</td></tr>
+        <tr><td>ISC / Estructural</td><td>Instituto de las Construcciones</td><td><span class="badge gray">Previo</span></td><td>Falta mecanica de suelos y designar CSE.</td></tr>
+
       </tbody>
     </table>
   </section>
@@ -139,7 +147,7 @@
           </div>
           <div>
             <label>Fecha limite</label>
-            <input id="new-due" type="text" placeholder="ej. 30-jun-2026">
+            <input id="new-due" type="text" placeholder="ej. 18-ago-2026">
           </div>
         </div>
         <div class="add-form-actions">
@@ -155,36 +163,56 @@
     <table>
       <thead><tr><th style="width:110px">Fecha</th><th>Acuerdo</th><th style="width:130px">Quien acordo</th></tr></thead>
       <tbody>
-        <tr><td>17-jun-2026</td><td>Avanzar con revisión preliminar DCA (demolición) sin esperar todos los documentos del cliente; Nayeli enviará faltantes en cuanto el cliente los proporcione.</td><td>Nayeli</td></tr>
-        <tr><td>17-jul-2026</td><td>Superficie oficial del terreno = 452.40 m² (verificado en AutoCAD). Planos a ajustar: tabla áreas por nivel, cisternas punteadas, cuarto de máquinas, caseta 1.80m. Ingenierías pendientes incluyendo calentamiento solar para Sedema.</td><td>Mauricio / Nayeli / Equipo técnico</td></tr>
-        <tr><td>17-jul-2026</td><td>Cronograma: licencia demolición en 1.5-2 meses; demolición meta septiembre. Dependencias en vacaciones hasta ~4-ago — usar ese tiempo para revisión interna de documentación. No se puede dar fecha de manifestación hasta radicación de SACMEX.</td><td>Mauricio Núñez</td></tr>
+        
+        <tr><td>2026-06-17</td><td>Avanzar con la revision preliminar del DCA sin esperar todos los documentos del cliente.</td><td>Nayeli</td></tr>
+        <tr><td>2026-08-13</td><td>Proceso de congelamiento: no ingresar a gestoria sin visto bueno tecnico de Ruben.</td><td>Mauricio / Carlos Samano</td></tr>
+        <tr><td>2026-08-18</td><td>Cotizacion del estudio de riesgo aceptada. Erick y equipo inician.</td><td>Mauricio</td></tr>
+        <tr><td>2026-08-20</td><td>La poliza RC debe emitirse a nombre del Representante Legal, no de la empresa de demolicion.</td><td>Nayeli / Carlos Samano</td></tr>
+
       </tbody>
     </table>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Lafontaine 123 - Actualizado 18-jul-2026</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Lafontaine 123 · Actualizado 22-ago-2026</p>
 </div>
 
 <script>
 const items = [
-  { n: 1,  desc: "Armar carpeta Drive de La Fontaine y enviar enlace a Mauricio", who: "Nayeli", due: "Hecho", urgent: false, done: true },
-  { n: 2,  desc: "Erick Sanz: acelerar obtención de la DSA (Declaratoria de Cumplimiento Ambiental) para la demolición", who: "Erick Sanz", due: "TBD", urgent: false, done: false },
-  { n: 3,  desc: "Carlos Sámano: entregar documentos técnicos y legales faltantes para completar expediente DCA (bloqueante para ingreso formal)", who: "Carlos Sámano", due: "TBD", urgent: true, done: false },
-  { n: 4,  desc: "Una vez recibidos documentos del cliente: completar expediente DCA e ingresar formalmente ante Sedema", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
-  { n: 5,  desc: "Gestionar dictamen INBAL para el proyecto", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
-  { n: 6,  desc: "Gestionar dictamen ACP para el proyecto", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
-  { n: 7,  desc: "Trámite de agua (SACMEX) — factibilidad de servicios hidráulicos. El más crítico y lento. Sin radicación no se puede comprometer fecha de manifestación.", who: "Nayeli / Mauricio", due: "Urgente", urgent: true, done: false },
-  { n: 8,  desc: "[PREVENCIÓN DEMOLICIÓN] Cliente (Carlos Sámano) debe entregar: contratos o convenios vigentes con empresa de transporte de residuos de demolición + póliza de seguro (puntos 10, 11, 13 de la prevención). Sugerencia: reutilizar transportista de Reforma 28.", who: "Carlos Sámano", due: "TBD", urgent: true, done: false },
-  { n: 9,  desc: "[INVEA] Verificar y gestionar el dictamen requerido por INVEA para La Fontaine", who: "Nayeli", due: "TBD", urgent: false, done: false },
-  { n: 10, desc: "[PROTECCIÓN CIVIL] Erick enviará cotización de PC para LF123 (trámite rápido, coordinar costos)", who: "Erick Sanz", due: "TBD", urgent: false, done: false },
-  { n: 11, desc: "[COTIZACIÓN GENERAL] Nayeli elaborará cotización solicitada por Mauricio, dejando montos en blanco para su revisión", who: "Nayeli", due: "~10-jul (verificar)", urgent: false, done: false },
-  { n: 12, desc: "[DCA INAH] Erick ya ingresó INAH y ACP para DCA demolición (avance). Nayeli compartirá en el grupo la consulta ingresada (INAH e INVAL).", who: "Nayeli", due: "TBD", urgent: false, done: false },
-  { n: 13, desc: "[17-JUL — PLANOS] Equipo técnico (Chava/@Sam) actualizar planos: tabla sumatoria áreas por nivel, cisternas punteadas con divisiones (potable/pluvial/tratada), cuarto de máquinas E1-E2, caseta 1.80m. Enviar PDF + DWG a Nayeli. Dato oficial: 452.40 m² de terreno (AutoCAD).", who: "Equipo técnico (Chava/@Sam)", due: "TBD", urgent: true, done: false },
-  { n: 14, desc: "[17-JUL — INGENIERÍAS] Completar proyectos: hidráulico, sanitario, eléctrico, calentamiento solar (Sedema exige este último para DCA obra nueva). Estructural: corresponsable define formato → revisión iterativa → ISC.", who: "Equipo técnico / Corresponsable", due: "Final próxima semana", urgent: true, done: false },
-  { n: 15, desc: "[17-JUL — CORRESPONSABLE] Nayeli compartir listado de información y formatos requeridos por el Corresponsable Estructural con el equipo técnico", who: "Nayeli", due: "TBD", urgent: false, done: false },
-  { n: 16, desc: "[17-JUL — CHECKLIST DCA] Nayeli enviar checklist con requisitos específicos para DCA obra nueva al equipo técnico (18-jul: responsable es Nayeli, no Mauricio)", who: "Nayeli", due: "18-jul-2026", urgent: true, done: false },
-  { n: 17, desc: "[17-JUL — ESTRUCTURISTA] Reunión con estructurista: miércoles 23-jul-2026, 13:00. Carlos Sámano organiza invitación y distribuye minuta de reunión 17-jul. Equipo técnico presenta avance proyecto estructural. CRN no asistirá.", who: "Carlos Sámano / Equipo técnico", due: "23-jul-2026", urgent: false, done: false }
+  { n: 1,   desc: "Armar carpeta Drive de Lafontaine y enviar el enlace a Mauricio", who: "Nayeli", due: "TBD", urgent: false, done: true },
+  { n: 2,   desc: "Erick Sanz acelera la obtencion de la DCA para la demolicion", who: "Erick Sanz", due: "TBD", urgent: false, done: false },
+  { n: 3,   desc: "Entregar documentos tecnicos y legales faltantes del expediente DCA", who: "Carlos Samano", due: "TBD", urgent: true, done: false },
+  { n: 4,   desc: "Completar expediente DCA e ingresar ante Sedema cuando lleguen los documentos", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
+  { n: 5,   desc: "Gestionar dictamen INBAL", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
+  { n: 6,   desc: "Gestionar dictamen ACP", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
+  { n: 7,   desc: "SACMEX: el portal no genera acuse de la factibilidad hidraulica tras 2 intentos", who: "Nayeli", due: "TBD", urgent: true, done: false },
+  { n: 8,   desc: "Recibir poliza RC corregida a nombre del Representante Legal", who: "Carlos Samano", due: "URGENTE", urgent: true, done: false },
+  { n: 9,   desc: "Verificar y gestionar el dictamen requerido por INVEA", who: "Nayeli", due: "TBD", urgent: false, done: false },
+  { n: 10,  desc: "Cotizacion de Proteccion Civil para LF123", who: "Erick Sanz", due: "TBD", urgent: false, done: false },
+  { n: 11,  desc: "Cotizacion general con montos en blanco para revision de Mauricio", who: "Nayeli", due: "TBD", urgent: false, done: false },
+  { n: 12,  desc: "Compartir en el grupo la consulta ingresada de INAH e INVAL", who: "Nayeli", due: "TBD", urgent: false, done: false },
+  { n: 13,  desc: "Actualizar planos: tabla de areas por nivel, cisternas punteadas, cuarto de maquinas, caseta 1.80m", who: "Equipo tecnico (Chava)", due: "TBD", urgent: true, done: false },
+  { n: 14,  desc: "Completar ingenierias: hidraulico, sanitario, electrico y calentamiento solar", who: "Equipo tecnico", due: "TBD", urgent: true, done: false },
+  { n: 15,  desc: "Compartir listado de informacion y formatos del Corresponsable Estructural", who: "Nayeli", due: "TBD", urgent: false, done: false },
+  { n: 16,  desc: "Enviar al equipo tecnico el checklist de requisitos para DCA de obra nueva", who: "Nayeli", due: "2026-07-18", urgent: true, done: false },
+  { n: 17,  desc: "Reunion con estructurista del 23-jul-2026", who: "Carlos Samano", due: "2026-07-23", urgent: false, done: true },
+  { n: 18,  desc: "DCA y sitios patrimoniales en curso; ACP se gestiona si el proyecto esta correcto", who: "Erick Sanz", due: "TBD", urgent: false, done: false },
+  { n: 19,  desc: "Plan de manejo de residuos y RAMIR con volumenes de memoria", who: "Erick / Nayeli", due: "TBD", urgent: false, done: false },
+  { n: 20,  desc: "Solicitar al equipo tecnico planos achurados y acotados conforme a la prevencion", who: "Nayeli", due: "TBD", urgent: true, done: false },
+  { n: 21,  desc: "Reporte fotografico: interior, exterior, colindancias y larguillo grafico", who: "Nayeli / Carlos Samano", due: "TBD", urgent: true, done: false },
+  { n: 22,  desc: "Estudio de riesgo en elaboracion (cotizacion aceptada el 18-ago)", who: "Erick Sanz", due: "TBD", urgent: false, done: false },
+  { n: 23,  desc: "Recibir y subir la mecanica de suelos firmada por David (SAM)", who: "Nayeli", due: "TBD", urgent: true, done: false },
+  { n: 24,  desc: "Contratar Corresponsable en Seguridad Estructural distinto al estructurista", who: "Nayeli / Mauricio", due: "TBD", urgent: true, done: false },
+  { n: 25,  desc: "Autorizar presupuesto del contratista y entregar constancia fiscal del fideicomiso", who: "Carlos Samano", due: "TBD", urgent: true, done: false },
+  { n: 26,  desc: "Completar fechas de ingreso en la columna J del archivo de seguimiento", who: "Nayeli", due: "TBD", urgent: false, done: false },
+  { n: 27,  desc: "Entregar planos de rutas de evacuacion para el Estudio de Riesgo", who: "Nayeli / Equipo tecnico", due: "TBD", urgent: true, done: false },
+  { n: 28,  desc: "Retroalimentar al grupo sobre lo que entrego Chava para el DCA de obra nueva", who: "Nayeli", due: "TBD", urgent: false, done: false },
+  { n: 29,  desc: "Confirmar entrega de fotos de la lona con periodico visible", who: "Carlos Samano", due: "2026-08-21", urgent: true, done: false },
 ];
+
+// VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
+const VERSION = "2026-08-22a";
+// Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
+const NEW_BADGE_N = 27;
 
 const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
 const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/lafontaine123/state.json";
@@ -214,9 +242,16 @@ async function loadState() {
     const data = await res.json();
     currentSha = data.sha;
     const rec = JSON.parse(atob(data.content.replace(/\n/g, "")));
+    if (rec._version !== VERSION) {
+      state = { ...DEFAULT_STATE };
+      obs = {}; newItems = [];
+      scheduleSave();
+      showStatus("Estado actualizado", "#3a6e10");
+      return;
+    }
     obs      = rec._obs  || {};
     newItems = rec._new  || [];
-    state = Object.fromEntries(Object.entries(rec).filter(([k]) => k !== "_obs" && k !== "_new"));
+    state = Object.fromEntries(Object.entries(rec).filter(([k]) => !["_obs","_new","_version"].includes(k)));
     showStatus("Sincronizado", "#3a6e10");
   } catch(e) { showStatus("Sin conexion", "#a33030"); }
 }
@@ -229,7 +264,7 @@ async function saveState() {
       const r = await fetch(GITHUB_API, { headers: GITHUB_HDRS });
       const d = await r.json(); currentSha = d.sha;
     }
-    const payload = JSON.stringify({ ...state, _obs: obs, _new: newItems });
+    const payload = JSON.stringify({ ...state, _obs: obs, _new: newItems, _version: VERSION });
     const content = btoa(unescape(encodeURIComponent(payload)));
     const res = await fetch(GITHUB_API, {
       method: "PUT", headers: GITHUB_HDRS,
@@ -265,16 +300,20 @@ function escH(str) {
 function render() {
   const tbody = document.getElementById("pending-tbody");
   tbody.innerHTML = "";
-  let idx = 1;
+  // El numero visible de cada pendiente es su numero real (item.n), no un contador.
+  // Asi, lo que Mauricio ve en la tabla es lo mismo que se debe cerrar por numero.
+  // Los pendientes que anade el equipo desde la pagina no tienen item.n: se etiquetan N1, N2...
+  let nuevoIdx = 1;
 
   items.filter(item => !state[item.n]).forEach(item => {
     const tr = document.createElement("tr");
+    if (item.n >= NEW_BADGE_N) tr.classList.add("highlight-row");
     tr.innerHTML =
       `<td class="check-col no-print"><input type="checkbox" data-n="${item.n}" title="Marcar como hecho"></td>` +
-      `<td style="color:#999;font-size:12px">${idx++}</td>` +
-      `<td><span class="desc">${item.desc}</span></td>` +
-      `<td style="color:#666">${item.who}</td>` +
-      `<td><span class="badge ${item.urgent ? 'red' : 'gray'}">${item.due}</span></td>` +
+      `<td style="color:#999;font-size:12px"><b>${item.n}</b>${item.n >= NEW_BADGE_N ? ' <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">nuevo</span>' : ''}</td>` +
+      `<td><span class="desc">${escH(item.desc)}</span></td>` +
+      `<td style="color:#666">${escH(item.who)}</td>` +
+      `<td><span class="badge ${item.urgent ? 'red' : 'gray'}">${escH(item.due)}</span></td>` +
       `<td><textarea class="obs-input" data-obs="${item.n}" rows="1" placeholder="--">${escH(obs[item.n] || "")}</textarea></td>` +
       `<td class="no-print"></td>`;
     tbody.appendChild(tr);
@@ -285,7 +324,7 @@ function render() {
     tr.classList.add("new-row");
     tr.innerHTML =
       `<td class="check-col no-print"><input type="checkbox" data-new-id="${item.id}" title="Marcar como hecho"></td>` +
-      `<td style="color:#999;font-size:12px">${idx++} <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">nuevo</span></td>` +
+      `<td style="color:#999;font-size:12px"><b>N${nuevoIdx++}</b> <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">nuevo</span></td>` +
       `<td><span class="desc">${escH(item.desc)}</span></td>` +
       `<td style="color:#666">${escH(item.who || "--")}</td>` +
       `<td><span class="badge gray">${escH(item.due || "TBD")}</span></td>` +
@@ -324,6 +363,7 @@ function render() {
       render(); updateCounters(); await saveState();
     });
   });
+
   updateCounters();
 }
 
