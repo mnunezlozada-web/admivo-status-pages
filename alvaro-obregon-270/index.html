@@ -95,6 +95,11 @@ const items = [
   { n:3, desc:"Obtener documento/sustento formal de INAH sobre condición de catalogación — qué elementos de la primera crujía deben respetarse. Dani tiene contacto 'Iván' en INAH.", who:"Dani / CRN", due:"TBD", urgent:false, done:false },
   { n:4, desc:"⚠️ ALERTA regulatoria: anteproyecto declara sótano como BODEGAS pero en realidad será espacios de servicio y wellness del hotel. Evaluar cómo declarar correctamente ante autoridades para evitar riesgo de prevención.", who:"Mauricio Núñez", due:"Urgente", urgent:true, done:false }
 ];
+
+const VERSION = "2026-08-21";
+const DEFAULT_STATE = {};
+items.forEach(i => { DEFAULT_STATE[i.n] = i.done || false; });
+
 const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
 const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/alvaro-obregon-270/state.json";
 const GITHUB_HDRS  = { "Content-Type": "application/json", "Authorization": `token ${GITHUB_TOKEN}`, "Accept": "application/vnd.github.v3+json" };
@@ -115,6 +120,14 @@ async function loadState() {
     const data = await res.json();
     currentSha = data.sha;
     const rec = JSON.parse(atob(data.content.replace(/\n/g, "")));
+    if (rec._version !== VERSION) {
+      state = { ...DEFAULT_STATE };
+      obs = {}; newItems = [];
+      scheduleSave();
+      showStatus("Estado actualizado", "#3a6e10");
+      render();
+      return;
+    }
     obs = rec._obs || {};
     newItems = rec._new || [];
     state = Object.fromEntries(Object.entries(rec).filter(([k]) => !["_obs","_new"].includes(k)));
@@ -127,7 +140,7 @@ async function saveState() {
   showStatus("Guardando…", "#8a5010");
   try {
     if (!currentSha) { const r = await fetch(GITHUB_API, { headers: GITHUB_HDRS }); const d = await r.json(); currentSha = d.sha; }
-    const payload = JSON.stringify({ ...state, _obs: obs, _new: newItems });
+    const payload = JSON.stringify({ ...state, _obs: obs, _new: newItems, _version: VERSION });
     const content = btoa(unescape(encodeURIComponent(payload)));
     const res = await fetch(GITHUB_API, { method: "PUT", headers: GITHUB_HDRS, body: JSON.stringify({ message: "Actualizar estado", content, sha: currentSha }) });
     if (!res.ok) throw new Error(res.status);
@@ -156,7 +169,7 @@ function render() {
     idx++;
     const tr = document.createElement("tr");
     if (item.urgent) tr.classList.add("alert-row");
-    tr.innerHTML = `<td class="check-col no-print"><input type="checkbox" data-n="${item.n}" title="Marcar como hecho"></td><td style="color:#999;font-size:12px">${idx}</td><td><span class="desc">${item.desc}</span></td><td style="color:#666">${item.who}</td><td><span class="badge ${item.urgent ? 'red' : 'gray'}">${item.due}</span></td><td><textarea class="obs-input" data-obs="${item.n}" rows="1" placeholder="—">${obs[item.n] || ""}</textarea></td>`;
+    tr.innerHTML = `<td class="check-col no-print"><input type="checkbox" data-n="${item.n}" title="Marcar como hecho"></td><td style="color:#999;font-size:12px"><b>${item.n}</b></td><td><span class="desc">${item.desc}</span></td><td style="color:#666">${item.who}</td><td><span class="badge ${item.urgent ? 'red' : 'gray'}">${item.due}</span></td><td><textarea class="obs-input" data-obs="${item.n}" rows="1" placeholder="—">${obs[item.n] || ""}</textarea></td>`;
     tbody.appendChild(tr);
   });
   tbody.querySelectorAll("input[type=checkbox]").forEach(cb => {
@@ -171,7 +184,7 @@ function render() {
     idx++;
     const tr = document.createElement("tr");
     tr.style.background = "#fafaf7";
-    tr.innerHTML = `<td class="check-col no-print"><input type="checkbox" data-ni="${ni}" class="new-cb" title="Marcar como hecho"></td><td style="color:#999;font-size:12px">${idx}</td><td><span style="font-size:10px;background:#e8f5e0;color:#3a6e10;border-radius:4px;padding:1px 5px;margin-right:4px;">equipo</span><span class="desc">${item.desc}</span></td><td style="color:#666">${item.who || "—"}</td><td><span class="badge gray">${item.due || "TBD"}</span></td><td><textarea class="obs-new-input" data-ni="${ni}" rows="1" placeholder="—">${item.obs || ""}</textarea></td>`;
+    tr.innerHTML = `<td class="check-col no-print"><input type="checkbox" data-ni="${ni}" class="new-cb" title="Marcar como hecho"></td><td style="color:#999;font-size:12px"><b>N${ni + 1}</b></td><td><span style="font-size:10px;background:#e8f5e0;color:#3a6e10;border-radius:4px;padding:1px 5px;margin-right:4px;">equipo</span><span class="desc">${item.desc}</span></td><td style="color:#666">${item.who || "—"}</td><td><span class="badge gray">${item.due || "TBD"}</span></td><td><textarea class="obs-new-input" data-ni="${ni}" rows="1" placeholder="—">${item.obs || ""}</textarea></td>`;
     tbody.appendChild(tr);
   });
   tbody.querySelectorAll(".new-cb").forEach(cb => {
