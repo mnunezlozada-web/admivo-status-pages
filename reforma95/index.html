@@ -73,6 +73,11 @@
 </div>
 <script>
 const items = [{ n:1, desc:"Definir alcance y primeros pasos del proyecto. Revisar normativa y proyecto anterior.", who:"Mauricio", due:"TBD", urgent:false, done:false }];
+
+const VERSION = "2026-08-21";
+const DEFAULT_STATE = {};
+items.forEach(i => { DEFAULT_STATE[i.n] = i.done || false; });
+
 const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
 const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/reforma95/state.json";
 const GITHUB_HDRS  = { "Content-Type": "application/json", "Authorization": `token ${GITHUB_TOKEN}`, "Accept": "application/vnd.github.v3+json" };
@@ -94,6 +99,14 @@ async function loadState() {
     const data = await res.json();
     currentSha = data.sha;
     const rec = JSON.parse(atob(data.content.replace(/\n/g, "")));
+    if (rec._version !== VERSION) {
+      state = { ...DEFAULT_STATE };
+      obs = {}; newItems = [];
+      scheduleSave();
+      showStatus("Estado actualizado", "#3a6e10");
+      render();
+      return;
+    }
     obs = rec._obs || {};
     newItems = rec._new || [];
     state = Object.fromEntries(Object.entries(rec).filter(([k]) => !["_obs","_new"].includes(k)));
@@ -106,7 +119,7 @@ async function saveState() {
   showStatus("Guardando…", "#8a5010");
   try {
     if (!currentSha) { const r = await fetch(GITHUB_API, { headers: GITHUB_HDRS }); const d = await r.json(); currentSha = d.sha; }
-    const payload = JSON.stringify({ ...state, _obs: obs, _new: newItems });
+    const payload = JSON.stringify({ ...state, _obs: obs, _new: newItems, _version: VERSION });
     const content = btoa(unescape(encodeURIComponent(payload)));
     const res = await fetch(GITHUB_API, { method: "PUT", headers: GITHUB_HDRS, body: JSON.stringify({ message: "Actualizar estado", content, sha: currentSha }) });
     if (!res.ok) throw new Error(res.status);
@@ -116,25 +129,7 @@ async function saveState() {
   } catch(e) { showStatus("⚠ Error al guardar", "#a33030"); }
   saving = false;
 }
-setInterval(async () => {
-  await loadState();
-  // No re-renderizar si el usuario está escribiendo en algún campo
-  const activeEl = document.activeElement;
-  if (activeEl && (activeEl.tagName === "TEXTAREA" || activeEl.tagName === "INPUT")) return;
-  // Preservar estado del formulario de agregar pendiente si está abierto
-  const addForm = document.getElementById("add-form");
-  const formOpen = addForm && addForm.style.display !== "none";
-  const savedDesc = formOpen && document.getElementById("new-desc") ? document.getElementById("new-desc").value : "";
-  const savedWho  = formOpen && document.getElementById("new-who")  ? document.getElementById("new-who").value  : "";
-  const savedDue  = formOpen && document.getElementById("new-due")  ? document.getElementById("new-due").value  : "";
-  render();
-  if (formOpen) {
-    showAddForm();
-    if (savedDesc) document.getElementById("new-desc").value = savedDesc;
-    if (savedWho)  document.getElementById("new-who").value  = savedWho;
-    if (savedDue)  document.getElementById("new-due").value  = savedDue;
-  }
-}, 30000);
+setInterval(async () => { await loadState(); render(); }, 30000);
 function updateCounters() {
   const doneFixed = Object.values(state).filter(Boolean).length;
   const doneNew = newItems.filter(i => i.done).length;
@@ -154,7 +149,7 @@ function render() {
   visible.forEach(item => {
     idx++;
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td class="check-col no-print"><input type="checkbox" data-n="${item.n}" title="Marcar como hecho"></td><td style="color:#999;font-size:12px">${idx}</td><td><span class="desc">${item.desc}</span></td><td style="color:#666">${item.who}</td><td><span class="badge ${item.urgent ? 'red' : 'gray'}">${item.due}</span></td><td><textarea class="obs-input" data-obs="${item.n}" rows="1" placeholder="—">${obs[item.n] || ""}</textarea></td>`;
+    tr.innerHTML = `<td class="check-col no-print"><input type="checkbox" data-n="${item.n}" title="Marcar como hecho"></td><td style="color:#999;font-size:12px"><b>${item.n}</b></td><td><span class="desc">${item.desc}</span></td><td style="color:#666">${item.who}</td><td><span class="badge ${item.urgent ? 'red' : 'gray'}">${item.due}</span></td><td><textarea class="obs-input" data-obs="${item.n}" rows="1" placeholder="—">${obs[item.n] || ""}</textarea></td>`;
     tbody.appendChild(tr);
   });
   tbody.querySelectorAll("input[type=checkbox]").forEach(cb => {
@@ -169,7 +164,7 @@ function render() {
     idx++;
     const tr = document.createElement("tr");
     tr.style.background = "#fafaf7";
-    tr.innerHTML = `<td class="check-col no-print"><input type="checkbox" data-ni="${ni}" class="new-cb" title="Marcar como hecho"></td><td style="color:#999;font-size:12px">${idx}</td><td><span style="font-size:10px;background:#e8f5e0;color:#3a6e10;border-radius:4px;padding:1px 5px;margin-right:4px;">equipo</span><span class="desc">${item.desc}</span></td><td style="color:#666">${item.who || "—"}</td><td><span class="badge gray">${item.due || "TBD"}</span></td><td><textarea class="obs-new-input" data-ni="${ni}" rows="1" placeholder="—">${item.obs || ""}</textarea></td>`;
+    tr.innerHTML = `<td class="check-col no-print"><input type="checkbox" data-ni="${ni}" class="new-cb" title="Marcar como hecho"></td><td style="color:#999;font-size:12px"><b>N${ni + 1}</b></td><td><span style="font-size:10px;background:#e8f5e0;color:#3a6e10;border-radius:4px;padding:1px 5px;margin-right:4px;">equipo</span><span class="desc">${item.desc}</span></td><td style="color:#666">${item.who || "—"}</td><td><span class="badge gray">${item.due || "TBD"}</span></td><td><textarea class="obs-new-input" data-ni="${ni}" rows="1" placeholder="—">${item.obs || ""}</textarea></td>`;
     tbody.appendChild(tr);
   });
   tbody.querySelectorAll(".new-cb").forEach(cb => {
