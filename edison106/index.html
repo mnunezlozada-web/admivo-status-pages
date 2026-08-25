@@ -76,7 +76,7 @@
       <p>Triple Espacio / Sutton &nbsp;·&nbsp; Tomas Alva Edison 106, Col. Tabacalera, Alcaldia Cuauhtemoc, CDMX</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 21-ago-2026</div>
+      <div id="last-update">Actualizado: 25-ago-2026</div>
       <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando...</div>
       <div style="margin-top:6px;" class="no-print">
         <button class="btn-share" onclick="copyLink()">Copiar enlace</button>
@@ -210,7 +210,7 @@ const items = [
   { n: 29, desc: "[09-JUL Prevencion 43 pts] Patios de iluminacion: confirmar con Fer cumplimiento normativo de cubos y posible cruce con R95. Preparar nota informativa juridico-tecnica.", who: "Nayeli", due: "Urgente", urgent: true, done: false },
   { n: 30, desc: "[14-JUL Derechos previos] Nayeli revisar pagos de derechos enviados por Isaac (14-jul), verificar que no se aplicaron a otro expediente antes de preparar acreditacion", who: "Nayeli", due: "TBD", urgent: false, done: false },
   { n: 31, desc: "[CAyNO/CUZUS] Ambos confirmados vigentes — PLAUD 12-ago-2026", who: "Nayeli", due: "—", urgent: false, done: true },
-  { n: 32, desc: "[11-AGO Respuesta prevencion completa] Nayeli revisar y acusar recibo de respuesta de Ruben Castro (elevadores y conductores). Aclarar si es la prevencion EIU de 43 pts o una prevencion separada de Alcaldia Cuauhtemoc.", who: "Nayeli", due: "Inmediato", urgent: true, done: false },
+  { n: 32, desc: "[Prevencion Alcaldia] Alcaldia pide expediente fisico para revision: planos 90x60 B/N doblados tamano carta + Memoria Arquitectonica. Aclarar si es la misma prevencion EIU de 43 pts o una separada de Alcaldia Cuauhtemoc.", who: "Nayeli", due: "Inmediato", urgent: true, done: false },
 ];
 
 const VERSION = "2026-08-21a";
@@ -309,7 +309,7 @@ function render() {
     if (item.n >= NEW_BADGE_N) tr.classList.add("highlight-row");
     tr.innerHTML =
       `<td class="check-col no-print"><input type="checkbox" data-n="${item.n}" title="Marcar como hecho"></td>` +
-      `<td style="color:#999;font-size:12px">${idx++}${item.n >= NEW_BADGE_N ? ' <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">09-jul</span>' : ''}</td>` +
+      `<td style="color:#999;font-size:12px"><b>${item.n}</b>${item.n >= NEW_BADGE_N ? ' <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">09-jul</span>' : ''}</td>` +
       `<td><span class="desc">${escH(item.desc)}</span></td>` +
       `<td style="color:#666">${escH(item.who)}</td>` +
       `<td><span class="badge ${item.urgent ? 'red' : 'gray'}">${escH(item.due)}</span></td>` +
@@ -323,7 +323,7 @@ function render() {
     tr.classList.add("new-row");
     tr.innerHTML =
       `<td class="check-col no-print"><input type="checkbox" data-new-id="${item.id}" title="Marcar como hecho"></td>` +
-      `<td style="color:#999;font-size:12px">${idx++} <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">nuevo</span></td>` +
+      `<td style="color:#999;font-size:12px"><b>N${idx}</b> <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">nuevo</span></td>` +
       `<td><span class="desc">${escH(item.desc)}</span></td>` +
       `<td style="color:#666">${escH(item.who || "--")}</td>` +
       `<td><span class="badge gray">${escH(item.due || "TBD")}</span></td>` +
