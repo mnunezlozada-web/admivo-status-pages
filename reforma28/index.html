@@ -345,7 +345,7 @@ function render() {
     if (item.n >= 64) tr.classList.add("highlight-row");
     tr.innerHTML =
       `<td class="check-col no-print"><input type="checkbox" data-n="${item.n}" title="Marcar como hecho"></td>` +
-      `<td style="color:#999;font-size:12px">${idx++}${item.n >= 64 ? ' <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">12-ago</span>' : ''}</td>` +
+      `<td style="color:#999;font-size:12px"><b>${item.n}</b>${item.n >= 64 ? ' <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">12-ago</span>' : ''}</td>` +
       `<td><span class="desc">${item.desc}</span></td>` +
       `<td style="color:#666">${item.who}</td>` +
       `<td><span class="badge ${item.urgent ? 'red' : 'gray'}">${item.due}</span></td>` +
@@ -359,7 +359,7 @@ function render() {
     tr.classList.add("new-row");
     tr.innerHTML =
       `<td class="check-col no-print"><input type="checkbox" data-new-id="${item.id}" title="Marcar como hecho"></td>` +
-      `<td style="color:#999;font-size:12px">${idx++} <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">nuevo</span></td>` +
+      `<td style="color:#999;font-size:12px"><b>N${idx}</b> <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">nuevo</span></td>` +
       `<td><span class="desc">${escH(item.desc)}</span></td>` +
       `<td style="color:#666">${escH(item.who || "--")}</td>` +
       `<td><span class="badge gray">${escH(item.due || "TBD")}</span></td>` +
