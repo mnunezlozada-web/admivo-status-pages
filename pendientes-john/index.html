@@ -193,25 +193,7 @@ async function saveState() {
   saving = false;
 }
 
-setInterval(async () => {
-  await loadState();
-  // No re-renderizar si el usuario está escribiendo en algún campo
-  const activeEl = document.activeElement;
-  if (activeEl && (activeEl.tagName === "TEXTAREA" || activeEl.tagName === "INPUT")) return;
-  // Preservar estado del formulario de agregar pendiente si está abierto
-  const addForm = document.getElementById("add-form");
-  const formOpen = addForm && addForm.style.display !== "none";
-  const savedDesc = formOpen && document.getElementById("new-desc") ? document.getElementById("new-desc").value : "";
-  const savedWho  = formOpen && document.getElementById("new-who")  ? document.getElementById("new-who").value  : "";
-  const savedDue  = formOpen && document.getElementById("new-due")  ? document.getElementById("new-due").value  : "";
-  render();
-  if (formOpen) {
-    showAddForm();
-    if (savedDesc) document.getElementById("new-desc").value = savedDesc;
-    if (savedWho)  document.getElementById("new-who").value  = savedWho;
-    if (savedDue)  document.getElementById("new-due").value  = savedDue;
-  }
-}, 30000);
+setInterval(async () => { await loadState(); render(); }, 30000);
 
 function updateCounters() {
   const done = Object.values(state).filter(Boolean).length;
@@ -235,7 +217,7 @@ function render() {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td class="check-col no-print"><input type="checkbox" data-n="${item.n}" title="Marcar como hecho"></td>
-      <td style="color:#999;font-size:12px">${idx + 1}</td>
+      <td style="color:#999;font-size:12px"><b>${item.n}</b></td>
       <td><span class="desc">${item.desc}</span></td>
       <td style="color:#666">${item.who}</td>
       <td><span class="badge ${item.urgent ? 'red' : 'gray'}">${item.due}</span></td>
