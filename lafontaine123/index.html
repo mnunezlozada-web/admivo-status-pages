@@ -241,7 +241,7 @@ async function loadState() {
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
     currentSha = data.sha;
-    const rec = JSON.parse(atob(data.content.replace(/\n/g, "")));
+    const rec = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, "")))));
     if (rec._version !== VERSION) {
       state = { ...DEFAULT_STATE };
       obs = {}; newItems = [];
