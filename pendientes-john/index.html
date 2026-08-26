@@ -157,7 +157,7 @@ async function loadState() {
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
     currentSha = data.sha;
-    const rec = JSON.parse(atob(data.content.replace(/\n/g, "")));
+    const rec = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, "")))));
     obs = rec._obs || {};
     state = Object.fromEntries(Object.entries(rec).filter(([k]) => k !== "_obs"));
     showStatus("● Sincronizado", "#3a6e10");
