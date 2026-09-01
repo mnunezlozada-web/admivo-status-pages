@@ -164,7 +164,11 @@ let saving = false;
 let saveTimer = null;
 let currentSha = null;
 
-function scheduleSave() {
+// "sucio" = hay cambios tuyos que todavia no llegan al servidor.
+// Mientras este en true, la recarga automatica NO pisa lo que acabas de marcar.
+// Error encontrado el 01-sep-2026.
+let sucio = false;
+function scheduleSave() { sucio = true;
   clearTimeout(saveTimer);
   saveTimer = setTimeout(saveState, 1200);
 }
@@ -219,6 +223,7 @@ async function saveState() {
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
     currentSha = data.content.sha;
+    sucio = false;
     showStatus("● Guardado", "#3a6e10");
   } catch(e) {
     showStatus("⚠ Error al guardar", "#a33030");
@@ -226,7 +231,10 @@ async function saveState() {
   saving = false;
 }
 
-setInterval(async () => { await loadState(); render(); }, 30000);
+setInterval(async () => {
+  if (sucio || saving || saveTimer) return;   // no pisar cambios sin guardar
+  await loadState(); render();
+}, 30000);
 
 function updateCounters() {
   const doneFixed = Object.values(state).filter(Boolean).length;
