@@ -124,16 +124,16 @@
 
 <script>
 const items = [
-  {n:1, desc:"Ingresar \\"cuzus\\" de Constituyentes una vez recibidos los papeles", who:"—", due:"2026-05-13", urgent:true, done:false},
+  {n:1, desc:"Ingresar 'cuzus' de Constituyentes una vez recibidos los papeles", who:"—", due:"2026-05-13", urgent:true, done:false},
   {n:2, desc:"Recoger la prevención de la fusión y continuar el trámite", who:"—", due:"2026-05-13", urgent:true, done:false},
   {n:3, desc:"Confirmar recepción de papeles y anticipo para cuzus Constituyentes", who:"—", due:"2026-05-13", urgent:true, done:false},
-  {n:4, desc:"NO recoger \\"constituyentes\\" hasta recibir versión corregida de obra nueva del equipo", who:"Mauricio", due:"Inmediato", urgent:true, done:false},
+  {n:4, desc:"NO recoger 'constituyentes' hasta recibir versión corregida de obra nueva del equipo", who:"Mauricio", due:"Inmediato", urgent:true, done:false},
   {n:5, desc:"Una vez recibida la versión corregida: coordinar recolección y notificación inmediata", who:"Mauricio", due:"TBD", urgent:false, done:false},
   {n:6, desc:"[John] Ir al Archivo Central — gestionar extracción de antecedente del expediente de Cuauhtémoc; documentar folio y responsable", who:"John / Héctor", due:"TBD", urgent:false, done:false},
-  {n:7, desc:"[John] Destrabar \\"Cano\\": insistir con oficina de firma para bajar el documento y liberar claves de obra nueva", who:"John", due:"TBD", urgent:false, done:false},
+  {n:7, desc:"[John] Destrabar 'Cano': insistir con oficina de firma para bajar el documento y liberar claves de obra nueva", who:"John", due:"TBD", urgent:false, done:false},
   {n:8, desc:"[John/Héctor] Visita presencial para presionar por respuesta del escrito del árbol; registrar acuse o minuta", who:"Héctor", due:"TBD", urgent:false, done:false},
-  {n:9, desc:"[John] Enviar a Mauricio la versión corregida de \\"constituyentes\\" (obra nueva y requisitos validados) antes de la recolección", who:"John", due:"TBD", urgent:false, done:false},
-  {n:10, desc:"[John] Activar \\"opción 2\\" para asuntos ya puestos; listar cuáles pasan a esa vía y sus pasos", who:"John", due:"TBD", urgent:false, done:false},
+  {n:9, desc:"[John] Enviar a Mauricio la versión corregida de 'constituyentes' (obra nueva y requisitos validados) antes de la recolección", who:"John", due:"TBD", urgent:false, done:false},
+  {n:10, desc:"[John] Activar 'opción 2' para asuntos ya puestos; listar cuáles pasan a esa vía y sus pasos", who:"John", due:"TBD", urgent:false, done:false},
   {n:11, desc:"Confirmar disponibilidad y agendar reunión martes o miércoles (no jueves — viaje al mundial)", who:"Mauricio / John", due:"Esta semana", urgent:false, done:false},
   {n:12, desc:"Verificar con el área correspondiente si hubo respuesta al escrito del árbol; compartir estatus hoy", who:"Mauricio", due:"Inmediato", urgent:true, done:false},
   {n:13, desc:"Pagar prediales vencidos (4 bimestres x 4 predios, ~$78k + recargos)", who:"Octavio Peñaloza", due:"Urgente", urgent:true, done:false},
@@ -153,9 +153,6 @@ const items = [
 ];
 
 const VERSION = "2026-08-21";
-const DEFAULT_STATE = {};
-items.forEach(i => { DEFAULT_STATE[i.n] = i.done || false; });
-
 
 const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");  // token partido para evitar secret scanner
 const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/hospital-constituyentes/state.json";
