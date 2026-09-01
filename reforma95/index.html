@@ -75,8 +75,6 @@
 const items = [{ n:1, desc:"Definir alcance y primeros pasos del proyecto. Revisar normativa y proyecto anterior.", who:"Mauricio", due:"TBD", urgent:false, done:false }];
 
 const VERSION = "2026-08-21";
-const DEFAULT_STATE = {};
-items.forEach(i => { DEFAULT_STATE[i.n] = i.done || false; });
 
 const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
 const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/reforma95/state.json";
