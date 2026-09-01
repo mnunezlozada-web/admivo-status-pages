@@ -224,6 +224,14 @@ function showStatus(msg, color) {
 async function loadState() {
   try {
     const res = await fetch(GITHUB_API, { headers: GITHUB_HDRS });
+    // Proyecto recien dado de alta: todavia no existe el archivo de estado.
+    // No es un error de conexion. Se arranca en blanco y se crea al primer cambio.
+    // Corregido el 01-sep-2026, cuando EDAs y Hanono decian "Sin conexion".
+    if (res.status === 404) {
+      state = { ...DEFAULT_STATE }; obs = {}; newItems = []; currentSha = null;
+      showStatus("Listo — todavia sin marcas", "#8a5010");
+      return;
+    }
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
     currentSha = data.sha;
