@@ -150,11 +150,11 @@
       <thead><tr><th style="width:110px">Fecha</th><th>Acuerdo</th><th style="width:130px">Quien acordo</th></tr></thead>
       <tbody>
         <tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-03</td><td style="font-size:13px">Se descarta la figura de "regularizacion" — la unica via es a traves del Archivo Central</td><td style="color:#666;font-size:12px">Hospital Constituyentes</td></tr>
-        <tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-03</td><td style="font-size:13px">"Opcion 2" ya esta puesta; activarla para aliviar presion de terceros</td><td style="color:#666;font-size:12px">Hospital Constituyentes</td></tr>
-        <tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-03</td><td style="font-size:13px">No enviar version corregida de Constituyentes hasta que este validada (obra nueva sin errores)</td><td style="color:#666;font-size:12px">Hospital Constituyentes</td></tr>
-        <tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-08</td><td style="font-size:13px">Rezago general en canos: ~1 mes de atraso en emision; expedientes de oct/enero apenas saliendo. Dos terminaciones "canonono" limpias pendientes de ingreso. Cinco de regularizacion en cartera.</td><td style="color:#666;font-size:12px">Portfolio</td></tr>
-        <tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-08</td><td style="font-size:13px">Edison: Irazoke (Sedema) dice expediente listo pero no firmara con ruido. Condicion: acuerdos de no oposicion documentados con 3 vecinos. John debe agendar y obtener minutas.</td><td style="color:#666;font-size:12px">Edison 106</td></tr>
-        <tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-08</td><td style="font-size:13px">Alcaldia Cuauhtemoc — 2 gestiones sin proyecto formal: regimen + antecedentes. John tiene contacto directo en la alcaldia que puede extraer expedientes y armar regimen con notario propio. Tension: notario ajeno acelera pero "numeros razonables" improbables.</td><td style="color:#666;font-size:12px">Gestiones Cuauhtemoc (sin proyecto)</td></tr>
+<tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-03</td><td style="font-size:13px">"Opcion 2" ya esta puesta; activarla para aliviar presion de terceros</td><td style="color:#666;font-size:12px">Hospital Constituyentes</td></tr>
+<tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-03</td><td style="font-size:13px">No enviar version corregida de Constituyentes hasta que este validada (obra nueva sin errores)</td><td style="color:#666;font-size:12px">Hospital Constituyentes</td></tr>
+<tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-08</td><td style="font-size:13px">Rezago general en canos: ~1 mes de atraso en emision; expedientes de oct/enero apenas saliendo. Dos terminaciones "canonono" limpias pendientes de ingreso. Cinco de regularizacion en cartera.</td><td style="color:#666;font-size:12px">Portfolio</td></tr>
+<tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-08</td><td style="font-size:13px">Edison: Irazoke (Sedema) dice expediente listo pero no firmara con ruido. Condicion: acuerdos de no oposicion documentados con 3 vecinos. John debe agendar y obtener minutas.</td><td style="color:#666;font-size:12px">Edison 106</td></tr>
+<tr><td style="white-space:nowrap;color:#888;font-size:12px">2026-06-08</td><td style="font-size:13px">Alcaldia Cuauhtemoc — 2 gestiones sin proyecto formal: regimen + antecedentes. John tiene contacto directo en la alcaldia que puede extraer expedientes y armar regimen con notario propio. Tension: notario ajeno acelera pero "numeros razonables" improbables.</td><td style="color:#666;font-size:12px">Gestiones Cuauhtemoc (sin proyecto)</td></tr>
       </tbody>
     </table>
   </section>
@@ -164,7 +164,7 @@
 
 <script>
 const items = [
-  {n:1, desc:"Ir al Archivo Central y gestionar la extraccion del antecedente del expediente de Cuauhtemoc; documentar folio y responsable", who:"Hospital Constituyentes", due:"TBD", urgent:false, done:false},
+    {n:1, desc:"Ir al Archivo Central y gestionar la extraccion del antecedente del expediente de Cuauhtemoc; documentar folio y responsable", who:"Hospital Constituyentes", due:"TBD", urgent:false, done:false},
   {n:2, desc:"Destrabar \"Cano\": insistir con la oficina de firma para bajar el documento y liberar las claves de obra nueva", who:"Hospital Constituyentes", due:"TBD", urgent:false, done:false},
   {n:3, desc:"Coordinar con Hector la visita presencial para presionar por respuesta del escrito del arbol; registrar acuse o minuta", who:"Hospital Constituyentes", due:"TBD", urgent:false, done:false},
   {n:4, desc:"Enviar a Mauricio la version corregida de \"constituyentes\" (obra nueva y requisitos validados) antes de la recoleccion", who:"Hospital Constituyentes", due:"TBD", urgent:false, done:false},
@@ -216,6 +216,9 @@ async function loadState() {
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
     currentSha = data.sha;
+    // decodeURIComponent(escape(...)) devuelve los acentos bien. Sin esto,
+    // lo que escribe el equipo se guarda corrompido (iluminaciA3n) y se agrava
+    // en cada guardado. Error encontrado el 26-ago-2026.
     const rec = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, "")))));
     if (rec._version !== VERSION) {
       state = { ...DEFAULT_STATE };
@@ -234,6 +237,9 @@ async function loadState() {
 
 let log = [];
 
+// ---- Quien esta editando -------------------------------------------------
+// Se pregunta UNA sola vez por navegador y se recuerda. No es cuenta ni
+// contrasena: es solo para que en el status se sepa quien movio que.
 function quien() {
   let n = null;
   try { n = localStorage.getItem("admivo_quien"); } catch (e) { n = null; }
@@ -248,6 +254,7 @@ function quien() {
   return r;
 }
 
+// Deja constancia de un cambio. Se conserva lo ultimo, no todo el historial.
 function anota(accion, n, detalle) {
   log.push({ q: quien(), a: accion, n: n, d: (detalle || "").slice(0, 120), t: new Date().toISOString().slice(0, 16) });
   if (log.length > 200) log = log.slice(-200);
@@ -301,6 +308,9 @@ function escH(str) {
 function render() {
   const tbody = document.getElementById("pending-tbody");
   tbody.innerHTML = "";
+  // El numero visible de cada pendiente es su numero real (item.n), no un contador.
+  // Asi, lo que Mauricio ve en la tabla es lo mismo que se debe cerrar por numero.
+  // Los pendientes que anade el equipo desde la pagina no tienen item.n: se etiquetan N1, N2...
   let nuevoIdx = 1;
 
   items.filter(item => !state[item.n]).forEach(item => {
