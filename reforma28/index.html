@@ -76,7 +76,7 @@
       <p>Triple Espacio / Sutton &nbsp;&middot;&nbsp; Paseo de la Reforma No. 28, Col. Juárez, Cuauhtémoc, CDMX</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 02-sep-2026</div>
+      <div id="last-update">Actualizado: 03-sep-2026</div>
       <div style="font-size:11px;color:#aaa;margin-top:3px;">Editando como <b id="quien-soy" style="color:#666">—</b> <a href="#" id="cambiar-quien" style="color:#aaa;text-decoration:underline">cambiar</a></div>
       <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando...</div>
       <div style="margin-top:6px;" class="no-print">
@@ -260,12 +260,14 @@ const items = [
   { n: 73, desc: "[PAOT] Verificar en sitio si ya se subsanaron las carencias detectadas en mayo-2025 por la Alcaldia Cuauhtemoc (brigadas, botiquin, sistema de alertamiento, instructivos de sismo/incendio, bitacora de obra) que motivaron la suspension temporal y total de esa fecha — confirmar antes de comparecer ante PAOT.", who: "Nayeli", due: "TBD", urgent: true, done: false },
   { n: 74, desc: "[PAOT] Checklist de 9 documentos del articulo 48 del oficio (publicitacion vecinal, CAyNO, manifestacion/licencia de construccion, CUZUS, proyecto+programa interno de proteccion civil+estudio de riesgos, planos+memoria, dictamen SEDUVI patrimonio, VoBo INBAL, VoBo INAH). Cruce contra archivo: tenemos CAyNO, CUZUS, planos+memoria y el dictamen SEDUVI patrimonio favorable. Faltan o no estan confirmados: manifestacion/licencia de construccion de obra nueva, proyecto y programa interno de proteccion civil + estudio de riesgos, VoBo INBAL final, y VoBo de INAH/Monumentos Historicos (este ultimo es un hueco nuevo, no gestionado hasta ahora). El oficio trae anotaciones manuscritas junto a los puntos 6-9 cuyo significado no es claro desde la foto.", who: "Mauricio / equipo legal", due: "~11-sep-2026 (confirmar)", urgent: true, done: false },
   { n: 75, desc: "[PAOT] Mauricio pregunto si tenemos el documento de la fe de hechos de colindancias (pendiente #39, negativa del vecino izquierdo a dar acceso). El #39 esta marcado Hecho porque el equipo lo cerro en la pagina de status, pero el archivo fisico NUNCA se guardo en 00 entradas de iCloud ni se localizo en el resto de la carpeta ni en WhatsApp. Si se va a usar como soporte en la respuesta a PAOT hace falta pedirle el archivo real a Isaac/cliente.", who: "Nayeli / Isaac", due: "TBD", urgent: true, done: false },
+  { n: 76, desc: "[PAOT — evidencia obra menor] Isaac Sutton entrego a Svetlana el original del aviso de obra menor art. 62 RCDF (07-abr-2025, mantenimiento general) — refuerza que no hay obra nueva en marcha. Evaluar si conviene anexarlo a la respuesta PAOT.", who: "Isaac Sutton / Mauricio", due: "TBD", urgent: false, done: false },
+  { n: 77, desc: "[Incidente] Sellos de 'clausura ciudadana' (no oficial) colocados en el predio la tarde del 02-sep; retirados el mismo dia por instruccion de Mauricio. Senal de la misma presion vecinal de la denuncia PAOT.", who: "Equipo en sitio", due: "—", urgent: false, done: true },
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
-const VERSION = "2026-09-02d";
+const VERSION = "2026-09-03a";
 // Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
-const NEW_BADGE_N = 70;
+const NEW_BADGE_N = 76;
 
 const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
 const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/reforma28/state.json";
