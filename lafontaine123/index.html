@@ -168,7 +168,7 @@
     </table>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Lafontaine 123 · Actualizado 22-ago-2026</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Lafontaine 123 · Actualizado 03-sep-2026</p>
 </div>
 
 <script>
@@ -200,15 +200,20 @@ const items = [
   { n: 25,  desc: "Autorizar presupuesto del contratista y entregar constancia fiscal del fideicomiso", who: "Carlos Samano", due: "TBD", urgent: true, done: false },
   { n: 26,  desc: "Completar fechas de ingreso en la columna J del archivo de seguimiento", who: "Nayeli", due: "TBD", urgent: false, done: false },
   { n: 27,  desc: "Entregar planos de rutas de evacuacion para el Estudio de Riesgo", who: "Nayeli / Equipo tecnico", due: "TBD", urgent: true, done: false },
-  { n: 28,  desc: "Retroalimentar al grupo sobre lo que entrego Chava para el DCA de obra nueva", who: "Nayeli", due: "TBD", urgent: false, done: false },
-  { n: 29,  desc: "Confirmar entrega de fotos de la lona con periodico visible", who: "Carlos Samano", due: "2026-08-21", urgent: true, done: false },
-  { n: 30,  desc: "[02-SEP] Corregir reporte fotografico del estado actual (referenciar fotos al plano arquitectonico) y completar planos: escala, cotas, niveles, superficie por nivel y total a demoler, 2 cortes y fachadas.", who: "Equipo tecnico cliente / Nayeli", due: "TBD", urgent: true, done: false },
-  { n: 31,  desc: "[02-SEP] Enviar a Erick los datos bancarios y el monto para el pago de la DCA.", who: "Erick Sanz", due: "TBD", urgent: true, done: false },
+  { n: 28,  desc: "Retroalimentar al grupo sobre lo que entrego Chava para el DCA de obra nueva", who: "Nayeli", due: "TBD", urgent: false, done: true },
+  { n: 29,  desc: "Confirmar entrega de fotos de la lona con periodico visible", who: "Carlos Samano", due: "2026-08-21", urgent: true, done: true },
+  { n: 30,  desc: "Corregir reporte fotografico: referenciar fotos al plano, mas fotos de interiores, indicar los 2 niveles; completar planos: escala, cotas, niveles, superficie por nivel y total a demoler, 2 cortes y fachadas.", who: "Equipo tecnico cliente / Nayeli", due: "TBD", urgent: true, done: false },
+  { n: 31,  desc: "Pago de la DCA: $20,693.00 MXN a cuenta HSBC (datos compartidos 03-sep). Falta que Carlos Samano realice el pago.", who: "Carlos Samano", due: "TBD", urgent: true, done: false },
   { n: 32,  desc: "[02-SEP] Definir proveedor para el levantamiento forestal (Anexo 1, NADF-001-RNAT-2015) — candidato sin confirmar: Luis.", who: "Mauricio / Erick", due: "Urgente", urgent: true, done: false },
+  { n: 33,  desc: "Confirmar proveedor final de disposicion de residuos (Concretos Reciclados vs Concretos Sustentables) y actualizar la memoria de demolicion.", who: "Nayeli / dRn Argueta", due: "TBD", urgent: false, done: false },
+  { n: 34,  desc: "Homologar la superficie de construccion a 557 m2 en memoria y planos, para no generar discrepancia con lo presentado ante la Alcaldia.", who: "Equipo tecnico cliente / Nayeli", due: "TBD", urgent: false, done: false },
+  { n: 35,  desc: "Definir representante legal del fideicomiso ante la gestoria: Carlos Samano o Arturo (tiene poder en el FID).", who: "Nayeli / Carlos Samano", due: "TBD", urgent: false, done: false },
+  { n: 36,  desc: "Revisar la minuta de la junta de seguimiento del 03-sep y dar seguimiento a los acuerdos.", who: "Nayeli / Mauricio", due: "TBD", urgent: false, done: false },
+  { n: 37,  desc: "Incorporar los comentarios de Nayeli para el Vo.Bo. de Demolicion de ACP.", who: "Nayeli / Erick Urbania", due: "TBD", urgent: false, done: false },
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
-const VERSION = "2026-09-03a";
+const VERSION = "2026-09-03b";
 // Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
 const NEW_BADGE_N = 30;
 
