@@ -76,7 +76,7 @@
       <p>Carlos Samano — Lafontaine 123, Polanco, Miguel Hidalgo</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 03-sep-2026</div>
+      <div id="last-update">Actualizado: 04-sep-2026</div>
       <div style="font-size:11px;color:#aaa;margin-top:3px;">Editando como <b id="quien-soy" style="color:#666">—</b> <a href="#" id="cambiar-quien" style="color:#aaa;text-decoration:underline">cambiar</a></div>
       <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando...</div>
       <div style="margin-top:6px;" class="no-print">
@@ -180,7 +180,7 @@ const items = [
   { n: 5,   desc: "Gestionar dictamen INBAL", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
   { n: 6,   desc: "Gestionar dictamen ACP", who: "Nayeli / Erick", due: "TBD", urgent: false, done: false },
   { n: 7,   desc: "SEGIAGUA (antes SACMEX): Nayeli acude presencialmente para destrabar la falta de acuse de la factibilidad hidraulica", who: "Nayeli", due: "TBD", urgent: true, done: false },
-  { n: 8,   desc: "Recibir poliza RC corregida a nombre del Representante Legal", who: "Carlos Samano", due: "URGENTE", urgent: true, done: false },
+  { n: 8, desc: "Poliza RC a nombre del Representante Legal: el ENDOSO ya se entrego (Adrian Argueta, 04-sep 11:25, grupo Gestorias). La minuta lo comprometia para el 08-sep, se adelanto. Falta confirmar que el endoso corrige lo que se pidio.", who: "Carlos Samano", due: "URGENTE", urgent: true, done: false },
   { n: 9,   desc: "Verificar y gestionar el dictamen requerido por INVEA", who: "Nayeli", due: "TBD", urgent: false, done: false },
   { n: 10,  desc: "Cotizacion de Proteccion Civil para LF123", who: "Erick Sanz", due: "TBD", urgent: false, done: false },
   { n: 11,  desc: "Cotizacion general con montos en blanco para revision de Mauricio", who: "Nayeli", due: "TBD", urgent: false, done: false },
@@ -191,7 +191,7 @@ const items = [
   { n: 16,  desc: "Enviar al equipo tecnico el checklist de requisitos para DCA de obra nueva", who: "Nayeli", due: "2026-07-18", urgent: true, done: false },
   { n: 17,  desc: "Reunion con estructurista del 23-jul-2026", who: "Carlos Samano", due: "2026-07-23", urgent: false, done: true },
   { n: 18,  desc: "DCA y sitios patrimoniales en curso; ACP se gestiona si el proyecto esta correcto", who: "Erick Sanz", due: "TBD", urgent: false, done: false },
-  { n: 19,  desc: "Plan de manejo de residuos y RAMIR con volumenes de memoria", who: "Erick / Nayeli", due: "TBD", urgent: false, done: false },
+  { n: 19, desc: "Plan de manejo de residuos y RAMIR con volumenes de memoria. OJO: la minuta del 03-sep pide 'RAMIR carnet cruzado' (Adrian, 04-sep), pero en la llamada del 03-sep se dijo que los carnets van EN ORIGINAL, no cruzados. Confirmar cual aplica antes de entregar.", who: "Erick / Nayeli", due: "TBD", urgent: true, done: false },
   { n: 20,  desc: "Solicitar al equipo tecnico planos achurados y acotados conforme a la prevencion", who: "Nayeli", due: "TBD", urgent: true, done: false },
   { n: 21,  desc: "Reporte fotografico: interior, exterior, colindancias y larguillo grafico", who: "Nayeli / Carlos Samano", due: "TBD", urgent: true, done: false },
   { n: 22,  desc: "Estudio de riesgo en elaboracion (cotizacion aceptada el 18-ago)", who: "Erick Sanz", due: "TBD", urgent: false, done: false },
@@ -202,20 +202,23 @@ const items = [
   { n: 27,  desc: "Entregar planos de rutas de evacuacion para el Estudio de Riesgo", who: "Nayeli / Equipo tecnico", due: "TBD", urgent: true, done: false },
   { n: 28,  desc: "Retroalimentar al grupo sobre lo que entrego Chava para el DCA de obra nueva", who: "Nayeli", due: "TBD", urgent: false, done: true },
   { n: 29,  desc: "Confirmar entrega de fotos de la lona con periodico visible", who: "Carlos Samano", due: "2026-08-21", urgent: true, done: true },
-  { n: 30,  desc: "Corregir reporte fotografico: referenciar fotos al plano, mas fotos de interiores, indicar los 2 niveles; completar planos: escala, cotas, niveles, superficie por nivel y total a demoler, 2 cortes y fachadas.", who: "Equipo tecnico cliente / Nayeli", due: "TBD", urgent: true, done: false },
-  { n: 31,  desc: "Pago de la DCA: $20,693.00 MXN a cuenta HSBC (datos compartidos 03-sep). Falta que Carlos Samano realice el pago.", who: "Carlos Samano", due: "TBD", urgent: true, done: false },
+  { n: 30, desc: "Reporte fotografico corregido: Adrian Argueta entrego version con fotos de interiores (04-sep 07:59) y Nayeli confirmo que 'se ve mucho mejor'. Nayeli tambien compartio el anexo fotografico reestructurado (04-sep 09:04). Falta cerrar los planos del estado actual: escala, cotas, niveles, superficie por nivel y total a demoler, 2 cortes y fachadas.", who: "Equipo tecnico cliente / Nayeli", due: "TBD", urgent: true, done: false },
+  { n: 31, desc: "Pago de la DCA: $20,693.00 MXN a cuenta HSBC (datos compartidos 03-sep). DISCREPANCIA: el STATUS lo tenia a cargo de Carlos Samano y la minuta del 03-sep lo asigna a Adrian, con fecha compromiso 03-sep. Confirmar quien paga.", who: "Carlos Samano", due: "TBD", urgent: true, done: false },
   { n: 32,  desc: "[02-SEP] Definir proveedor para el levantamiento forestal (Anexo 1, NADF-001-RNAT-2015) — candidato sin confirmar: Luis.", who: "Mauricio / Erick", due: "Urgente", urgent: true, done: false },
   { n: 33,  desc: "Confirmar proveedor final de disposicion de residuos (Concretos Reciclados vs Concretos Sustentables) y actualizar la memoria de demolicion.", who: "Nayeli / dRn Argueta", due: "TBD", urgent: false, done: false },
   { n: 34,  desc: "Homologar la superficie de construccion a 557 m2 en memoria y planos, para no generar discrepancia con lo presentado ante la Alcaldia.", who: "Equipo tecnico cliente / Nayeli", due: "TBD", urgent: false, done: false },
   { n: 35,  desc: "Definir representante legal del fideicomiso ante la gestoria: Carlos Samano o Arturo (tiene poder en el FID).", who: "Nayeli / Carlos Samano", due: "TBD", urgent: false, done: false },
   { n: 36,  desc: "Revisar la minuta de la junta de seguimiento del 03-sep y dar seguimiento a los acuerdos.", who: "Nayeli / Mauricio", due: "TBD", urgent: false, done: false },
   { n: 37,  desc: "Incorporar los comentarios de Nayeli para el Vo.Bo. de Demolicion de ACP.", who: "Nayeli / Erick Urbania", due: "TBD", urgent: false, done: false },
+  { n: 38, desc: "[MINUTA 03-SEP] Entregar el original del contrato con el tiro registrado.", who: "Adrian Argueta", due: "04-sep-2026", urgent: true, done: false },
+  { n: 39, desc: "[MINUTA 03-SEP] DCA obra nueva: memoria de residuos.", who: "CAOS", due: "por definir", urgent: false, done: false },
+  { n: 40, desc: "[MINUTA 03-SEP] DCA obra nueva: estimacion del valor de la construccion nueva.", who: "CAOS", due: "por definir", urgent: false, done: false },
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
-const VERSION = "2026-09-03b";
+const VERSION = "2026-09-04a";
 // Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
-const NEW_BADGE_N = 30;
+const NEW_BADGE_N = 38;
 
 const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
 const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/lafontaine123/state.json";
