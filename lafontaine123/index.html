@@ -168,7 +168,7 @@
     </table>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Lafontaine 123 · Actualizado 03-sep-2026</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Lafontaine 123 · Actualizado 05-sep-2026</p>
 </div>
 
 <script>
@@ -191,7 +191,7 @@ const items = [
   { n: 16,  desc: "Enviar al equipo tecnico el checklist de requisitos para DCA de obra nueva", who: "Nayeli", due: "2026-07-18", urgent: true, done: false },
   { n: 17,  desc: "Reunion con estructurista del 23-jul-2026", who: "Carlos Samano", due: "2026-07-23", urgent: false, done: true },
   { n: 18,  desc: "DCA y sitios patrimoniales en curso; ACP se gestiona si el proyecto esta correcto", who: "Erick Sanz", due: "TBD", urgent: false, done: false },
-  { n: 19, desc: "Plan de manejo de residuos y RAMIR con volumenes de memoria. OJO: la minuta del 03-sep pide 'RAMIR carnet cruzado' (Adrian, 04-sep), pero en la llamada del 03-sep se dijo que los carnets van EN ORIGINAL, no cruzados. Confirmar cual aplica antes de entregar.", who: "Erick / Nayeli", due: "TBD", urgent: true, done: false },
+  { n: 19, desc: "Plan de manejo de residuos y RAMIR con volumenes de memoria. RAMIR: formato confirmado por Mauricio (05-sep) - va cruzado, no en original. Ver item 41 (RAMIR rechazado 04-sep, pendiente verificar version corregida).", who: "Erick / Nayeli", due: "TBD", urgent: true, done: false },
   { n: 20,  desc: "Solicitar al equipo tecnico planos achurados y acotados conforme a la prevencion", who: "Nayeli", due: "TBD", urgent: true, done: false },
   { n: 21,  desc: "Reporte fotografico: interior, exterior, colindancias y larguillo grafico", who: "Nayeli / Carlos Samano", due: "TBD", urgent: true, done: false },
   { n: 22,  desc: "Estudio de riesgo en elaboracion (cotizacion aceptada el 18-ago)", who: "Erick Sanz", due: "TBD", urgent: false, done: false },
@@ -213,10 +213,11 @@ const items = [
   { n: 38, desc: "[MINUTA 03-SEP] Entregar el original del contrato con el tiro registrado.", who: "Adrian Argueta", due: "04-sep-2026", urgent: true, done: false },
   { n: 39, desc: "[MINUTA 03-SEP] DCA obra nueva: memoria de residuos.", who: "CAOS", due: "por definir", urgent: false, done: false },
   { n: 40, desc: "[MINUTA 03-SEP] DCA obra nueva: estimacion del valor de la construccion nueva.", who: "CAOS", due: "por definir", urgent: false, done: false },
+  { n: 41, desc: "RAMIR carnet cruzado rechazado (04-sep): trae 'Documento de consulta' en vez del domicilio del proyecto. Formato confirmado como correcto (cruzado, no original). Adrian envio version actualizada 05-sep 10:00, pendiente verificar si ya trae el domicilio correcto.", who: "Adrian Argueta", due: "URGENTE", urgent: true, done: false },
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
-const VERSION = "2026-09-04a";
+const VERSION = "2026-09-05b";
 // Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
 const NEW_BADGE_N = 38;
 
