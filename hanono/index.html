@@ -169,17 +169,17 @@
 
 <script>
 const items = [
-  { n: 1, desc: "[T125 — VUC] Agendar la cita de visita de obra presencial (ID 30062026070) en citas.cdmx.gob.mx con Llave CDMX, copiar folio e ingresarlo en VUC. Bloquea el cierre definitivo.", who: "Claudia Paez / Hanono", due: "URGENTE", urgent: true, done: false },
-  { n: 2, desc: "Punto 6 de la prevencion: conseguir la Opinion tecnica del DRO (Ing. Arq. Jaime Sanchez Sanchez, DRO-0669) sobre los avisos de ocupacion y terminacion de obra, Art. 35-XIV del RCDF. Es lo unico que solo el DRO puede resolver. Nayeli consulto a la Alcaldia MH el 03-sep, sin respuesta.", who: "Mauricio", due: "URGENTE", urgent: true, done: false },
-  { n: 3, desc: "Presentar e impulsar las visitas de obra de ambos inmuebles. Objetivo comprometido con Beto el 27-ago.", who: "Mauricio / Nayeli", due: "Semana del 01-sep", urgent: false, done: false },
-  { n: 4, desc: "Confirmar el estado de la constancia de seguridad estructural de T 234. Nota: el VoBo de seguridad y operacion de ambos ya se obtuvo (03-sep), la constancia estructural es otro documento.", who: "Nayeli", due: "TBD", urgent: false, done: false },
-  { n: 5, desc: "Bajar y archivar la documentacion que Clau Paez compartio por Drive el 24-ago de T 125 y T 234.", who: "Nayeli", due: "TBD", urgent: false, done: false },
-  { n: 6, desc: "Dar seguimiento a los carnets solicitados a la Alcaldia.", who: "Nayeli", due: "TBD", urgent: false, done: false },
-  { n: 7, desc: "Despues de la visita: confirmar si requiere tramite adicional (empadronamiento, actualizacion catastral).", who: "Claudia Paez / Erick Sanz", due: "TBD", urgent: false, done: false },
-  { n: 8, desc: "Prevencion AMH/DGGAJ/DERA/SC/0616/2026 (03-ago): los carnets del DRO y del Corresponsable en Seguridad Estructural que se presentaron CARECEN DE FIRMA AUTOGRAFA (puntos 2 y 3). Hay que volver a presentarlos firmados y cotejados en ventanilla.", who: "Nayeli / Mauricio", due: "URGENTE", urgent: true, done: false },
-  { n: 9, desc: "Confirmar la fecha exacta de notificacion de la prevencion: el plazo son cinco dias habiles contados desde el dia siguiente. El oficio es del 03-ago.", who: "Mauricio", due: "URGENTE", urgent: true, done: false },
-  { n: 10, desc: "Integrar el reporte fotografico de areas terminadas de Tennyson: Beto entrego 25 fotos el 03-sep. No lo pidio la Alcaldia, se prepara de forma preventiva.", who: "Nayeli", due: "TBD", urgent: false, done: false },
-  { n: 11, desc: "Revisar los avisos de terminacion de obra (TO) de Tennyson 125 y 234. Nayeli lo tomo el 03-sep.", who: "Nayeli", due: "TBD", urgent: false, done: false },
+  { n: 1, desc: "[T125 — VUC] Agendar la cita de visita de obra presencial (ID 30062026070) en citas.cdmx.gob.mx con Llave CDMX, copiar folio e ingresarlo en VUC. Bloquea el cierre definitivo.", who: "Claudia Paez / Hanono", due: "", urgent: true, done: false },
+  { n: 2, desc: "Punto 6 de la prevencion: conseguir la Opinion tecnica del DRO (Ing. Arq. Jaime Sanchez Sanchez, DRO-0669) sobre los avisos de ocupacion y terminacion de obra, Art. 35-XIV del RCDF. Es lo unico que solo el DRO puede resolver. Nayeli consulto a la Alcaldia MH el 03-sep, sin respuesta.", who: "Mauricio", due: "", urgent: true, done: false },
+  { n: 3, desc: "Presentar e impulsar las visitas de obra de ambos inmuebles. Objetivo comprometido con Beto el 27-ago.", who: "Mauricio / Nayeli", due: "2026-09-01", urgent: false, done: false },
+  { n: 4, desc: "Confirmar el estado de la constancia de seguridad estructural de T 234. Nota: el VoBo de seguridad y operacion de ambos ya se obtuvo (03-sep), la constancia estructural es otro documento.", who: "Nayeli", due: "", urgent: false, done: false },
+  { n: 5, desc: "Bajar y archivar la documentacion que Clau Paez compartio por Drive el 24-ago de T 125 y T 234.", who: "Nayeli", due: "", urgent: false, done: false },
+  { n: 6, desc: "Dar seguimiento a los carnets solicitados a la Alcaldia.", who: "Nayeli", due: "", urgent: false, done: false },
+  { n: 7, desc: "Despues de la visita: confirmar si requiere tramite adicional (empadronamiento, actualizacion catastral).", who: "Claudia Paez / Erick Sanz", due: "", urgent: false, done: false },
+  { n: 8, desc: "Prevencion AMH/DGGAJ/DERA/SC/0616/2026 (03-ago): los carnets del DRO y del Corresponsable en Seguridad Estructural que se presentaron CARECEN DE FIRMA AUTOGRAFA (puntos 2 y 3). Hay que volver a presentarlos firmados y cotejados en ventanilla.", who: "Nayeli / Mauricio", due: "", urgent: true, done: false },
+  { n: 9, desc: "Confirmar la fecha exacta de notificacion de la prevencion: el plazo son cinco dias habiles contados desde el dia siguiente. El oficio es del 03-ago.", who: "Mauricio", due: "", urgent: true, done: false },
+  { n: 10, desc: "Integrar el reporte fotografico de areas terminadas de Tennyson: Beto entrego 25 fotos el 03-sep. No lo pidio la Alcaldia, se prepara de forma preventiva.", who: "Nayeli", due: "", urgent: false, done: false },
+  { n: 11, desc: "Revisar los avisos de terminacion de obra (TO) de Tennyson 125 y 234. Nayeli lo tomo el 03-sep.", who: "Nayeli", due: "", urgent: false, done: false }
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
