@@ -172,22 +172,22 @@
 
 <script>
 const items = [
-    { n: 3,  desc: "Preparar estimado de costos de notario y Registro Público.", who: "Lore", due: "2026-06-05", urgent: false, done: true },
-  { n: 16, desc: "Reingresar el CAyNO de Bahía de Santa Bárbara y compartir número de seguimiento.", who: "John", due: "Urgente", urgent: true, done: false },
-  { n: 9,  desc: "Revisar físicamente la Lámina No. 101 de Alineamientos y Derechos de Vía (SEDUVI, jun. 2013) — determina si el predio aparece como uno o dos polígonos. Define la estrategia ante SEDUVI y Metrópolis.", who: "Mauricio", due: "PRIORITARIO", urgent: true, done: false },
-  { n: 14, desc: "Localizar avalúos del notario (apéndices 'I' y 'J' de escritura 70,190, arq. Gutiérrez Méndez, sep. 2017) — contienen los m² de construcción registrados al momento de la compraventa.", who: "Mauricio", due: "Urgente", urgent: true, done: false },
-  { n: 2,  desc: "Unificación predial: consolidar las 2 cuentas en una ante Tesorería (Papik). Es el paso bloqueante de toda la ruta crítica. Al unificar, solicitar corrección de terreno a 684 m² y actualizar construcción.", who: "Papik", due: "Urgente", urgent: true, done: false },
-  { n: 4,  desc: "Elaborar memorias descriptivas y tabla de indivisos para régimen de condominio, optimizando uso de suelo.", who: "Lore", due: "TBD", urgent: false, done: false },
-  { n: 5,  desc: "Diseñar esquema de ruta crítica completa para presentar a Octavio Peñaloza.", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 6,  desc: "Integrar estimados de costos de Lore + costo de unificación predial de Papik en presentación para Octavio.", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 7,  desc: "Presentar plan de contingencia y ruta crítica a Octavio Peñaloza.", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 8,  desc: "Verificar estado del plano catastral en Tesorería — confirmar si el sistema muestra el predio como uno solo (684 m²) o partido en dos.", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 10, desc: "Hablar con Papik sobre costo de fusión predial y empadronamiento. Integrar en propuesta para Octavio (completar conceptos 1 y 2).", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 11, desc: "Editar propuesta de servicios: ajustar a 14 unidades iniciales + agregar Punto 6 (empadronamiento).", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 12, desc: "Definir costo del Punto 2 (SEDUVI/CUZUS) una vez revisada la Lámina 101.", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 13, desc: "Consultar con notario la viabilidad de inscribir 14 vs 16 unidades.", who: "Mauricio", due: "TBD", urgent: false, done: false },
-  { n: 15, desc: "Revisar Testimonio Compra Venta 70190 — apéndices al final del PDF (100 páginas) para confirmar m² de construcción en avalúos.", who: "Mauricio", due: "Urgente", urgent: true, done: false },
-  { n: 1,  desc: "Enviar ficha/notas de 'Bahía / Valle de Todos los Santos' para revisión de regularización (pendiente desde 2026-05-13).", who: "—", due: "Vencido", urgent: false, done: false }
+  { n: 3,  desc: "Preparar estimado de costos de notario y Registro Público.", who: "Lore", due: "2026-06-05", urgent: false, done: true },
+  { n: 16, desc: "Reingresar el CAyNO de Bahía de Santa Bárbara y compartir número de seguimiento.", who: "John", due: "", urgent: true, done: false },
+  { n: 9,  desc: "Revisar físicamente la Lámina No. 101 de Alineamientos y Derechos de Vía (SEDUVI, jun. 2013) — determina si el predio aparece como uno o dos polígonos. Define la estrategia ante SEDUVI y Metrópolis.", who: "Mauricio", due: "", urgent: true, done: false },
+  { n: 14, desc: "Localizar avalúos del notario (apéndices 'I' y 'J' de escritura 70,190, arq. Gutiérrez Méndez, sep. 2017) — contienen los m² de construcción registrados al momento de la compraventa.", who: "Mauricio", due: "", urgent: true, done: false },
+  { n: 2,  desc: "Unificación predial: consolidar las 2 cuentas en una ante Tesorería (Papik). Es el paso bloqueante de toda la ruta crítica. Al unificar, solicitar corrección de terreno a 684 m² y actualizar construcción.", who: "Papik", due: "", urgent: true, done: false },
+  { n: 4,  desc: "Elaborar memorias descriptivas y tabla de indivisos para régimen de condominio, optimizando uso de suelo.", who: "Lore", due: "", urgent: false, done: false },
+  { n: 5,  desc: "Diseñar esquema de ruta crítica completa para presentar a Octavio Peñaloza.", who: "Mauricio", due: "", urgent: false, done: false },
+  { n: 6,  desc: "Integrar estimados de costos de Lore + costo de unificación predial de Papik en presentación para Octavio.", who: "Mauricio", due: "", urgent: false, done: false },
+  { n: 7,  desc: "Presentar plan de contingencia y ruta crítica a Octavio Peñaloza.", who: "Mauricio", due: "", urgent: false, done: false },
+  { n: 8,  desc: "Verificar estado del plano catastral en Tesorería — confirmar si el sistema muestra el predio como uno solo (684 m²) o partido en dos.", who: "Mauricio", due: "", urgent: false, done: false },
+  { n: 10, desc: "Hablar con Papik sobre costo de fusión predial y empadronamiento. Integrar en propuesta para Octavio (completar conceptos 1 y 2).", who: "Mauricio", due: "", urgent: false, done: false },
+  { n: 11, desc: "Editar propuesta de servicios: ajustar a 14 unidades iniciales + agregar Punto 6 (empadronamiento).", who: "Mauricio", due: "", urgent: false, done: false },
+  { n: 12, desc: "Definir costo del Punto 2 (SEDUVI/CUZUS) una vez revisada la Lámina 101.", who: "Mauricio", due: "", urgent: false, done: false },
+  { n: 13, desc: "Consultar con notario la viabilidad de inscribir 14 vs 16 unidades.", who: "Mauricio", due: "", urgent: false, done: false },
+  { n: 15, desc: "Revisar Testimonio Compra Venta 70190 — apéndices al final del PDF (100 páginas) para confirmar m² de construcción en avalúos.", who: "Mauricio", due: "", urgent: true, done: false },
+  { n: 1,  desc: "Enviar ficha/notas de 'Bahía / Valle de Todos los Santos' para revisión de regularización (pendiente desde 2026-05-13).", who: "Sin asignar", due: "", urgent: true, done: false }
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
