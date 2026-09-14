@@ -159,7 +159,7 @@
 
 <script>
 const items = [
-  { n:1, desc:"Definir alcance y primeros pasos del proyecto. Revisar normativa y proyecto anterior.", who:"Mauricio", due:"", urgent:false, done:false }
+  { n:1, desc:"Definir alcance y primeros pasos del proyecto. Revisar normativa y proyecto anterior.", who:"Mauricio", due:"", urgent:false, done:false, desde: "2026-08-21" }
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
@@ -296,6 +296,18 @@ function escH(str) {
   return String(str).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 }
 
+
+// Cuanto lleva abierto un pendiente. La fecha `desde` es un piso honesto: no prueba
+// que nacio ese dia, si que ya existia entonces. Anadido el 14-sep-2026 porque habia
+// pendientes de meses que nadie volvia a mirar (caso Lafontaine item 3).
+function edadHTML(item) {
+  if (!item.desde) return "";
+  const d = Math.floor((Date.now() - new Date(item.desde + "T12:00:00")) / 86400000);
+  if (isNaN(d) || d < 0) return "";
+  const col = d >= 45 ? "#b02a1e" : (d >= 21 ? "#8a5010" : "#999");
+  return `<span style="display:block;margin-top:3px;font-size:10px;color:${col}">abierto ${d} d</span>`;
+}
+
 function render() {
   const tbody = document.getElementById("pending-tbody");
   tbody.innerHTML = "";
@@ -312,7 +324,7 @@ function render() {
       `<td style="color:#999;font-size:12px"><b>${item.n}</b>${item.n >= NEW_BADGE_N ? ' <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">nuevo</span>' : ''}</td>` +
       `<td><span class="desc">${escH(item.desc)}</span></td>` +
       `<td style="color:#666">${escH(item.who)}</td>` +
-      `<td><span class="badge ${item.urgent ? 'red' : 'gray'}">${escH(item.due)}</span></td>` +
+      `<td><span class="badge ${item.urgent ? 'red' : 'gray'}">${escH(item.due) || "—"}</span>${edadHTML(item)}</td>` +
       `<td><textarea class="obs-input" data-obs="${item.n}" rows="1" placeholder="--">${escH(obs[item.n] || "")}</textarea></td>` +
       `<td class="no-print"></td>`;
     tbody.appendChild(tr);
