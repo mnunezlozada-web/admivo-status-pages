@@ -163,12 +163,12 @@
 
 <script>
 const items = [
-  { n:1, desc:"Nayeli revisa anteproyecto (PDF + DWG recibidos 19-ago) y define si revisión es in-house o recomienda a Rubén.", who:"Nayeli", due:"", urgent:true, done:false },
-  { n:2, desc:"Mauricio prepara propuesta de honorarios por etapas (llave en mano: trámites + DROs + gestión INAH). (cuando: Tras revisión Nayeli)", who:"Mauricio", due:"", urgent:false, done:false },
-  { n:3, desc:"Obtener documento/sustento formal de INAH sobre condición de catalogación — qué elementos de la primera crujía deben respetarse. Dani tiene contacto 'Iván' en INAH.", who:"Dani / CRN", due:"", urgent:false, done:false },
-  { n:4, desc:"ALERTA regulatoria: anteproyecto declara sótano como BODEGAS pero en realidad será espacios de servicio y wellness del hotel (spa, gimnasio, comedor de empleados, cámara frigorífica, lavandería). 11-SEP: la discrepancia ya quedó documentada explícitamente en la nueva versión de la propuesta de honorarios como algo a resolver antes de iniciar trámites — sigue sin decisión final.", who:"Mauricio", due:"", urgent:true, done:false },
-  { n:5, desc:"Obtener cuadro de áreas por nivel del anteproyecto — necesario para confirmar si rebasa el umbral de 5,000 m² del Art. 86 (Dictamen de Impacto Urbano). (cuando: Antes de propuesta final)", who:"Dani / Equipo IZB", due:"", urgent:false, done:true },
-  { n:6, desc:"[02-SEP -> 11-SEP] Cerrar y enviar a Dani la propuesta de honorarios llave en mano. 11-SEP: nueva versión de Nayeli, ya dirigida a Dani por nombre, con montos en blanco (antes tenía cifras fijas de $17,015,000 MXN + IVA), CAyNO/CUZUS marcados como ya obtenidos, sin el duplicado de seguridad estructural que Mauricio señaló, alcance de INBAL reducido y firmas de corresponsables excluidas del monto. Faltan los montos y resolver el punto del sótano (item 4) antes de enviarla. Van 11 días desde el compromiso del 02-sep.", who:"Mauricio / Nayeli", due:"", urgent:true, done:false }
+  { n:1, desc:"Nayeli revisa anteproyecto (PDF + DWG recibidos 19-ago) y define si revisión es in-house o recomienda a Rubén.", who:"Nayeli", due:"", urgent:true, done:false, desde: "2026-08-21" },
+  { n:2, desc:"Mauricio prepara propuesta de honorarios por etapas (llave en mano: trámites + DROs + gestión INAH). (cuando: Tras revisión Nayeli)", who:"Mauricio", due:"", urgent:false, done:false, desde: "2026-08-21" },
+  { n:3, desc:"Obtener documento/sustento formal de INAH sobre condición de catalogación — qué elementos de la primera crujía deben respetarse. Dani tiene contacto 'Iván' en INAH.", who:"Dani / CRN", due:"", urgent:false, done:false, desde: "2026-08-21" },
+  { n:4, desc:"ALERTA regulatoria: anteproyecto declara sótano como BODEGAS pero en realidad será espacios de servicio y wellness del hotel (spa, gimnasio, comedor de empleados, cámara frigorífica, lavandería). 11-SEP: la discrepancia ya quedó documentada explícitamente en la nueva versión de la propuesta de honorarios como algo a resolver antes de iniciar trámites — sigue sin decisión final.", who:"Mauricio", due:"", urgent:true, done:false, desde: "2026-08-21" },
+  { n:5, desc:"Obtener cuadro de áreas por nivel del anteproyecto — necesario para confirmar si rebasa el umbral de 5,000 m² del Art. 86 (Dictamen de Impacto Urbano). (cuando: Antes de propuesta final)", who:"Dani / Equipo IZB", due:"", urgent:false, done:true, desde: "2026-09-03" },
+  { n:6, desc:"[02-SEP -> 11-SEP] Cerrar y enviar a Dani la propuesta de honorarios llave en mano. 11-SEP: nueva versión de Nayeli, ya dirigida a Dani por nombre, con montos en blanco (antes tenía cifras fijas de $17,015,000 MXN + IVA), CAyNO/CUZUS marcados como ya obtenidos, sin el duplicado de seguridad estructural que Mauricio señaló, alcance de INBAL reducido y firmas de corresponsables excluidas del monto. Faltan los montos y resolver el punto del sótano (item 4) antes de enviarla. Van 11 días desde el compromiso del 02-sep.", who:"Mauricio / Nayeli", due:"", urgent:true, done:false, desde: "2026-09-02" }
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
@@ -306,6 +306,18 @@ function escH(str) {
   return String(str).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 }
 
+
+// Cuanto lleva abierto un pendiente. La fecha `desde` es un piso honesto: no prueba
+// que nacio ese dia, si que ya existia entonces. Anadido el 14-sep-2026 porque habia
+// pendientes de meses que nadie volvia a mirar (caso Lafontaine item 3).
+function edadHTML(item) {
+  if (!item.desde) return "";
+  const d = Math.floor((Date.now() - new Date(item.desde + "T12:00:00")) / 86400000);
+  if (isNaN(d) || d < 0) return "";
+  const col = d >= 45 ? "#b02a1e" : (d >= 21 ? "#8a5010" : "#999");
+  return `<span style="display:block;margin-top:3px;font-size:10px;color:${col}">abierto ${d} d</span>`;
+}
+
 function render() {
   const tbody = document.getElementById("pending-tbody");
   tbody.innerHTML = "";
@@ -322,7 +334,7 @@ function render() {
       `<td style="color:#999;font-size:12px"><b>${item.n}</b>${item.n >= NEW_BADGE_N ? ' <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">nuevo</span>' : ''}</td>` +
       `<td><span class="desc">${escH(item.desc)}</span></td>` +
       `<td style="color:#666">${escH(item.who)}</td>` +
-      `<td><span class="badge ${item.urgent ? 'red' : 'gray'}">${escH(item.due)}</span></td>` +
+      `<td><span class="badge ${item.urgent ? 'red' : 'gray'}">${escH(item.due) || "—"}</span>${edadHTML(item)}</td>` +
       `<td><textarea class="obs-input" data-obs="${item.n}" rows="1" placeholder="--">${escH(obs[item.n] || "")}</textarea></td>` +
       `<td class="no-print"></td>`;
     tbody.appendChild(tr);
