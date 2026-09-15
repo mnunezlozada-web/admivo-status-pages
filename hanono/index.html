@@ -448,7 +448,33 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-async function init() { await loadState(); render(); }
+
+// Aviso de revision atrasada. La fecha vive en el repositorio y es lectura publica,
+// asi que cualquiera que abra la pagina ve si el status esta al dia. 15-sep-2026.
+async function avisoRevision() {
+  try {
+    const u = "https://raw.githubusercontent.com/mnunezlozada-web/admivo-status-pages/main/ultima-revision.json";
+    const res = await fetch(u + "?t=" + Date.now());
+    if (!res.ok) return;
+    const f = new Date((await res.json()).ultima_revision);
+    const dias = Math.floor((Date.now() - f) / 86400000);
+    const cont = document.querySelector(".container");
+    if (!cont) return;
+    const d = document.createElement("div");
+    const txt = dias <= 0 ? "Revisado hoy"
+              : dias === 1 ? "Ultima revision: ayer"
+              : "Ultima revision: hace " + dias + " dias";
+    const grave = dias >= 2, ojo = dias === 1;
+    d.style.cssText = "margin:0 0 14px;padding:8px 12px;border-radius:6px;font-size:12.5px;" +
+      (grave ? "background:#fdecea;color:#8c2019;border:1px solid #f3c2bd"
+             : ojo ? "background:#fff6e5;color:#8a5010;border:1px solid #f0d9a8"
+                   : "background:#eef6ec;color:#3a6e10;border:1px solid #cfe6c6");
+    d.textContent = txt + (grave ? " — el estatus puede no estar al dia." : "");
+    cont.insertBefore(d, cont.firstChild);
+  } catch (e) {}
+}
+
+async function init() { avisoRevision(); await loadState(); render(); }
 init();
 
 function copyLink() {
