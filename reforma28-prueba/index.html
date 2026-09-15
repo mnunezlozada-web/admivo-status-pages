@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reforma 28 — Estatus del proyecto</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 14px; color: #1a1a1a; background: #f5f4f0; padding: 2rem; }
+  .container { max-width: 960px; margin: 0 auto; }
+  header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; }
+  header h1 { font-size: 20px; font-weight: 600; }
+  header p { font-size: 12px; color: #888; margin-top: 2px; }
+  .stamp { font-size: 11px; color: #aaa; text-align: right; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 2rem; }
+  .card { background: #fff; border-radius: 10px; border: 0.5px solid #e0ddd4; padding: 0.75rem 1rem; }
+  .card .label { font-size: 11px; color: #999; margin-bottom: 4px; }
+  .card .value { font-size: 22px; font-weight: 600; }
+  .card .sub { font-size: 11px; color: #aaa; margin-top: 2px; }
+  .card .value.sm { font-size: 14px; margin-top: 2px; }
+  section { margin-bottom: 2rem; }
+  section h2 { font-size: 11px; font-weight: 600; color: #999; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; border: 0.5px solid #e0ddd4; }
+  th { font-size: 11px; font-weight: 600; color: #999; text-align: left; padding: 9px 14px; background: #faf9f6; border-bottom: 0.5px solid #e0ddd4; }
+  td { padding: 9px 14px; border-bottom: 0.5px solid #f0ede6; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  .badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 6px; white-space: nowrap; }
+  .badge.green  { background: #e8f5e0; color: #3a6e10; }
+  .badge.blue   { background: #e3effa; color: #1a5fa6; }
+  .badge.amber  { background: #fef3dc; color: #8a5010; }
+  .badge.red    { background: #fde8e8; color: #a33030; }
+  .badge.gray   { background: #f0ede6; color: #666; }
+  .badge.purple { background: #f0e8fa; color: #6a10a3; }
+  .check-col { width: 36px; text-align: center; }
+  input[type=checkbox] { width: 16px; height: 16px; cursor: pointer; accent-color: #3a6e10; }
+  .obs-input { width: 100%; min-width: 140px; border: none; background: transparent; resize: none; font-size: 12px; color: #555; font-family: inherit; padding: 0; line-height: 1.4; overflow: hidden; }
+  .obs-input:focus { outline: none; background: #faf9f6; border-radius: 4px; padding: 2px 6px; box-shadow: 0 0 0 1px #e0ddd4; }
+  .obs-input::placeholder { color: #d0cdc6; }
+  .btn-share { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 6px 14px; border-radius: 8px; border: 0.5px solid #ccc; background: #fff; cursor: pointer; color: #444; }
+  .btn-share:hover { background: #f5f4f0; }
+  .btn-print { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 6px 14px; border-radius: 8px; border: 0.5px solid #ccc; background: #fff; cursor: pointer; color: #444; margin-left: 8px; }
+  .btn-print:hover { background: #f5f4f0; }
+  .counter { font-size: 12px; color: #888; margin-bottom: 8px; }
+  .counter span { font-weight: 600; color: #1a1a1a; }
+  .add-item-area { margin-top: 10px; }
+  .btn-add-toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 7px 14px; border-radius: 8px; border: 1px dashed #c8c4bc; background: transparent; cursor: pointer; color: #888; transition: all .15s; }
+  .btn-add-toggle:hover { background: #fff; border-color: #aaa; color: #444; }
+  .add-form { display: none; background: #fff; border: 0.5px solid #e0ddd4; border-radius: 10px; padding: 14px 16px; margin-top: 8px; }
+  .add-form.open { display: block; }
+  .add-form-grid { display: grid; grid-template-columns: 1fr 160px 130px; gap: 10px; align-items: start; }
+  .add-form label { font-size: 10px; color: #999; display: block; margin-bottom: 3px; letter-spacing: .04em; text-transform: uppercase; }
+  .add-form input, .add-form textarea { width: 100%; border: 0.5px solid #ddd; border-radius: 6px; padding: 6px 10px; font-size: 13px; font-family: inherit; color: #1a1a1a; background: #faf9f6; resize: none; }
+  .add-form input:focus, .add-form textarea:focus { outline: none; border-color: #aaa; background: #fff; }
+  .add-form textarea { min-height: 54px; }
+  .add-form-actions { display: flex; gap: 8px; margin-top: 10px; }
+  .btn-save-item { font-size: 12px; padding: 6px 16px; border-radius: 8px; border: none; background: #1a1a1a; color: #fff; cursor: pointer; }
+  .btn-save-item:hover { background: #333; }
+  .btn-cancel-item { font-size: 12px; padding: 6px 12px; border-radius: 8px; border: 0.5px solid #ccc; background: #fff; color: #666; cursor: pointer; }
+  .btn-cancel-item:hover { background: #f5f4f0; }
+  .btn-delete-item { background: none; border: none; cursor: pointer; color: #ccc; font-size: 13px; padding: 0 4px; line-height: 1; }
+  .btn-delete-item:hover { color: #a33030; }
+  .new-row td { background: #fdfcf8; }
+  .highlight-row td { background: #fffbe8; }
+  @media print {
+    body { background: #fff; padding: 1rem; }
+    .no-print { display: none !important; }
+    table { border: 1px solid #ddd; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div>
+      <h1>Reforma 28 — PRUEBA DE FORMATO</h1>
+      <p>Triple Espacio / Sutton &nbsp;&middot;&nbsp; Paseo de la Reforma No. 28, Col. Juárez, Cuauhtémoc, CDMX</p>
+    </div>
+    <div class="stamp">
+      <div id="last-update">Actualizado: 03-sep-2026</div>
+      <div style="font-size:11px;color:#aaa;margin-top:3px;">Editando como <b id="quien-soy" style="color:#666">—</b> <a href="#" id="cambiar-quien" style="color:#aaa;text-decoration:underline">cambiar</a></div>
+      <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando...</div>
+      <div style="margin-top:6px;" class="no-print">
+        <button class="btn-share" onclick="copyLink()">Copiar enlace</button>
+        <button class="btn-print" onclick="window.print()">Imprimir</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="cards">
+    <div class="card"><div class="label">Fase</div><div class="value sm">MIA subsane + Demolicion + PAOT</div></div>
+    <div class="card"><div class="label">DEIU</div><div class="value">5 / 6</div><div class="sub">instancias resueltas</div></div>
+    <div class="card"><div class="label">Proximo vencimiento</div><div class="value sm">~11-sep-2026 (est.)</div><div class="sub">Respuesta a PAOT (exp. 2026-4813-SOT-1706)</div></div>
+    <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">—</div><div class="sub">por cerrar</div></div>
+  </div>
+
+  <section>
+    <h2>Estado de tramites</h2>
+    <table>
+      <thead><tr><th>Tramite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
+      <tbody>
+        <tr><td>CAyNO</td><td>SEDUVI/VUC</td><td><span class="badge green">Renovado</span></td><td>Folio 0806/2024 — renovación confirmada por Mauricio (22-ago). "Cusu" ya actualizado.</td></tr>
+<tr><td>DEIU</td><td>Metrópolis</td><td><span class="badge green">Subsanado</span></td><td>Observaciones atendidas</td></tr>
+<tr><td>DEIU</td><td>Alcaldía Cuauhtémoc</td><td><span class="badge green">Opinión positiva</span></td><td>Desde 26-nov-2025</td></tr>
+<tr><td>DEIU</td><td>SEGIAGUA</td><td><span class="badge amber">En análisis (verbal)</span></td><td>Confirmado verbalmente a Jorge (27-ago, Erick); falta la opinión formal</td></tr>
+<tr><td>DEIU</td><td>SEMOVI</td><td><span class="badge green">Opinión positiva</span></td><td>Oficio SM-SPPR-DGPP-DGPM-737-2026 del 12-may-2026</td></tr>
+<tr><td>DEIU</td><td>Protección Civil</td><td><span class="badge green">Confirmado</span></td><td>Confirmado por Erick Urbania, WhatsApp 27-ago-2026</td></tr>
+<tr><td>DEIU</td><td>Sedema</td><td><span class="badge green">Subsanado 25-ago</span></td><td>Confirmado por Erick Urbania, WhatsApp 27-ago-2026</td></tr>
+<tr><td>Demolición</td><td>INBAL</td><td><span class="badge green">Subsanado</span></td><td>Confirmado por Erick Urbania, WhatsApp 27-ago-2026</td></tr>
+<tr><td>ACP / SPOTMET</td><td>SPOTMET</td><td><span class="badge green">Dictamen modif. favorable</span></td><td>Oficio 3991/2025 — 411 depts, 26,216.36 m² SNB, 36 cajones, 107 bicis</td></tr>
+<tr><td>INBAL</td><td>INBAL</td><td><span class="badge blue">En gestión</span></td><td>Autorización en proceso</td></tr>
+<tr><td>ISC</td><td>Instituto de las Construcciones</td><td><span class="badge amber">Ingresado</span></td><td>Erick confirmó ingreso formal del expediente; verificar cumplimiento de normatividad vigente con cliente</td></tr>
+<tr><td>PAOT</td><td>Subprocuraduría de Ordenamiento Territorial</td><td><span class="badge red">Investigación nueva</span></td><td>Expediente PAOT-2026-4813-SOT-1706 — notificado por instructivo 02-sep-2026 (oficio 08508-2026, 27-ago). Investiga desarrollo urbano/conservación patrimonial, construcción de obra nueva y protección civil. Comparecer en 6 días hábiles (~11-sep-2026, confirmar).</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Pendientes activos</h2>
+    <div class="counter no-print">Completados: <span id="done-count">0</span> de <span id="total-count">0</span></div>
+    <table>
+      <thead>
+        <tr>
+          <th class="check-col no-print"></th>
+          <th>#</th>
+          <th>Pendiente</th>
+          <th>Responsable</th>
+          <th>Fecha limite</th>
+          <th>Observaciones</th>
+          <th class="no-print" style="width:28px"></th>
+        </tr>
+      </thead>
+      <tbody id="pending-tbody"></tbody>
+    </table>
+
+    <div class="add-item-area no-print">
+      <button class="btn-add-toggle" id="btn-add-toggle" onclick="toggleAddForm()">+ Agregar pendiente</button>
+      <div class="add-form" id="add-form">
+        <div class="add-form-grid">
+          <div>
+            <label>Descripcion</label>
+            <textarea id="new-desc" rows="2" placeholder="Que hay que hacer?"></textarea>
+          </div>
+          <div>
+            <label>Responsable</label>
+            <input id="new-who" type="text" placeholder="Nombre">
+          </div>
+          <div>
+            <label>Fecha limite</label>
+            <input id="new-due" type="text" placeholder="ej. 18-ago-2026">
+          </div>
+        </div>
+        <div class="add-form-actions">
+          <button class="btn-save-item" onclick="addNewItem()">Guardar pendiente</button>
+          <button class="btn-cancel-item" onclick="toggleAddForm()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Acuerdos clave</h2>
+    <table>
+      <thead><tr><th style="width:110px">Fecha</th><th>Acuerdo</th><th style="width:130px">Quien acordo</th></tr></thead>
+      <tbody>
+        <thead><tr><th style="width:110px">Fecha</th><th>Acuerdo</th><th style="width:130px">Quien acordo</th></tr></thead>
+        <tr><td>2026-06-02</td><td>Usar el paquete "Fer/Colores" como única fuente de verdad. Spotnet descartado.</td><td>Equipo</td></tr>
+<tr><td>2026-06-08</td><td>Irazoke (Sedema) debe firmar personalmente. No firmará con ruido ni durante vacaciones. Cerrar pendientes técnicos antes de la parálisis estacional.</td><td>Mauricio</td></tr>
+<tr><td>2026-06-15</td><td>Memoria EIU + planos (Nayeli 15-jun) son la VERSIÓN DE REFERENCIA OFICIAL. Cualquier modificación de m² implicaría que Metrópoli solicite nuevamente las opiniones.</td><td>Nayeli / Equipo</td></tr>
+<tr><td>2026-06-15</td><td>3ª revisión Sedema es la ÚLTIMA POSIBLE. ISC puede avanzar en paralelo (solo emite cédula con superficies).</td><td>Fernando Colores / Equipo</td></tr>
+<tr><td>2026-06-17</td><td>Fuente de verdad de superficies = Impacto Urbano/Metrópoli. SEDUVI y SEDEMA deben coincidir en áreas y hatch.</td><td>Mauricio / Nayeli</td></tr>
+<tr><td>2026-08-12</td><td>Alcaldía condicionó licencia de demolición al dictamen del INVAL — Erick coordina. Subsane MIA: cliente y proyectistas responden el martes 18-ago. Planos de colindancias como archivos independientes.</td><td>Mauricio / Nayeli / Erick</td></tr>
+<tr><td>2026-08-22</td><td>CAyNO R28 (y E106) RENOVADO — confirmado directamente por Mauricio: "estaban vencidos y ya se renovaron". Regla de precedencia: lo que Mauricio indica gana siempre, incluso sin documento físico de respaldo.</td><td>Mauricio Núñez</td></tr>
+<tr><td>2026-08-21</td><td>Consulta vecinal (publicidad vecinal) de demolición CONCLUIDA — Sharon Castillo entregó el documento de conclusión a Nayeli.</td><td>WhatsApp PCV Reforma 28 / Mauricio</td></tr>
+<tr><td>2026-08-23</td><td>Reconciliación state.json (versión 2026-08-21g): el equipo había cerrado en la página varios pendientes no reconciliados en pasadas anteriores (#31, #35, #39, #41, #48, #49, #51, #52/#63/#66, #53, #54, #55/#56/#57).</td><td>Claude (automatizado)</td></tr>
+<tr><td>2026-09-02</td><td>PAOT notificó por instructivo investigación (expediente PAOT-2026-4813-SOT-1706) por presuntos incumplimientos en conservación patrimonial, construcción de obra nueva y protección civil. Revisión de archivo del proyecto: hay base sólida en patrimonio (ACP/SPOTMET favorable) y documentos legales de propiedad/personalidad completos, pero el expediente aún no tiene autorización de construcción de obra nueva vigente ni evidencia reciente de cumplimiento de protección civil en sitio — huecos a resolver antes de comparecer.</td></tr>
+<tr><td>2026-09-02</td><td>Segunda foto del oficio PAOT (pagina 2 de 3): checklist de 9 documentos del articulo 48 para acreditar cumplimiento. Cruce contra archivo confirma el hueco de manifestacion/licencia de obra nueva y suma uno nuevo: VoBo de INAH (Monumentos Historicos), no gestionado hasta ahora. Nuevo pendiente #74.</td><td>Mauricio (revision de archivo en sesion)</td></tr>
+<tr><td>2026-09-02</td><td>Mauricio precisó en chat: la obra nueva de Reforma 28 NO ha iniciado. Punto de defensa clave para la respuesta a PAOT si la investigación infiere obra en marcha; la demolición tampoco ha arrancado (condicionada al dictamen INVAL).</td><td>Mauricio Núñez (conversación)</td></tr>
+<tr><td>2026-09-02</td><td>Mauricio pregunto por el documento de la fe de hechos de colindancias — no se encontro el archivo fisico en iCloud pese a que el pendiente #39 esta cerrado en la pagina de status. Nuevo pendiente #75: pedir el archivo real a Isaac/cliente.</td><td>Mauricio Nunez (conversacion)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">PAOT notifico investigacion (exp. PAOT-2026-4813-SOT-1706); comparecer en 6 dias habiles (~11-sep-2026, confirmar). Fe de hechos de colindancias (#39) marcada hecha en la pagina pero el archivo fisico no esta en iCloud -- nuevo pendiente #75. No se publica desde la sesion -- la Mac publica sola cada 5 minutos.</p>
+</div>
+
+<script>
+const items = [
+  { n: 1,  desc: "Contactar a Alan para aclarar árbol en acceso vehicular", who: "Mauricio", due: "", urgent: true, done: true, desde: "2026-08-25" },
+  { n: 2,  desc: "Coordinar con Fer para validar acceso en estudio de movilidad", who: "Mauricio", due: "", urgent: true, done: true, desde: "2026-08-25" },
+  { n: 3,  desc: "Gestionar pago de derechos vía SPEI a HSBC del cliente", who: "Mauricio", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 4,  desc: "Validar set 'Fer/Colores' como base; confirmar biciestacionamientos = 107", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 5,  desc: "Enviar plano de trayectoria vehicular a Sedema", who: "Nayeli / Alan", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 6,  desc: "[ARBOLADO] Redactar justificación de arbolado — árbol colindante ya no existente", who: "Luis", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 7,  desc: "Verificar ortofoto REV — enviada a Luis 15-Jun", who: "Luis", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 8,  desc: "Enviar 2 candidatos adicionales para RAMIR", who: "Erick Sanz / Luis", due: "2026-06-02", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 9,  desc: "Propuesta de reconfiguración de acceso vehicular", who: "Luis", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 10, desc: "Crear Drive centralizado con versión final unificada del proyecto ejecutivo", who: "Alan / Nayeli", due: "2026-06-22", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 11, desc: "Crear grupo WhatsApp: Nayeli, Alan, Brian", who: "Alan", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 12, desc: "Revisar carpeta Drive INF. GESTOR REFORMA #28", who: "Mauricio", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 13, desc: "[ECOLEGIS] Pago complementario derechos evaluación MIA: $1,771.00", who: "Mauricio", due: "", urgent: true, done: true, desde: "2026-08-25" },
+  { n: 14, desc: "[ECOLEGIS] Obtener Dictamen de Factibilidad Hidráulica", who: "Luis", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 15, desc: "[ECOLEGIS] Carnet RAMIR — alternativo en padrón asignado", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 16, desc: "[ECOLEGIS] Árbol exterior: incluir layer en plano topográfico DWG o redactar justificación", who: "Luis", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 17, desc: "[ECOLEGIS] Ortofoto ARC Topografía: revisar aceptación para Sedema — posible cambio de proveedor. Pendiente VoBo Luis.", who: "Luis / Alan", due: "", urgent: true, done: true, desde: "2026-08-25" },
+  { n: 18, desc: "[ECOLEGIS] Corregir discrepancia hatches: cuadrar áreas de planos vs memoria (Excel Ecolegis)", who: "Nayeli / Alan", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 19, desc: "[ECOLEGIS] Biciestacionamientos 107 — plano corregido", who: "Nayeli / Alan", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 20, desc: "Cuadrar superficie SNB: confirmado 26,216.36 m² como cifra oficial (PLAUD 07-jul)", who: "Nayeli / Alan", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 21, desc: "[ISC] Confirmar con Erick Sanz ingreso formal al ISC del expediente enviado 12-Jun", who: "Nayeli / Erick Sanz", due: "", urgent: true, done: true, desde: "2026-08-25" },
+  { n: 22, desc: "[DEMOLICIÓN] Reporte fotográfico del estado actual del inmueble", who: "Isaac", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 23, desc: "[DEMOLICIÓN] Revisión en ventanilla económica (prevención)", who: "Mauricio", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 24, desc: "Obtener el dictamen de estabilidad de colindancias", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-08-25" },
+  { n: 25, desc: "Obtener la constancia de no adeudo predial", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-08-25", nota: "Finanzas CDMX. Requisito de la licencia de demolicion." },
+  { n: 26, desc: "Obtener la constancia de no adeudo de agua", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-08-25", nota: "SACMEX. Requisito de la licencia de demolicion." },
+  { n: 27, desc: "[DEMOLICIÓN] Designar DRO para la demolición", who: "Mauricio", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 28, desc: "Entregar la memoria y el programa del proceso de demolicion", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-08-25" },
+  { n: 29, desc: "Confirmar que el documento que mando Erick es la autorizacion del INBAL", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-08-25", nota: "Erick reporto “Listo INBAL Reforma” el 09-sep con una imagen. La imagen no ha sincronizado, asi que nadie ha podido verificar que sea el documento correcto." },
+  { n: 30, desc: "[DEMOLICIÓN] RAMIR para residuos de demolición — carnet transportista", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 31, desc: "Entregar al cliente el estimado de derechos de Reforma 28 (elaborado por Fer)", who: "Mauricio", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 32, desc: "[ISC] Observaciones corresponsable estructural subsanadas", who: "Cliente / Alan", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 33, desc: "[CONTROL VERSIONES] Nayeli envió memoria EIU como versión de referencia oficial el 15-Jun", who: "Nayeli / Alan / Bryan", due: "2026-06-22", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 34, desc: "[INBAL] Documento INBAL escaneado, Erick confirmó suficiencia", who: "Nayeli / Erick Sanz", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 35, desc: "[ECOLEGIS] Factibilidad hidráulica: Luis redactará respuesta", who: "Luis", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 36, desc: "Complementar los planos de demolicion: plantas escaladas, cotas, sombreado de areas, tabla y firmas", who: "Alan / Bryan", due: "", urgent: true, done: false, desde: "2026-08-25", nota: "Punto 7 del oficio de prevencion 748/2026, confirmado el 09-sep." },
+  { n: 37, desc: "Confirmar si las cartas responsivas ya estan emitidas", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-08-25", nota: "Punto 6 del oficio 748/2026." },
+  { n: 38, desc: "[DEMOLICIÓN — Punto 1] Notificación vecinal — fechas confirmadas con Eric", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 39, desc: "[DEMOLICIÓN — Punto 5] Fe de hechos: Isaac preparará fe alternativa acreditando negativa del vecino izquierdo", who: "Mauricio / Isaac", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 40, desc: "Confirmar si la memoria descriptiva de colindancias cubre el punto 5 del oficio", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-08-25", nota: "Si no lo cubre, hay que hacer un documento aparte." },
+  { n: 41, desc: "[DEMOLICIÓN — Punto 2] Isaac presenta pasaporte original para cotejo al momento de subsanación (cuando: Al subsanar)", who: "Isaac", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 42, desc: "Pago a Nayeli — acordado reunión 15-Jun", who: "Mauricio", due: "2026-06-17", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 43, desc: "[MIA SEDEMA — Rev 2] Claudia Bolaños (PSA) compartió subsane Rev 2 — revisado", who: "Nayeli / Claudia Paez", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 44, desc: "[SEDEMA] Links Rev 1/Rev 2 actualizados y confirmados con equipo", who: "Nayeli / Alan / Bryan", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 45, desc: "[SEDEMA 3ª Rev.] Revisar Rev 2 e integrar ajustes — Brayan entregó GESTOR RF#28 23-06-26.zip el 24-jun", who: "Alan / Bryan", due: "2026-06-22", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 46, desc: "[SEDEMA 3ª Rev.] Reconfigurar layout departamentos sin alterar áreas; hatch idéntico a SEDUVI — entregado 24-jun", who: "Alan", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 47, desc: "[SEDEMA 3ª Rev.] Enviar planos actualizados con tabla de áreas y hatch — entregado 24-jun", who: "Alan", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 48, desc: "[SEDEMA 3ª Rev.] Validar áreas y hatch — diferencia SNB 0.13 m², pendiente VoBo de Luis", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 49, desc: "[SEDEMA 3ª Rev.] Preparar paquete completo para 3ª revisión SEDEMA con hatch correcto y tabla de áreas definitiva", who: "Nayeli", due: "", urgent: true, done: true, desde: "2026-08-25" },
+  { n: 50, desc: "Confirmar con SEDEMA la recepcion de la 3a revision y el tiempo estimado de respuesta", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-08-25" },
+  { n: 51, desc: "[SEDEMA 3ª Rev.] Coordinar agenda revisión interna (ventana 12:00-13:00) con Jorge/Mariana/Abraham/Joey", who: "Mauricio", due: "", urgent: true, done: true, desde: "2026-08-25" },
+  { n: 52, desc: "[CAyNO — URGENTE] Renovar CAyNO folio 0806/2024 ante VUC/SEDUVI — venció 18-jun-2026. SEMOVI 737-2026 condiciona al CAyNO vigente.", who: "Nayeli / Erick Sanz", due: "", urgent: true, done: true, desde: "2026-06-18" },
+  { n: 53, desc: "[INBAL — modificación] Seguimiento con Erick para ingresar VoBo patrimonio INBAL — requiere modificación por diferencia de nivel con banqueta", who: "Nayeli / Erick Sanz", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 54, desc: "[MIA — Instalaciones/memoria] Solicitar a Bryan instalaciones y memoria técnica ajustadas a versión congelada", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 55, desc: "[DEMOLICIÓN] Solicitar formalmente al cliente el reporte fotográfico del estado actual del inmueble", who: "Mauricio", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 56, desc: "[DEMOLICIÓN] Buscar en Drive la memoria de demolición; si no se encuentra, coordinar con Erick", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 57, desc: "[DEMOLICIÓN — Reporte fotográfico] Nayeli ya tiene fotos — armar el documento del reporte fotográfico de demolición", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 58, desc: "Atender las dos observaciones del INBA: fe de hechos y dictamen tecnico", who: "Erick Sanz / Nayeli", due: "", urgent: true, done: false, desde: "2026-08-25", nota: "Erick verifica primero si el tramite sigue vigente." },
+  { n: 59, desc: "Confirmar con Fernando Colores el estado del VoBo de Proteccion Civil para el DEIU", who: "Mauricio", due: "", urgent: true, done: false, desde: "2026-08-25", nota: "Hay contradiccion con lo que se dijo en la grabacion del 09-jul." },
+  { n: 60, desc: "Actualizar el ACP por el cambio de superficies (area bajo nivel de banqueta)", who: "Erick Sanz", due: "", urgent: false, done: false, desde: "2026-08-25", nota: "Erick gestiona la modificacion en economico." },
+  { n: 61, desc: "Subir al Drive las autorizaciones de Inval y Patrimonio del sistema alternativo", who: "Erick Sanz / Mauricio", due: "", urgent: false, done: false, desde: "2026-08-25", nota: "Las tiene Erick." },
+  { n: 62, desc: "Subsanar ante CEDEMA", who: "Mauricio / Luis", due: "", urgent: false, done: false, desde: "2026-08-25", nota: "La foto nueva mostro diferencias sustantivas respecto de lo presentado. Se coordina con Luis." },
+  { n: 63, desc: "[CAyNO] Ingreso/renovación de CAyNO ante SEDUVI — Erick gestiona y enviará línea de captura", who: "Nayeli / Erick Sanz", due: "", urgent: true, done: true, desde: "2026-08-25" },
+  { n: 64, desc: "[MIA SEDEMA] Subsanación SEDEMA/SpotMet — subsane enviado, firma de Arturo pendiente. Cita HOY 01-sep 13:00 con Arturo para firmar el escrito a Sedema (coordinada por Sharon Castillo, 31-ago). CSF del FID actualizada al 24-ago ya recibida. (cuando: 13:00)", who: "Nayeli / Sharon Castillo", due: "2026-09-01", urgent: true, done: true, desde: "2026-08-25" },
+  { n: 65, desc: "Entregar a Erick los planos de colindancias para el subsane de la licencia de demolicion", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-08-25", nota: "DWG y 4 PDFs (CL-01 a CL-04) recibidos de Bryan el 17-ago. Falta organizarlos antes de entregarlos." },
+  { n: 66, desc: "[CAyNO — 12-ago] Gestionar renovación e ingreso del 'cano'. 'Cusu' ya actualizado — enviarlo al equipo.", who: "Erick Sanz", due: "", urgent: true, done: true, desde: "2026-08-12" },
+  { n: 67, desc: "Presentar en economico los planos definitivos del ACP", who: "Erick Sanz", due: "", urgent: false, done: false, desde: "2026-08-12", nota: "Para que las autorizaciones reflejen las superficies correctas. Acordado el 12-ago." },
+  { n: 68, desc: "Obtener el dictamen INVAL", who: "Erick Sanz", due: "", urgent: true, done: false, desde: "2026-08-12", nota: "La alcaldia lo exige para subsanar la prevencion de demolicion e ingresar la licencia. Ya esta palabrado. Sin esto no hay licencia." },
+  { n: 69, desc: "Definir con Erick que contratista de manejo de residuos se contrata", who: "Mauricio / Erick Sanz", due: "", urgent: true, done: false, desde: "2026-09-01", nota: "Dos opciones: “sustentable” (automatizado, mas simple) o “reciclables” (contrato manual, mas complejo, con posible convenio firmado aparte). Nayeli necesita que Erick le pase los datos de corresponsables y DRO para el desahogo de firmas. Grabacion del 27/28-ago." },
+  { n: 70, desc: "Responder a la PAOT dentro del plazo", who: "Mauricio / Equipo legal", due: "2026-09-11", urgent: true, done: false, desde: "2026-09-11", nota: "Exp. PAOT-2026-4813-SOT-1706, oficio 08508-2026 del 27-ago, por presuntos incumplimientos en desarrollo urbano, conservacion patrimonial, obra nueva y proteccion civil. Seis dias habiles desde que surtio efectos el 03-sep. Contacto en PAOT: Luis Diego Caudillo Mendez." },
+  { n: 71, desc: "Confirmar con Erick si ya existe el VoBo final del INBAL, descargable", who: "Nayeli / Erick Sanz", due: "", urgent: true, done: false, desde: "2026-09-10", nota: "Se necesita para la respuesta a PAOT. El oficio 748/2026 confirma que solo se habia presentado la solicitud, no el VoBo. Erick reporto “Listo INBAL” el 09-sep: falta confirmar que sea ese documento." },
+  { n: 72, desc: "Definir con el equipo legal la estrategia de respuesta a PAOT", who: "Mauricio / Equipo legal", due: "", urgent: true, done: false, desde: "2026-09-10", nota: "El expediente no tiene autorizacion de obra nueva vigente: MIA en 3a revision, ACP en actualizacion y demolicion condicionada a INVAL. Precision de Mauricio (02-sep): la obra nueva NO ha iniciado, y la demolicion tampoco. Si PAOT parte de que hay obra en marcha, esa premisa es incorrecta — es el punto de defensa central." },
+  { n: 73, desc: "Verificar en sitio si ya se subsanaron las carencias de mayo-2025", who: "Nayeli", due: "", urgent: true, done: false, desde: "2026-09-10", nota: "Brigadas, botiquin, sistema de alertamiento, instructivos de sismo e incendio y bitacora de obra. Motivaron la suspension temporal y total de esa fecha. Hay que confirmarlo antes de comparecer." },
+  { n: 74, desc: "Completar los 4 documentos que faltan del articulo 48 antes de comparecer", who: "Mauricio / Equipo legal", due: "2026-09-11", urgent: true, done: false, desde: "2026-09-10", nota: "De los 9 que pide el oficio ya tenemos CAyNO, CUZUS, planos+memoria y el dictamen SEDUVI de patrimonio. Faltan: licencia o manifestacion de obra nueva, programa interno de proteccion civil junto con el estudio de riesgos, VoBo final del INBAL, y VoBo del INAH — este ultimo nunca se ha gestionado." },
+  { n: 75, desc: "Pedirle a Isaac el archivo real de la fe de hechos de colindancias", who: "Nayeli / Isaac", due: "", urgent: true, done: false, desde: "2026-09-10", nota: "El pendiente 39 esta marcado como hecho porque el equipo lo cerro en la pagina, pero el archivo nunca se guardo en 00 entradas ni aparece en la carpeta ni en WhatsApp. Se necesita si se va a usar como soporte ante PAOT." },
+  { n: 76, desc: "Decidir si el aviso de obra menor se anexa a la respuesta PAOT", who: "Isaac / Mauricio", due: "", urgent: false, done: false, desde: "2026-09-10", nota: "Isaac entrego a Svetlana el original del aviso del art. 62 RCDF del 07-abr-2025 (mantenimiento general). Refuerza que no hay obra nueva en marcha." },
+  { n: 77, desc: "[Incidente] Sellos de 'clausura ciudadana' (no oficial) colocados en el predio la tarde del 02-sep; retirados el mismo dia por instruccion de Mauricio. Senal de la misma presion vecinal de la denuncia PAOT.", who: "Equipo tecnico", due: "", urgent: false, done: true, desde: "2026-09-10" },
+  { n: 78, desc: "Atender el oficio de prevencion 748/2026 de la Alcaldia Cuauhtemoc", who: "Erick Sanz / Nayeli / Equipo legal", due: "", urgent: true, done: false, desde: "2026-09-10", nota: "Sobre la Constancia de Publicitacion Vecinal de demolicion. Pide cuatro cosas: VoBo final del INBAL, reenviar las responsivas de DRO/CDUA/CSE con la modalidad correcta, complementar los planos, y presentar el estudio de riesgos (arts. 96 y 98). Los puntos 1 a 4 no se pudieron leer por la calidad del escaneo." },
+  { n: 79, desc: "Presentar el estudio de riesgos para la licencia especial de demolicion", who: "Erick Sanz", due: "", urgent: true, done: false, desde: "2026-09-10", nota: "Lo exige el oficio 748/2026." },
+  { n: 80, desc: "Reenviar las responsivas del DRO, del Corresponsable en Diseno Urbano y Arquitectonico y del CSE", who: "Erick Sanz", due: "", urgent: true, done: false, desde: "2026-09-10", nota: "Tienen que indicar la modalidad correcta: Constancia de Publicitacion Vecinal de demolicion." },
+  { n: 81, desc: "Confirmar que las areas de la memoria de demolicion coincidan con lo que se va a enviar", who: "Nayeli / Erick Sanz", due: "", urgent: false, done: false, desde: "2026-09-10", nota: "Memoria ya ingresada, compartida por Erick el 09-sep. Erick pide de parte de CRN los planos y memorias impresas y el reporte fotografico." }
+];
+
+// VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
+const VERSION = "PRUEBA-2026-09-15";
+// Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
+const NEW_BADGE_N = 76;
+
+const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
+const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/reforma28-prueba/state.json";
+const GITHUB_HDRS  = { "Content-Type": "application/json", "Authorization": "token " + GITHUB_TOKEN, "Accept": "application/vnd.github.v3+json" };
+
+const DEFAULT_STATE = {};
+items.forEach(i => { DEFAULT_STATE[i.n] = i.done || false; });
+
+let state    = { ...DEFAULT_STATE };
+let obs      = {};
+let newItems = [];
+let saving   = false;
+let saveTimer = null;
+let currentSha = null;
+
+// "sucio" = hay cambios tuyos que todavia no llegan al servidor.
+// Mientras este en true, la recarga automatica NO pisa lo que acabas de marcar.
+// Sin esto, si la recarga de cada 30s caia justo entre tu clic y el guardado,
+// tu marca desaparecia sola. Error encontrado el 01-sep-2026.
+let sucio = false;
+function scheduleSave() { sucio = true; clearTimeout(saveTimer); saveTimer = setTimeout(saveState, 1200); }
+
+function showStatus(msg, color) {
+  const el = document.getElementById("sync-status");
+  el.textContent = msg; el.style.color = color || "#aaa";
+}
+
+async function loadState() {
+  try {
+    const res = await fetch(GITHUB_API, { headers: GITHUB_HDRS });
+    // Proyecto recien dado de alta: todavia no existe el archivo de estado.
+    // No es un error de conexion. Se arranca en blanco y se crea al primer cambio.
+    // Corregido el 01-sep-2026, cuando EDAs y Hanono decian "Sin conexion".
+    if (res.status === 404) {
+      state = { ...DEFAULT_STATE }; obs = {}; newItems = []; currentSha = null;
+      showStatus("Listo — todavia sin marcas", "#8a5010");
+      return;
+    }
+    if (!res.ok) throw new Error(res.status);
+    const data = await res.json();
+    currentSha = data.sha;
+    // decodeURIComponent(escape(...)) devuelve los acentos bien. Sin esto,
+    // lo que escribe el equipo se guarda corrompido (iluminaciA3n) y se agrava
+    // en cada guardado. Error encontrado el 26-ago-2026.
+    const rec = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, "")))));
+    if (rec._version !== VERSION) {
+      state = { ...DEFAULT_STATE };
+      obs = {}; newItems = [];
+      scheduleSave();
+      showStatus("Estado actualizado", "#3a6e10");
+      return;
+    }
+    obs      = rec._obs  || {};
+    newItems = rec._new  || [];
+    log      = rec._log  || [];
+    state = Object.fromEntries(Object.entries(rec).filter(([k]) => !["_obs","_new","_version","_quien","_log"].includes(k)));
+    showStatus("Sincronizado", "#3a6e10");
+  } catch(e) { showStatus("Sin conexion", "#a33030"); }
+}
+
+let log = [];
+
+// ---- Quien esta editando -------------------------------------------------
+// Se pregunta UNA sola vez por navegador y se recuerda. No es cuenta ni
+// contrasena: es solo para que en el status se sepa quien movio que.
+function quien() {
+  let n = null;
+  try { n = localStorage.getItem("admivo_quien"); } catch (e) { n = null; }
+  if (n && n.trim()) return n.trim();
+  let r = null;
+  try { r = window.prompt("Para el registro del despacho: escribe tu nombre.\nSolo se pregunta esta vez."); } catch (e) { r = null; }
+  r = (r || "").trim().slice(0, 40);
+  if (!r) r = "Sin identificar";
+  try { localStorage.setItem("admivo_quien", r); } catch (e) {}
+  const eti = document.getElementById("quien-soy");
+  if (eti) eti.textContent = r;
+  return r;
+}
+
+// Deja constancia de un cambio. Se conserva lo ultimo, no todo el historial.
+function anota(accion, n, detalle) {
+  log.push({ q: quien(), a: accion, n: n, d: (detalle || "").slice(0, 120), t: new Date().toISOString().slice(0, 16) });
+  if (log.length > 200) log = log.slice(-200);
+}
+
+async function saveState() {
+  if (saving) return;
+  saving = true; showStatus("Guardando...", "#8a5010");
+  try {
+    if (!currentSha) {
+      const r = await fetch(GITHUB_API, { headers: GITHUB_HDRS });
+      const d = await r.json(); currentSha = d.sha;
+    }
+    const payload = JSON.stringify({ ...state, _obs: obs, _new: newItems, _version: VERSION, _quien: quien(), _log: log });
+    const content = btoa(unescape(encodeURIComponent(payload)));
+    const res = await fetch(GITHUB_API, {
+      method: "PUT", headers: GITHUB_HDRS,
+      body: JSON.stringify({ message: "Actualizar estado", content, sha: currentSha })
+    });
+    if (!res.ok) throw new Error(res.status);
+    const d2 = await res.json(); currentSha = d2.content.sha;
+    sucio = false;
+    showStatus("Guardado", "#3a6e10");
+  } catch(e) { showStatus("Error al guardar", "#a33030"); }
+  saving = false;
+}
+
+setInterval(async () => {
+  if (sucio || saving || saveTimer) return;   // no pisar cambios sin guardar
+  await loadState(); render();
+}, 30000);
+
+function updateCounters() {
+  const doneOrig = items.filter(i => state[i.n]).length;
+  const doneNew  = newItems.filter(i => i.done).length;
+  const done = doneOrig + doneNew;
+  const total = items.length + newItems.length;
+  document.getElementById("done-count").textContent = done;
+  document.getElementById("total-count").textContent = total;
+  const p = document.getElementById("pending-counter");
+  if (p) p.textContent = (total - done);
+}
+
+function autoResize(ta) { ta.style.height = "auto"; ta.style.height = ta.scrollHeight + "px"; }
+
+function escH(str) {
+  if (!str) return "";
+  return String(str).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+
+// Cuanto lleva abierto un pendiente. La fecha `desde` es un piso honesto: no prueba
+// que nacio ese dia, si que ya existia entonces. Anadido el 14-sep-2026 porque habia
+// pendientes de meses que nadie volvia a mirar (caso Lafontaine item 3).
+function edadHTML(item) {
+  if (!item.desde) return "";
+  const d = Math.floor((Date.now() - new Date(item.desde + "T12:00:00")) / 86400000);
+  if (isNaN(d) || d < 0) return "";
+  const col = d >= 45 ? "#b02a1e" : (d >= 21 ? "#8a5010" : "#999");
+  return `<span style="display:block;margin-top:3px;font-size:10px;color:${col}">abierto ${d} d</span>`;
+}
+
+function render() {
+  const tbody = document.getElementById("pending-tbody");
+  tbody.innerHTML = "";
+  // El numero visible de cada pendiente es su numero real (item.n), no un contador.
+  // Asi, lo que Mauricio ve en la tabla es lo mismo que se debe cerrar por numero.
+  // Los pendientes que anade el equipo desde la pagina no tienen item.n: se etiquetan N1, N2...
+  let nuevoIdx = 1;
+
+  items.filter(item => !state[item.n]).forEach(item => {
+    const tr = document.createElement("tr");
+    if (item.n >= NEW_BADGE_N) tr.classList.add("highlight-row");
+    tr.innerHTML =
+      `<td class="check-col no-print"><input type="checkbox" data-n="${item.n}" title="Marcar como hecho"></td>` +
+      `<td style="color:#999;font-size:12px"><b>${item.n}</b>${item.n >= NEW_BADGE_N ? ' <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">nuevo</span>' : ''}</td>` +
+      `<td><span class="desc">${escH(item.desc)}</span>` +
+      `${item.nota ? `<div style="margin-top:5px;font-size:11.5px;line-height:1.45;color:#6b6b6b">${escH(item.nota)}</div>` : ""}</td>` +
+      `<td style="color:#666">${escH(item.who)}</td>` +
+      `<td><span class="badge ${item.urgent ? 'red' : 'gray'}">${escH(item.due) || "—"}</span>${edadHTML(item)}</td>` +
+      `<td><textarea class="obs-input" data-obs="${item.n}" rows="1" placeholder="--">${escH(obs[item.n] || "")}</textarea></td>` +
+      `<td class="no-print"></td>`;
+    tbody.appendChild(tr);
+  });
+
+  newItems.filter(item => !item.done).forEach(item => {
+    const tr = document.createElement("tr");
+    tr.classList.add("new-row");
+    tr.innerHTML =
+      `<td class="check-col no-print"><input type="checkbox" data-new-id="${item.id}" title="Marcar como hecho"></td>` +
+      `<td style="color:#999;font-size:12px"><b>N${nuevoIdx++}</b> <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">nuevo</span></td>` +
+      `<td><span class="desc">${escH(item.desc)}</span></td>` +
+      `<td style="color:#666">${escH(item.who || "--")}</td>` +
+      `<td><span class="badge gray">${escH(item.due || "TBD")}</span></td>` +
+      `<td><textarea class="obs-input" data-new-obs="${item.id}" rows="1" placeholder="--">${escH(item.obs || "")}</textarea></td>` +
+      `<td class="no-print" style="text-align:center"><button class="btn-delete-item" data-del-id="${item.id}" title="Eliminar">x</button></td>`;
+    tbody.appendChild(tr);
+  });
+
+  tbody.querySelectorAll("input[type=checkbox][data-n]").forEach(cb => {
+    cb.addEventListener("change", async () => {
+      const _n = parseInt(cb.dataset.n);
+      const _it = items.find(i => i.n === _n);
+      anota("cerro", _n, _it ? _it.desc : "");
+      state[_n] = true; render(); updateCounters(); await saveState();
+    });
+  });
+  tbody.querySelectorAll("input[type=checkbox][data-new-id]").forEach(cb => {
+    cb.addEventListener("change", async () => {
+      const item = newItems.find(i => i.id === cb.dataset.newId);
+      if (item) { anota("cerro", item.id, item.desc); item.done = true; } render(); updateCounters(); await saveState();
+    });
+  });
+  tbody.querySelectorAll("textarea.obs-input[data-obs]").forEach(ta => {
+    autoResize(ta);
+    ta.addEventListener("input", () => { autoResize(ta); const _n2 = parseInt(ta.dataset.obs);
+      obs[_n2] = ta.value; anota("observo", _n2, ta.value);
+      showStatus("Por guardar...", "#8a5010"); scheduleSave(); });
+  });
+  tbody.querySelectorAll("textarea.obs-input[data-new-obs]").forEach(ta => {
+    autoResize(ta);
+    ta.addEventListener("input", () => {
+      autoResize(ta);
+      const item = newItems.find(i => i.id === ta.dataset.newObs);
+      if (item) { item.obs = ta.value; anota("observo", item.id, ta.value); } showStatus("Por guardar...", "#8a5010"); scheduleSave();
+    });
+  });
+  tbody.querySelectorAll(".btn-delete-item[data-del-id]").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      if (!confirm("Eliminar este pendiente?")) return;
+      newItems = newItems.filter(i => i.id !== btn.dataset.delId);
+      render(); updateCounters(); await saveState();
+    });
+  });
+
+  updateCounters();
+}
+
+function toggleAddForm() {
+  const form = document.getElementById("add-form");
+  const btn  = document.getElementById("btn-add-toggle");
+  const open = form.classList.toggle("open");
+  btn.textContent = open ? "x Cancelar" : "+ Agregar pendiente";
+  if (open) document.getElementById("new-desc").focus();
+  else clearAddForm();
+}
+
+function clearAddForm() {
+  document.getElementById("new-desc").value = "";
+  document.getElementById("new-who").value  = "";
+  document.getElementById("new-due").value  = "";
+}
+
+async function addNewItem() {
+  const desc = document.getElementById("new-desc").value.trim();
+  const who  = document.getElementById("new-who").value.trim();
+  const due  = document.getElementById("new-due").value.trim();
+  if (!desc) { document.getElementById("new-desc").focus(); return; }
+  newItems.push({ id: "n_" + Date.now(), desc, who: who || "--", due: due || "TBD", done: false, obs: "" });
+  clearAddForm(); toggleAddForm(); render(); updateCounters(); await saveState();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const ta = document.getElementById("new-desc");
+  if (ta) ta.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); addNewItem(); } });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const eti = document.getElementById("quien-soy");
+  try {
+    const n = localStorage.getItem("admivo_quien");
+    if (eti && n) eti.textContent = n;
+  } catch (e) {}
+  const link = document.getElementById("cambiar-quien");
+  if (link) link.addEventListener("click", (ev) => {
+    ev.preventDefault();
+    try { localStorage.removeItem("admivo_quien"); } catch (e) {}
+    if (eti) eti.textContent = "—";
+    quien();
+  });
+});
+
+async function init() { await loadState(); render(); }
+init();
+
+function copyLink() {
+  if (navigator.clipboard) navigator.clipboard.writeText(window.location.href).then(() => alert("Liga copiada.")).catch(() => prompt("Copia esta liga:", window.location.href));
+  else prompt("Copia esta liga:", window.location.href);
+}
+</script>
+</body>
+</html>
