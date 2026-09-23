@@ -27,8 +27,19 @@
   .card .value { font-size: 20px; font-weight: 600; }
   .card .value.sm { font-size: 14px; margin-top: 2px; }
   .card .sub { font-size: 11px; color: #aaa; margin-top: 2px; }
-  section { margin-bottom: 24px; }
-  section h2 { font-size: 11px; font-weight: 650; color: #999; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+  section { margin-bottom: 26px; }
+  section h2 { font-size: 16px; font-weight: 650; color: #1a1a1a; margin-bottom: 8px; padding-left: 9px; border-left: 3px solid #1a1a1a; line-height: 1.2; }
+  .resumen { font-size: 13px; color: #555; margin: -2px 0 8px; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
+  .resumen b { font-weight: 650; }
+  .resumen .pt { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; vertical-align: 0; }
+  .pt.rojo { background: #c0392b; } .pt.ambar { background: #d9822b; } .pt.verde { background: #5a9a2a; } .pt.gris { background: #aaa; }
+  #tabla-tramites tr.resuelto { display: none; }
+  #tabla-tramites.todos tr.resuelto { display: table-row; }
+  #tabla-tramites tr.est-rojo td:first-child { box-shadow: inset 3px 0 0 #c0392b; }
+  #tabla-tramites tr.est-ambar td:first-child { box-shadow: inset 3px 0 0 #d9822b; }
+  #tabla-tramites .mas-res { display: block; font-size: 11px; color: #3a6e10; font-weight: 400; margin-top: 2px; }
+  .recorta { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; cursor: pointer; }
+  .recorta.suelto { display: block; -webkit-line-clamp: unset; }
   table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; border: 0.5px solid #e0ddd4; }
   th { font-size: 11px; font-weight: 600; color: #999; text-align: left; padding: 8px 14px; background: #faf9f6; border-bottom: 0.5px solid #e0ddd4; }
   td { padding: 8px 14px; border-bottom: 0.5px solid #f0ede6; vertical-align: top; }
@@ -52,7 +63,8 @@
   .alerta .it .q { color: #777; font-size: 11.5px; }
 
   /* Barra de pendientes */
-  .barra { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 10px; }
+  .barra { margin-bottom: 8px; }
+  .barra .fila { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 6px; }
   .barra .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: #aaa; margin-right: 2px; }
   .chip { border: 1px solid #e0ddd4; background: #fff; border-radius: 999px; padding: 4px 10px; font-size: 12.5px; cursor: pointer; color: #1a1a1a; font-family: inherit; }
   .chip .c { color: #aaa; margin-left: 3px; }
@@ -64,16 +76,20 @@
 
   /* Pendientes */
   .grupo { background: #fff; border: 0.5px solid #e0ddd4; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
-  .grupo > h3 { font-size: 12.5px; font-weight: 650; padding: 8px 14px; background: #faf9f6; border-bottom: 0.5px solid #f0ede6; display: flex; justify-content: space-between; }
-  .grupo > h3 span { color: #aaa; font-weight: 400; }
-  .grupo.nuevos > h3 { background: #f7f2fc; }
-  .p { display: grid; grid-template-columns: 22px 1fr; gap: 10px; padding: 9px 14px; border-top: 0.5px solid #f0ede6; }
+  .grupo > h3 { font-size: 14px; font-weight: 650; padding: 9px 14px; background: #f1efe8; border-bottom: 0.5px solid #e6e2d8; display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .grupo > h3 .cta { font-size: 12px; font-weight: 400; color: #888; white-space: nowrap; }
+  .grupo > h3 .cta .u { color: #a33030; font-weight: 600; }
+  .grupo.nuevos > h3 { background: #f3ecfb; }
+  .grupo .mas-grupo { display: block; width: 100%; text-align: left; padding: 8px 14px 9px 46px; border: 0; border-top: 0.5px solid #f0ede6; background: #fcfbf8; color: #1a5fa6; font-size: 12.5px; cursor: pointer; font-family: inherit; }
+  .p { display: grid; grid-template-columns: 22px 1fr; gap: 10px; padding: 9px 14px; border-top: 0.5px solid #f0ede6; box-shadow: inset 3px 0 0 transparent; }
+  .p.es-urg { box-shadow: inset 3px 0 0 #d9822b; }
+  .p.es-venc { box-shadow: inset 3px 0 0 #c0392b; background: #fdf5f4; }
   .p:first-of-type { border-top: 0; }
   .p input[type=checkbox] { width: 17px; height: 17px; margin-top: 2px; cursor: pointer; accent-color: #3a6e10; }
   .p .cuerpo { min-width: 0; }
   .p .t { font-size: 14px; cursor: pointer; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   .p.abierto .t { display: block; -webkit-line-clamp: unset; }
-  .p .urg { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #a33030; margin: 0 6px 2px 0; vertical-align: middle; }
+  .p .urg { display: inline-block; font-size: 10px; font-weight: 650; color: #8a5010; background: #fef3dc; border-radius: 4px; padding: 0 5px; margin-right: 6px; vertical-align: 1px; letter-spacing: .02em; }
   .p .meta { font-size: 11.5px; color: #999; margin-top: 3px; display: flex; flex-wrap: wrap; gap: 3px 10px; align-items: center; }
   .p .meta .tr { color: #666; background: #f0ede6; border-radius: 5px; padding: 0 6px; }
   .p .meta .who { color: #555; }
@@ -116,12 +132,28 @@
     .tabla-bloques tr { padding: 8px 12px; border-bottom: 0.5px solid #f0ede6; }
     .tabla-bloques td { padding: 1px 0; border: 0; }
     .tabla-bloques td:first-child { font-weight: 600; }
+    /* Tramites: nombre, instancia y estado en un renglon; el detalle abajo */
+    #tabla-tramites td:nth-child(1), #tabla-tramites td:nth-child(2) { display: inline; width: auto; }
+    #tabla-tramites td:nth-child(2)::before { content: " · "; color: #aaa; font-weight: 400; }
+    #tabla-tramites td:nth-child(2) { color: #555; }
+    #tabla-tramites td:nth-child(3) { margin-top: 3px; }
+    #tabla-tramites td:nth-child(4) { font-size: 13px; color: #555; margin-top: 2px; }
+    #tabla-tramites .mas-res { display: inline; margin-left: 6px; }
+    #tabla-tramites tr.est-rojo td:first-child, #tabla-tramites tr.est-ambar td:first-child { box-shadow: none; }
+    #tabla-tramites tr.est-rojo { box-shadow: inset 3px 0 0 #c0392b; }
+    #tabla-tramites tr.est-ambar { box-shadow: inset 3px 0 0 #d9822b; }
+    #tabla-tramites.todos tr.resuelto { display: block; }
+    /* La barra de personas se desliza de lado en vez de ocupar cuatro renglones */
+    .barra .fila.gente { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+    .barra .chip, .barra .lbl { flex: 0 0 auto; }
     .add-form-grid { grid-template-columns: 1fr; }
   }
   @media print {
     body { background: #fff; padding: 0; }
     .no-print { display: none !important; }
     .p .t { display: block; -webkit-line-clamp: unset; }
+    #tabla-tramites tr.resuelto { display: table-row; }
+    .recorta { display: block; -webkit-line-clamp: unset; }
   }
 </style>
 </head>
@@ -152,7 +184,8 @@
 
   <section>
     <h2>Estado de tramites</h2>
-    <table class="tabla-bloques">
+    <div class="resumen" id="tramites-resumen"></div>
+    <table class="tabla-bloques" id="tabla-tramites">
       <thead><tr><th>Tramite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
       <tbody>
         <tr><td>CAyNO</td><td>SEDUVI/VUC</td><td><span class="badge green">Renovado</span></td><td>Folio 0806/2024 — renovación confirmada por Mauricio (22-ago). "Cusu" ya actualizado.</td></tr>
@@ -169,6 +202,7 @@
 <tr><td>PAOT</td><td>Subprocuraduría de Ordenamiento Territorial</td><td><span class="badge red">Investigación nueva</span></td><td>Expediente PAOT-2026-4813-SOT-1706 — notificado por instructivo 02-sep-2026 (oficio 08508-2026, 27-ago). Investiga desarrollo urbano/conservación patrimonial, construcción de obra nueva y protección civil. Comparecer en 6 días hábiles (~11-sep-2026, confirmar).</td></tr>
       </tbody>
     </table>
+    <button class="ver-mas no-print" id="tramites-mas" style="display:none"></button>
   </section>
 
   <section>
@@ -477,6 +511,10 @@ function textoDe(i) {
 let vista = "tramite";          // decision de Mauricio (23-sep-2026): agrupar por tramite
 let persona = "Todos";
 const abiertos = new Set();
+const gruposAbiertos = new Set();
+let sinPlegar = false;   // al imprimir sale todo
+window.addEventListener("beforeprint", () => { sinPlegar = true; render(); });
+window.addEventListener("afterprint", () => { sinPlegar = false; render(); });
 
 function abiertosActuales() {
   return items.filter(i => !state[i.n]);
@@ -519,9 +557,10 @@ function barra() {
   act.forEach(i => personas(i).forEach(p => cuenta[p] = (cuenta[p] || 0) + 1));
   const gente = Object.keys(cuenta).sort((a, b) => cuenta[b] - cuenta[a]);
   const chip = (k, v, texto, c, on) => `<button class="chip${on ? " on" : ""}" data-k="${k}" data-v="${escH(v)}">${escH(texto)}${c != null ? '<span class="c">' + c + "</span>" : ""}</button>`;
-  let h = '<span class="lbl">Agrupar</span>' + chip("v", "tramite", "por tramite", null, vista === "tramite") + chip("v", "persona", "por persona", null, vista === "persona");
-  h += '<span class="sep"></span><span class="lbl">Ver</span>' + chip("p", "Todos", "Todos", act.length + newItems.filter(i => !i.done).length, persona === "Todos");
+  let h = '<div class="fila"><span class="lbl">Agrupar</span>' + chip("v", "tramite", "por tramite", null, vista === "tramite") + chip("v", "persona", "por persona", null, vista === "persona") + "</div>";
+  h += '<div class="fila gente"><span class="lbl">Ver</span>' + chip("p", "Todos", "Todos", act.length + newItems.filter(i => !i.done).length, persona === "Todos");
   gente.forEach(g => h += chip("p", g, g, cuenta[g], persona === g));
+  h += "</div>";
   const b = document.getElementById("barra"); b.innerHTML = h;
   b.querySelectorAll(".chip").forEach(el => el.onclick = () => {
     if (el.dataset.k === "p") persona = el.dataset.v; else vista = el.dataset.v;
@@ -540,9 +579,10 @@ function filaHTML(i) {
   else if (i.due) meta += `<span>vence ${escH(corta(i.due))}</span>`;
   if (d !== null && d >= 0) meta += `<span class="${d >= 45 ? "muyviejo" : d >= 21 ? "viejo" : ""}">abierto ${d} d</span>`;
   meta += `<span class="abrir">${abiertos.has(i.n) ? "cerrar detalle" : (obs[i.n] ? "ver detalle y observacion" : "detalle / observacion")}</span>`;
-  return `<div class="p${abiertos.has(i.n) ? " abierto" : ""}" data-n="${i.n}">` +
+  const marca = vencido(i) ? " es-venc" : (i.urgent || pronto(i)) ? " es-urg" : "";
+  return `<div class="p${abiertos.has(i.n) ? " abierto" : ""}${marca}" data-n="${i.n}">` +
     `<input type="checkbox" data-n="${i.n}" title="Marcar como hecho">` +
-    `<div class="cuerpo"><div class="t">${i.urgent ? '<span class="urg" title="urgente"></span>' : ""}${escH(textoDe(i))}</div>` +
+    `<div class="cuerpo"><div class="t">${i.urgent ? '<span class="urg">URGENTE</span>' : ""}${escH(textoDe(i))}</div>` +
     `<div class="meta">${meta}</div>` +
     (obs[i.n] && !abiertos.has(i.n) ? `<div class="obs-ver">Obs: ${escH(obs[i.n])}</div>` : "") +
     `<div class="detalle">${i.nota ? `<div class="nota">${escH(i.nota)}</div>` : ""}` +
@@ -575,9 +615,27 @@ function render() {
   });
   const peso = g => grupos[g].filter(i => vencido(i) || pronto(i) || i.urgent).length;
   const nombres = Object.keys(grupos).sort((a, b) => (a === "General") - (b === "General") || peso(b) - peso(a) || grupos[b].length - grupos[a].length || a.localeCompare(b));
-  let h = nombres.map(g => `<div class="grupo"><h3>${escH(g)}<span>${grupos[g].length}</span></h3>${grupos[g].map(filaHTML).join("")}</div>`).join("");
+  // Grupos largos (mas de 5) se pliegan: a la vista quedan los vencidos, los que vencen en
+  // 7 dias y los urgentes (minimo 3); el resto se abre con un boton. Viendo a una sola
+  // persona no se pliega nada.
+  const cabeza = (g, lista) => {
+    const u = lista.filter(i => vencido(i) || pronto(i) || i.urgent).length;
+    return `<h3>${escH(g)}<span class="cta">${lista.length} ${lista.length === 1 ? "pendiente" : "pendientes"}${u ? ' · <span class="u">' + u + (u === 1 ? " urgente" : " urgentes") + "</span>" : ""}</span></h3>`;
+  };
+  let h = nombres.map(g => {
+    const lista = grupos[g];
+    let vis = lista, ocultos = 0;
+    if (persona === "Todos" && !sinPlegar && lista.length > 5 && !gruposAbiertos.has(g)) {
+      const clave = new Set(lista.filter(i => vencido(i) || pronto(i) || i.urgent || abiertos.has(i.n)).map(i => i.n));
+      for (const i of lista) { if (clave.size >= 3) break; clave.add(i.n); }
+      vis = lista.filter(i => clave.has(i.n)); ocultos = lista.length - vis.length;
+    }
+    const boton = ocultos ? `<button class="mas-grupo no-print" data-g="${escH(g)}">Ver los otros ${ocultos} de ${escH(g)}</button>`
+      : (gruposAbiertos.has(g) ? `<button class="mas-grupo no-print" data-g="${escH(g)}">Ver menos</button>` : "");
+    return `<div class="grupo">${cabeza(g, lista)}${vis.map(filaHTML).join("")}${boton}</div>`;
+  }).join("");
   const nuevos = newItems.filter(i => !i.done && (persona === "Todos" || String(i.who || "").includes(persona)));
-  if (nuevos.length) h += `<div class="grupo nuevos"><h3>Agregados por el equipo<span>${nuevos.length}</span></h3>${nuevos.map((i, k) => filaNuevaHTML(i, k + 1)).join("")}</div>`;
+  if (nuevos.length) h += `<div class="grupo nuevos"><h3>Agregados por el equipo<span class="cta">${nuevos.length}</span></h3>${nuevos.map((i, k) => filaNuevaHTML(i, k + 1)).join("")}</div>`;
   if (!h) h = '<div class="grupo"><div class="vacio">No hay pendientes abiertos con este filtro.</div></div>';
   cont.innerHTML = h;
 
@@ -585,6 +643,9 @@ function render() {
   const dl = document.getElementById("lista-tramites");
   if (dl) dl.innerHTML = [...new Set(items.map(tramiteDe))].filter(t => t !== "General").map(t => `<option value="${escH(t)}">`).join("");
 
+  cont.querySelectorAll(".mas-grupo[data-g]").forEach(b => b.addEventListener("click", () => {
+    const g = b.dataset.g; gruposAbiertos.has(g) ? gruposAbiertos.delete(g) : gruposAbiertos.add(g); render();
+  }));
   cont.querySelectorAll(".p[data-n] .t, .p[data-n] .abrir").forEach(el => el.addEventListener("click", () => {
     const n = +el.closest(".p").dataset.n;
     abiertos.has(n) ? abiertos.delete(n) : abiertos.add(n); render();
@@ -655,6 +716,62 @@ function acuerdos() {
   btn.style.display = ""; btn.onclick = () => { todos = !todos; aplica(); }; aplica();
 }
 
+// Tramites (23-sep-2026, a pedido de Mauricio: "se aprecia muy largo"). La tabla no cambia
+// en el HTML; aqui se resume: el color de la etiqueta de estado dice si esta resuelto
+// (verde), en proceso (ambar o azul), con problema (rojo) o sin iniciar (gris). Si hay 3 o
+// mas resueltos se pliegan, y cada fila que queda dice cuantas instancias del mismo
+// tramite ya estan resueltas.
+function tramites() {
+  const tabla = document.getElementById("tabla-tramites");
+  if (!tabla) return;
+  const filas = [...tabla.querySelectorAll("tbody tr")].filter(tr => tr.querySelectorAll("td").length > 1);
+  const cuenta = { rojo: 0, ambar: 0, verde: 0, gris: 0 };
+  const nombre = tr => sinAcentos((tr.querySelector("td") || {}).textContent || "").trim().toLowerCase();
+  filas.forEach(tr => {
+    const b = tr.querySelector(".badge");
+    const c = !b ? "" : b.classList.contains("green") ? "verde" : b.classList.contains("red") ? "rojo"
+      : b.classList.contains("gray") ? "gris" : "ambar";
+    tr.dataset.est = c;
+    if (c) { cuenta[c]++; tr.classList.add("est-" + c); }
+    // El detalle largo se recorta a dos renglones; se abre al tocarlo.
+    const ult = tr.querySelector("td:last-child");
+    if (ult && ult.textContent.length > 90 && !ult.querySelector(".badge")) {
+      ult.innerHTML = `<div class="recorta" title="Tocar para ver completo">${ult.innerHTML}</div>`;
+      ult.firstChild.onclick = e => e.currentTarget.classList.toggle("suelto");
+    }
+  });
+  const res = document.getElementById("tramites-resumen");
+  const partes = [];
+  if (cuenta.rojo) partes.push(`<span><span class="pt rojo"></span><b>${cuenta.rojo}</b> con problema</span>`);
+  if (cuenta.ambar) partes.push(`<span><span class="pt ambar"></span><b>${cuenta.ambar}</b> en proceso</span>`);
+  if (cuenta.gris) partes.push(`<span><span class="pt gris"></span><b>${cuenta.gris}</b> sin iniciar</span>`);
+  if (cuenta.verde) partes.push(`<span><span class="pt verde"></span><b>${cuenta.verde}</b> ${cuenta.verde === 1 ? "resuelto" : "resueltos"}</span>`);
+  if (res && partes.length) res.innerHTML = partes.join("");
+  if (cuenta.verde < 3) return;
+  filas.forEach(tr => { if (tr.dataset.est === "verde") tr.classList.add("resuelto"); });
+  filas.filter(tr => tr.dataset.est !== "verde").forEach(tr => {
+    const n = filas.filter(o => o.dataset.est === "verde" && nombre(o) === nombre(tr)).length;
+    const celda = tr.querySelectorAll("td")[1] || tr.querySelector("td");
+    if (n) celda.insertAdjacentHTML("beforeend", `<span class="mas-res">+${n} ${n === 1 ? "instancia resuelta" : "instancias resueltas"}</span>`);
+  });
+  const btn = document.getElementById("tramites-mas");
+  const aplica = () => {
+    const todos = tabla.classList.contains("todos");
+    btn.textContent = todos ? "Ocultar los resueltos" : `Ver los ${cuenta.verde} resueltos`;
+  };
+  btn.style.display = ""; btn.onclick = () => { tabla.classList.toggle("todos"); aplica(); }; aplica();
+}
+
+// Acuerdos: el texto largo se recorta a dos renglones y se abre al tocarlo.
+function recortarAcuerdos() {
+  document.querySelectorAll("#tabla-acuerdos tbody tr").forEach(tr => {
+    const td = tr.querySelectorAll("td")[1];
+    if (!td || td.textContent.length < 140) return;
+    td.innerHTML = `<div class="recorta" title="Tocar para ver completo">${td.innerHTML}</div>`;
+    td.firstChild.onclick = e => e.currentTarget.classList.toggle("suelto");
+  });
+}
+
 function toggleAddForm() {
   const form = document.getElementById("add-form");
   const btn  = document.getElementById("btn-add-toggle");
@@ -711,7 +828,7 @@ async function avisoRevision() {
   } catch (e) {}
 }
 
-async function init() { avisoRevision(); acuerdos(); render(); await loadState(); render(); }
+async function init() { avisoRevision(); tramites(); acuerdos(); recortarAcuerdos(); render(); await loadState(); render(); }
 init();
 
 function copyLink() {
