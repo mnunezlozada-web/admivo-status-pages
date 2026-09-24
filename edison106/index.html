@@ -288,9 +288,9 @@ window.addEventListener("error", function (e) {
 
 <script>
 const items = [
-            { n: 1,  desc: "Publicitar Impacto Urbano (colgar lona) — plazo 15 dias habiles a partir de autorizacion de firma", who: "Equipo", due: "", urgent: false, done: true, desde: "2026-08-25" },
+  { n: 1,  desc: "Publicitar Impacto Urbano (colgar lona) — plazo 15 dias habiles a partir de autorizacion de firma", who: "Equipo", due: "", urgent: false, done: true, desde: "2026-08-25" },
   { n: 2,  desc: "Desahogar prevencion de publicitacion vecinal (tecnicamente complementada, verificar punto 26 para ISC)", who: "Nayeli / Erick Sanchez", due: "", urgent: false, done: true, desde: "2026-08-25" },
-  { n: 3,  desc: "Pago de derechos y manifestacion (despues de publicitacion)", who: "Mauricio / Erick Sanchez", due: "", urgent: false, done: false, desde: "2026-08-25" },
+  { n: 3,  desc: "Pago de derechos y manifestacion (despues de publicitacion)", who: "Mauricio / Erick Sanchez", due: "", urgent: false, done: false, desde: "2026-08-25", revisado: "2026-09-24" },
   { n: 4,  desc: "Obtener dictamen ISC — estimado 3 semanas desde entrega de documentacion completa", who: "Erick Sanchez", due: "", urgent: false, done: true, desde: "2026-08-25" },
   { n: 5,  desc: "[CAyNO] Folio 000073 confirmado vigente — PLAUD 12-ago-2026", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-08-12" },
   { n: 6,  desc: "Dar acceso a Nayeli al Drive administrado por Svett para que pueda editar y actualizar", who: "Svett", due: "", urgent: true, done: true, desde: "2026-08-25" },
@@ -306,14 +306,14 @@ const items = [
   { n: 16, desc: "[CUZUS] Folio 14482-151SOJE23 confirmado vigente — PLAUD 12-ago-2026, cerrado por el equipo 26-ago", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-08-12" },
   { n: 17, desc: "[EIU] Reunion con Jorge para redefinir estrategia — cerrado, confirmado por Mauricio 31-ago", who: "Mauricio", due: "", urgent: false, done: true, desde: "2026-08-25" },
   { n: 18, desc: "[EIU] Publicacion en diario de circulacion nacional del dictamen — cerrado, confirmado por Mauricio 31-ago", who: "Mauricio", due: "", urgent: false, done: true, desde: "2026-08-25" },
-  { n: 19, desc: "[EIU Prevencion 43 pts] Checklist elaborado por Nayeli, en actualizacion continua conforme recibe informacion (obs. Nayeli 31-ago)", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-08-25" },
+  { n: 19, desc: "[Prevencion MACO 43 pts] Lista para desahogar con la justificacion de Ruben de los cubos de iluminacion (Punto 20); Mauricio 24-sep: tenemos todo. Verificar contra el checklist que la informacion este completa antes de ingresar el desahogo, incluidas las firmas de corresponsables y de Arturo sobre la memoria de patios (ver 29).", who: "Nayeli", due: "", urgent: true, done: false, desde: "2026-08-25", revisado: "2026-09-24" },
   { n: 20, desc: "[Alineamiento/CAyNO] Confirmado vigente — PLAUD 12-ago-2026, cerrado por el equipo 26-ago", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-08-12" },
   { n: 21, desc: "[CUZUS] Confirmado vigente — PLAUD 12-ago-2026", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-08-12" },
   { n: 22, desc: "Confirmar con Erick quien subio el expediente a la plataforma para corregir datos segun la prevencion — cerrado, confirmado por Mauricio 31-ago", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-08-25" },
-  { n: 23, desc: "Solicitar a Erick el proyecto del sistema alternativo y subirlo al Drive", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-08-25" },
+  { n: 23, desc: "Solicitar a Erick el proyecto del sistema alternativo - cerrado 24-sep: Mauricio confirma que Erick ya lo tiene.", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-08-25" },
   { n: 24, desc: "Solicitar al cliente poliza de seguro vigente y constancias de no adeudo de agua y predial. Poliza Zurich ya recibida (26-ago) y predial ya resuelto (01-sep); las constancias no se han tramitado a proposito porque duran lo que dura el bimestre - falta solicitar que se tramiten ahora (Mauricio, 22-sep).", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-08-25" },
   { n: 25, desc: "Hablar con Isaac para definir priorizacion del proyecto Edison - hecho, confirmado por Mauricio 22-sep: se avanza con Edison y Reforma 28 al mismo tiempo, sin priorizar uno sobre otro.", who: "Mauricio", due: "", urgent: false, done: true, desde: "2026-08-25" },
-  { n: 26, desc: "Monitorear tema vecinal para prevenir conflictos que frenen la publicacion y manifestacion", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-08-25" },
+  { n: 26, desc: "Monitorear tema vecinal para prevenir conflictos que frenen la publicacion y la manifestacion. Sigue hasta que se registre la manifestacion; en la publicitacion se espera ruido (Mauricio, 24-sep). (cuando: hasta la manifestacion)", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-08-25", revisado: "2026-09-24" },
   { n: 27, desc: "[09-JUL] Nuevo ingreso completo + feedback ISC (fusiona item 28, mismo pendiente) — superado por avance posterior del ISC, cerrado", who: "Erick Sanchez / Mauricio", due: "", urgent: false, done: true, desde: "2026-07-09" },
   { n: 28, desc: "Duplicado del item 27 (mismo pendiente, confirmado por Mauricio 31-ago) — fusionado, cerrado", who: "Erick Sanchez", due: "", urgent: false, done: true, desde: "2026-08-25" },
   { n: 29, desc: "[Prevencion MACO — Punto 20] 22-sep: leida la memoria de patios - los dos patios CUMPLEN la norma (art. 3.3.3.4) por rediseno real (apertura a via publica), no por maquillar cuotas. Patio Oeste cumple con holgura; patio Este cumple por margen minimo (0.01 m). Confirmado por Mauricio: esto era lo unico pendiente de la prevencion de Alcaldia. Sigue: recabar firmas de corresponsables y del apoderado, escanearlas y dejarlas listas para subir a la publicitacion. 22-sep (noche): Erick compartio la cedula de la lona anterior (feb-2026) para armar la manta nueva; la decision de publicitar se toma despues de la junta con los revisores del ISC que esta buscando Erick.", who: "Nayeli / Erick Sanchez", due: "", urgent: false, done: false, desde: "2026-08-25" },
@@ -328,7 +328,7 @@ const items = [
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
-const VERSION = "2026-09-24a";
+const VERSION = "2026-09-24b";
 // Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
 const NEW_BADGE_N = 33;
 
