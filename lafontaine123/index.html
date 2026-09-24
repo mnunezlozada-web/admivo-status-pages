@@ -182,7 +182,7 @@ window.addEventListener("error", function (e) {
       <p>Carlos Samano — Lafontaine 123, Polanco, Miguel Hidalgo</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 23-sep-2026</div>
+      <div id="last-update">Actualizado: 24-sep-2026</div>
       <div style="margin-top:3px;">Editando como <b id="quien-soy">—</b> <a href="#" id="cambiar-quien" class="no-print">cambiar</a></div>
       <div id="quien-form" class="no-print"><input id="quien-input" type="text" maxlength="40" placeholder="Escribe tu nombre" autocomplete="name"><button class="btn" id="quien-ok" type="button">Guardar</button></div>
       <div id="sync-status" style="margin-top:3px;">Conectando...</div>
@@ -194,7 +194,7 @@ window.addEventListener("error", function (e) {
   </header>
 
   <div class="cards">
-    <div class="card"><div class="label">Fase actual</div><div class="value sm">DCA en preparacion</div><div class="sub">Demolicion, ante Sedema</div></div>
+    <div class="card"><div class="label">Fase actual</div><div class="value sm">DCA por ingresar</div><div class="sub">Demolicion, ante Sedema</div></div>
     <div class="card"><div class="label">Lo mas urgente</div><div class="value sm">SEGIAGUA</div><div class="sub">Nayeli acude presencialmente</div></div>
     <div class="card"><div class="label">Meta demolicion</div><div class="value sm">Septiembre 2026</div><div class="sub">263.20 m2 a demoler en PB</div></div>
     <div class="card"><div class="label">Superficie del terreno</div><div class="value sm">452.40 m2</div><div class="sub">Verificado en AutoCAD</div></div>
@@ -207,7 +207,7 @@ window.addEventListener("error", function (e) {
     <table class="tabla-bloques" id="tabla-tramites">
       <thead><tr><th>Tramite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
       <tbody>
-        <tr><td>DCA — Demolicion</td><td>Sedema</td><td><span class="badge amber">En preparacion</span></td><td>Enviado a Erick Sanz el 17-jun-2026. Faltan documentos del cliente.</td></tr>
+        <tr><td>DCA — Demolicion</td><td>Sedema</td><td><span class="badge amber">En preparacion</span></td><td>Enviado a Erick Sanz el 17-jun-2026. 23-sep: expediente completo en el Drive (contrato con Concretos Reciclados recibido); Erick lo ingresa, falta el acuse.</td></tr>
 <tr><td>Factibilidad hidraulica</td><td>SEGIAGUA (antes SACMEX)</td><td><span class="badge red">Gestion presencial</span></td><td>Portal sin acuse tras 2 intentos; Nayeli acude presencialmente por instruccion de Mauricio (31-ago). Punto mas prioritario.</td></tr>
 <tr><td>Licencia de demolicion</td><td>Alcaldia Miguel Hidalgo</td><td><span class="badge amber">Prevencion activa</span></td><td>Contrato de transportista de residuos y poliza RC pendientes.</td></tr>
 <tr><td>INAH</td><td>INAH</td><td><span class="badge green">Ingresado</span></td><td>Ingresado por Erick. Falta compartir la consulta en el grupo.</td></tr>
@@ -277,12 +277,12 @@ window.addEventListener("error", function (e) {
 
 <script>
 const items = [
-      { n: 1,   desc: "Armar carpeta Drive de Lafontaine y enviar el enlace a Mauricio", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-09-04" },
+        { n: 1,   desc: "Armar carpeta Drive de Lafontaine y enviar el enlace a Mauricio", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-09-04" },
   { n: 2,   desc: "Erick Sanz acelera la obtencion de la DCA para la demolicion", who: "Erick Sanchez", due: "", urgent: false, done: false, desde: "2026-09-04" },
-  { n: 3,   desc: "[REVISADO 14-SEP] Expediente DCA: los documentos legales YA ESTAN entregados — boleta predial (Carlos, 19-ago, confirmada por Nayeli), y escrituras, fideicomiso FSO 9624-2026, poder ESC 69,431 y CURP en la carpeta legales desde febrero. Lo unico por confirmar: si la identificacion oficial del propietario que obra en el expediente (febrero) sigue vigente o hay que pedir una actualizada.", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-09-04", revisado: "2026-09-14" },
-  { n: 4,   desc: "Completar expediente DCA e ingresar ante Sedema cuando lleguen los documentos. 22-sep: el arbolado ya se entrego y esta en Drive; faltan el contrato de residuos escaneado (#38) y confirmar la CSF de fideicomitente (#25). Mauricio firma cuando este todo arriba y Erick lo envia completo. 23-sep: CSF resuelta (Carlos Samano es fideicomitente). Falta el contrato de residuos; el plano de arbolado que pide la lista de Erick esta por determinar. Revision del Drive 23-sep: en la carpeta de la DCA faltan el contrato de residuos, el dictamen de ACP (carpeta 08 vacia) y el plano de arbolado y area verde (solo esta la base DWG del levantamiento).", who: "Nayeli / Erick Sanchez", due: "", urgent: false, done: false, desde: "2026-09-04" },
-  { n: 5,   desc: "Gestionar dictamen INBAL. Cerrado 23-sep: respuesta del INBAL folio 1108 (10-jun), inmueble no incluido en la relacion del INBA; recomienda proteger al colindante Anatole France 126.", who: "Nayeli / Erick Sanchez", due: "", urgent: false, done: true, desde: "2026-09-04" },
-  { n: 6,   desc: "Gestionar dictamen ACP. Cerrado 23-sep: dictamen favorable de SPOTMET 860/2026 (08-sep). Falta subirlo a la carpeta 08 del Drive de la DCA.", who: "Nayeli / Erick Sanchez", due: "", urgent: false, done: true, desde: "2026-09-04" },
+  { n: 3,   desc: "[REVISADO 14-SEP] Expediente DCA: documentos legales del cliente (boleta predial, escrituras, fideicomiso FSO 9624-2026, poder ESC 69,431, CURP; confirmar vigencia de la identificacion). Cerrado 23-sep: Mauricio a Erick en \"Lafontaine 123\": la informacion del Drive para la DCA esta completa. En el Drive de Erick (03-sep, ya copiado) estan escrituras 69,431 y 69,433, CUZUS 2026, CAyNO e identificacion.", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-09-04", revisado: "2026-09-14" },
+  { n: 4,   desc: "Completar expediente DCA e ingresar ante SEDEMA. 23-sep: ya estan en el Drive el contrato con Concretos Reciclados (#38) y el topografico con los 2 arboles; Mauricio le dijo a Erick que la informacion esta completa y Erick respondio que lo comparte. Falta el acuse de ingreso ante SEDEMA. En la copia del Drive del 23-sep (13:53) la carpeta 08 (dictamen ACP de SPOTMET) seguia vacia; Argueta pregunto si falta algo mas.", who: "Erick Sanchez / Nayeli", due: "", urgent: false, done: false, desde: "2026-09-04" },
+  { n: 5,   desc: "Gestionar dictamen INBAL. Cerrado 23-sep: respuesta del INBAL folio 1108 (10-jun), inmueble no incluido en la relacion del INBA; recomienda proteger al colindante Anatole France 126. El PDF ya esta en 00 entradas (copia del Drive, 24-sep).", who: "Nayeli / Erick Sanchez", due: "", urgent: false, done: true, desde: "2026-09-04" },
+  { n: 6,   desc: "Gestionar dictamen ACP. Cerrado 23-sep: dictamen favorable de SPOTMET 860/2026 (08-sep, Exp. 1562/2026), en 00 entradas. Subirlo a la carpeta 08 del Drive de la DCA se sigue en el #4.", who: "Nayeli / Erick Sanchez", due: "", urgent: false, done: true, desde: "2026-09-04" },
   { n: 7,   desc: "SEGIAGUA (antes SACMEX): Nayeli acude presencialmente para destrabar la falta de acuse de la factibilidad hidraulica", who: "Nayeli", due: "", urgent: true, done: false, desde: "2026-09-04" },
   { n: 8, desc: "Poliza RC a nombre del Representante Legal: el ENDOSO ya se entrego (Adrian Argueta, 04-sep 11:25, grupo Gestorias). La minuta lo comprometia para el 08-sep, se adelanto. Falta confirmar que el endoso corrige lo que se pidio.", who: "Carlos Samano", due: "", urgent: true, done: false, desde: "2026-09-04" },
   { n: 9,   desc: "Verificar y gestionar el dictamen requerido por INVEA", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-09-04" },
@@ -299,7 +299,7 @@ const items = [
   { n: 20,  desc: "Solicitar al equipo tecnico planos achurados y acotados conforme a la prevencion", who: "Nayeli", due: "", urgent: true, done: false, desde: "2026-09-04" },
   { n: 21,  desc: "Reporte fotografico: interior, exterior, colindancias y larguillo grafico. 22-sep: Adrian Argueta mando las fotos de la lona de publicitacion de demolicion (08 al 28-may, con periodico). La lona dice 577.19 m2 de construccion existente y a demoler, no los 557.19 m2 que pidio Nayeli: por aclarar. 23-sep: la superficie correcta es 557.19 m2 (Mauricio); la lona tenia un error.", who: "Nayeli / Carlos Samano", due: "", urgent: true, done: false, desde: "2026-09-04" },
   { n: 22,  desc: "Cerrado (19-sep): Constancia de Registro del Estudio de Riesgo de Obra y/o Demolicion (EROD) obtenida, Folio SGIRPC-EROD-485-2026 (emitida 15-sep, modalidad Demolicion). Segundo pago de $25,000 MXN cubierto 18-sep.", who: "Erick Sanchez", due: "", urgent: false, done: true, desde: "2026-09-04" },
-  { n: 23,  desc: "Recibir y subir la mecanica de suelos firmada por David (SAM)", who: "Nayeli", due: "", urgent: true, done: false, desde: "2026-09-04" },
+  { n: 23,  desc: "Recibir y subir la mecanica de suelos firmada por David (SAM). 24-sep: la que esta en el Drive de la DCA es otra (casa existente, Especialistas en Geotecnia y Cimentaciones Profundas, jun-2026); la de SAM no aparece.", who: "Nayeli", due: "", urgent: true, done: false, desde: "2026-09-04" },
   { n: 24,  desc: "Contratar Corresponsable en Seguridad Estructural distinto al estructurista", who: "Nayeli / Mauricio", due: "", urgent: true, done: false, desde: "2026-09-04" },
   { n: 25,  desc: "Autorizar presupuesto del contratista y entregar constancia fiscal del fideicomiso. 22-sep: el FID no tiene CSF y SEDEMA pide la de un fideicomitente; Adrian Argueta mando la CSF de Carlos Samano Flores (01-sep), falta confirmar que sirva. 23-sep: Carlos Samano si es fideicomitente, la CSF queda cubierta.", who: "Carlos Samano", due: "", urgent: true, done: false, desde: "2026-09-04" },
   { n: 26,  desc: "Completar fechas de ingreso en la columna J del archivo de seguimiento", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-09-04" },
@@ -314,7 +314,7 @@ const items = [
   { n: 35,  desc: "Definir representante legal del fideicomiso ante la gestoria: Carlos Samano o Arturo (tiene poder en el FID).", who: "Nayeli / Carlos Samano", due: "", urgent: false, done: false, desde: "2026-09-04" },
   { n: 36,  desc: "Revisar la minuta de la junta de seguimiento del 03-sep y dar seguimiento a los acuerdos.", who: "Nayeli / Mauricio", due: "", urgent: false, done: false, desde: "2026-09-04" },
   { n: 37,  desc: "Cerrado (11-sep): Nayeli confirmo que ya se obtuvo el Vo. Bo. de ACP para ingresar los planos y memorias. Erick Sanz confirmo luz verde. Sigue en el item 46 lo operativo (impresion y firma).", who: "Nayeli / Erick Sanchez", due: "", urgent: false, done: true, desde: "2026-09-04" },
-  { n: 38, desc: "[MINUTA 03-SEP] Entregar el original del contrato con el tiro registrado. 22-sep: Nayeli lo volvio a pedir para la DCA (contrato de residuos con Concretos Reciclados); Argueta: el proveedor lo firma y lo comparten escaneado hoy o manana temprano; el original, si hace falta, a Bosque de Radiatas 32 int. 104.", who: "Adrian Argueta", due: "2026-09-04", urgent: true, done: false, desde: "2026-09-03" },
+  { n: 38, desc: "[MINUTA 03-SEP] Entregar el original del contrato con el tiro registrado (contrato de residuos con Concretos Reciclados). Cerrado 23-sep: Argueta mando el escaneo a Gestorias (12:03) y el original llego a la oficina; Nayeli confirmo la recepcion (13:32) y lo subio al Drive (carpeta 11). Convenio firmado 15-sep-2026 por Carlos Samano por el FID 9624/2026: 200.75 m3 a $142.25/m3.", who: "Adrian Argueta", due: "2026-09-04", urgent: false, done: true, desde: "2026-09-03" },
   { n: 39, desc: "[MINUTA 03-SEP] DCA obra nueva: memoria de residuos. 23-sep: sin entregar. El equipo de Chava espera los comentarios de Nayeli (#47 y #48) para avanzar.", who: "CAOS", due: "", urgent: false, done: false, desde: "2026-09-03" },
   { n: 40, desc: "[MINUTA 03-SEP] DCA obra nueva: estimacion del valor de la construccion nueva. 23-sep: sin entregar; depende de lo mismo que el #39.", who: "CAOS", due: "", urgent: false, done: false, desde: "2026-09-03" },
   { n: 41, desc: "RAMIR carnet cruzado rechazado (04-sep): trae 'Documento de consulta' en vez del domicilio del proyecto. Formato confirmado como correcto (cruzado, no original). Adrian envio version actualizada 05-sep 10:00; Mauricio confirmo (07-sep) que el RAMIR esta correcto.", who: "Adrian Argueta", due: "", urgent: false, done: true, desde: "2026-09-11" },
