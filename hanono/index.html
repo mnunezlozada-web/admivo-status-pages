@@ -21,6 +21,12 @@
   .btns { margin-top: 6px; }
   .btn { font-size: 12px; padding: 5px 12px; border-radius: 8px; border: 0.5px solid #ccc; background: #fff; cursor: pointer; color: #444; font-family: inherit; }
   .btn:hover { background: #f5f4f0; }
+  /* Nombre de quien edita: campo dentro de la pagina, sin ventana emergente (23-sep-2026) */
+  #quien-form { margin-top: 5px; display: none; gap: 6px; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
+  #quien-form.abierto { display: flex; }
+  #quien-form.falta { background: #fdf0dc; border-radius: 8px; padding: 5px 6px; }
+  #quien-input { font-size: 13px; font-family: inherit; padding: 5px 8px; border: 0.5px solid #ccc; border-radius: 6px; width: 150px; color: #1a1a1a; background: #fff; }
+  @media (max-width: 640px) { #quien-input { font-size: 16px; } }
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 20px; }
   .card { background: #fff; border-radius: 10px; border: 0.5px solid #e0ddd4; padding: 10px 14px; }
   .card .label { font-size: 11px; color: #999; margin-bottom: 3px; }
@@ -177,7 +183,8 @@ window.addEventListener("error", function (e) {
     </div>
     <div class="stamp">
       <div id="last-update">Actualizado: 23-sep-2026</div>
-      <div style="margin-top:3px;">Editando como <b id="quien-soy">—</b> <a href="#" id="cambiar-quien">cambiar</a></div>
+      <div style="margin-top:3px;">Editando como <b id="quien-soy">—</b> <a href="#" id="cambiar-quien" class="no-print">cambiar</a></div>
+      <div id="quien-form" class="no-print"><input id="quien-input" type="text" maxlength="40" placeholder="Escribe tu nombre" autocomplete="name"><button class="btn" id="quien-ok" type="button">Guardar</button></div>
       <div id="sync-status" style="margin-top:3px;">Conectando...</div>
       <div class="btns no-print">
         <button class="btn" onclick="copyLink()">Copiar enlace</button>
@@ -266,7 +273,7 @@ window.addEventListener("error", function (e) {
 
 <script>
 const items = [
-    { n: 1, desc: "[T125 — VUC] Agendar la cita de visita de obra presencial (ID 30062026070) en citas.cdmx.gob.mx con Llave CDMX, copiar folio e ingresarlo en VUC. Bloquea el cierre definitivo.", who: "Claudia Paez / Hanono", due: "", urgent: true, done: false, desde: "2026-09-04" },
+      { n: 1, desc: "[T125 — VUC] Agendar la cita de visita de obra presencial (ID 30062026070) en citas.cdmx.gob.mx con Llave CDMX, copiar folio e ingresarlo en VUC. Bloquea el cierre definitivo.", who: "Claudia Paez / Hanono", due: "", urgent: true, done: false, desde: "2026-09-04" },
   { n: 2, desc: "Punto 6 de la prevencion: conseguir la Opinion tecnica del DRO (Ing. Arq. Jaime Sanchez Sanchez, DRO-0669) sobre los avisos de ocupacion y terminacion de obra, Art. 35-XIV del RCDF. Es lo unico que solo el DRO puede resolver. Nayeli consulto a la Alcaldia MH el 03-sep, sin respuesta.", who: "Mauricio", due: "", urgent: true, done: false, desde: "2026-09-04" },
   { n: 3, desc: "Presentar e impulsar las visitas de obra de ambos inmuebles. Objetivo comprometido con Beto el 27-ago. 22-sep: visitas de la Alcaldia confirmadas para el jueves 24-sep, de 10 a 12; las lleva Mauricio.", who: "Mauricio / Nayeli", due: "2026-09-24", urgent: false, done: false, desde: "2026-09-04" },
   { n: 4, desc: "Confirmar el estado de la constancia de seguridad estructural de T 234. Nota: el VoBo de seguridad y operacion de ambos ya se obtuvo (03-sep), la constancia estructural es otro documento.", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-09-04" },
@@ -340,23 +347,60 @@ async function loadState() {
   } catch(e) { showStatus("Sin conexion", "#a33030"); }
 }
 
-// ---- Quien esta editando: se pregunta una vez por navegador y se recuerda ----
-function quien() {
-  let n = null;
-  try { n = localStorage.getItem("admivo_quien"); } catch (e) { n = null; }
-  if (n && n.trim()) return n.trim();
-  let r = null;
-  try { r = window.prompt("Para el registro del despacho: escribe tu nombre.\nSolo se pregunta esta vez."); } catch (e) { r = null; }
-  r = (r || "").trim().slice(0, 40);
-  if (!r) r = "Sin identificar";
+// ---- Quien esta editando: se escribe una vez por navegador y se recuerda ----
+// (23-sep-2026) Antes se pedia con una ventana emergente (prompt) que el panel de Cowork
+// y varios navegadores dentro de apps no muestran: quedaba "Sin identificar" sin poder cambiarlo.
+// Ahora es un campo dentro de la pagina. Lo marcado antes de escribir el nombre se corrige solo.
+const SIN_NOMBRE = "Sin identificar";
+let nombreSesion = "";          // por si el navegador no deja guardar en localStorage
+let pendientesNombre = [];      // registros hechos antes de escribir el nombre
+function nombreGuardado() {
+  let n = "";
+  try { n = (localStorage.getItem("admivo_quien") || "").trim(); } catch (e) { n = ""; }
+  if (!n) n = nombreSesion;
+  return n === SIN_NOMBRE ? "" : n;
+}
+function pintaQuien() {
+  const n = nombreGuardado();
+  const eti = document.getElementById("quien-soy"), link = document.getElementById("cambiar-quien");
+  if (eti) eti.textContent = n || "—";
+  if (link) link.textContent = n ? "cambiar" : "escribe tu nombre";
+}
+function abreNombre(enfocar) {
+  const f = document.getElementById("quien-form"), inp = document.getElementById("quien-input");
+  if (!f || !inp) return;
+  if (!f.classList.contains("abierto")) inp.value = nombreGuardado();
+  f.classList.add("abierto");
+  f.classList.toggle("falta", !nombreGuardado());
+  if (enfocar) { try { inp.focus(); inp.select(); } catch (e) {} }
+}
+function guardaNombre() {
+  const inp = document.getElementById("quien-input");
+  const r = ((inp && inp.value) || "").trim().slice(0, 40);
+  if (!r || r === SIN_NOMBRE) { if (inp) inp.focus(); return; }
+  nombreSesion = r;
   try { localStorage.setItem("admivo_quien", r); } catch (e) {}
-  const eti = document.getElementById("quien-soy");
-  if (eti) eti.textContent = r;
-  return r;
+  const f = document.getElementById("quien-form");
+  if (f) f.classList.remove("abierto", "falta");
+  pintaQuien();
+  if (pendientesNombre.length) {
+    log.forEach(e => { if (e.q === SIN_NOMBRE && pendientesNombre.indexOf(claveLog(e)) >= 0) e.q = r; });
+    pendientesNombre = [];
+    scheduleSave();
+  }
+}
+function claveLog(e) { return [e.t, e.a, e.n, e.d].join("|"); }
+function quien() {
+  const n = nombreGuardado();
+  if (n) return n;
+  abreNombre(false);
+  return SIN_NOMBRE;
 }
 
 function anota(accion, n, detalle) {
-  log.push({ q: quien(), a: accion, n: n, d: (detalle || "").slice(0, 120), t: new Date().toISOString().slice(0, 16) });
+  const e = { q: quien(), a: accion, n: n, d: (detalle || "").slice(0, 120), t: new Date().toISOString().slice(0, 16) };
+  if (e.q === SIN_NOMBRE) pendientesNombre.push(claveLog(e));
+  log.push(e);
   if (log.length > 200) log = log.slice(-200);
 }
 
@@ -733,15 +777,18 @@ async function addNewItem() {
 document.addEventListener("DOMContentLoaded", () => {
   const ta = document.getElementById("new-desc");
   if (ta) ta.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); addNewItem(); } });
-  const eti = document.getElementById("quien-soy");
-  try { const n = localStorage.getItem("admivo_quien"); if (eti && n) eti.textContent = n; } catch (e) {}
+  pintaQuien();
   const link = document.getElementById("cambiar-quien");
   if (link) link.addEventListener("click", (ev) => {
     ev.preventDefault();
-    try { localStorage.removeItem("admivo_quien"); } catch (e) {}
-    if (eti) eti.textContent = "—";
-    quien();
+    const f = document.getElementById("quien-form");
+    if (f && f.classList.contains("abierto") && nombreGuardado()) { f.classList.remove("abierto", "falta"); return; }
+    abreNombre(true);
   });
+  const ok = document.getElementById("quien-ok");
+  if (ok) ok.addEventListener("click", guardaNombre);
+  const inpQ = document.getElementById("quien-input");
+  if (inpQ) inpQ.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); guardaNombre(); } });
 });
 
 // Aviso de revision atrasada (15-sep-2026). La fecha vive en el repositorio.
