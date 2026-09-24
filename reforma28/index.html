@@ -196,7 +196,7 @@ window.addEventListener("error", function (e) {
   <div class="cards">
     <div class="card"><div class="label">Fase</div><div class="value sm">MIA subsane + Demolicion + PAOT</div></div>
     <div class="card"><div class="label">DEIU</div><div class="value">5 / 6</div><div class="sub">instancias resueltas</div></div>
-    <div class="card"><div class="label">Proximo vencimiento</div><div class="value sm">~11-sep-2026 (est.)</div><div class="sub">Respuesta a PAOT (exp. 2026-4813-SOT-1706)</div></div>
+    <div class="card"><div class="label">PAOT</div><div class="value sm">Contestacion presentada 10-sep</div><div class="sub">En espera de resolucion (exp. PAOT-2026-4813-SOT-1706)</div></div>
     <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">—</div><div class="sub">por cerrar</div></div>
   </div>
 
@@ -217,7 +217,7 @@ window.addEventListener("error", function (e) {
 <tr><td>ACP / SPOTMET</td><td>SPOTMET</td><td><span class="badge green">Dictamen modif. favorable</span></td><td>Oficio 3991/2025 — 411 depts, 26,216.36 m² SNB, 36 cajones, 107 bicis</td></tr>
 <tr><td>INBAL</td><td>INBAL</td><td><span class="badge blue">En gestión</span></td><td>Autorización en proceso</td></tr>
 <tr><td>ISC</td><td>Instituto de las Construcciones</td><td><span class="badge amber">Ingresado</span></td><td>Erick confirmó ingreso formal del expediente. 22-sep: falta complementarlo con arquitectónico, estructural, protección a colindancias y mecánica de suelos (ver #84). 23-sep: Triple Espacio mandó estructural, colindancias y mecánica de suelos; se pidió la leyenda "Emitidos para Construcción".</td></tr>
-<tr><td>PAOT</td><td>Subprocuraduría de Ordenamiento Territorial</td><td><span class="badge red">Investigación nueva</span></td><td>Expediente PAOT-2026-4813-SOT-1706 — notificado por instructivo 02-sep-2026 (oficio 08508-2026, 27-ago). Investiga desarrollo urbano/conservación patrimonial, construcción de obra nueva y protección civil. Comparecer en 6 días hábiles (~11-sep-2026, confirmar).</td></tr>
+<tr><td>PAOT</td><td>Subprocuraduria de Ordenamiento Territorial</td><td><span class="badge amber">Contestacion presentada</span></td><td>Expediente PAOT-2026-4813-SOT-1706 (oficio 08508-2026, 27-ago). Contestacion presentada el 10-sep; en espera de resolucion.</td></tr>
       </tbody>
     </table>
     <button class="ver-mas no-print" id="tramites-mas" style="display:none"></button>
@@ -283,7 +283,7 @@ window.addEventListener("error", function (e) {
     <button class="ver-mas no-print" id="acuerdos-mas" style="display:none"></button>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">PAOT notifico investigacion (exp. PAOT-2026-4813-SOT-1706); comparecer en 6 dias habiles (~11-sep-2026, confirmar). Fe de hechos de colindancias (#39) marcada hecha en la pagina pero el archivo fisico no esta en iCloud -- nuevo pendiente #75. No se publica desde la sesion -- la Mac publica sola cada 5 minutos.</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Reforma 28 &middot; Actualizado 24-sep-2026 &middot; PAOT: contestacion presentada el 10-sep, en espera de resolucion</p>
 </div>
 
 <script>
@@ -357,7 +357,7 @@ const items = [
   { n: 67, desc: "[ACP — 12-ago] Presentar en económico los planos definitivos para que las autorizaciones reflejen superficies correctas", who: "Erick Sanchez", due: "", urgent: false, done: false, desde: "2026-08-12" },
   { n: 68, desc: "[DEMOLICIÓN — INVAL — 12-ago] Obtener dictamen INVAL requerido por alcaldía para subsanar prevención de demolición e ingresar licencia (condicionada a INVAL, ya palabrada)", who: "Erick Sanchez", due: "", urgent: true, done: false, desde: "2026-08-12" },
   { n: 69, desc: "[DEMOLICIÓN — Contratista] Definir con Erick el contratista de manejo de residuos: 'sustentable' (automatizado, más simple) vs. 'reciclables' (contrato manual, más complejo; posible convenio firmado aparte). Nayeli necesita de Erick info de corresponsables/DRO para el desahogo de firmas. PLAUD 27/28-ago.", who: "Mauricio / Erick Sanchez", due: "", urgent: true, done: false, desde: "2026-09-01" },
-  { n: 70, desc: "[PAOT] Notificacion por instructivo de investigacion PAOT (exp. PAOT-2026-4813-SOT-1706, oficio 08508-2026 del 27-ago) por presuntos incumplimientos en desarrollo urbano/conservacion patrimonial, construccion de obra nueva y proteccion civil. Comparecer o presentar pruebas de cumplimiento dentro de 6 dias habiles (surte efectos 03-sep; vencimiento estimado ~11-sep-2026, confirmar con calendario oficial). Contacto PAOT: Luis Diego Caudillo Mendez. (cuando: confirmar) 23-sep (Mauricio): la contestacion se presento el 10-sep (acuse sellado); solo queda pendiente saber si PAOT emite resolucion.", who: "Mauricio / Equipo legal", due: "2026-09-11", urgent: false, done: false, desde: "2026-09-11" },
+  { n: 70, desc: "[PAOT] Expediente PAOT-2026-4813-SOT-1706 (oficio 08508-2026 del 27-ago): la contestacion se presento el 10-sep, con acuse sellado en 00 entradas/2026-09. Pendiente: que PAOT emita su resolucion.", who: "Mauricio / Equipo legal", due: "", urgent: false, done: false, desde: "2026-09-11" },
   { n: 71, desc: "[PAOT] Confirmar con Erick si ya existe el VoBo INBAL/patrimonio final descargable en archivo - necesario para la respuesta a PAOT. El oficio 748/2026 (09-sep) confirma que solo se habia presentado la solicitud, no el VoBo final; Erick reporto Listo INBAL Reforma el 09-sep, pendiente confirmar que sea ese documento. 23-sep: ya no es para PAOT; sigue abierto porque el punto 5 de la prevencion de la Alcaldia (oficio 1748/2026, #78) pide el VoBo final del INBAL.", who: "Nayeli / Erick Sanchez", due: "", urgent: true, done: false, desde: "2026-09-10" },
   { n: 72, desc: "[PAOT] El expediente no tiene aun una autorizacion de construccion de obra nueva vigente (SEDEMA MIA en 3a revision, ACP en actualizacion, demolicion condicionada a INVAL) — evaluar con el equipo legal la estrategia de respuesta a PAOT dado este vacio antes de comparecer. PRECISION DE MAURICIO (02-sep, en chat): la obra nueva NO ha iniciado -- no hay actividad de construccion en el predio. Punto de defensa clave: si PAOT infiere obra en marcha, esa premisa es incorrecta -- tampoco arranco la demolicion (condicionada al dictamen INVAL). Reforzar en el escrito de respuesta. Cerrado 23-sep: superado, la contestacion a PAOT se presento el 10-sep.", who: "Mauricio / Equipo legal", due: "", urgent: false, done: true, desde: "2026-09-10" },
   { n: 73, desc: "[PAOT] Verificar en sitio si ya se subsanaron las carencias detectadas en mayo-2025 por la Alcaldia Cuauhtemoc (brigadas, botiquin, sistema de alertamiento, instructivos de sismo/incendio, bitacora de obra) que motivaron la suspension temporal y total de esa fecha — confirmar antes de comparecer ante PAOT. Cerrado 23-sep: superado, la contestacion a PAOT se presento el 10-sep.", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-09-10" },
