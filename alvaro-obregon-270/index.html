@@ -4,25 +4,47 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Álvaro Obregón 270 — Estatus del proyecto</title>
+<!-- Plantilla v2 (23-sep-2026). Mismos marcadores que status_template.html, para que
+     homologar.py la pueda aplicar. Cambios: los tramites siguen arriba; los vencidos y lo
+     que vence en 7 dias salen solos; los pendientes se agrupan por tramite (o por persona);
+     cada pendiente es una linea y se abre para ver el detalle y escribir observaciones. -->
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 14px; color: #1a1a1a; background: #f5f4f0; padding: 2rem; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 14px; line-height: 1.4; color: #1a1a1a; background: #f5f4f0; padding: 24px 16px 48px; }
   .container { max-width: 960px; margin: 0 auto; }
-  header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; }
-  header h1 { font-size: 20px; font-weight: 600; }
-  header p { font-size: 12px; color: #888; margin-top: 2px; }
-  .stamp { font-size: 11px; color: #aaa; text-align: right; }
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 2rem; }
-  .card { background: #fff; border-radius: 10px; border: 0.5px solid #e0ddd4; padding: 0.75rem 1rem; }
-  .card .label { font-size: 11px; color: #999; margin-bottom: 4px; }
-  .card .value { font-size: 22px; font-weight: 600; }
-  .card .sub { font-size: 11px; color: #aaa; margin-top: 2px; }
+  header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+  header h1 { font-size: 21px; font-weight: 650; }
+  header p { font-size: 12.5px; color: #777; margin-top: 2px; }
+  .stamp { font-size: 11px; color: #999; text-align: right; }
+  .stamp b { color: #555; }
+  .stamp a { color: #999; }
+  .btns { margin-top: 6px; }
+  .btn { font-size: 12px; padding: 5px 12px; border-radius: 8px; border: 0.5px solid #ccc; background: #fff; cursor: pointer; color: #444; font-family: inherit; }
+  .btn:hover { background: #f5f4f0; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 20px; }
+  .card { background: #fff; border-radius: 10px; border: 0.5px solid #e0ddd4; padding: 10px 14px; }
+  .card .label { font-size: 11px; color: #999; margin-bottom: 3px; }
+  .card .value { font-size: 20px; font-weight: 600; }
   .card .value.sm { font-size: 14px; margin-top: 2px; }
-  section { margin-bottom: 2rem; }
-  section h2 { font-size: 11px; font-weight: 600; color: #999; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+  .card .sub { font-size: 11px; color: #aaa; margin-top: 2px; }
+  section { margin-bottom: 26px; }
+  section h2 { font-size: 16px; font-weight: 650; color: #1a1a1a; margin-bottom: 8px; padding-left: 9px; border-left: 3px solid #1a1a1a; line-height: 1.2; }
+  .resumen { font-size: 13px; color: #555; margin: -2px 0 8px; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
+  .resumen b { font-weight: 650; }
+  .resumen .pt { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; vertical-align: 0; }
+  .pt.rojo { background: #c0392b; } .pt.ambar { background: #d9822b; } .pt.verde { background: #5a9a2a; } .pt.gris { background: #aaa; }
+  #tabla-tramites tr.resuelto { display: none; }
+  #tabla-acuerdos tr.oculto { display: none; }
+  #tabla-tramites.todos tr.resuelto { display: table-row; }
+  #tabla-tramites tr.est-rojo td:first-child { box-shadow: inset 3px 0 0 #c0392b; }
+  #tabla-tramites tr.est-ambar td:first-child { box-shadow: inset 3px 0 0 #d9822b; }
+  #tabla-tramites .badge { white-space: normal; }
+  #tabla-tramites .mas-res { display: block; font-size: 11px; color: #3a6e10; font-weight: 400; margin-top: 2px; }
+  .recorta { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; cursor: pointer; }
+  .recorta.suelto { display: block; -webkit-line-clamp: unset; }
   table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; border: 0.5px solid #e0ddd4; }
-  th { font-size: 11px; font-weight: 600; color: #999; text-align: left; padding: 9px 14px; background: #faf9f6; border-bottom: 0.5px solid #e0ddd4; }
-  td { padding: 9px 14px; border-bottom: 0.5px solid #f0ede6; vertical-align: middle; }
+  th { font-size: 11px; font-weight: 600; color: #999; text-align: left; padding: 8px 14px; background: #faf9f6; border-bottom: 0.5px solid #e0ddd4; }
+  td { padding: 8px 14px; border-bottom: 0.5px solid #f0ede6; vertical-align: top; }
   tr:last-child td { border-bottom: none; }
   .badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 6px; white-space: nowrap; }
   .badge.green  { background: #e8f5e0; color: #3a6e10; }
@@ -31,42 +53,120 @@
   .badge.red    { background: #fde8e8; color: #a33030; }
   .badge.gray   { background: #f0ede6; color: #666; }
   .badge.purple { background: #f0e8fa; color: #6a10a3; }
-  .check-col { width: 36px; text-align: center; }
-  input[type=checkbox] { width: 16px; height: 16px; cursor: pointer; accent-color: #3a6e10; }
-  .obs-input { width: 100%; min-width: 140px; border: none; background: transparent; resize: none; font-size: 12px; color: #555; font-family: inherit; padding: 0; line-height: 1.4; overflow: hidden; }
-  .obs-input:focus { outline: none; background: #faf9f6; border-radius: 4px; padding: 2px 6px; box-shadow: 0 0 0 1px #e0ddd4; }
-  .obs-input::placeholder { color: #d0cdc6; }
-  .btn-share { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 6px 14px; border-radius: 8px; border: 0.5px solid #ccc; background: #fff; cursor: pointer; color: #444; }
-  .btn-share:hover { background: #f5f4f0; }
-  .btn-print { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 6px 14px; border-radius: 8px; border: 0.5px solid #ccc; background: #fff; cursor: pointer; color: #444; margin-left: 8px; }
-  .btn-print:hover { background: #f5f4f0; }
+  .ver-mas { display: inline-block; margin-top: 6px; font-size: 12px; color: #1a5fa6; cursor: pointer; background: none; border: none; font-family: inherit; }
+
+  /* Lo urgente, calculado solo */
+  .alerta { background: #fdeaea; border: 1px solid #f3c9c9; border-radius: 10px; padding: 10px 14px; margin-bottom: 12px; }
+  .alerta.ambar { background: #fef6e6; border-color: #f1ddb0; }
+  .alerta h3 { font-size: 12.5px; font-weight: 650; color: #a33030; margin-bottom: 4px; }
+  .alerta.ambar h3 { color: #8a5010; }
+  .alerta .it { font-size: 13.5px; padding: 4px 0; border-top: 1px solid rgba(0,0,0,.06); cursor: pointer; }
+  .alerta .it:first-of-type { border-top: 0; }
+  .alerta .it .q { color: #777; font-size: 11.5px; }
+
+  /* Barra de pendientes */
+  .barra { margin-bottom: 8px; }
+  .barra .fila { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 6px; }
+  .barra .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: #aaa; margin-right: 2px; }
+  .chip { border: 1px solid #e0ddd4; background: #fff; border-radius: 999px; padding: 4px 10px; font-size: 12.5px; cursor: pointer; color: #1a1a1a; font-family: inherit; }
+  .chip .c { color: #aaa; margin-left: 3px; }
+  .chip.on { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+  .chip.on .c { color: #bbb; }
+  .sep { flex-basis: 100%; height: 0; }
   .counter { font-size: 12px; color: #888; margin-bottom: 8px; }
   .counter span { font-weight: 600; color: #1a1a1a; }
-  .add-item-area { margin-top: 10px; }
-  .btn-add-toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 7px 14px; border-radius: 8px; border: 1px dashed #c8c4bc; background: transparent; cursor: pointer; color: #888; transition: all .15s; }
-  .btn-add-toggle:hover { background: #fff; border-color: #aaa; color: #444; }
-  .add-form { display: none; background: #fff; border: 0.5px solid #e0ddd4; border-radius: 10px; padding: 14px 16px; margin-top: 8px; }
+
+  /* Pendientes */
+  .grupo { background: #fff; border: 0.5px solid #e0ddd4; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+  .grupo > h3 { font-size: 14px; font-weight: 650; padding: 9px 14px; background: #f1efe8; border-bottom: 0.5px solid #e6e2d8; display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .grupo > h3 .cta { font-size: 12px; font-weight: 400; color: #888; white-space: nowrap; }
+  .grupo > h3 .cta .u { color: #a33030; font-weight: 600; }
+  .grupo.nuevos > h3 { background: #f3ecfb; }
+  .grupo .mas-grupo { display: block; width: 100%; text-align: left; padding: 8px 14px 9px 46px; border: 0; border-top: 0.5px solid #f0ede6; background: #fcfbf8; color: #1a5fa6; font-size: 12.5px; cursor: pointer; font-family: inherit; }
+  .p { display: grid; grid-template-columns: 22px 1fr; gap: 10px; padding: 9px 14px; border-top: 0.5px solid #f0ede6; box-shadow: inset 3px 0 0 transparent; }
+  .p.es-urg { box-shadow: inset 3px 0 0 #d9822b; }
+  .p.es-venc { box-shadow: inset 3px 0 0 #c0392b; background: #fdf5f4; }
+  .p:first-of-type { border-top: 0; }
+  .p input[type=checkbox] { width: 17px; height: 17px; margin-top: 2px; cursor: pointer; accent-color: #3a6e10; }
+  .p .cuerpo { min-width: 0; }
+  .p .t { font-size: 14px; cursor: pointer; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .p.abierto .t { display: block; -webkit-line-clamp: unset; }
+  .p .urg { display: inline-block; font-size: 10px; font-weight: 650; color: #8a5010; background: #fef3dc; border-radius: 4px; padding: 0 5px; margin-right: 6px; vertical-align: 1px; letter-spacing: .02em; }
+  .p .meta { font-size: 11.5px; color: #999; margin-top: 3px; display: flex; flex-wrap: wrap; gap: 3px 10px; align-items: center; }
+  .p .meta .tr { color: #666; background: #f0ede6; border-radius: 5px; padding: 0 6px; }
+  .p .meta .who { color: #555; }
+  .p .meta .viejo { color: #8a5010; }
+  .p .meta .muyviejo { color: #a33030; }
+  .p .meta .venc { color: #a33030; font-weight: 600; }
+  .p .meta .pronto { color: #8a5010; font-weight: 600; }
+  .p .meta .abrir { color: #1a5fa6; cursor: pointer; }
+  .p .obs-ver { font-size: 12px; color: #555; margin-top: 4px; font-style: italic; }
+  .p .detalle { display: none; margin-top: 6px; }
+  .p.abierto .detalle { display: block; }
+  .p .nota { font-size: 12.5px; color: #666; padding-left: 10px; border-left: 2px solid #e0ddd4; margin-bottom: 6px; }
+  .p .detalle label { font-size: 10px; color: #999; display: block; margin: 4px 0 2px; letter-spacing: .04em; text-transform: uppercase; }
+  .obs-input { width: 100%; border: 0.5px solid #ddd; border-radius: 6px; background: #faf9f6; resize: none; font-size: 12.5px; color: #333; font-family: inherit; padding: 5px 8px; line-height: 1.4; overflow: hidden; min-height: 30px; }
+  .obs-input:focus { outline: none; border-color: #aaa; background: #fff; }
+  .btn-delete-item { background: none; border: none; cursor: pointer; color: #bbb; font-size: 12px; padding: 0 4px; font-family: inherit; }
+  .btn-delete-item:hover { color: #a33030; }
+  .vacio { font-size: 13px; color: #999; padding: 12px 14px; }
+
+  /* Agregar pendiente */
+  .add-item-area { margin-top: 8px; }
+  .btn-add-toggle { font-size: 12.5px; padding: 7px 14px; border-radius: 8px; border: 1px dashed #c8c4bc; background: transparent; cursor: pointer; color: #666; font-family: inherit; }
+  .btn-add-toggle:hover { background: #fff; border-color: #aaa; color: #333; }
+  .add-form { display: none; background: #fff; border: 0.5px solid #e0ddd4; border-radius: 10px; padding: 12px 14px; margin-top: 8px; }
   .add-form.open { display: block; }
-  .add-form-grid { display: grid; grid-template-columns: 1fr 160px 130px; gap: 10px; align-items: start; }
+  .add-form-grid { display: grid; grid-template-columns: 1fr 160px 140px; gap: 10px; align-items: start; }
   .add-form label { font-size: 10px; color: #999; display: block; margin-bottom: 3px; letter-spacing: .04em; text-transform: uppercase; }
   .add-form input, .add-form textarea { width: 100%; border: 0.5px solid #ddd; border-radius: 6px; padding: 6px 10px; font-size: 13px; font-family: inherit; color: #1a1a1a; background: #faf9f6; resize: none; }
-  .add-form input:focus, .add-form textarea:focus { outline: none; border-color: #aaa; background: #fff; }
   .add-form textarea { min-height: 54px; }
   .add-form-actions { display: flex; gap: 8px; margin-top: 10px; }
-  .btn-save-item { font-size: 12px; padding: 6px 16px; border-radius: 8px; border: none; background: #1a1a1a; color: #fff; cursor: pointer; }
-  .btn-save-item:hover { background: #333; }
-  .btn-cancel-item { font-size: 12px; padding: 6px 12px; border-radius: 8px; border: 0.5px solid #ccc; background: #fff; color: #666; cursor: pointer; }
-  .btn-cancel-item:hover { background: #f5f4f0; }
-  .btn-delete-item { background: none; border: none; cursor: pointer; color: #ccc; font-size: 13px; padding: 0 4px; line-height: 1; }
-  .btn-delete-item:hover { color: #a33030; }
-  .new-row td { background: #fdfcf8; }
-  .highlight-row td { background: #fffbe8; }
+  .btn-save-item { font-size: 12px; padding: 6px 16px; border-radius: 8px; border: none; background: #1a1a1a; color: #fff; cursor: pointer; font-family: inherit; }
+  .btn-cancel-item { font-size: 12px; padding: 6px 12px; border-radius: 8px; border: 0.5px solid #ccc; background: #fff; color: #666; cursor: pointer; font-family: inherit; }
+
+  /* Celular: sin tablas que se salgan de la pantalla */
+  @media (max-width: 640px) {
+    body { padding: 16px 12px 40px; }
+    .stamp { text-align: left; }
+    .tabla-bloques thead { display: none; }
+    .tabla-bloques, .tabla-bloques tbody, .tabla-bloques tr, .tabla-bloques td { display: block; width: 100%; }
+    .tabla-bloques tr { padding: 8px 12px; border-bottom: 0.5px solid #f0ede6; }
+    .tabla-bloques td { padding: 1px 0; border: 0; }
+    .tabla-bloques td:first-child { font-weight: 600; }
+    /* Tramites: nombre, instancia y estado en un renglon; el detalle abajo */
+    #tabla-tramites td:nth-child(1), #tabla-tramites td:nth-child(2) { display: inline; width: auto; }
+    #tabla-tramites td:nth-child(2)::before { content: " · "; color: #aaa; font-weight: 400; }
+    #tabla-tramites td:nth-child(2) { color: #555; }
+    #tabla-tramites td:nth-child(3) { margin-top: 3px; }
+    #tabla-tramites td:nth-child(4) { font-size: 13px; color: #555; margin-top: 2px; }
+    #tabla-tramites .mas-res { display: inline; margin-left: 6px; }
+    #tabla-tramites tr.est-rojo td:first-child, #tabla-tramites tr.est-ambar td:first-child { box-shadow: none; }
+    #tabla-tramites tr.est-rojo { box-shadow: inset 3px 0 0 #c0392b; }
+    #tabla-tramites tr.est-ambar { box-shadow: inset 3px 0 0 #d9822b; }
+    #tabla-tramites.todos tr.resuelto { display: block; }
+    /* La barra de personas se desliza de lado en vez de ocupar cuatro renglones */
+    .barra .fila.gente { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+    .barra .chip, .barra .lbl { flex: 0 0 auto; }
+    .add-form-grid { grid-template-columns: 1fr; }
+  }
   @media print {
-    body { background: #fff; padding: 1rem; }
+    body { background: #fff; padding: 0; }
     .no-print { display: none !important; }
-    table { border: 1px solid #ddd; }
+    .p .t { display: block; -webkit-line-clamp: unset; }
+    #tabla-tramites tr.resuelto { display: table-row; }
+    #tabla-acuerdos tr.oculto { display: table-row; }
+    .recorta { display: block; -webkit-line-clamp: unset; }
   }
 </style>
+<script>
+// Si el navegador no puede correr la pagina, que lo diga en vez de quedarse en blanco (24-sep-2026).
+window.addEventListener("error", function (e) {
+  var d = document.getElementById("pending-tbody");
+  if (d && !d.innerHTML) d.innerHTML = '<div class="grupo"><div class="vacio">Esta pagina no pudo cargar en este navegador (' +
+    String(e.message || "error").replace(/</g, "&lt;") + '). Mandale una captura de esto a Mauricio.</div></div>';
+});
+</script>
 </head>
 <body>
 <div class="container">
@@ -77,11 +177,11 @@
     </div>
     <div class="stamp">
       <div id="last-update">Actualizado: 11-sep-2026</div>
-      <div style="font-size:11px;color:#aaa;margin-top:3px;">Editando como <b id="quien-soy" style="color:#666">—</b> <a href="#" id="cambiar-quien" style="color:#aaa;text-decoration:underline">cambiar</a></div>
-      <div id="sync-status" style="font-size:11px;color:#aaa;margin-top:3px;">Conectando...</div>
-      <div style="margin-top:6px;" class="no-print">
-        <button class="btn-share" onclick="copyLink()">Copiar enlace</button>
-        <button class="btn-print" onclick="window.print()">Imprimir</button>
+      <div style="margin-top:3px;">Editando como <b id="quien-soy">—</b> <a href="#" id="cambiar-quien">cambiar</a></div>
+      <div id="sync-status" style="margin-top:3px;">Conectando...</div>
+      <div class="btns no-print">
+        <button class="btn" onclick="copyLink()">Copiar enlace</button>
+        <button class="btn" onclick="window.print()">Imprimir</button>
       </div>
     </div>
   </header>
@@ -95,39 +195,30 @@
 
   <section>
     <h2>Estado de tramites</h2>
-    <table>
+    <div class="resumen" id="tramites-resumen"></div>
+    <table class="tabla-bloques" id="tabla-tramites">
       <thead><tr><th>Tramite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
       <tbody>
         
       </tbody>
     </table>
+    <button class="ver-mas no-print" id="tramites-mas" style="display:none"></button>
   </section>
 
   <section>
     <h2>Pendientes activos</h2>
+    <div id="alertas"></div>
+    <div class="barra no-print" id="barra"></div>
     <div class="counter no-print">Completados: <span id="done-count">0</span> de <span id="total-count">0</span></div>
-    <table>
-      <thead>
-        <tr>
-          <th class="check-col no-print"></th>
-          <th>#</th>
-          <th>Pendiente</th>
-          <th>Responsable</th>
-          <th>Fecha limite</th>
-          <th>Observaciones</th>
-          <th class="no-print" style="width:28px"></th>
-        </tr>
-      </thead>
-      <tbody id="pending-tbody"></tbody>
-    </table>
+    <div id="pending-tbody"></div>
 
     <div class="add-item-area no-print">
       <button class="btn-add-toggle" id="btn-add-toggle" onclick="toggleAddForm()">+ Agregar pendiente</button>
       <div class="add-form" id="add-form">
         <div class="add-form-grid">
           <div>
-            <label>Descripcion</label>
-            <textarea id="new-desc" rows="2" placeholder="Que hay que hacer?"></textarea>
+            <label>Que hay que hacer</label>
+            <textarea id="new-desc" rows="2" placeholder="Una accion concreta"></textarea>
           </div>
           <div>
             <label>Responsable</label>
@@ -135,8 +226,13 @@
           </div>
           <div>
             <label>Fecha limite</label>
-            <input id="new-due" type="text" placeholder="ej. 18-ago-2026">
+            <input id="new-due" type="date">
           </div>
+        </div>
+        <div style="margin-top:8px;">
+          <label>Tramite (opcional)</label>
+          <input id="new-tramite" type="text" list="lista-tramites" placeholder="p. ej. Demolicion, PAOT">
+          <datalist id="lista-tramites"></datalist>
         </div>
         <div class="add-form-actions">
           <button class="btn-save-item" onclick="addNewItem()">Guardar pendiente</button>
@@ -148,14 +244,15 @@
 
   <section>
     <h2>Acuerdos clave</h2>
-    <table>
-      <thead><tr><th style="width:110px">Fecha</th><th>Acuerdo</th><th style="width:130px">Quien acordo</th></tr></thead>
+    <table class="tabla-bloques" id="tabla-acuerdos">
+      <thead><tr><th style="width:110px">Fecha</th><th>Acuerdo</th><th style="width:140px">Quien acordo</th></tr></thead>
       <tbody>
         <tr><td>18-ago-2026</td><td>Inmueble catalogado — primera crujía se respeta; demolición del resto y construcción de 8 niveles nuevos + 1 sótano. Altura máx. 24 m.</td><td>Dani / Nayeli / Mauricio (Zoom)</td></tr>
 <tr><td>18-ago-2026</td><td>Servicio llave en mano: CRN gestiona DROs, trámites y gestión INAH.</td><td>Dani Izbitzky</td></tr>
 <tr><td>19-ago-2026</td><td>Anteproyecto recibido (PDF + DWG + JPG) — Ricardo García (equipo IZB). Nayeli acusó recibo 20-ago.</td><td>r.garcia@izb.mx → Nayeli</td></tr>
       </tbody>
     </table>
+    <button class="ver-mas no-print" id="acuerdos-mas" style="display:none"></button>
   </section>
 
   <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Álvaro Obregón 270 · Actualizado 20-ago-2026</p>
@@ -163,7 +260,7 @@
 
 <script>
 const items = [
-  { n:1, desc:"Nayeli revisa anteproyecto (PDF + DWG recibidos 19-ago) y define si revisión es in-house o recomienda a Rubén.", who:"Nayeli", due:"", urgent:true, done:false, desde: "2026-08-21" },
+    { n:1, desc:"Nayeli revisa anteproyecto (PDF + DWG recibidos 19-ago) y define si revisión es in-house o recomienda a Rubén.", who:"Nayeli", due:"", urgent:true, done:false, desde: "2026-08-21" },
   { n:2, desc:"Mauricio prepara propuesta de honorarios por etapas (llave en mano: trámites + DROs + gestión INAH). (cuando: Tras revisión Nayeli)", who:"Mauricio", due:"", urgent:false, done:false, desde: "2026-08-21" },
   { n:3, desc:"Obtener documento/sustento formal de INAH sobre condición de catalogación — qué elementos de la primera crujía deben respetarse. Dani tiene contacto 'Iván' en INAH.", who:"Dani / CRN", due:"", urgent:false, done:false, desde: "2026-08-21" },
   { n:4, desc:"ALERTA regulatoria: anteproyecto declara sótano como BODEGAS pero en realidad será espacios de servicio y wellness del hotel (spa, gimnasio, comedor de empleados, cámara frigorífica, lavandería). 11-SEP: la discrepancia ya quedó documentada explícitamente en la nueva versión de la propuesta de honorarios como algo a resolver antes de iniciar trámites — sigue sin decisión final.", who:"Mauricio", due:"", urgent:true, done:false, desde: "2026-08-21" },
@@ -175,14 +272,13 @@ const items = [
 const VERSION = "2026-09-11a";
 // Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
 const NEW_BADGE_N = 6;
-// (items 5-6 añadidos 03-sep-2026)
 
 const GITHUB_TOKEN = ["ghp","_CsbD3kcPO","myFTJR1I0HPnWHtw5gnqb1rzpop"].join("");
 const GITHUB_API   = "https://api.github.com/repos/mnunezlozada-web/admivo-status-pages/contents/alvaro-obregon-270/state.json";
 const GITHUB_HDRS  = { "Content-Type": "application/json", "Authorization": "token " + GITHUB_TOKEN, "Accept": "application/vnd.github.v3+json" };
 
 const DEFAULT_STATE = {};
-items.forEach(i => { DEFAULT_STATE[i.n] = i.done || false; });
+items.forEach(item => { DEFAULT_STATE[item.n] = item.done || false; });
 
 let state    = { ...DEFAULT_STATE };
 let obs      = {};
@@ -190,25 +286,22 @@ let newItems = [];
 let saving   = false;
 let saveTimer = null;
 let currentSha = null;
+let log = [];
 
-// "sucio" = hay cambios tuyos que todavia no llegan al servidor.
-// Mientras este en true, la recarga automatica NO pisa lo que acabas de marcar.
-// Sin esto, si la recarga de cada 30s caia justo entre tu clic y el guardado,
-// tu marca desaparecia sola. Error encontrado el 01-sep-2026.
+// "sucio" = hay cambios tuyos que todavia no llegan al servidor. Mientras este en true,
+// la recarga automatica NO pisa lo que acabas de marcar (error del 01-sep-2026).
 let sucio = false;
-function scheduleSave() { sucio = true; clearTimeout(saveTimer); saveTimer = setTimeout(saveState, 1200); }
+function scheduleSave() { sucio = true; clearTimeout(saveTimer); saveTimer = setTimeout(() => { saveTimer = null; saveState(); }, 1200); }
 
 function showStatus(msg, color) {
   const el = document.getElementById("sync-status");
-  el.textContent = msg; el.style.color = color || "#aaa";
+  el.textContent = msg; el.style.color = color || "#999";
 }
 
 async function loadState() {
   try {
     const res = await fetch(GITHUB_API, { headers: GITHUB_HDRS });
-    // Proyecto recien dado de alta: todavia no existe el archivo de estado.
-    // No es un error de conexion. Se arranca en blanco y se crea al primer cambio.
-    // Corregido el 01-sep-2026, cuando EDAs y Hanono decian "Sin conexion".
+    // Proyecto recien dado de alta: todavia no existe el archivo de estado (01-sep-2026).
     if (res.status === 404) {
       state = { ...DEFAULT_STATE }; obs = {}; newItems = []; currentSha = null;
       showStatus("Listo — todavia sin marcas", "#8a5010");
@@ -217,9 +310,7 @@ async function loadState() {
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
     currentSha = data.sha;
-    // decodeURIComponent(escape(...)) devuelve los acentos bien. Sin esto,
-    // lo que escribe el equipo se guarda corrompido (iluminaciA3n) y se agrava
-    // en cada guardado. Error encontrado el 26-ago-2026.
+    // decodeURIComponent(escape(...)) devuelve los acentos bien (26-ago-2026).
     const rec = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, "")))));
     if (rec._version !== VERSION) {
       state = { ...DEFAULT_STATE };
@@ -236,11 +327,7 @@ async function loadState() {
   } catch(e) { showStatus("Sin conexion", "#a33030"); }
 }
 
-let log = [];
-
-// ---- Quien esta editando -------------------------------------------------
-// Se pregunta UNA sola vez por navegador y se recuerda. No es cuenta ni
-// contrasena: es solo para que en el status se sepa quien movio que.
+// ---- Quien esta editando: se pregunta una vez por navegador y se recuerda ----
 function quien() {
   let n = null;
   try { n = localStorage.getItem("admivo_quien"); } catch (e) { n = null; }
@@ -255,7 +342,6 @@ function quien() {
   return r;
 }
 
-// Deja constancia de un cambio. Se conserva lo ultimo, no todo el historial.
 function anota(accion, n, detalle) {
   log.push({ q: quien(), a: accion, n: n, d: (detalle || "").slice(0, 120), t: new Date().toISOString().slice(0, 16) });
   if (log.length > 200) log = log.slice(-200);
@@ -267,14 +353,13 @@ async function saveState() {
   try {
     if (!currentSha) {
       const r = await fetch(GITHUB_API, { headers: GITHUB_HDRS });
-      const d = await r.json(); currentSha = d.sha;
+      if (r.ok) { const d = await r.json(); currentSha = d.sha; }
     }
     const payload = JSON.stringify({ ...state, _obs: obs, _new: newItems, _version: VERSION, _quien: quien(), _log: log });
     const content = btoa(unescape(encodeURIComponent(payload)));
-    const res = await fetch(GITHUB_API, {
-      method: "PUT", headers: GITHUB_HDRS,
-      body: JSON.stringify({ message: "Actualizar estado", content, sha: currentSha })
-    });
+    const body = { message: "Actualizar estado", content };
+    if (currentSha) body.sha = currentSha;
+    const res = await fetch(GITHUB_API, { method: "PUT", headers: GITHUB_HDRS, body: JSON.stringify(body) });
     if (!res.ok) throw new Error(res.status);
     const d2 = await res.json(); currentSha = d2.content.sha;
     sucio = false;
@@ -284,9 +369,245 @@ async function saveState() {
 }
 
 setInterval(async () => {
-  if (sucio || saving || saveTimer) return;   // no pisar cambios sin guardar
+  if (sucio || saving || saveTimer || document.querySelector(".obs-input:focus, #add-form.open")) return;
   await loadState(); render();
 }, 30000);
+
+// ---- Utilidades ----
+function escH(str) {
+  if (!str) return "";
+  return String(str).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+function autoResize(ta) { ta.style.height = "auto"; ta.style.height = ta.scrollHeight + "px"; }
+const MESES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+function fechaDe(s) { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ""); return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null; }
+function hoy() { const d = new Date(); d.setHours(0, 0, 0, 0); return d; }
+function corta(s) { const f = fechaDe(s); return f ? f.getDate() + "-" + MESES[f.getMonth()] : s; }
+function diasHasta(s) { const f = fechaDe(s); return f ? Math.round((f - hoy()) / 86400000) : null; }
+function vencido(i) { const d = diasHasta(i.due); return d !== null && d < 0; }
+function pronto(i) { const d = diasHasta(i.due); return d !== null && d >= 0 && d <= 7; }
+function edad(i) { const f = fechaDe(i.desde); return f ? Math.round((hoy() - f) / 86400000) : null; }
+// Sin "??": los iPhone con iOS anterior a 13.4 no lo entienden y la pagina entera no carga (24-sep-2026).
+function nulo(v, d) { return (v === null || v === undefined) ? d : v; }
+function personas(i) { return String(i.who || "").split("/").map(s => s.trim()).filter(Boolean); }
+function sinAcentos(s) { return String(s).normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+
+// El tramite de cada pendiente: el campo `tramite`, o la etiqueta entre corchetes con la
+// que empiezan muchos ("[DEMOLICION — INBA] ..."). Si no hay ninguna, va a "General".
+const ES_FECHA = /^\d{1,2}[-\s](ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)/i;
+function etiqueta(desc) { const m = /^\s*\[([^\]]+)\]\s*/.exec(desc || ""); return m ? m : null; }
+function bonito(t) {
+  t = t.trim();
+  if (t.length <= 6 && t === t.toUpperCase()) return t;
+  // "BAHIA SB" -> "Bahia SB", "HOSPITAL CONSTITUYENTES" -> "Hospital Constituyentes":
+  // las siglas cortas se quedan en mayusculas; los articulos van en minusculas.
+  const menores = ["de", "del", "la", "las", "el", "los", "y", "en", "a"];
+  return t.split(/\s+/).map((w, k) => {
+    const l = w.toLowerCase();
+    if (k > 0 && menores.includes(l)) return l;
+    if (w.length <= 4 && w === w.toUpperCase() && /[A-Z]/.test(w)) return w;
+    return l.charAt(0).toUpperCase() + l.slice(1);
+  }).join(" ");
+}
+function tramiteDe(i) {
+  if (i.tramite) return i.tramite;
+  const m = etiqueta(i.desc);
+  if (!m) return "General";
+  const partes = m[1].split(/\s+[—–-]\s+|\s*,\s*/).map(s => s.trim()).filter(Boolean);
+  for (let p of partes) {
+    if (ES_FECHA.test(p) || /^plaud/i.test(p)) continue;
+    p = p.replace(/\s+\d.*$/, "").replace(/\s+(punto|pt)\b.*$/i, "");
+    if (/^(minuta|junta)$/i.test(p)) return "Juntas y minutas";
+    if (p) return bonito(p);
+  }
+  return "General";
+}
+function textoDe(i) {
+  // Si ya se agrupa por tramite, la etiqueta entre corchetes sobra en el texto.
+  const m = etiqueta(i.desc);
+  return (vista === "tramite" && m) ? i.desc.slice(m[0].length) : i.desc;
+}
+
+// ---- Vista ----
+let vista = "tramite";          // decision de Mauricio (23-sep-2026): agrupar por tramite
+let persona = "Todos";
+const abiertos = new Set();
+const gruposAbiertos = new Set();
+let sinPlegar = false;   // al imprimir sale todo
+window.addEventListener("beforeprint", () => { sinPlegar = true; render(); });
+window.addEventListener("afterprint", () => { sinPlegar = false; render(); });
+
+function abiertosActuales() {
+  return items.filter(i => !state[i.n]);
+}
+
+function orden(a, b) {
+  return (vencido(b) - vencido(a)) || (pronto(b) - pronto(a)) || ((b.urgent ? 1 : 0) - (a.urgent ? 1 : 0))
+      || (nulo(diasHasta(a.due), 9999) - nulo(diasHasta(b.due), 9999))
+      || (nulo(edad(b), 0) - nulo(edad(a), 0)) || (a.n - b.n);
+}
+
+function alertas() {
+  const act = abiertosActuales();
+  const v = act.filter(vencido).sort(orden), p = act.filter(pronto).sort(orden);
+  let h = "";
+  const linea = i => `<div class="it" data-ir="${i.n}"><b>#${i.n}</b> ${escH(textoDe(i))}` +
+    `<div class="q">${escH(i.who)} · ${vencido(i) ? "vencio el " + corta(i.due) + " (hace " + (-diasHasta(i.due)) + " d)" : "vence el " + corta(i.due) + (diasHasta(i.due) === 0 ? " (hoy)" : " (en " + diasHasta(i.due) + " d)")}</div></div>`;
+  if (v.length) h += `<div class="alerta"><h3>${v.length === 1 ? "1 pendiente vencido" : v.length + " pendientes vencidos"}</h3>${v.map(linea).join("")}</div>`;
+  if (p.length) h += `<div class="alerta ambar"><h3>${p.length === 1 ? "1 vence en los proximos 7 dias" : p.length + " vencen en los proximos 7 dias"}</h3>${p.map(linea).join("")}</div>`;
+  const cont = document.getElementById("alertas");
+  cont.innerHTML = h;
+  cont.querySelectorAll("[data-ir]").forEach(el => el.onclick = () => {
+    const n = +el.dataset.ir; persona = "Todos"; abiertos.add(n); render();
+    const f = document.querySelector(`.p[data-n="${n}"]`); if (f) f.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+  // La tarjeta de "Proximo vencimiento" se escribia a mano y se quedaba vieja: se calcula.
+  document.querySelectorAll(".card").forEach(c => {
+    const l = c.querySelector(".label");
+    if (!l || !/vencimiento/i.test(sinAcentos(l.textContent))) return;
+    const prox = act.filter(i => fechaDe(i.due)).sort((a, b) => fechaDe(a.due) - fechaDe(b.due))[0];
+    const val = c.querySelector(".value"), sub = c.querySelector(".sub");
+    if (!prox) { if (val) val.textContent = "Sin fecha"; if (sub) sub.textContent = "ningun pendiente tiene fecha"; return; }
+    if (val) { val.textContent = corta(prox.due); val.style.color = vencido(prox) ? "#a33030" : ""; }
+    if (sub) sub.textContent = (vencido(prox) ? "VENCIDO · " : "") + "#" + prox.n + " " + textoDe(prox).slice(0, 60);
+  });
+}
+
+function barra() {
+  const act = abiertosActuales(), cuenta = {};
+  act.forEach(i => personas(i).forEach(p => cuenta[p] = (cuenta[p] || 0) + 1));
+  const gente = Object.keys(cuenta).sort((a, b) => cuenta[b] - cuenta[a]);
+  const chip = (k, v, texto, c, on) => `<button class="chip${on ? " on" : ""}" data-k="${k}" data-v="${escH(v)}">${escH(texto)}${c != null ? '<span class="c">' + c + "</span>" : ""}</button>`;
+  let h = '<div class="fila"><span class="lbl">Agrupar</span>' + chip("v", "tramite", "por tramite", null, vista === "tramite") + chip("v", "persona", "por persona", null, vista === "persona") + "</div>";
+  h += '<div class="fila gente"><span class="lbl">Ver</span>' + chip("p", "Todos", "Todos", act.length + newItems.filter(i => !i.done).length, persona === "Todos");
+  gente.forEach(g => h += chip("p", g, g, cuenta[g], persona === g));
+  h += "</div>";
+  const b = document.getElementById("barra"); b.innerHTML = h;
+  b.querySelectorAll(".chip").forEach(el => el.onclick = () => {
+    if (el.dataset.k === "p") persona = el.dataset.v; else vista = el.dataset.v;
+    render();
+  });
+}
+
+function filaHTML(i) {
+  const d = edad(i), otros = personas(i);
+  let meta = `<span>#${i.n}</span>`;
+  if (i.n >= NEW_BADGE_N) meta += '<span class="badge purple" style="font-size:9.5px;padding:0 5px">nuevo</span>';
+  if (vista === "persona") meta += `<span class="tr">${escH(tramiteDe(i))}</span>`;
+  meta += `<span class="who">${escH(i.who)}</span>`;
+  if (vencido(i)) meta += `<span class="venc">vencio ${corta(i.due)}</span>`;
+  else if (pronto(i)) meta += `<span class="pronto">vence ${corta(i.due)}</span>`;
+  else if (i.due) meta += `<span>vence ${escH(corta(i.due))}</span>`;
+  if (d !== null && d >= 0) meta += `<span class="${d >= 45 ? "muyviejo" : d >= 21 ? "viejo" : ""}">abierto ${d} d</span>`;
+  meta += `<span class="abrir">${abiertos.has(i.n) ? "cerrar detalle" : (obs[i.n] ? "ver detalle y observacion" : "detalle / observacion")}</span>`;
+  const marca = vencido(i) ? " es-venc" : (i.urgent || pronto(i)) ? " es-urg" : "";
+  return `<div class="p${abiertos.has(i.n) ? " abierto" : ""}${marca}" data-n="${i.n}">` +
+    `<input type="checkbox" data-n="${i.n}" title="Marcar como hecho">` +
+    `<div class="cuerpo"><div class="t">${i.urgent ? '<span class="urg">URGENTE</span>' : ""}${escH(textoDe(i))}</div>` +
+    `<div class="meta">${meta}</div>` +
+    (obs[i.n] && !abiertos.has(i.n) ? `<div class="obs-ver">Obs: ${escH(obs[i.n])}</div>` : "") +
+    `<div class="detalle">${i.nota ? `<div class="nota">${escH(i.nota)}</div>` : ""}` +
+    `<label>Observacion del equipo</label><textarea class="obs-input" data-obs="${i.n}" rows="1" placeholder="Escribe aqui (se guarda sola)">${escH(obs[i.n] || "")}</textarea></div>` +
+    `</div></div>`;
+}
+
+function filaNuevaHTML(i, k) {
+  let meta = `<span>N${k}</span><span class="badge purple" style="font-size:9.5px;padding:0 5px">agregado</span>`;
+  if (i.tramite) meta += `<span class="tr">${escH(i.tramite)}</span>`;
+  if (i.who && i.who !== "--") meta += `<span class="who">${escH(i.who)}</span>`;
+  if (fechaDe(i.due)) meta += `<span class="${vencido(i) ? "venc" : pronto(i) ? "pronto" : ""}">${vencido(i) ? "vencio" : "vence"} ${corta(i.due)}</span>`;
+  else if (i.due && i.due !== "TBD") meta += `<span>${escH(i.due)}</span>`;
+  meta += `<button class="btn-delete-item no-print" data-del-id="${i.id}" title="Eliminar">eliminar</button>`;
+  return `<div class="p abierto">` +
+    `<input type="checkbox" data-new-id="${i.id}" title="Marcar como hecho">` +
+    `<div class="cuerpo"><div class="t">${escH(i.desc)}</div><div class="meta">${meta}</div>` +
+    `<div class="detalle"><label>Observacion</label><textarea class="obs-input" data-new-obs="${i.id}" rows="1" placeholder="Escribe aqui (se guarda sola)">${escH(i.obs || "")}</textarea></div>` +
+    `</div></div>`;
+}
+
+function render() {
+  alertas(); barra();
+  const cont = document.getElementById("pending-tbody");
+  const act = abiertosActuales().filter(i => persona === "Todos" || personas(i).includes(persona)).sort(orden);
+  const grupos = {};
+  act.forEach(i => {
+    const claves = vista === "tramite" ? [tramiteDe(i)] : (persona === "Todos" ? [personas(i)[0] || "Sin asignar"] : [persona]);
+    claves.forEach(k => (grupos[k] = grupos[k] || []).push(i));
+  });
+  const peso = g => grupos[g].filter(i => vencido(i) || pronto(i) || i.urgent).length;
+  const nombres = Object.keys(grupos).sort((a, b) => (a === "General") - (b === "General") || peso(b) - peso(a) || grupos[b].length - grupos[a].length || a.localeCompare(b));
+  // Grupos largos (mas de 5) se pliegan: a la vista quedan los vencidos, los que vencen en
+  // 7 dias y los urgentes (minimo 3); el resto se abre con un boton. Viendo a una sola
+  // persona no se pliega nada.
+  const cabeza = (g, lista) => {
+    const u = lista.filter(i => vencido(i) || pronto(i) || i.urgent).length;
+    return `<h3>${escH(g)}<span class="cta">${lista.length} ${lista.length === 1 ? "pendiente" : "pendientes"}${u ? ' · <span class="u">' + u + (u === 1 ? " urgente" : " urgentes") + "</span>" : ""}</span></h3>`;
+  };
+  let h = nombres.map(g => {
+    const lista = grupos[g];
+    let vis = lista, ocultos = 0;
+    if (persona === "Todos" && !sinPlegar && lista.length > 5 && !gruposAbiertos.has(g)) {
+      const clave = new Set(lista.filter(i => vencido(i) || pronto(i) || i.urgent || abiertos.has(i.n)).map(i => i.n));
+      for (const i of lista) { if (clave.size >= 3) break; clave.add(i.n); }
+      vis = lista.filter(i => clave.has(i.n)); ocultos = lista.length - vis.length;
+    }
+    const boton = ocultos ? `<button class="mas-grupo no-print" data-g="${escH(g)}">Ver los otros ${ocultos} de ${escH(g)}</button>`
+      : (gruposAbiertos.has(g) ? `<button class="mas-grupo no-print" data-g="${escH(g)}">Ver menos</button>` : "");
+    return `<div class="grupo">${cabeza(g, lista)}${vis.map(filaHTML).join("")}${boton}</div>`;
+  }).join("");
+  const nuevos = newItems.filter(i => !i.done && (persona === "Todos" || String(i.who || "").includes(persona)));
+  if (nuevos.length) h += `<div class="grupo nuevos"><h3>Agregados por el equipo<span class="cta">${nuevos.length}</span></h3>${nuevos.map((i, k) => filaNuevaHTML(i, k + 1)).join("")}</div>`;
+  if (!h) h = '<div class="grupo"><div class="vacio">No hay pendientes abiertos con este filtro.</div></div>';
+  cont.innerHTML = h;
+
+  // Tramites que ya existen, como sugerencia al agregar
+  const dl = document.getElementById("lista-tramites");
+  if (dl) dl.innerHTML = [...new Set(items.map(tramiteDe))].filter(t => t !== "General").map(t => `<option value="${escH(t)}">`).join("");
+
+  cont.querySelectorAll(".mas-grupo[data-g]").forEach(b => b.addEventListener("click", () => {
+    const g = b.dataset.g; gruposAbiertos.has(g) ? gruposAbiertos.delete(g) : gruposAbiertos.add(g); render();
+  }));
+  cont.querySelectorAll(".p[data-n] .t, .p[data-n] .abrir").forEach(el => el.addEventListener("click", () => {
+    const n = +el.closest(".p").dataset.n;
+    abiertos.has(n) ? abiertos.delete(n) : abiertos.add(n); render();
+  }));
+  cont.querySelectorAll("input[type=checkbox][data-n]").forEach(cb => {
+    cb.addEventListener("change", async () => {
+      const _n = parseInt(cb.dataset.n);
+      const _it = items.find(i => i.n === _n);
+      anota("cerro", _n, _it ? _it.desc : "");
+      state[_n] = true; render(); updateCounters(); await saveState();
+    });
+  });
+  cont.querySelectorAll("input[type=checkbox][data-new-id]").forEach(cb => {
+    cb.addEventListener("change", async () => {
+      const item = newItems.find(i => i.id === cb.dataset.newId);
+      if (item) { anota("cerro", item.id, item.desc); item.done = true; } render(); updateCounters(); await saveState();
+    });
+  });
+  cont.querySelectorAll("textarea.obs-input[data-obs]").forEach(ta => {
+    autoResize(ta);
+    ta.addEventListener("input", () => { autoResize(ta); const _n2 = parseInt(ta.dataset.obs);
+      obs[_n2] = ta.value; anota("observo", _n2, ta.value);
+      showStatus("Por guardar...", "#8a5010"); scheduleSave(); });
+  });
+  cont.querySelectorAll("textarea.obs-input[data-new-obs]").forEach(ta => {
+    autoResize(ta);
+    ta.addEventListener("input", () => {
+      autoResize(ta);
+      const item = newItems.find(i => i.id === ta.dataset.newObs);
+      if (item) { item.obs = ta.value; anota("observo", item.id, ta.value); } showStatus("Por guardar...", "#8a5010"); scheduleSave();
+    });
+  });
+  cont.querySelectorAll(".btn-delete-item[data-del-id]").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      if (!confirm("Eliminar este pendiente?")) return;
+      newItems = newItems.filter(i => i.id !== btn.dataset.delId);
+      render(); updateCounters(); await saveState();
+    });
+  });
+  updateCounters();
+}
 
 function updateCounters() {
   const doneOrig = items.filter(i => state[i.n]).length;
@@ -299,98 +620,77 @@ function updateCounters() {
   if (p) p.textContent = (total - done);
 }
 
-function autoResize(ta) { ta.style.height = "auto"; ta.style.height = ta.scrollHeight + "px"; }
-
-function escH(str) {
-  if (!str) return "";
-  return String(str).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+// Acuerdos: los 3 mas recientes a la vista, el resto plegado.
+function acuerdos() {
+  const tb = document.querySelector("#tabla-acuerdos tbody");
+  if (!tb) return;
+  const filas = [...tb.querySelectorAll("tr")].filter(tr => tr.querySelector("td"));
+  const f = tr => { const t = (tr.querySelector("td") || {}).textContent || ""; const m = /(\d{4})-(\d{2})-(\d{2})/.exec(t); return m ? m[0] : ""; };
+  filas.sort((a, b) => f(b).localeCompare(f(a))).forEach(tr => tb.appendChild(tr));
+  const btn = document.getElementById("acuerdos-mas");
+  if (filas.length <= 3) return;
+  let todos = false;
+  const aplica = () => {
+    filas.forEach((tr, k) => tr.classList.toggle("oculto", !(todos || k < 3)));
+    btn.textContent = todos ? "Ver solo los 3 mas recientes" : "Ver los otros " + (filas.length - 3) + " acuerdos";
+  };
+  btn.style.display = ""; btn.onclick = () => { todos = !todos; aplica(); }; aplica();
 }
 
-
-// Cuanto lleva abierto un pendiente. La fecha `desde` es un piso honesto: no prueba
-// que nacio ese dia, si que ya existia entonces. Anadido el 14-sep-2026 porque habia
-// pendientes de meses que nadie volvia a mirar (caso Lafontaine item 3).
-function edadHTML(item) {
-  if (!item.desde) return "";
-  const d = Math.floor((Date.now() - new Date(item.desde + "T12:00:00")) / 86400000);
-  if (isNaN(d) || d < 0) return "";
-  const col = d >= 45 ? "#b02a1e" : (d >= 21 ? "#8a5010" : "#999");
-  return `<span style="display:block;margin-top:3px;font-size:10px;color:${col}">abierto ${d} d</span>`;
+// Tramites (23-sep-2026, a pedido de Mauricio: "se aprecia muy largo"). La tabla no cambia
+// en el HTML; aqui se resume: el color de la etiqueta de estado dice si esta resuelto
+// (verde), en proceso (ambar o azul), con problema (rojo) o sin iniciar (gris). Si hay 3 o
+// mas resueltos se pliegan, y cada fila que queda dice cuantas instancias del mismo
+// tramite ya estan resueltas.
+function tramites() {
+  const tabla = document.getElementById("tabla-tramites");
+  if (!tabla) return;
+  const filas = [...tabla.querySelectorAll("tbody tr")].filter(tr => tr.querySelectorAll("td").length > 1);
+  const cuenta = { rojo: 0, ambar: 0, verde: 0, gris: 0 };
+  const nombre = tr => sinAcentos((tr.querySelector("td") || {}).textContent || "").trim().toLowerCase();
+  filas.forEach(tr => {
+    const b = tr.querySelector(".badge");
+    const c = !b ? "" : b.classList.contains("green") ? "verde" : b.classList.contains("red") ? "rojo"
+      : b.classList.contains("gray") ? "gris" : "ambar";
+    tr.dataset.est = c;
+    if (c) { cuenta[c]++; tr.classList.add("est-" + c); }
+    // El detalle largo se recorta a dos renglones; se abre al tocarlo.
+    const ult = tr.querySelector("td:last-child");
+    if (ult && ult.textContent.length > 90 && !ult.querySelector(".badge")) {
+      ult.innerHTML = `<div class="recorta" title="Tocar para ver completo">${ult.innerHTML}</div>`;
+      ult.firstChild.onclick = e => e.currentTarget.classList.toggle("suelto");
+    }
+  });
+  const res = document.getElementById("tramites-resumen");
+  const partes = [];
+  if (cuenta.rojo) partes.push(`<span><span class="pt rojo"></span><b>${cuenta.rojo}</b> con problema</span>`);
+  if (cuenta.ambar) partes.push(`<span><span class="pt ambar"></span><b>${cuenta.ambar}</b> en proceso</span>`);
+  if (cuenta.gris) partes.push(`<span><span class="pt gris"></span><b>${cuenta.gris}</b> sin iniciar</span>`);
+  if (cuenta.verde) partes.push(`<span><span class="pt verde"></span><b>${cuenta.verde}</b> ${cuenta.verde === 1 ? "resuelto" : "resueltos"}</span>`);
+  if (res && partes.length) res.innerHTML = partes.join("");
+  if (cuenta.verde < 3) return;
+  filas.forEach(tr => { if (tr.dataset.est === "verde") tr.classList.add("resuelto"); });
+  filas.filter(tr => tr.dataset.est !== "verde").forEach(tr => {
+    const n = filas.filter(o => o.dataset.est === "verde" && nombre(o) === nombre(tr)).length;
+    const celda = tr.querySelectorAll("td")[1] || tr.querySelector("td");
+    if (n) celda.insertAdjacentHTML("beforeend", `<span class="mas-res">+${n} ${n === 1 ? "instancia resuelta" : "instancias resueltas"}</span>`);
+  });
+  const btn = document.getElementById("tramites-mas");
+  const aplica = () => {
+    const todos = tabla.classList.contains("todos");
+    btn.textContent = todos ? "Ocultar los resueltos" : `Ver los ${cuenta.verde} resueltos`;
+  };
+  btn.style.display = ""; btn.onclick = () => { tabla.classList.toggle("todos"); aplica(); }; aplica();
 }
 
-function render() {
-  const tbody = document.getElementById("pending-tbody");
-  tbody.innerHTML = "";
-  // El numero visible de cada pendiente es su numero real (item.n), no un contador.
-  // Asi, lo que Mauricio ve en la tabla es lo mismo que se debe cerrar por numero.
-  // Los pendientes que anade el equipo desde la pagina no tienen item.n: se etiquetan N1, N2...
-  let nuevoIdx = 1;
-
-  items.filter(item => !state[item.n]).forEach(item => {
-    const tr = document.createElement("tr");
-    if (item.n >= NEW_BADGE_N) tr.classList.add("highlight-row");
-    tr.innerHTML =
-      `<td class="check-col no-print"><input type="checkbox" data-n="${item.n}" title="Marcar como hecho"></td>` +
-      `<td style="color:#999;font-size:12px"><b>${item.n}</b>${item.n >= NEW_BADGE_N ? ' <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">nuevo</span>' : ''}</td>` +
-      `<td><span class="desc">${escH(item.desc)}</span></td>` +
-      `<td style="color:#666">${escH(item.who)}</td>` +
-      `<td><span class="badge ${item.urgent ? 'red' : 'gray'}">${escH(item.due) || "—"}</span>${edadHTML(item)}</td>` +
-      `<td><textarea class="obs-input" data-obs="${item.n}" rows="1" placeholder="--">${escH(obs[item.n] || "")}</textarea></td>` +
-      `<td class="no-print"></td>`;
-    tbody.appendChild(tr);
+// Acuerdos: el texto largo se recorta a dos renglones y se abre al tocarlo.
+function recortarAcuerdos() {
+  document.querySelectorAll("#tabla-acuerdos tbody tr").forEach(tr => {
+    const td = tr.querySelectorAll("td")[1];
+    if (!td || td.textContent.length < 140) return;
+    td.innerHTML = `<div class="recorta" title="Tocar para ver completo">${td.innerHTML}</div>`;
+    td.firstChild.onclick = e => e.currentTarget.classList.toggle("suelto");
   });
-
-  newItems.filter(item => !item.done).forEach(item => {
-    const tr = document.createElement("tr");
-    tr.classList.add("new-row");
-    tr.innerHTML =
-      `<td class="check-col no-print"><input type="checkbox" data-new-id="${item.id}" title="Marcar como hecho"></td>` +
-      `<td style="color:#999;font-size:12px"><b>N${nuevoIdx++}</b> <span class="badge purple" style="font-size:9px;padding:1px 5px;margin-left:2px">nuevo</span></td>` +
-      `<td><span class="desc">${escH(item.desc)}</span></td>` +
-      `<td style="color:#666">${escH(item.who || "--")}</td>` +
-      `<td><span class="badge gray">${escH(item.due || "TBD")}</span></td>` +
-      `<td><textarea class="obs-input" data-new-obs="${item.id}" rows="1" placeholder="--">${escH(item.obs || "")}</textarea></td>` +
-      `<td class="no-print" style="text-align:center"><button class="btn-delete-item" data-del-id="${item.id}" title="Eliminar">x</button></td>`;
-    tbody.appendChild(tr);
-  });
-
-  tbody.querySelectorAll("input[type=checkbox][data-n]").forEach(cb => {
-    cb.addEventListener("change", async () => {
-      const _n = parseInt(cb.dataset.n);
-      const _it = items.find(i => i.n === _n);
-      anota("cerro", _n, _it ? _it.desc : "");
-      state[_n] = true; render(); updateCounters(); await saveState();
-    });
-  });
-  tbody.querySelectorAll("input[type=checkbox][data-new-id]").forEach(cb => {
-    cb.addEventListener("change", async () => {
-      const item = newItems.find(i => i.id === cb.dataset.newId);
-      if (item) { anota("cerro", item.id, item.desc); item.done = true; } render(); updateCounters(); await saveState();
-    });
-  });
-  tbody.querySelectorAll("textarea.obs-input[data-obs]").forEach(ta => {
-    autoResize(ta);
-    ta.addEventListener("input", () => { autoResize(ta); const _n2 = parseInt(ta.dataset.obs);
-      obs[_n2] = ta.value; anota("observo", _n2, ta.value);
-      showStatus("Por guardar...", "#8a5010"); scheduleSave(); });
-  });
-  tbody.querySelectorAll("textarea.obs-input[data-new-obs]").forEach(ta => {
-    autoResize(ta);
-    ta.addEventListener("input", () => {
-      autoResize(ta);
-      const item = newItems.find(i => i.id === ta.dataset.newObs);
-      if (item) { item.obs = ta.value; anota("observo", item.id, ta.value); } showStatus("Por guardar...", "#8a5010"); scheduleSave();
-    });
-  });
-  tbody.querySelectorAll(".btn-delete-item[data-del-id]").forEach(btn => {
-    btn.addEventListener("click", async () => {
-      if (!confirm("Eliminar este pendiente?")) return;
-      newItems = newItems.filter(i => i.id !== btn.dataset.delId);
-      render(); updateCounters(); await saveState();
-    });
-  });
-
-  updateCounters();
 }
 
 function toggleAddForm() {
@@ -403,31 +703,25 @@ function toggleAddForm() {
 }
 
 function clearAddForm() {
-  document.getElementById("new-desc").value = "";
-  document.getElementById("new-who").value  = "";
-  document.getElementById("new-due").value  = "";
+  ["new-desc", "new-who", "new-due", "new-tramite"].forEach(id => { const el = document.getElementById(id); if (el) el.value = ""; });
 }
 
 async function addNewItem() {
   const desc = document.getElementById("new-desc").value.trim();
   const who  = document.getElementById("new-who").value.trim();
   const due  = document.getElementById("new-due").value.trim();
+  const tramite = document.getElementById("new-tramite").value.trim();
   if (!desc) { document.getElementById("new-desc").focus(); return; }
-  newItems.push({ id: "n_" + Date.now(), desc, who: who || "--", due: due || "TBD", done: false, obs: "" });
+  newItems.push({ id: "n_" + Date.now(), desc, who: who || "--", due: due || "", tramite, done: false, obs: "" });
+  anota("agrego", "", desc);
   clearAddForm(); toggleAddForm(); render(); updateCounters(); await saveState();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   const ta = document.getElementById("new-desc");
   if (ta) ta.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); addNewItem(); } });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
   const eti = document.getElementById("quien-soy");
-  try {
-    const n = localStorage.getItem("admivo_quien");
-    if (eti && n) eti.textContent = n;
-  } catch (e) {}
+  try { const n = localStorage.getItem("admivo_quien"); if (eti && n) eti.textContent = n; } catch (e) {}
   const link = document.getElementById("cambiar-quien");
   if (link) link.addEventListener("click", (ev) => {
     ev.preventDefault();
@@ -437,9 +731,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-// Aviso de revision atrasada. La fecha vive en el repositorio y es lectura publica,
-// asi que cualquiera que abra la pagina ve si el status esta al dia. 15-sep-2026.
+// Aviso de revision atrasada (15-sep-2026). La fecha vive en el repositorio.
 async function avisoRevision() {
   try {
     const u = "https://raw.githubusercontent.com/mnunezlozada-web/admivo-status-pages/main/ultima-revision.json";
@@ -447,27 +739,21 @@ async function avisoRevision() {
     if (!res.ok) return;
     const f = new Date((await res.json()).ultima_revision);
     const dias = Math.floor((Date.now() - f) / 86400000);
-    const cont = document.querySelector(".container");
-    if (!cont) return;
-    const d = document.createElement("div");
-    const txt = dias <= 0 ? "Revisado hoy"
-              : dias === 1 ? "Ultima revision: ayer"
-              : "Ultima revision: hace " + dias + " dias";
-    const grave = dias >= 2, ojo = dias === 1;
-    d.style.cssText = "margin:0 0 14px;padding:8px 12px;border-radius:6px;font-size:12.5px;" +
-      (grave ? "background:#fdecea;color:#8c2019;border:1px solid #f3c2bd"
-             : ojo ? "background:#fff6e5;color:#8a5010;border:1px solid #f0d9a8"
-                   : "background:#eef6ec;color:#3a6e10;border:1px solid #cfe6c6");
-    d.textContent = txt + (grave ? " — el estatus puede no estar al dia." : "");
-    cont.insertBefore(d, cont.firstChild);
+    const el = document.getElementById("last-update");
+    if (!el) return;
+    const txt = dias <= 0 ? "revisado hoy" : dias === 1 ? "ultima revision: ayer" : "ultima revision: hace " + dias + " dias";
+    const s = document.createElement("div");
+    s.style.cssText = "margin-top:3px;color:" + (dias >= 2 ? "#a33030" : dias === 1 ? "#8a5010" : "#3a6e10");
+    s.textContent = txt + (dias >= 2 ? " — puede no estar al dia" : "");
+    el.after(s);
   } catch (e) {}
 }
 
-async function init() { avisoRevision(); await loadState(); render(); }
+async function init() { avisoRevision(); tramites(); acuerdos(); recortarAcuerdos(); render(); await loadState(); render(); }
 init();
 
 function copyLink() {
-  if (navigator.clipboard) navigator.clipboard.writeText(window.location.href).then(() => alert("Liga copiada.")).catch(() => prompt("Copia esta liga:", window.location.href));
+  if (navigator.clipboard) navigator.clipboard.writeText(window.location.href).then(() => showStatus("Liga copiada", "#3a6e10")).catch(() => prompt("Copia esta liga:", window.location.href));
   else prompt("Copia esta liga:", window.location.href);
 }
 </script>
