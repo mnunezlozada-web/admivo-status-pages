@@ -156,6 +156,14 @@
     .recorta { display: block; -webkit-line-clamp: unset; }
   }
 </style>
+<script>
+// Si el navegador no puede correr la pagina, que lo diga en vez de quedarse en blanco (24-sep-2026).
+window.addEventListener("error", function (e) {
+  var d = document.getElementById("pending-tbody");
+  if (d && !d.innerHTML) d.innerHTML = '<div class="grupo"><div class="vacio">Esta pagina no pudo cargar en este navegador (' +
+    String(e.message || "error").replace(/</g, "&lt;") + '). Mandale una captura de esto a Mauricio.</div></div>';
+});
+</script>
 </head>
 <body>
 <div class="container">
@@ -476,6 +484,8 @@ function diasHasta(s) { const f = fechaDe(s); return f ? Math.round((f - hoy()) 
 function vencido(i) { const d = diasHasta(i.due); return d !== null && d < 0; }
 function pronto(i) { const d = diasHasta(i.due); return d !== null && d >= 0 && d <= 7; }
 function edad(i) { const f = fechaDe(i.desde); return f ? Math.round((hoy() - f) / 86400000) : null; }
+// Sin "??": los iPhone con iOS anterior a 13.4 no lo entienden y la pagina entera no carga (24-sep-2026).
+function nulo(v, d) { return (v === null || v === undefined) ? d : v; }
 function personas(i) { return String(i.who || "").split("/").map(s => s.trim()).filter(Boolean); }
 function sinAcentos(s) { return String(s).normalize("NFD").replace(/[̀-ͯ]/g, ""); }
 
@@ -522,8 +532,8 @@ function abiertosActuales() {
 
 function orden(a, b) {
   return (vencido(b) - vencido(a)) || (pronto(b) - pronto(a)) || ((b.urgent ? 1 : 0) - (a.urgent ? 1 : 0))
-      || ((diasHasta(a.due) ?? 9999) - (diasHasta(b.due) ?? 9999))
-      || ((edad(b) ?? 0) - (edad(a) ?? 0)) || (a.n - b.n);
+      || (nulo(diasHasta(a.due), 9999) - nulo(diasHasta(b.due), 9999))
+      || (nulo(edad(b), 0) - nulo(edad(a), 0)) || (a.n - b.n);
 }
 
 function alertas() {
