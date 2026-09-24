@@ -182,7 +182,7 @@ window.addEventListener("error", function (e) {
       <p>Daniel Izbitzky · Hotel boutique (inmueble catalogado) · Alcaldía Cuauhtémoc</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 11-sep-2026</div>
+      <div id="last-update">Actualizado: 24-sep-2026</div>
       <div style="margin-top:3px;">Editando como <b id="quien-soy">—</b> <a href="#" id="cambiar-quien" class="no-print">cambiar</a></div>
       <div id="quien-form" class="no-print"><input id="quien-input" type="text" maxlength="40" placeholder="Escribe tu nombre" autocomplete="name"><button class="btn" id="quien-ok" type="button">Guardar</button></div>
       <div id="sync-status" style="margin-top:3px;">Conectando...</div>
@@ -267,16 +267,17 @@ window.addEventListener("error", function (e) {
 
 <script>
 const items = [
-      { n:1, desc:"Nayeli revisa anteproyecto (PDF + DWG recibidos 19-ago) y define si revisión es in-house o recomienda a Rubén.", who:"Nayeli", due:"", urgent:true, done:false, desde: "2026-08-21" },
-  { n:2, desc:"Mauricio prepara propuesta de honorarios por etapas (llave en mano: trámites + DROs + gestión INAH). (cuando: Tras revisión Nayeli)", who:"Mauricio", due:"", urgent:false, done:false, desde: "2026-08-21" },
+        { n:1, desc:"Nayeli revisa anteproyecto (PDF + DWG recibidos 19-ago) y define si revision es in-house o recomienda a Ruben. Cerrado: revision in-house hecha; catalogo y cronograma de tramites entregados (02-sep).", who:"Nayeli", due:"", urgent:true, done:true, desde: "2026-08-21" },
+  { n:2, desc:"Mauricio prepara propuesta de honorarios por etapas (llave en mano: tramites + DROs + gestion INAH). Cerrado 14-sep: propuesta preparada y enviada a Dani (ver #6).", who:"Mauricio", due:"", urgent:false, done:true, desde: "2026-08-21" },
   { n:3, desc:"Obtener documento/sustento formal de INAH sobre condición de catalogación — qué elementos de la primera crujía deben respetarse. Dani tiene contacto 'Iván' en INAH.", who:"Dani / CRN", due:"", urgent:false, done:false, desde: "2026-08-21" },
   { n:4, desc:"ALERTA regulatoria: anteproyecto declara sótano como BODEGAS pero en realidad será espacios de servicio y wellness del hotel (spa, gimnasio, comedor de empleados, cámara frigorífica, lavandería). 11-SEP: la discrepancia ya quedó documentada explícitamente en la nueva versión de la propuesta de honorarios como algo a resolver antes de iniciar trámites — sigue sin decisión final.", who:"Mauricio", due:"", urgent:true, done:false, desde: "2026-08-21" },
   { n:5, desc:"Obtener cuadro de áreas por nivel del anteproyecto — necesario para confirmar si rebasa el umbral de 5,000 m² del Art. 86 (Dictamen de Impacto Urbano). (cuando: Antes de propuesta final)", who:"Dani / Equipo IZB", due:"", urgent:false, done:true, desde: "2026-09-03" },
-  { n:6, desc:"[02-SEP -> 11-SEP] Cerrar y enviar a Dani la propuesta de honorarios llave en mano. 11-SEP: nueva versión de Nayeli, ya dirigida a Dani por nombre, con montos en blanco (antes tenía cifras fijas de $17,015,000 MXN + IVA), CAyNO/CUZUS marcados como ya obtenidos, sin el duplicado de seguridad estructural que Mauricio señaló, alcance de INBAL reducido y firmas de corresponsables excluidas del monto. Faltan los montos y resolver el punto del sótano (item 4) antes de enviarla. Van 11 días desde el compromiso del 02-sep.", who:"Mauricio / Nayeli", due:"", urgent:true, done:false, desde: "2026-09-02" }
+  { n:6, desc:"[02-SEP -> 14-SEP] Cerrar y enviar a Dani la propuesta de honorarios llave en mano. Cerrado 14-sep: enviada por WhatsApp, $2,300,000.00 MXN + IVA; Mauricio confirmo el monto el 15-sep (el borrador de $17,015,000 estaba mal calculado). Version final en 00 entradas.", who:"Mauricio / Nayeli", due:"", urgent:true, done:true, desde: "2026-09-02" },
+  { n: 7, desc: "Seguimiento con Dani a la propuesta de honorarios del 14-sep: hubo llamada el viernes 18-sep y Dani quedo de marcar el martes 22-sep para platicarla (Mauricio a Lorena Romero, 23-sep). No hay registro de esa llamada.", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-09-23" }
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
-const VERSION = "2026-09-11a";
+const VERSION = "2026-09-24a";
 // Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
 const NEW_BADGE_N = 6;
 
