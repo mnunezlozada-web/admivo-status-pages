@@ -182,7 +182,7 @@ window.addEventListener("error", function (e) {
       <p>Via John / Erick Urbania &nbsp;·&nbsp; Chihuahua 147, Blvd. Puerto Aereo, Reforma 935</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 24-sep-2026</div>
+      <div id="last-update">Actualizado: 25-sep-2026</div>
       <div style="margin-top:3px;">Editando como <b id="quien-soy">—</b> <a href="#" id="cambiar-quien" class="no-print">cambiar</a></div>
       <div id="quien-form" class="no-print"><input id="quien-input" type="text" maxlength="40" placeholder="Escribe tu nombre" autocomplete="name"><button class="btn" id="quien-ok" type="button">Guardar</button></div>
       <div id="sync-status" style="margin-top:3px;">Conectando...</div>
@@ -196,7 +196,7 @@ window.addEventListener("error", function (e) {
   <div class="cards">
     <div class="card"><div class="label">Fase</div><div class="value sm">3 EDAs en curso</div></div>
     <div class="card"><div class="label">Frente</div><div class="value sm">Chihuahua 147</div></div>
-    <div class="card"><div class="label">Bloqueo</div><div class="value sm">Anticipo por definir</div></div>
+    <div class="card"><div class="label">Bloqueo</div><div class="value sm">Agua residual y residuos (DGEIRA)</div><div class="sub">anticipo de Chihuahua cerrado 22-sep</div></div>
     <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">—</div><div class="sub">por cerrar</div></div>
   </div>
 
@@ -206,7 +206,7 @@ window.addEventListener("error", function (e) {
     <table class="tabla-bloques" id="tabla-tramites">
       <thead><tr><th>Tramite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
       <tbody>
-        <tr><td>EDA Chihuahua 147</td><td>DGEIRA</td><td>En revision</td><td>Documentacion entregada por John el 12-ago. Erick confirma 24-ago que ya estan trabajando. Info complementaria el 27-ago.</td></tr>
+        <tr><td>EDA Chihuahua 147</td><td>DGEIRA</td><td>En revision</td><td>Documentacion entregada por John el 12-ago (archivada y leida el 25-sep). 11-sep: DGEIRA pide comprobantes de agua tratada, manifiestos de residuos, dictamen de arbolado y derechos por $26,762. 22-sep: se cotizan los documentos de agua residual y manejo de residuos (#2).</td></tr>
 <tr><td>EDA Chihuahua 147</td><td>DGIVA</td><td>Via paralela</td><td>Erick 24-ago: son dos temas, DGEIRA y DGIVA. Falta definir el alcance de cada uno.</td></tr>
 <tr><td>EDA Boulevard Puerto Aereo</td><td>Por definir</td><td>Esperando al cliente</td><td>Erick 13-ago: se les pidio definir el apoyo requerido. Sin respuesta desde entonces.</td></tr>
 <tr><td>EDA Reforma 935</td><td>DGIVA</td><td>Resolucion entregada</td><td>John 13-ago: ya entregaron la resolucion. Confirmar si queda seguimiento.</td></tr>
@@ -274,7 +274,7 @@ const items = [
   { n: 2, desc: "[CHIHUAHUA] Definir el alcance de cada via: que le toca a DGEIRA y que a DGIVA. 11-SEP: alcance DGEIRA ya claro - subsanar comprobantes de agua tratada, manifiestos de residuos, dictamen de arbolado y pagar derechos $26,762.00 MXN por transferencia. John dijo que lo solicita. Falta el alcance de DGIVA. 22-sep: estan cotizando los documentos de uso de agua residual y manejo de residuos, la parte mas compleja (Erick).", who: "Erick Sanchez / Mauricio", due: "", urgent: false, done: false, desde: "2026-09-01" },
   { n: 3, desc: "[PUERTO AEREO] Obtener del cliente la definicion del apoyo requerido. Sin respuesta desde el 13-ago. 22-sep: Erick dice que le dijeron que es muy complejo, sin perspectiva por ahora.", who: "John", due: "", urgent: false, done: false, desde: "2026-09-01" },
   { n: 4, desc: "[REFORMA 935] Confirmar si con la resolucion entregada queda cerrado o falta seguimiento.", who: "Erick Sanchez / Mauricio", due: "", urgent: false, done: false, desde: "2026-09-01" },
-  { n: 5, desc: "Bajar y archivar la documentacion de Chihuahua que John compartio por Drive. 24-sep: las carpetas del 09 y 14-sep (DCA de demolicion, consulta de aplicabilidad, planos y memoria) ya estan copiadas y leidas en 00 entradas. La del 12-ago (\"Bosque de Chihuahua #147\", de AX Arquitectos) ya tiene acceso directo en la cuenta relay (24-sep); falta que la Mac la copie y leerla.", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-09-01" }
+  { n: 5, desc: "Bajar y archivar la documentacion de Chihuahua que John compartio por Drive. 24-sep: las carpetas del 09 y 14-sep (DCA de demolicion, consulta de aplicabilidad, planos y memoria) ya estan copiadas y leidas en 00 entradas. La del 12-ago (\"Bosque de Chihuahua #147\", de AX Arquitectos) ya tiene acceso directo en la cuenta relay (24-sep). Cerrado 25-sep: la Mac la copio el 24-sep; archivada completa (198 archivos) y leida.", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-09-01" }
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
