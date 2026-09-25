@@ -182,7 +182,7 @@ window.addEventListener("error", function (e) {
       <p>Pendientes de John &nbsp;·&nbsp; Alcaldia Miguel Hidalgo y otras</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 23-sep-2026</div>
+      <div id="last-update">Actualizado: 25-sep-2026</div>
       <div style="margin-top:3px;">Editando como <b id="quien-soy">—</b> <a href="#" id="cambiar-quien" class="no-print">cambiar</a></div>
       <div id="quien-form" class="no-print"><input id="quien-input" type="text" maxlength="40" placeholder="Escribe tu nombre" autocomplete="name"><button class="btn" id="quien-ok" type="button">Guardar</button></div>
       <div id="sync-status" style="margin-top:3px;">Conectando...</div>
@@ -263,7 +263,7 @@ window.addEventListener("error", function (e) {
     <button class="ver-mas no-print" id="acuerdos-mas" style="display:none"></button>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Pendientes de John · Actualizado 23-sep-2026</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Pendientes de John · Actualizado 25-sep-2026</p>
 </div>
 
 <script>
@@ -280,11 +280,13 @@ const items = [
   {n:10, desc:"[Edison 106] Agendar reuniones con los 3 vecinos opositores de Edison y documentar acuerdos minimos de no oposicion (minutas firmadas). Cerrado 23-sep: Mauricio decidio el 26-ago que por ahora no habra reuniones con vecinos, se espera la publicitacion (Edison 106, item 9).", who:"John", due:"", urgent:false, done:true, desde: "2026-06-18" },
   {n:11, desc:"[CUAUHTEMOC — multa] Coordinar con Mauricio los datos del proyecto en Cuauhtemoc que tiene trabajos avanzados sin permiso y riesgo de multa. Pasos: (1) recibir datos del proyecto de Mauricio, (2) cotizar con Erick la gestion y aceleracion de permisos para regularizar. Proyecto aun sin registrar formalmente.", who:"John / Mauricio", due:"", urgent:true, done:false, desde: "2026-06-18" },
   {n:12, desc:"[C1000] Cotizar presupuesto completo al cliente Octavio Penaloza para Art. 62 (bahia de ascenso) + Licencia de Banqueta. Estimado: $120,000-150,000 MXN (gestoria + costos).", who:"John", due:"", urgent:false, done:false, desde: "2026-09-01" },
-  {n:13, desc:"[C1000] Verificar si aplica Art. 62 Bis (aviso vecinal) o basta con Art. 62 directo ante Alcaldia MH", who:"John", due:"", urgent:false, done:false, desde: "2026-09-01" }
+  {n:13, desc:"[C1000] Verificar si aplica Art. 62 Bis (aviso vecinal) o basta con Art. 62 directo ante Alcaldia MH", who:"John", due:"", urgent:false, done:false, desde: "2026-09-01" },
+  {n:14, desc:"[Ibsen 72 - Gestiones sueltas] Checar en la Alcaldia Miguel Hidalgo el estatus de la publicitacion vecinal para demolicion (acuse VUT folio 10385 del 17-jun, fecha compromiso 22-jul) y agilizarla; reportar a Mauricio y a Erick Sanchez. Lo pidio Erick el 25-sep.", who:"John", due:"2026-09-28", urgent:true, done:false, desde: "2026-09-25" },
+  {n:15, desc:"[Homero 1115 - Gestiones sueltas] Checar el estatus de la publicitacion vecinal para demolicion (acuse VUT folio 10408 del 22-jun, Disfraz de Tigre, S.A. de C.V.; subsane del 04-sep a la prevencion AMH/DGGAJ/DERA/SL/1182/2026) y decirle a Erick cuanto seria el apoyo y que dia se puede liberar. El cliente la quiere pasar a CRN porque su gestor no avanza.", who:"John / Mauricio", due:"2026-09-28", urgent:true, done:false, desde: "2026-09-25" }
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
-const VERSION = "2026-08-31a";
+const VERSION = "2026-09-25a";
 // Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
 const NEW_BADGE_N = 12;
 
