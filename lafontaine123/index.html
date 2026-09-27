@@ -182,7 +182,7 @@ window.addEventListener("error", function (e) {
       <p>Carlos Samano — Lafontaine 123, Polanco, Miguel Hidalgo</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 24-sep-2026</div>
+      <div id="last-update">Actualizado: 27-sep-2026</div>
       <div style="margin-top:3px;">Editando como <b id="quien-soy">—</b> <a href="#" id="cambiar-quien" class="no-print">cambiar</a></div>
       <div id="quien-form" class="no-print"><input id="quien-input" type="text" maxlength="40" placeholder="Escribe tu nombre" autocomplete="name"><button class="btn" id="quien-ok" type="button">Guardar</button></div>
       <div id="sync-status" style="margin-top:3px;">Conectando...</div>
@@ -195,7 +195,7 @@ window.addEventListener("error", function (e) {
 
   <div class="cards">
     <div class="card"><div class="label">Fase actual</div><div class="value sm">DCA ingresada</div><div class="sub">Demolicion, ante SEDEMA; Erick presiona la entrega</div></div>
-    <div class="card"><div class="label">Lo mas urgente</div><div class="value sm">SEGIAGUA</div><div class="sub">Nayeli acude presencialmente</div></div>
+    <div class="card"><div class="label">Lo mas urgente</div><div class="value sm">SEGIAGUA</div><div class="sub">Ingresada por el gestor externo; Nayeli entrega el acuse</div></div>
     <div class="card"><div class="label">Meta demolicion</div><div class="value sm">Octubre 2026 (retrasada)</div><div class="sub">Era septiembre; espera la DCA de SEDEMA. 263.20 m2 en PB</div></div>
     <div class="card"><div class="label">Superficie del terreno</div><div class="value sm">452.40 m2</div><div class="sub">Verificado en AutoCAD</div></div>
     <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">—</div><div class="sub">por cerrar</div></div>
@@ -208,7 +208,7 @@ window.addEventListener("error", function (e) {
       <thead><tr><th>Tramite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
       <tbody>
         <tr><td>DCA — Demolicion</td><td>Sedema</td><td><span class="badge green">Ingresada</span></td><td>Ingresada ante SEDEMA (Mauricio, 24-sep); Erick presiona para que la entreguen. El acuse todavia no esta en la carpeta del proyecto.</td></tr>
-<tr><td>Factibilidad hidraulica</td><td>SEGIAGUA (antes SACMEX)</td><td><span class="badge red">Gestion presencial</span></td><td>Portal sin acuse tras 2 intentos; Nayeli acude presencialmente por instruccion de Mauricio (31-ago). Punto mas prioritario.</td></tr>
+<tr><td>Factibilidad hidraulica</td><td>SEGIAGUA (antes SACMEX)</td><td><span class="badge amber">Ingresada, sin acuse</span></td><td>La ingreso el gestor externo contratado (Mauricio, 26-sep). Falta el acuse con fecha y folio, que entrega Nayeli (#7). Sin la factibilidad no hay fecha para la manifestacion de construccion.</td></tr>
 <tr><td>Licencia de demolicion</td><td>Alcaldia Miguel Hidalgo</td><td><span class="badge amber">Prevencion activa</span></td><td>Contrato de residuos (23-sep) y endoso de la poliza RC (04-sep) ya entregados. Depende de la DCA de SEDEMA, que es requisito. Superficie por homologar a 557.19 m2 y lona por corregir (#21, #34).</td></tr>
 <tr><td>INAH</td><td>INAH</td><td><span class="badge green">Ingresado</span></td><td>Ingresado por Erick. Falta compartir la consulta en el grupo.</td></tr>
 <tr><td>ACP (dictamen de conservacion patrimonial)</td><td>SPOTMET - DGOU (DPCUEP)</td><td><span class="badge green">Dictamen favorable</span></td><td>Oficio SPOTMET/SUBPOT/DGOU/DPCUEP/860/2026 (08-sep-2026, Exp. 1562/2026), para demolicion total.</td></tr>
@@ -268,7 +268,7 @@ window.addEventListener("error", function (e) {
 <tr><td>2026-08-13</td><td>Proceso de congelamiento: no ingresar a gestoria sin visto bueno tecnico de Ruben.</td><td>Mauricio / Carlos Samano</td></tr>
 <tr><td>2026-08-18</td><td>Cotizacion del estudio de riesgo aceptada. Erick y equipo inician.</td><td>Mauricio</td></tr>
 <tr><td>2026-08-20</td><td>La poliza RC debe emitirse a nombre del Representante Legal, no de la empresa de demolicion.</td><td>Nayeli / Carlos Samano</td></tr>
-<tr><td>2026-08-31</td><td>Nayeli acude presencialmente a SEGIAGUA para destrabar la falta de acuse de la factibilidad hidraulica.</td><td>Mauricio</td></tr>
+<tr><td>2026-08-31</td><td>Nayeli acude presencialmente a SEGIAGUA para destrabar la falta de acuse de la factibilidad hidraulica. Superado 26-sep: la solicitud la ingreso un gestor externo contratado.</td><td>Mauricio</td></tr>
 <tr><td>2026-09-05</td><td>El RAMIR se presenta con carnet cruzado, no en original.</td><td>Mauricio</td></tr>
 <tr><td>2026-09-23</td><td>La superficie de construccion a demoler es 557.19 m2; la lona de mayo (577.19 m2) se corrige.</td><td>Mauricio</td></tr>
 <tr><td>2026-09-24</td><td>Meta de demolicion: octubre 2026 (antes septiembre); depende de que SEDEMA entregue la DCA.</td><td>Mauricio</td></tr>
@@ -277,7 +277,7 @@ window.addEventListener("error", function (e) {
     <button class="ver-mas no-print" id="acuerdos-mas" style="display:none"></button>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Lafontaine 123 · Actualizado 24-sep-2026</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Lafontaine 123 · Actualizado 27-sep-2026</p>
 </div>
 
 <script>
@@ -288,7 +288,7 @@ const items = [
   { n: 4,   desc: "Completar expediente DCA e ingresar ante SEDEMA. Cerrado 24-sep: Mauricio confirmo que la DCA ya se ingreso; la entrega se sigue en el #2.", who: "Erick Sanchez / Nayeli", due: "", urgent: false, done: true, desde: "2026-09-04" },
   { n: 5,   desc: "Gestionar dictamen INBAL. Cerrado 23-sep: respuesta del INBAL folio 1108 (10-jun), inmueble no incluido en la relacion del INBA; recomienda proteger al colindante Anatole France 126. El PDF ya esta en 00 entradas (copia del Drive, 24-sep).", who: "Nayeli / Erick Sanchez", due: "", urgent: false, done: true, desde: "2026-09-04" },
   { n: 6, desc: "Gestionar dictamen ACP. Cerrado 23-sep: dictamen favorable de SPOTMET 860/2026 (08-sep, Exp. 1562/2026), en 00 entradas.", who: "Nayeli / Erick Sanchez", due: "", urgent: false, done: true, desde: "2026-09-04" },
-  { n: 7,   desc: "SEGIAGUA (antes SACMEX): Nayeli acude presencialmente para destrabar la falta de acuse de la factibilidad hidraulica", who: "Nayeli", due: "", urgent: true, done: false, desde: "2026-09-04" },
+  { n: 7,   desc: "SEGIAGUA (antes SACMEX), factibilidad hidraulica: entregar el acuse del ingreso que hizo el gestor externo contratado (Mauricio, 26-sep), para archivarlo y medir el plazo de respuesta.", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-09-04" },
   { n: 8, desc: "Poliza RC a nombre del Representante Legal: el ENDOSO ya se entrego (Adrian Argueta, 04-sep 11:25, grupo Gestorias). La minuta lo comprometia para el 08-sep, se adelanto. Falta confirmar que el endoso corrige lo que se pidio.", who: "Carlos Samano", due: "", urgent: false, done: false, desde: "2026-09-04" },
   { n: 9,   desc: "Verificar y gestionar el dictamen requerido por INVEA", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-09-04" },
   { n: 10,  desc: "Cotizacion de Proteccion Civil para LF123", who: "Erick Sanchez", due: "", urgent: false, done: false, desde: "2026-09-04" },
@@ -334,7 +334,7 @@ const items = [
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
-const VERSION = "2026-09-23a";
+const VERSION = "2026-09-27a";
 // Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
 const NEW_BADGE_N = 38;
 
