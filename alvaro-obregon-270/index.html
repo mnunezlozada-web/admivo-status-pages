@@ -194,7 +194,7 @@ window.addEventListener("error", function (e) {
   </header>
 
   <div class="cards">
-    <div class="card"><div class="label">Fase</div><div class="value sm">Anteproyecto recibido — honorarios en prep.</div></div>
+    <div class="card"><div class="label">Fase</div><div class="value sm">Anteproyecto recibido</div></div>
     <div class="card"><div class="label">Niveles</div><div class="value sm">1 sótano + 8 SNB</div><div class="sub">28 hab + PB comercial</div></div>
     <div class="card"><div class="label">Anteproyecto</div><div class="value sm" style="color:#3a6e10">✅ Recibido 19-ago</div></div>
     <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">—</div><div class="sub">por cerrar</div></div>
@@ -268,16 +268,13 @@ window.addEventListener("error", function (e) {
 <script>
 const items = [
         { n:1, desc:"Nayeli revisa anteproyecto (PDF + DWG recibidos 19-ago) y define si revision es in-house o recomienda a Ruben. Cerrado: revision in-house hecha; catalogo y cronograma de tramites entregados (02-sep).", who:"Nayeli", due:"", urgent:true, done:true, desde: "2026-08-21" },
-  { n:2, desc:"Mauricio prepara propuesta de honorarios por etapas (llave en mano: tramites + DROs + gestion INAH). Cerrado 14-sep: propuesta preparada y enviada a Dani (ver #6).", who:"Mauricio", due:"", urgent:false, done:true, desde: "2026-08-21" },
   { n:3, desc:"Obtener documento/sustento formal de INAH sobre condición de catalogación — qué elementos de la primera crujía deben respetarse. Dani tiene contacto 'Iván' en INAH.", who:"Dani / CRN", due:"", urgent:false, done:false, desde: "2026-08-21" },
-  { n:4, desc:"ALERTA regulatoria: anteproyecto declara sótano como BODEGAS pero en realidad será espacios de servicio y wellness del hotel (spa, gimnasio, comedor de empleados, cámara frigorífica, lavandería). 11-SEP: la discrepancia ya quedó documentada explícitamente en la nueva versión de la propuesta de honorarios como algo a resolver antes de iniciar trámites — sigue sin decisión final.", who:"Mauricio", due:"", urgent:true, done:false, desde: "2026-08-21" },
-  { n:5, desc:"Obtener cuadro de áreas por nivel del anteproyecto — necesario para confirmar si rebasa el umbral de 5,000 m² del Art. 86 (Dictamen de Impacto Urbano). (cuando: Antes de propuesta final)", who:"Dani / Equipo IZB", due:"", urgent:false, done:true, desde: "2026-09-03" },
-  { n:6, desc:"[02-SEP -> 14-SEP] Cerrar y enviar a Dani la propuesta de honorarios llave en mano. Cerrado 14-sep: enviada por WhatsApp, $2,300,000.00 MXN + IVA; Mauricio confirmo el monto el 15-sep (el borrador de $17,015,000 estaba mal calculado). Version final en 00 entradas.", who:"Mauricio / Nayeli", due:"", urgent:true, done:true, desde: "2026-09-02" },
-  { n: 7, desc: "Seguimiento con Dani a la propuesta de honorarios del 14-sep: hubo llamada el viernes 18-sep y Dani quedo de marcar el martes 22-sep para platicarla (Mauricio a Lorena Romero, 23-sep). No hay registro de esa llamada.", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-09-23" }
+  { n:4, desc:"ALERTA regulatoria: anteproyecto declara sótano como BODEGAS pero en realidad será espacios de servicio y wellness del hotel (spa, gimnasio, comedor de empleados, cámara frigorífica, lavandería). 11-SEP: la discrepancia ya quedó documentada explícitamente como algo a resolver antes de iniciar trámites — sigue sin decisión final.", who:"Mauricio", due:"", urgent:true, done:false, desde: "2026-08-21" },
+  { n:5, desc:"Obtener cuadro de áreas por nivel del anteproyecto — necesario para confirmar si rebasa el umbral de 5,000 m² del Art. 86 (Dictamen de Impacto Urbano). (cuando: Antes de propuesta final)", who:"Dani / Equipo IZB", due:"", urgent:false, done:true, desde: "2026-09-03" }
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
-const VERSION = "2026-09-24a";
+const VERSION = "2026-09-28a";
 // Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
 const NEW_BADGE_N = 6;
 
