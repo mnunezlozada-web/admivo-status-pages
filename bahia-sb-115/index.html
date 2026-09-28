@@ -182,7 +182,7 @@ window.addEventListener("error", function (e) {
       <p>Octavio Peñaloza &nbsp;·&nbsp; Bahía de Santa Bárbara 115 / Valle de Todos los Santos 118, CDMX</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 27-sep-2026</div>
+      <div id="last-update">Actualizado: 28-sep-2026</div>
       <div style="margin-top:3px;">Editando como <b id="quien-soy">—</b> <a href="#" id="cambiar-quien" class="no-print">cambiar</a></div>
       <div id="quien-form" class="no-print"><input id="quien-input" type="text" maxlength="40" placeholder="Escribe tu nombre" autocomplete="name"><button class="btn" id="quien-ok" type="button">Guardar</button></div>
       <div id="sync-status" style="margin-top:3px;">Conectando...</div>
@@ -275,7 +275,7 @@ window.addEventListener("error", function (e) {
     <button class="ver-mas no-print" id="acuerdos-mas" style="display:none"></button>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Bahía de Santa Bárbara 115 · Actualizado 27-sep-2026</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Bahía de Santa Bárbara 115 · Actualizado 28-sep-2026</p>
 </div>
 
 <script>
@@ -285,15 +285,15 @@ const items = [
   { n: 16, desc: "Reingresar el CAyNO de Bahía de Santa Bárbara y compartir número de seguimiento (acordado el 08-jun; al 23-sep aún no se reingresa).", who: "John", due: "", urgent: true, done: false, desde: "2026-08-21", revisado: "2026-09-24" },
   { n: 18, desc: "Responder a Roberto Cervantes (socio de Octavio Peñaloza) cuándo y cuánto dinero se necesitará para trámites e impulsos (lo pidió por WhatsApp el 22-sep, 11:13).", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-09-22", revisado: "2026-09-24" },
   { n: 4, desc: "Elaborar memorias descriptivas y tabla de indivisos para régimen de condominio, optimizando uso de suelo.", who: "Lore", due: "", urgent: false, done: false, desde: "2026-08-21" },
-  { n: 6, desc: "Integrar estimados de costos de Lore + costo de unificación predial de Papik en presentación para Octavio (por confirmar si quedó cubierto con la propuesta del 09-jun).", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-08-21" },
-  { n: 10, desc: "Hablar con Papik sobre costo de fusión predial y de individualización de cuentas (empadronamiento) e integrarlo en la propuesta, conceptos 1 y 2 de la cotización de Lore (por confirmar si quedó cubierto con la propuesta del 09-jun).", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-08-21" },
+  { n: 6, desc: "Integrar los costos de Lore y de Papik en la propuesta para Octavio. Cerrado 28-sep: los de Lore ya estan en la propuesta de junio (documentacion del regimen, escritura constitutiva e inscripcion en el RPP); los de Papik se integran al llegar el empadronamiento (#10).", who: "Mauricio", due: "", urgent: false, done: true, desde: "2026-08-21" },
+  { n: 10, desc: "Hablar con Papik del costo de la fusion de cuentas prediales y del empadronamiento (individualizacion de cuentas por unidad) e integrarlo a la propuesta de Octavio; en la propuesta de junio van \"por determinar\" (servicios 1 y 6). (cuando: llegue el momento del empadronamiento, Mauricio 28-sep)", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-08-21" },
   { n: 12, desc: "Definir costo del Punto 2 (CUZUS unificado) una vez resuelta la Lámina 101.", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-08-21" },
   { n: 13, desc: "Consultar con notario la viabilidad de inscribir 14 vs 16 unidades.", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-08-21" },
   { n: 17, desc: "Confirmar el horario de la visita al predio que Lorena Romero coordina con Manuel Hernández (WhatsApp, 08-sep 13:29). 27-sep: la visita aun no se hace (Mauricio).", who: "Lorena Romero / Manuel Hernandez", due: "", urgent: false, done: false, desde: "2026-09-08" }
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
-const VERSION = "2026-09-27a";
+const VERSION = "2026-09-28a";
 // Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
 const NEW_BADGE_N = 18;
 
