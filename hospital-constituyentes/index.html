@@ -207,11 +207,10 @@ window.addEventListener("error", function (e) {
       <thead><tr><th>Trámite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
       <tbody>
         <tr><td>CAyNO (4 predios)</td><td>Alcaldía Miguel Hidalgo</td><td><span class="badge green">Completado</span></td><td style="font-size:12px;color:#555">Dic-2025. Válidas hasta dic-2027. Zona Minada confirmada</td></tr>
-<tr><td>Fusión de 4 predios</td><td>SEDUVI / Alcaldía</td><td><span class="badge blue">En proceso</span></td><td style="font-size:12px;color:#555">Publicitación vecinal ingresada 15-ene-2026. Pendiente constancia</td></tr>
+<tr><td>Licencia de fusión de 4 predios</td><td>SPOTMET — DGPU</td><td><span class="badge amber">Prevención activa</span></td><td style="font-size:12px;color:#555">Publicitación vecinal ingresada el 15-ene-2026. Prevención por errores en la versión de obra nueva: falta recoger y notificar "constituyentes" (#5, #2) y pagar los prediales vencidos (#13). El cronograma del 09-jun la ubicaba a fines de julio o principios de agosto de 2026.</td></tr>
 <tr><td>CUZUS</td><td>SEDUVI</td><td><span class="badge red">En prevención</span></td><td style="font-size:12px;color:#555">Aguardando versión corregida de obra nueva</td></tr>
 <tr><td>EMS (Estudio Mecánica de Suelo)</td><td>Proveedor externo</td><td><span class="badge red">No contratado</span></td><td style="font-size:12px;color:#555">Cotización $448,247 (con IVA) sin autorizar. Requiere acceso al predio</td></tr>
 <tr><td>EIU (Estudio Impacto Urbano)</td><td>SEDUVI</td><td><span class="badge red">Pendiente inicio</span></td><td style="font-size:12px;color:#555">Estimado 8 meses una vez ingresado → autorización abril-mayo 2027</td></tr>
-<tr><td>Licencia de Fusión</td><td>Alcaldía</td><td><span class="badge blue">Fase final</span></td><td style="font-size:12px;color:#555">Esperada fines de julio o principios de agosto 2026</td></tr>
 <tr><td>DCA (demolición)</td><td>SEDEMA</td><td><span class="badge red">Pendiente</span></td><td style="font-size:12px;color:#555">—</td></tr>
       </tbody>
     </table>
@@ -281,29 +280,25 @@ window.addEventListener("error", function (e) {
 <script>
 const items = [
       {n:1, desc:"Ingresar 'cuzus' de Constituyentes una vez recibidos los papeles", who:"Sin asignar", due:"2026-05-13", urgent:true, done:false, desde: "2026-08-21", tramite: "CUZUS" },
-  {n:2, desc:"Recoger la prevención de la fusión y continuar el trámite", who:"Sin asignar", due:"2026-05-13", urgent:true, done:false, desde: "2026-08-21" },
+  {n:2, desc:"Recoger la prevención de la fusión y continuar el trámite", who:"Sin asignar", due:"2026-05-13", urgent:true, done:false, desde: "2026-08-21", tramite: "Licencia de fusión de 4 predios" },
   {n:3, desc:"Confirmar recepción de papeles y anticipo para cuzus Constituyentes", who:"Sin asignar", due:"2026-05-13", urgent:true, done:false, desde: "2026-08-21", tramite: "CUZUS" },
   {n:4, desc:"NO recoger 'constituyentes' hasta recibir versión corregida de obra nueva del equipo. Cerrado 28-sep: la condicion se cumplio el 03-jun (la version corregida es la misma, #9); lo que sigue es el #5.", who:"Mauricio", due:"", urgent:false, done:true, desde: "2026-08-21" },
-  {n:5, desc:"Recoger y notificar 'constituyentes': la version corregida es la misma (03-jun, #9). 28-sep: todavia no se recoge (Mauricio).", who:"Mauricio", due:"", urgent:false, done:false, desde: "2026-08-21" },
-  {n:7, desc:"[John] Destrabar 'Cano': insistir con oficina de firma para bajar el documento y liberar claves de obra nueva", who:"John", due:"", urgent:false, done:false, desde: "2026-08-21", tramite: "CAyNO (4 predios)" },
+  {n:5, desc:"Recoger y notificar 'constituyentes': la version corregida es la misma (03-jun, #9). 28-sep: todavia no se recoge (Mauricio).", who:"Mauricio", due:"", urgent:false, done:false, desde: "2026-08-21", tramite: "Licencia de fusión de 4 predios" },
   {n:9, desc:"[John] Enviar a Mauricio la versión corregida de 'constituyentes' (obra nueva y requisitos validados) antes de la recolección. Cerrado 28-sep: en la llamada del 03-jun John confirmo que es la misma version, solo con errores de dedo corregidos, y que no hay mas requisitos (Mauricio confirmo el cierre; es el #4 de John).", who:"John", due:"", urgent:false, done:true, desde: "2026-08-21" },
-  {n:13, desc:"Pagar prediales vencidos (4 bimestres x 4 predios, ~$78k + recargos)", who:"Octavio Penaloza", due:"", urgent:true, done:false, desde: "2026-08-21" },
+  {n:13, desc:"Pagar prediales vencidos (4 bimestres x 4 predios, ~$78k + recargos)", who:"Octavio Penaloza", due:"", urgent:true, done:false, desde: "2026-08-21", tramite: "Licencia de fusión de 4 predios" },
   {n:14, desc:"Autorizar y contratar EMS ($386,420 + IVA). Coordinar acceso al predio + plano topográfico", who:"Octavio Penaloza", due:"", urgent:true, done:false, desde: "2026-08-21", tramite: "EMS (Estudio Mecánica de Suelo)" },
-  {n:15, desc:"Aclarar discrepancia 50 m² C-605 con arquitecto (359 m² escritura vs 309 m² planos fusión) (cuando: Antes de firma fusión)", who:"CRN / Equipo tecnico", due:"", urgent:false, done:false, desde: "2026-08-21" },
+  {n:15, desc:"Aclarar discrepancia 50 m² C-605 con arquitecto (359 m² escritura vs 309 m² planos fusión) (cuando: Antes de firma fusión)", who:"CRN / Equipo tecnico", due:"", urgent:false, done:false, desde: "2026-08-21", tramite: "Licencia de fusión de 4 predios" },
   {n:16, desc:"Solicitar a Fer (PDU) la lista de requisitos mínimos para iniciar el EIU y requerimientos subsecuentes", who:"Mauricio", due:"", urgent:false, done:false, desde: "2026-08-21", tramite: "EIU (Estudio Impacto Urbano)" },
-  {n:17, desc:"Gestionar avalúos de los 4 terrenos (necesarios para pago de derechos del 1%)", who:"Mauricio", due:"", urgent:false, done:false, desde: "2026-08-21" },
+  {n:17, desc:"Gestionar avalúos de los 4 terrenos (necesarios para pago de derechos del 1%)", who:"Mauricio", due:"", urgent:false, done:false, desde: "2026-08-21", tramite: "Licencia de fusión de 4 predios" },
   {n:18, desc:"Generar checklist interno de temas legales y fiduciarios: estatus del fideicomiso, fusión de cuentas, etc. (al margen del equipo de arquitectura)", who:"Mauricio", due:"", urgent:false, done:false, desde: "2026-08-21", tramite: "General" },
   {n:19, desc:"Hablar con los socios sobre el trade-off: excavación paralela (riesgo calculado) vs secuencial — presentar ventajas/desventajas y tomar decisión informada antes de iniciar trámites de demolición/excavación", who:"Mauricio", due:"", urgent:false, done:false, desde: "2026-08-21", tramite: "General" },
   {n:20, desc:"Equipo de arquitectura: aplicar ajustes comentados en junta 09-Jun (tamaños de consultorios, entrepisos) a los planos del anteproyecto", who:"Sin asignar", due:"", urgent:false, done:false, desde: "2026-08-21", tramite: "General" },
   {n:21, desc:"Equipo de arquitectura: desarrollar render conceptual del proyecto", who:"Sin asignar", due:"", urgent:false, done:false, desde: "2026-08-21", tramite: "General" },
-  {n:22, desc:"[FUSIÓN — prevención] Verificar con el equipo si para exhibir la prevención del proyecto fusionado se requiere una fotografía por cada frente de predio (pregunta surgida en PLAUD 17-Jun).", who:"Mauricio / Equipo", due:"", urgent:false, done:false, desde: "2026-08-21" },
-  {n:23, desc:"[BAHÍA — cotización cliente] Cotizar el proyecto de bahía de ascenso al cliente final, considerando un presupuesto base de $120,000 MXN para los dos permisos (Art. 62 + licencia de banqueta).", who:"Mauricio", due:"", urgent:false, done:false, desde: "2026-08-21" },
-  {n:24, desc:"[BAHÍA — Art. 62 + banqueta] Cotizar formalmente el permiso del Artículo 62 y la licencia de banqueta para la bahía de ascenso. Tiempo estimado licencia de banqueta: ~3 semanas.", who:"Sin asignar", due:"", urgent:false, done:false, desde: "2026-08-21" },
-  {n:25, desc:"[BAHÍA — copias] Determinar la cantidad de copias necesarias para los trámites de Art. 62 y licencia de banqueta.", who:"Sin asignar", due:"", urgent:false, done:false, desde: "2026-08-21" }
+  {n:22, desc:"[FUSIÓN — prevención] Verificar con el equipo si para exhibir la prevención del proyecto fusionado se requiere una fotografía por cada frente de predio (pregunta surgida en PLAUD 17-Jun).", who:"Mauricio / Equipo", due:"", urgent:false, done:false, desde: "2026-08-21", tramite: "Licencia de fusión de 4 predios" }
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
-const VERSION = "2026-09-28b";
+const VERSION = "2026-09-28d";
 // Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
 const NEW_BADGE_N = 27;
 
