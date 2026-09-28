@@ -211,7 +211,7 @@ window.addEventListener("error", function (e) {
 <tr><td>Fusion Manantial 43 y Periferico 4172 (Alex)</td><td>SPOTMET</td><td>Por iniciar</td><td>Alex mando las dos boletas el 17-sep. Jardines del Pedregal, Alvaro Obregon.</td></tr>
 <tr><td>Licencia de demolicion Ibsen 72 (Ula)</td><td>Alcaldia Miguel Hidalgo</td><td>Publicitacion vecinal ingresada</td><td>Acuse VUT folio 10385, 17-jun-2026, a nombre de Manuel Abelardo Sampedro Ordorica; expediente incompleto (ver #5). 28-sep: John ya mando el folio a revisar (09:39); falta que reporte el estatus.</td></tr>
 <tr><td>Publicitacion vecinal para demolicion, Homero 1115</td><td>Alcaldia Miguel Hidalgo</td><td><span class="badge amber">Prevenida; subsane ingresado</span></td><td>Folio 10408 (22-jun-2026), Disfraz de Tigre, S.A. de C.V. Prevencion AMH/DGGAJ/DERA/SL/1182/2026; subsane recibido el 04-sep. El cliente la quiere pasar a CRN (Erick, 25-sep). 28-sep: John ya mando el folio a revisar (09:39); falta el estatus y cuanto seria el apoyo.</td></tr>
-<tr><td>Art. 62 y licencia de banqueta, Constituyentes 1000 (Octavio)</td><td>Alcaldia Miguel Hidalgo</td><td><span class="badge gray">En cotizacion</span></td><td>Bahia de ascenso en planta baja de Av. Constituyentes 1000 (Octavio Penaloza). Gestion aislada, separada del Hospital Constituyentes (Mauricio, 28-sep). John verifica que no se este construyendo en el inmueble (Pendientes de John #12); la cotizacion esta en #6 a #8 (Mauricio, 28-sep).</td></tr>
+<tr><td>Art. 62 y licencia de banqueta, Constituyentes 1000 (Octavio)</td><td>Alcaldia Miguel Hidalgo</td><td><span class="badge gray">Por iniciar</span></td><td>Bahia de ascenso en planta baja de Av. Constituyentes 1000 (Octavio Penaloza). Gestion aislada, separada del Hospital Constituyentes (Mauricio, 28-sep). John verifica que no se este construyendo en el inmueble (Pendientes de John #12).</td></tr>
       </tbody>
     </table>
     <button class="ver-mas no-print" id="tramites-mas" style="display:none"></button>
@@ -276,13 +276,11 @@ const items = [
   { n: 3, desc: "[FUSION PEDREGAL] Preparar la lista de requisitos para la fusion de Manantial 43 (cuenta 354-802-21-000-6, 1,105 m2) y Periferico Blvd. Adolfo Ruiz Cortines 4172 (cuenta 354-802-12-000-7, 1,643.19 m2), Jardines del Pedregal, Alvaro Obregon, y mandarsela a Alex. Ojo: segun las boletas estan a nombre de propietarios distintos (Yolanda Contreras Ambrosi de Glez y Division Vallejo).", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-09-24", tramite: "Fusion Manantial 43 y Periferico 4172 (Alex)" },
   { n: 4, desc: "[ALEX] Contestarle a Alex: el 23-sep pidio noticias de los dos temas (CUZUS de Calzada Vallejo 866 y fusion).", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-09-23", tramite: "General" },
   { n: 5, desc: "[IBS72 - Ibsen 72] Licencia de demolicion (Ula): completar lo que marco la Alcaldia Miguel Hidalgo en la publicitacion vecinal (acuse VUT folio 10385, 17-jun, compromiso 22-jul): cedula de publicitacion, DCA, estudio de riesgo, contrato con planta de reciclaje, VoBo de SPOTMET, INAH e INBAL.", who: "Mauricio / Erick Sanchez", due: "", urgent: false, done: false, desde: "2026-09-18", tramite: "Licencia de demolicion Ibsen 72 (Ula)" },
-  { n: 6, desc: "[C1000 - Constituyentes 1000] Cotizar al cliente la bahia de ascenso, con un presupuesto base de $120,000 MXN para los dos permisos (Art. 62 y licencia de banqueta).", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-08-21", tramite: "Art. 62 y licencia de banqueta, Constituyentes 1000 (Octavio)" },
-  { n: 7, desc: "[C1000] Cotizar formalmente el permiso del Articulo 62 y la licencia de banqueta de la bahia de ascenso. Tiempo estimado de la licencia de banqueta: unas 3 semanas.", who: "Sin asignar", due: "", urgent: false, done: false, desde: "2026-08-21", tramite: "Art. 62 y licencia de banqueta, Constituyentes 1000 (Octavio)" },
   { n: 8, desc: "[C1000] Determinar cuantas copias piden los tramites de Art. 62 y licencia de banqueta.", who: "Sin asignar", due: "", urgent: false, done: false, desde: "2026-08-21", tramite: "Art. 62 y licencia de banqueta, Constituyentes 1000 (Octavio)" }
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
-const VERSION = "2026-09-28a";
+const VERSION = "2026-09-28b";
 // Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
 const NEW_BADGE_N = 1;
 
