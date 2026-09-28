@@ -221,7 +221,7 @@ window.addEventListener("error", function (e) {
 <tr><td>Sistema alternativo de agua pluvial</td><td>SEGIAGUA (antes SACMEX)</td><td><span class="badge gray">Por definir</span></td><td>Carlos Samano pregunto si el proyecto puede prescindir del area permeable con un sistema alternativo (#49). El CUZUS aplica la norma particular de area libre y recarga de aguas pluviales al subsuelo.</td></tr>
 <tr><td>DCA — Obra nueva</td><td>Sedema</td><td><span class="badge gray">En preparacion</span></td><td>Faltan la memoria de residuos (#39) y la estimacion del valor de la construccion nueva (#40), que esperan la revision de Nayeli a los planos de obra nueva (#47), y las ingenierias (#14).</td></tr>
 <tr><td>ISC / Estructural</td><td>Instituto de las Construcciones</td><td><span class="badge gray">Previo</span></td><td>Falta mecanica de suelos y designar CSE.</td></tr>
-<tr><td>Proteccion Civil</td><td>PC</td><td><span class="badge gray">Por cotizar</span></td><td>Erick enviara cotizacion.</td></tr>
+<tr><td>Proteccion Civil</td><td>PC</td><td><span class="badge gray">Sin iniciar</span></td><td>Programa interno de proteccion civil, para demolicion y obra nueva.</td></tr>
 <tr><td>Publicitacion y manifestacion de construccion tipo B</td><td>Alcaldia Miguel Hidalgo</td><td><span class="badge gray">Sin iniciar</span></td><td>La publicitacion vecinal va antes del registro de la manifestacion (TRAMITES.md 2.11). El CUZUS pide tramitar antes el dictamen de factibilidad hidraulica.</td></tr>
       </tbody>
     </table>
@@ -272,7 +272,7 @@ window.addEventListener("error", function (e) {
       <tbody>
         <tr><td>2026-06-17</td><td>Avanzar con la revision preliminar del DCA sin esperar todos los documentos del cliente.</td><td>Nayeli</td></tr>
 <tr><td>2026-08-13</td><td>Proceso de congelamiento: no ingresar a gestoria sin visto bueno tecnico de Ruben.</td><td>Mauricio / Carlos Samano</td></tr>
-<tr><td>2026-08-18</td><td>Cotizacion del estudio de riesgo aceptada. Erick y equipo inician.</td><td>Mauricio</td></tr>
+<tr><td>2026-08-18</td><td>Estudio de riesgo: lo arrancan Erick y su equipo.</td><td>Mauricio</td></tr>
 <tr><td>2026-08-20</td><td>La poliza RC debe emitirse a nombre del Representante Legal, no de la empresa de demolicion.</td><td>Nayeli / Carlos Samano</td></tr>
 <tr><td>2026-08-31</td><td>Nayeli acude presencialmente a SEGIAGUA para destrabar la falta de acuse de la factibilidad hidraulica. Superado 26-sep: la solicitud la ingreso un gestor externo contratado.</td><td>Mauricio</td></tr>
 <tr><td>2026-09-05</td><td>El RAMIR se presenta con carnet cruzado, no en original.</td><td>Mauricio</td></tr>
@@ -298,8 +298,6 @@ const items = [
   { n: 7,   desc: "SEGIAGUA (antes SACMEX), factibilidad hidraulica: entregar el acuse del ingreso que hizo el gestor externo contratado (Mauricio, 26-sep), para archivarlo y medir el plazo de respuesta.", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-09-04", tramite: "Factibilidad hidraulica" },
   { n: 8, desc: "Poliza RC a nombre del Representante Legal: el ENDOSO ya se entrego (Adrian Argueta, 04-sep 11:25, grupo Gestorias). La minuta lo comprometia para el 08-sep, se adelanto. Falta confirmar que el endoso corrige lo que se pidio. Cerrado 27-sep: Mauricio confirmo que el endoso quedo a nombre correcto.", who: "Carlos Samano", due: "", urgent: false, done: true, desde: "2026-09-04", tramite: "Licencia de demolicion" },
   { n: 9,   desc: "Verificar y gestionar el dictamen requerido por INVEA", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-09-04", tramite: "INVEA" },
-  { n: 10,  desc: "Cotizacion de Proteccion Civil para LF123", who: "Erick Sanchez", due: "", urgent: false, done: false, desde: "2026-09-04", tramite: "Proteccion Civil" },
-  { n: 11,  desc: "Cotizacion general con montos en blanco para revision de Mauricio", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-09-04", tramite: "General" },
   { n: 12,  desc: "Compartir en el grupo la consulta ingresada de INAH e INVAL", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-09-04", tramite: "INAH" },
   { n: 13,  desc: "Actualizar planos: tabla de areas por nivel, cisternas punteadas, cuarto de maquinas, caseta 1.80m", who: "Chava", due: "", urgent: true, done: false, desde: "2026-09-04", tramite: "DCA — Obra nueva" },
   { n: 14,  desc: "Completar ingenierias: hidraulico, sanitario, electrico y calentamiento solar", who: "Equipo tecnico", due: "", urgent: true, done: false, desde: "2026-09-04", tramite: "DCA — Obra nueva" },
@@ -342,7 +340,7 @@ const items = [
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Activa reset del estado del equipo.
-const VERSION = "2026-09-28a";
+const VERSION = "2026-09-28b";
 // Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
 const NEW_BADGE_N = 38;
 
