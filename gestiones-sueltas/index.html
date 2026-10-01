@@ -182,7 +182,7 @@ window.addEventListener("error", function (e) {
       <p>Tramites de gestion que no son un proyecto completo: CUZUS de Calzada Vallejo 866 y fusion en Jardines del Pedregal (Alex), licencia de demolicion de Ibsen 72 (Ula)</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 29-sep-2026</div>
+      <div id="last-update">Actualizado: 01-oct-2026</div>
       <div style="margin-top:3px;">Editando como <b id="quien-soy">—</b> <a href="#" id="cambiar-quien" class="no-print">cambiar</a></div>
       <div id="quien-form" class="no-print"><input id="quien-input" type="text" maxlength="40" placeholder="Escribe tu nombre" autocomplete="name"><button class="btn" id="quien-ok" type="button">Guardar</button></div>
       <div id="sync-status" style="margin-top:3px;">Conectando...</div>
@@ -194,10 +194,9 @@ window.addEventListener("error", function (e) {
   </header>
 
   <div class="cards">
-    <div class="card"><div class="label">Gestiones</div><div class="value sm">3 tramites sueltos</div></div>
-    <div class="card"><div class="label">Frente</div><div class="value sm">CUZUS Calzada Vallejo 866</div></div>
+    <div class="card"><div class="label">Gestiones</div><div class="value sm">6 tramites sueltos</div></div>
+    <div class="card"><div class="label">Frente</div><div class="value sm">Prevencion de la licencia de demolicion de Homero 1115</div><div class="sub">5 dias habiles desde el 30-sep (calculo: 07-oct)</div></div>
     <div class="card"><div class="label">Espera</div><div class="value sm">Documentos de Alex</div></div>
-    <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">—</div><div class="sub">por cerrar</div></div>
     <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">—</div><div class="sub">por cerrar</div></div>
   </div>
 
@@ -210,7 +209,8 @@ window.addEventListener("error", function (e) {
         <tr><td>CUZUS Calzada Vallejo 866 (Alex)</td><td>SPOTMET</td><td>Requisitos enviados</td><td>Nayeli preparo los requisitos el 21-sep; Mauricio se los mando a Alex el 22-sep. La direccion de la boleta no coincide (ver #2).</td></tr>
 <tr><td>Fusion Manantial 43 y Periferico 4172 (Alex)</td><td>SPOTMET</td><td>Por iniciar</td><td>Alex mando las dos boletas el 17-sep. Jardines del Pedregal, Alvaro Obregon.</td></tr>
 <tr><td>Licencia de demolicion Ibsen 72 (Ula)</td><td>Alcaldia Miguel Hidalgo</td><td>Publicitacion vecinal ingresada</td><td>Acuse VUT folio 10385, 17-jun-2026, a nombre de Manuel Abelardo Sampedro Ordorica; expediente incompleto (ver #5). 28-sep: John ya mando el folio a revisar (09:39); falta que reporte el estatus.</td></tr>
-<tr><td>Publicitacion vecinal para demolicion, Homero 1115</td><td>Alcaldia Miguel Hidalgo</td><td><span class="badge amber">Prevenida; subsane ingresado</span></td><td>Folio 10408 (22-jun-2026), Disfraz de Tigre, S.A. de C.V. Prevencion AMH/DGGAJ/DERA/SL/1182/2026; subsane recibido el 04-sep. El cliente la quiere pasar a CRN (Erick, 25-sep). 28-sep (John, 14:09): la constancia esta para firma y se baja el 29-sep; se recoge despues de mediodia (Pendientes de John #15).</td></tr>
+<tr><td>Publicitacion vecinal para demolicion, Homero 1115</td><td>Alcaldia Miguel Hidalgo</td><td><span class="badge green">Constancia recogida</span></td><td>Folio 10408 (22-jun-2026), Disfraz de Tigre, S.A. de C.V. Prevencion AMH/DGGAJ/DERA/SL/1182/2026; subsane recibido el 04-sep. 30-sep: John confirmo que la constancia ya estaba en la Ventanilla Unica y Erick, que el equipo del cliente la recogio.</td></tr>
+<tr><td>Licencia de demolicion, Homero 1115</td><td>Alcaldia Miguel Hidalgo</td><td><span class="badge amber">Prevenida</span></td><td>Licencia de construccion especial para demoliciones, folio FMH-39-2026, ingresada el 26-jun-2026. Prevencion AMH/DGGAJ/DERA/SL/01130/2026 (07-ago), notificada el 30-sep, con 5 dias habiles para desahogarla (calculo: 07-oct) (9).</td></tr>
 <tr><td>Art. 62 y licencia de banqueta, Constituyentes 1000 (Octavio)</td><td>Alcaldia Miguel Hidalgo</td><td><span class="badge gray">Por iniciar</span></td><td>Bahia de ascenso en planta baja de Av. Constituyentes 1000 (Octavio Penaloza). Gestion aislada, separada del Hospital Constituyentes (Mauricio, 28-sep). John verifica que no se este construyendo en el inmueble (Pendientes de John #12).</td></tr>
       </tbody>
     </table>
@@ -266,7 +266,7 @@ window.addEventListener("error", function (e) {
     <button class="ver-mas no-print" id="acuerdos-mas" style="display:none"></button>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Gestiones sueltas — CUZUS Calzada Vallejo 866, fusion en Jardines del Pedregal, Ibsen 72</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Gestiones sueltas · Actualizado 01-oct-2026 · CUZUS Calzada Vallejo 866, fusion en Jardines del Pedregal, Ibsen 72, Homero 1115 (prevencion de la licencia de demolicion, 5 dias habiles desde el 30-sep), Constituyentes 1000</p>
 </div>
 
 <script>
@@ -276,11 +276,12 @@ const items = [
   { n: 3, desc: "[FUSION PEDREGAL] Preparar la lista de requisitos para la fusion de Manantial 43 (cuenta 354-802-21-000-6, 1,105 m2) y Periferico Blvd. Adolfo Ruiz Cortines 4172 (cuenta 354-802-12-000-7, 1,643.19 m2), Jardines del Pedregal, Alvaro Obregon, y mandarsela a Alex. Ojo: segun las boletas estan a nombre de propietarios distintos (Yolanda Contreras Ambrosi de Glez y Division Vallejo).", who: "Nayeli", due: "", urgent: false, done: false, desde: "2026-09-24", tramite: "Fusion Manantial 43 y Periferico 4172 (Alex)" },
   { n: 4, desc: "[ALEX] Contestarle a Alex: el 23-sep pidio noticias de los dos temas (CUZUS de Calzada Vallejo 866 y fusion).", who: "Mauricio", due: "", urgent: false, done: false, desde: "2026-09-23", tramite: "General" },
   { n: 5, desc: "[IBS72 - Ibsen 72] Licencia de demolicion (Ula): completar lo que marco la Alcaldia Miguel Hidalgo en la publicitacion vecinal (acuse VUT folio 10385, 17-jun, compromiso 22-jul): cedula de publicitacion, DCA, estudio de riesgo, contrato con planta de reciclaje, VoBo de SPOTMET, INAH e INBAL.", who: "Mauricio / Erick Sanchez", due: "", urgent: false, done: false, desde: "2026-09-18", tramite: "Licencia de demolicion Ibsen 72 (Ula)" },
-  { n: 8, desc: "[C1000] Determinar cuantas copias piden los tramites de Art. 62 y licencia de banqueta.", who: "Sin asignar", due: "", urgent: false, done: false, desde: "2026-08-21", tramite: "Art. 62 y licencia de banqueta, Constituyentes 1000 (Octavio)" }
+  { n: 8, desc: "[C1000] Determinar cuantas copias piden los tramites de Art. 62 y licencia de banqueta.", who: "Sin asignar", due: "", urgent: false, done: false, desde: "2026-08-21", tramite: "Art. 62 y licencia de banqueta, Constituyentes 1000 (Octavio)" },
+  { n: 9, desc: "[Homero 1115] Licencia de construccion especial para demolicion, folio FMH-39-2026 (ingresada el 26-jun-2026, Disfraz de Tigre, S.A. de C.V.): desahogar en la Ventanilla Unica de la Alcaldia Miguel Hidalgo la prevencion AMH/DGGAJ/DERA/SL/01130/2026 (07-ago, notificada el 30-sep), dentro de 5 dias habiles (calculo: vence el 07-oct). Nueve puntos: constancia de publicitacion vecinal (original y copia); carnets 2026 y responsivas del DRO, CDUyA, CSE y CI; carta autorizacion e identificacion de Alejandro Rosas Perea; formato de calculo y autodeterminacion de derechos (art. 186 del Codigo Fiscal); dictamen de SPOTMET (Patrimonio Cultural Urbano); memoria fotografica georreferenciada; aclarar si la demolicion es manual o con maquinaria; formatos, planos, memoria y programa corregidos y firmados; bitacora foliada. El CI no aplica: aclararlo por escrito en la respuesta (Erick, 30-sep).", who: "Erick Sanchez / Mauricio", due: "2026-10-07", urgent: true, done: false, desde: "2026-09-30", tramite: "Licencia de demolicion, Homero 1115" }
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Ya no borra lo del equipo (28-sep-2026): ver loadState.
-const VERSION = "2026-09-28b";
+const VERSION = "2026-10-01a";
 // Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
 const NEW_BADGE_N = 1;
 
