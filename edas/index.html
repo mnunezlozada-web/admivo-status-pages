@@ -182,7 +182,7 @@ window.addEventListener("error", function (e) {
       <p>Via John / Erick Urbania &nbsp;·&nbsp; Chihuahua 147, Blvd. Puerto Aereo, Reforma 935</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 05-oct-2026</div>
+      <div id="last-update">Actualizado: 06-oct-2026</div>
       <div style="margin-top:3px;">Editando como <b id="quien-soy">—</b> <a href="#" id="cambiar-quien" class="no-print">cambiar</a></div>
       <div id="quien-form" class="no-print"><input id="quien-input" type="text" maxlength="40" placeholder="Escribe tu nombre" autocomplete="name"><button class="btn" id="quien-ok" type="button">Guardar</button></div>
       <div id="sync-status" style="margin-top:3px;">Conectando...</div>
@@ -206,7 +206,7 @@ window.addEventListener("error", function (e) {
     <table class="tabla-bloques" id="tabla-tramites">
       <thead><tr><th>Tramite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
       <tbody>
-        <tr><td>EDA Chihuahua 147</td><td>DGEIRA</td><td>En revision</td><td>Documentacion entregada por John el 12-ago (archivada y leida el 25-sep). 11-sep: DGEIRA pide comprobantes de agua tratada, manifiestos de residuos, dictamen de arbolado y derechos por $26,762. 22-sep: se cotizan los documentos de agua residual y manejo de residuos (#2). 29-sep: Erick: ingreso del Estudio de Dano Ambiental la semana del 05-oct; autorizacion a mas tardar tres semanas despues (#6).</td></tr>
+        <tr><td>EDA Chihuahua 147</td><td>DGEIRA</td><td>En revision</td><td>Documentacion entregada por John el 12-ago (archivada y leida el 25-sep). 11-sep: DGEIRA pide comprobantes de agua tratada, manifiestos de residuos, dictamen de arbolado y derechos por $26,762. 22-sep: se cotizan los documentos de agua residual y manejo de residuos (#2). 29-sep: Erick dijo que el ingreso del Estudio de Dano Ambiental se hace esta semana (del 5 al 9-oct) y que la autorizacion sale a mas tardar tres semanas despues; sin ingreso registrado al 6-oct (#6). 05-oct: John pregunta si el EDA incluye la consulta ambiental y el plan de manejo de residuos (#7).</td></tr>
 <tr><td>EDA Chihuahua 147</td><td>DGIVA</td><td>Via paralela</td><td>Erick 24-ago: son dos temas, DGEIRA y DGIVA. Falta definir el alcance de cada uno.</td></tr>
 <tr><td>EDA Boulevard Puerto Aereo</td><td>Por definir</td><td>Esperando al cliente</td><td>Erick 13-ago: se les pidio definir el apoyo requerido. Sin respuesta desde entonces.</td></tr>
 <tr><td>EDA Reforma 935</td><td>DGIVA</td><td>Resolucion entregada</td><td>John 13-ago: ya entregaron la resolucion. Confirmar si queda seguimiento.</td></tr>
@@ -264,20 +264,21 @@ window.addEventListener("error", function (e) {
     <button class="ver-mas no-print" id="acuerdos-mas" style="display:none"></button>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">EDAs — Chihuahua 147, Boulevard Puerto Aereo, Reforma 935 &middot; Actualizado 05-oct-2026 &middot; Chihuahua: ingreso la semana del 05-oct &middot; Reforma 935: en espera</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">EDAs — Chihuahua 147, Boulevard Puerto Aereo, Reforma 935 &middot; Actualizado 06-oct-2026 &middot; Chihuahua: ingreso la semana del 05-oct &middot; Reforma 935: en espera</p>
 </div>
 
 <script>
 const items = [
-  { n: 2, desc: "[CHIHUAHUA] Definir el alcance de cada via: que le toca a DGEIRA y que a DGIVA. 11-SEP: alcance DGEIRA ya claro - subsanar comprobantes de agua tratada, manifiestos de residuos, dictamen de arbolado y pagar derechos $26,762.00 MXN por transferencia. John dijo que lo solicita. Falta el alcance de DGIVA. 22-sep: estan cotizando los documentos de uso de agua residual y manejo de residuos, la parte mas compleja (Erick). 25-sep: Erick revisa directo con el cliente si sigue vigente el dictamen de factibilidad hidraulica MGH-20250718-0001 (un ano desde el 25-ago-2025) y si sirve el contrato de residuos con Concretos Sustentables Mexicanos. 29-sep: Erick dice que el ingreso se hace la semana del 05-oct (#6).", who: "Erick Sanchez / Mauricio", due: "", urgent: false, done: false, desde: "2026-09-01", tramite: "EDA Chihuahua 147" },
+  { n: 2, desc: "[CHIHUAHUA] Definir el alcance de cada via: que le toca a DGEIRA y que a DGIVA. 11-SEP: alcance DGEIRA ya claro - subsanar comprobantes de agua tratada, manifiestos de residuos, dictamen de arbolado y pagar derechos $26,762.00 MXN por transferencia. John dijo que lo solicita. Falta el alcance de DGIVA. 22-sep: estan cotizando los documentos de uso de agua residual y manejo de residuos, la parte mas compleja (Erick). 25-sep: Erick revisa directo con el cliente si sigue vigente el dictamen de factibilidad hidraulica MGH-20250718-0001 (un ano desde el 25-ago-2025) y si sirve el contrato de residuos con Concretos Sustentables Mexicanos. 29-sep: Erick dice que el ingreso se hace la semana del 05-oct (#6).", who: "Erick Sanchez / Mauricio", due: "", urgent: false, done: false, desde: "2026-09-01", tramite: "EDA Chihuahua 147", revisado: "2026-10-06" },
   { n: 3, desc: "[PUERTO AEREO] Obtener del cliente la definicion del apoyo requerido. Sin respuesta desde el 13-ago. 22-sep: Erick dice que le dijeron que es muy complejo, sin perspectiva por ahora.", who: "John", due: "", urgent: false, done: false, desde: "2026-09-01", tramite: "EDA Boulevard Puerto Aereo", revisado: "2026-10-05" },
   { n: 4, desc: "[REFORMA 935] Confirmar si con la resolucion entregada queda cerrado o falta seguimiento. 05-oct (Mauricio): en espera; no se vuelve a preguntar hasta que el lo retome.", who: "Erick Sanchez / Mauricio", due: "", urgent: false, done: false, desde: "2026-09-01", tramite: "EDA Reforma 935", revisado: "2026-10-05" },
   { n: 5, desc: "Bajar y archivar la documentacion de Chihuahua que John compartio por Drive. 24-sep: las carpetas del 09 y 14-sep (DCA de demolicion, consulta de aplicabilidad, planos y memoria) ya estan copiadas y leidas en 00 entradas. La del 12-ago (\"Bosque de Chihuahua #147\", de AX Arquitectos) ya tiene acceso directo en la cuenta relay (24-sep). Cerrado 25-sep: la Mac la copio el 24-sep; archivada completa (198 archivos) y leida.", who: "Nayeli", due: "", urgent: false, done: true, desde: "2026-09-01" },
-  { n: 6, desc: "[CHIHUAHUA] Hacer el ingreso del Estudio de Dano Ambiental (EDA) de Chihuahua 147 la semana del 05-oct y compartir el acuse para archivarlo; la autorizacion se espera a mas tardar tres semanas despues del ingreso (Erick, 29-sep).", who: "Erick Sanchez", due: "2026-10-09", urgent: false, done: false, desde: "2026-09-29", tramite: "EDA Chihuahua 147" }
+  { n: 6, desc: "[CHIHUAHUA] Hacer el ingreso del Estudio de Dano Ambiental (EDA) de Chihuahua 147 la semana del 05-oct y compartir el acuse para archivarlo; la autorizacion se espera a mas tardar tres semanas despues del ingreso (Erick, 29-sep).", who: "Erick Sanchez", due: "2026-10-09", urgent: false, done: false, desde: "2026-09-29", tramite: "EDA Chihuahua 147" },
+  { n: 7, desc: "[CHIHUAHUA] Responder a John si el EDA de Chihuahua 147 incluye la consulta ambiental y el plan de manejo de residuos o si se tramitan aparte (pregunta en el grupo EDAS, 05-oct 12:31).", who: "Erick Sanchez", due: "", urgent: false, done: false, desde: "2026-10-05", tramite: "EDA Chihuahua 147" }
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Ya no borra lo del equipo (28-sep-2026): ver loadState.
-const VERSION = "2026-09-30a";
+const VERSION = "2026-10-06a";
 // Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
 const NEW_BADGE_N = 6;
 
