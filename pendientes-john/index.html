@@ -263,7 +263,7 @@ window.addEventListener("error", function (e) {
 
 <script>
 const items = [
-  {n:4, desc:"[Hospital Constituyentes] Avisarle a John cuando se recoja la prevencion de la licencia de fusion de 4 predios.", who:"Mauricio", due:"", urgent:false, done:false, desde: "2026-06-18", tramite: "Hospital Constituyentes", revisado: "2026-11-10" },
+  {n:4, desc:"[Hospital Constituyentes] Recoger en la Alcaldia la prevencion de la licencia de fusion de 4 predios y avisar a Mauricio. Encargo de Mauricio del 10-nov.", who:"John", due:"", urgent:false, done:false, desde: "2026-06-18", tramite: "Hospital Constituyentes", revisado: "2026-11-11" },
   {n:7, desc:"[Hanono] Ingresar las 2 terminaciones pendientes de Hanono (de las \"limpias\"). Cerrado 27-sep: son los avisos de terminacion de obra de Tennyson 234 (ingresado 29-jun) y Tennyson 125 (ID 30062026070, visita de la Alcaldia 24-sep); lo que sigue esta en el #8 de Hanono.", who:"John", due:"", urgent:false, done:true, desde: "2026-06-18" },
   {n:8, desc:"[Bahia de Santa Barbara 115] Reingresar el cano de Bahia de Santa Barbara 115 y compartir numero de seguimiento", who:"John", due:"", urgent:true, done:false, desde: "2026-06-18", revisado: "2026-11-06", tramite: "Bahia de Santa Barbara 115" },
   {n:10, desc:"[Edison 106] Agendar reuniones con los 3 vecinos opositores de Edison y documentar acuerdos minimos de no oposicion (minutas firmadas). Cerrado 23-sep: Mauricio decidio el 26-ago que por ahora no habra reuniones con vecinos, se espera la publicitacion (Edison 106, item 9).", who:"John", due:"", urgent:false, done:true, desde: "2026-06-18" },
@@ -282,10 +282,11 @@ const items = [
   { n: 26, desc: "[Lafontaine 123] Dar seguimiento en la Alcaldia Miguel Hidalgo a que se emita la prevencion de la licencia de construccion especial para demoliciones, folio 10946 (ingresada el 08-oct como tramite incompleto, fecha compromiso 02-nov). Mauricio se lo pidio en la llamada del 15-oct y se le mando el acuse por WhatsApp ese dia. 30-oct: la prevención ya se emitió y se notificó (Nayeli, ventanilla); queda el seguimiento del desahogo y de la licencia. 03-nov: el desahogo se presento (Nayeli); Mauricio pidio que H mande la licencia (foto o escaneo); John: no la terminaron de armar el 03-nov, queda lista el 04-nov. Queda conseguir la licencia y entregarla. 04-nov: la Alcaldia no la armo (mandaron al personal a casa). 05-nov: la licencia MHLE/D/097/2026 (folio FMH-054-2026, expedida el 04-nov) se entrego en la Ventanilla Unica; Nayeli la recogio a las 14:51.", who: "John", due: "2026-11-04", urgent: true, done: true, desde: "2026-10-15", tramite: "Lafontaine 123" },
   { n: 27, desc: "[Av. Homero 1115] Recoger en la ventanilla de la Alcaldia Miguel Hidalgo la resolucion de la licencia de construccion especial para demolicion, folio FMH-39-2026 (el desahogo de su prevencion se recibio el 07-oct), y avisarle a Mauricio. 21-oct: John informo (13:35) que la resolucion bajo a ventanilla el 16-oct y confirmo (13:38) que ya esta para recoger. Es el #13 de Gestiones sueltas. 05-nov: Mauricio confirma que ya se recogio.", who: "John", due: "", urgent: false, done: true, desde: "2026-10-08", tramite: "Av. Homero 1115", revisado: "2026-11-05" },
   { n: 28, desc: "[Mar Negro 192] Tramitar hasta obtenerla la Constancia de Alineamiento y Numero Oficial de Mar Negro 192, registrada en la Ventanilla Unica de Construccion el 30-oct (ID de tramite 30102026067, cuenta catastral 030_046_11), y mandarla para archivo. Encargo de Mauricio del 10-nov; lo pidio Erick Sanchez (09-nov).", who: "John", due: "", urgent: false, done: false, desde: "2026-11-10", tramite: "Mar Negro 192" },
+  { n: 29, desc: "[TWH - Lomas de Chapultepec] Gestionar el reconocimiento de actividad (derechos adquiridos) para el centro de bienestar de Santiago Fernandez en Lomas de Chapultepec (Gestiones sueltas, TWH) y reportar a Mauricio. Encargo de Mauricio del 10-nov.", who: "John", due: "", urgent: false, done: false, desde: "2026-11-10", tramite: "TWH, Lomas de Chapultepec" },
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Ya no borra lo del equipo (28-sep-2026): ver loadState.
-const VERSION = "2026-11-10a";
+const VERSION = "2026-11-11a";
 // Umbral para badge de "nuevos" (ítems con n >= este valor muestran badge destacado)
 const NEW_BADGE_N = 12;
 
