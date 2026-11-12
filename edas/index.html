@@ -196,7 +196,7 @@ window.addEventListener("error", function (e) {
   <div class="cards">
     <div class="card"><div class="label">Fase</div><div class="value sm">3 EDAs en curso</div></div>
     <div class="card"><div class="label">Frente</div><div class="value sm">Chihuahua 147</div></div>
-    <div class="card"><div class="label">Chihuahua 147</div><div class="value sm">EDA en revision; sin cita de cotejo de originales al 12-nov</div><div class="sub">La visita de SEDEMA del 09-nov no se hizo; John consigue documentos adicionales (9); riesgo por arbolado retirado antes de la autorizacion: falta decidir como se atiende (10)</div></div>
+    <div class="card"><div class="label">Chihuahua 147</div><div class="value sm">EDA en revision; sin cita de cotejo de originales al 12-nov</div><div class="sub">La visita de SEDEMA del 09-nov no se hizo; John consigue documentos adicionales (9); riesgo por arbolado retirado antes de la autorizacion: lo definen Erick y John (10)</div></div>
     <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">—</div><div class="sub">por cerrar</div></div>
   </div>
 
@@ -264,7 +264,7 @@ window.addEventListener("error", function (e) {
     <button class="ver-mas no-print" id="acuerdos-mas" style="display:none"></button>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">EDAs — Chihuahua 147, Boulevard Puerto Aereo, Reforma 935 &middot; Actualizado 12-nov-2026 &middot; Chihuahua: EDA en revision, sin cita de cotejo de originales al 12-nov; visita de SEDEMA del 09-nov no realizada, John consigue documentos adicionales; arbolado retirado antes de la autorizacion, falta decidir como se atiende &middot; Reforma 935: en espera · Consulta ambiental: no aplica, solo EDA</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">EDAs — Chihuahua 147, Boulevard Puerto Aereo, Reforma 935 &middot; Actualizado 12-nov-2026 &middot; Chihuahua: EDA en revision, sin cita de cotejo de originales al 12-nov; visita de SEDEMA del 09-nov no realizada, John consigue documentos adicionales; arbolado retirado antes de la autorizacion, lo definen Erick y John &middot; Reforma 935: en espera · Consulta ambiental: no aplica, solo EDA</p>
 </div>
 
 <script>
@@ -277,7 +277,7 @@ const items = [
   { n: 7, desc: "[CHIHUAHUA] Responder a John si el EDA de Chihuahua 147 incluye la consulta ambiental y el plan de manejo de residuos o si se tramitan aparte (pregunta en el grupo EDAS, 05-oct 12:31). Cerrado 09-oct: Erick respondio el 08-oct que a la obra no le aplica consulta ambiental, solo el EDA; el plan de manejo de residuos no esta en la cotizacion.", who: "Erick Sanchez", due: "", urgent: false, done: true, desde: "2026-10-05", tramite: "EDA Chihuahua 147" },
   { n: 8, desc: "[CHIHUAHUA] Erick manda a John la propuesta del plan de manejo de residuos, con la opinion de que no aplica DCA.", who: "Erick Sanchez", due: "", urgent: false, done: false, desde: "2026-10-09", tramite: "EDA Chihuahua 147", revisado: "2026-11-02" },
   { n: 9, desc: "[CHIHUAHUA] Dar acceso al predio el lunes 09-nov a las 11:00 al personal de SEDEMA (Carlos Wilson Rivera Gonzalez) para el reporte fotografico del anexo forestal, y conseguir copia del reporte o constancia de la visita (Erick, grupo EDAS 06-nov). 09-nov (Mauricio): la visita no se hizo; John tratara de conseguir algunos documentos adicionales para el expediente.", who: "John", due: "", urgent: true, done: false, desde: "2026-11-06", tramite: "EDA Chihuahua 147" },
-  { n: 10, desc: "[CHIHUAHUA] Decidir con Mauricio como se atiende ante SEDEMA el arbolado que el cliente ya retiro antes de la autorizacion del EDA (Erick, 06-nov: cerrar numeros de lo trabajado y ver que se puede reponer; riesgo de sancion ambiental). 09-nov (Mauricio): lo sigue pensando; depende de lo que consiga John. 11-nov: Erick pregunta de nuevo como se atiende la visita de SEDEMA para el reporte fotografico; John: en el predio se colocaron arboles en macetas de la misma especie, mas chicos, y pide que se defina la solucion.", who: "Mauricio / Erick Sanchez", due: "", urgent: true, done: false, desde: "2026-11-06", tramite: "EDA Chihuahua 147" }
+  { n: 10, desc: "[CHIHUAHUA] Definir entre Erick Sanchez y John como se atiende ante SEDEMA el arbolado que el cliente ya retiro antes de la autorizacion del EDA (Erick, 06-nov: cerrar numeros de lo trabajado y ver que se puede reponer; riesgo de sancion ambiental). 09-nov (Mauricio): lo sigue pensando; depende de lo que consiga John. 11-nov: Erick pregunta de nuevo como se atiende la visita de SEDEMA para el reporte fotografico; John: en el predio se colocaron arboles en macetas de la misma especie, mas chicos, y pide que se defina la solucion. 12-nov (Mauricio): lo resuelven entre Erick y John.", who: "Erick Sanchez / John", due: "", urgent: true, done: false, desde: "2026-11-06", tramite: "EDA Chihuahua 147" }
 ];
 
 // VERSION: cambiar al añadir/eliminar ítems. Ya no borra lo del equipo (28-sep-2026): ver loadState.
