@@ -179,10 +179,10 @@ window.addEventListener("error", function (e) {
   <header>
     <div>
       <h1>Bodega Tlaxpana</h1>
-      <p>Eugenio Narezo · Bodega en la colonia Tlaxpana (direccion por confirmar)</p>
+      <p>Eugenio Narezo · Bodega en Quetzalcoatl 48, Col. Tlaxpana, Alcaldia Miguel Hidalgo</p>
     </div>
     <div class="stamp">
-      <div id="last-update">Actualizado: 12-nov-2026</div>
+      <div id="last-update">Actualizado: 13-nov-2026</div>
       <div style="margin-top:3px;">Editando como <b id="quien-soy">—</b> <a href="#" id="cambiar-quien" class="no-print">cambiar</a></div>
       <div id="quien-form" class="no-print"><input id="quien-input" type="text" maxlength="40" placeholder="Escribe tu nombre" autocomplete="name"><button class="btn" id="quien-ok" type="button">Guardar</button></div>
       <div id="sync-status" style="margin-top:3px;">Conectando...</div>
@@ -194,7 +194,7 @@ window.addEventListener("error", function (e) {
   </header>
 
   <div class="cards">
-    <div class="card"><div class="label">Fase</div><div class="value sm">Arranque: en espera del poder y documentos</div><div class="sub">Alta del 12-nov-2026. El propietario (vive en Mérida) otorga poder notarial para los tramites (#2)</div></div>
+    <div class="card"><div class="label">Fase</div><div class="value sm">Arranque: en espera del poder y documentos</div><div class="sub">Alta del 12-nov-2026. El 13-nov llego el proyecto de poder del propietario (Notaria 89 de Merida) para revision (#2)</div></div>
     <div class="card"><div class="label">Proyecto</div><div class="value sm">Alrededor de 45 departamentos</div><div class="sub">Con Norma 26 (Servimet); primero se busca la licencia de demolicion</div></div>
     <div class="card"><div class="label">Pendientes</div><div class="value" id="pending-counter">—</div><div class="sub">por cerrar</div></div>
   </div>
@@ -205,10 +205,10 @@ window.addEventListener("error", function (e) {
     <table class="tabla-bloques" id="tabla-tramites">
       <thead><tr><th>Tramite</th><th>Instancia</th><th>Estado</th><th>Detalle</th></tr></thead>
       <tbody>
-        <tr><td>Constancia de Alineamiento y Numero Oficial</td><td>Alcaldia (segun la direccion)</td><td><span class="badge gray">Sin iniciar</span></td><td>Primer paso; se ingresa con el poder del propietario (#2).</td></tr>
+        <tr><td>Constancia de Alineamiento y Numero Oficial</td><td>Alcaldia Miguel Hidalgo</td><td><span class="badge gray">Sin iniciar</span></td><td>Primer paso; se ingresa con el poder del propietario (#2).</td></tr>
 <tr><td>CUZUS / Norma 26</td><td>SPOTMET (Norma 26 por Servimet)</td><td><span class="badge gray">Sin iniciar</span></td><td>Definir si primero un CUZUS ordinario para la demolicion y la Norma 26 despues (#3).</td></tr>
 <tr><td>Declaratoria de Cumplimiento Ambiental (demolicion)</td><td>SEDEMA</td><td><span class="badge gray">Sin iniciar</span></td><td>Requisito de la licencia de demolicion (#4).</td></tr>
-<tr><td>Publicitacion vecinal y licencia de demolicion</td><td>Alcaldia (segun la direccion)</td><td><span class="badge gray">Sin iniciar</span></td><td>Despues del alineamiento y el CUZUS (#4).</td></tr>
+<tr><td>Publicitacion vecinal y licencia de demolicion</td><td>Alcaldia Miguel Hidalgo</td><td><span class="badge gray">Sin iniciar</span></td><td>Despues del alineamiento y el CUZUS (#4).</td></tr>
       </tbody>
     </table>
     <button class="ver-mas no-print" id="tramites-mas" style="display:none"></button>
@@ -262,13 +262,13 @@ window.addEventListener("error", function (e) {
     <button class="ver-mas no-print" id="acuerdos-mas" style="display:none"></button>
   </section>
 
-  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Bodega Tlaxpana · Actualizado 12-nov-2026 · Alta del proyecto; en espera del poder notarial del propietario y de los documentos del predio</p>
+  <p style="font-size:11px;color:#bbb;text-align:center;margin-top:2rem;">Bodega Tlaxpana · Actualizado 13-nov-2026 · Quetzalcoatl 48, Col. Tlaxpana (Miguel Hidalgo); proyecto de poder del propietario en revision; faltan los documentos del predio</p>
 </div>
 
 <script>
 const items = [
   { n:1, desc:"[DOCUMENTOS] Recibir de Eugenio Narezo la escritura, la boleta predial (direccion y cuenta catastral) y el contrato del terreno de Tlaxpana.", who:"Cliente", due:"", urgent:false, done:false, desde:"2026-11-11", tramite:"General" },
-  { n:2, desc:"[PODER] Recibir el poder notarial que otorgue el propietario (vive en Merida) para los tramites del predio, con facultades de administracion, e ingresar con el la solicitud de Constancia de Alineamiento y Numero Oficial. Poder esperado la semana del 16-nov.", who:"Cliente / Mauricio", due:"", urgent:true, done:false, desde:"2026-11-11", tramite:"Constancia de Alineamiento y Numero Oficial" },
+  { n:2, desc:"[PODER] Revisar y dar visto bueno al proyecto de poder que llego el 13-nov (Notaria 89 de Merida: poder general para pleitos y cobranzas y para actos de administracion, limitado al predio Quetzalcoatl 48, Col. Tlaxpana, a favor de tres apoderados indistintos, entre ellos Eugenio Narezo); recibir el poder otorgado e ingresar con el la solicitud de Constancia de Alineamiento y Numero Oficial.", who:"Mauricio / Cliente", due:"", urgent:true, done:false, desde:"2026-11-11", tramite:"Constancia de Alineamiento y Numero Oficial" },
   { n:3, desc:"[CUZUS] Definir si se tramita primero un CUZUS ordinario para integrar la demolicion y la Norma 26 (Servimet) despues. (cuando: se tenga el alineamiento)", who:"Mauricio", due:"", urgent:false, done:false, desde:"2026-11-11", tramite:"CUZUS / Norma 26" },
   { n:4, desc:"[DEMOLICION] Integrar la Declaratoria de Cumplimiento Ambiental y la solicitud de licencia de demolicion, con su publicitacion. (cuando: alineamiento y CUZUS)", who:"Mauricio", due:"", urgent:false, done:false, desde:"2026-11-11", tramite:"Publicitacion vecinal y licencia de demolicion" },
 ];
